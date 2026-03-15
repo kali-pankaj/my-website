@@ -1,0 +1,79 @@
+/* ===== Global Styling ===== */
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f4f7fb;
+    margin: 0;
+    padding: 0;
+    line-height: 1.6;
+    color: #333;
+}
+
+/* ===== Container ===== */
+.container {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+/* ===== Section Card ===== */
+.section {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 25px;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.section:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ===== Headings ===== */
+h2 {
+    color: #0d47a1;
+    border-left: 6px solid #0d47a1;
+    padding-left: 12px;
+    margin-bottom: 15px;
+}
+
+/* ===== Code Block (Terminal Style) ===== */
+pre {
+    background: #1e1e1e;
+    color: #00ff9d;
+    padding: 18px;
+    border-radius: 8px;
+    overflow-x: auto;
+    font-size: 14px;
+}
+
+code {
+    font-family: Consolas, monospace;
+    font-size: medium;
+}
+
+/* ===== Scrollbar Styling ===== */
+pre::-webkit-scrollbar {
+    height: 8px;
+}
+
+pre::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 4px;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .container {
+        padding: 10px;
+    }
+
+    .section {
+        padding: 15px;
+    }
+
+    pre {
+        font-size: 12px;
+    }
+}

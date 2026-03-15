@@ -1,0 +1,561 @@
+<link rel="stylesheet" href="style.css">
+<div class="container">
+
+    <div class="section">
+        <h2>1. Basic script & Syntax shell scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    echo "Hello, World!"
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>2. Comments in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+
+    # This is a single-line comment
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>3. Variables in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    name="ram"
+    age=30
+    echo "Hello, $name! You are $age years old."
+
+    HOSTNAME=$(hostname)
+    echo "The hostname of this machine is: $HOSTNAME"
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>4. Constant variables in shell scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    readonly college="ABC College"
+    echo "Welcome to $college!"
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>5. Arrays in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    myarray=("apple" "banana" "cherry" 1 20 5.5)
+
+    echo "First fruit: ${myarray[0]}"
+    echo "Second fruit: ${myarray[1]}"
+    echo "Third fruit: ${myarray[2]}"
+    echo "All elements: ${myarray[@]}"
+
+    echo "Number of elements: ${\#myarray[*]}" # remove space from string
+    echo "Value of index 3-3: ${myarray[*]:3:3}"
+
+    # Updating our array:
+    myarray+=("new" "orange" 75000)
+    echo "Updated array: ${myarray[@]}"
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>6. Array key-value pairs in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    declare -A myarray
+    myarray=([name]="ram" [age]=30 [city]="delhi")
+
+    echo "Name: ${myarray[name]}"
+    echo "Age: ${myarray[age]}"
+    echo "City: ${myarray[city]}"
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>7. String Operations in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    myvars="hey bro how are you ? "
+
+    myvarLength=${\#myvars}  # remove space from string
+    echo "Length of the string: $myvarLength"
+
+    echo "uppercase: ${myvars^^}"
+    echo "lowercase: ${myvars,,}"
+    echo "capitalize first letter: ${myvars^}"
+    echo "capitalize first letter of each word: ${myvars^}"
+
+    # To Replace a string:
+    newvar=${myvars/how/where}
+    echo "After replacement: $newvar"
+
+    # To slice a string:
+    echo "after slicing: ${myvars:4:3}"
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>8. User Interaction in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    echo "What is your name?"
+    name="pankaj oraon"
+    echo "Hello, $name"
+
+    read -p "Enter your name: " name
+    echo "Hello, $name"
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>9. Arithmetic Operations in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    a=10
+    b=5
+
+    let sum=$a+$b
+    echo "Sum: $sum"
+
+    let substr=$a-$b
+    echo "Subtraction: $substr"
+
+    let mult=$a*$b
+    echo "Multiplication: $mult"
+
+    let div=$a/$b
+    echo "Division: $div"
+
+    let mod=$a%$b
+    echo "Modulus: $mod"
+        </code></pre>
+    </div>
+
+    <div class="section">
+        <h2>10. Conditional Statements in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    read -p "Enter a marks: " marks
+    if [ "$marks" -ge 90 ]; then
+        echo "Grade: A"
+    elif [ "$marks" -ge 80 ]; then
+        echo "Grade: B"
+    elif [ "$marks" -ge 70 ]; then
+        echo "Grade: C"
+    else
+        echo "Grade: F"
+    fi
+        </code></pre>
+    </div>
+
+    <div class="section">
+    <h2>11. Multiple Conditions in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    read -p "Enter a marks: " marks
+    if [ "$marks" -ge 90 ] && [ "$marks" -le 100 ]; then
+        echo "Grade: A"
+    elif [ "$marks" -ge 80 ] && [ "$marks" -lt 90 ]; then
+        echo "Grade: B"
+    elif [ "$marks" -ge 70 ] && [ "$marks" -lt 80 ]; then
+        echo "Grade: C"
+    else
+        echo "Grade: F"
+    fi
+        </code></pre>
+    </div>
+
+
+    <div class="section">
+    <h2>12. case statement in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    echo "Provide an option: "
+    echo "a. For print date"
+    echo "b. For print calendar"
+    echo "c. For print hostname"
+
+    read -p "Enter your choice: " choice
+    case "$choice" in
+        "a")
+            echo "Today's date: $(date)"
+            ;;
+        "b")
+            echo "Current month's calendar: "
+            cal
+            ;;
+        "c")
+            echo "Hostname: $(hostname)"
+            ;;
+        *)
+            echo "Invalid option!"
+            ;;
+    esac
+
+
+    # second type
+    case "$choice" in
+        a)
+            echo "Today's date:"
+            date
+            echo "end of a"
+            ;;
+    esac
+
+
+    # Example of case statement with multiple conditions:
+
+    #!/bin/bash
+    read -p "Enter a day of the week: " day
+    case "$day" in
+        "Monday")
+            echo "It's the start of the week!"
+            ;;
+        "Tuesday")
+            echo "It's Tuesday!"
+            ;;
+        "Wednesday")
+            echo "It's Wednesday!"
+            ;;
+        "Thursday")
+            echo "It's Thursday!"
+            ;;
+        "Friday")
+            echo "It's Friday!"
+            ;;
+        "Saturday" | "Sunday")
+            echo "It's the weekend!"
+            ;;
+        *)
+            echo "Invalid day!"
+            ;;
+    esac
+    </code></pre>
+    </div>
+
+
+    <div class="section">
+    <h2>13. Logical Operators in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+
+    # And operator (&&)
+    read -p "What is your age? " age
+    if [ "$age" -ge 18 ] && [ "$age" -lt 100 ]; then
+        echo "You are an adult."
+    else
+        echo "You are not an adult."
+    fi
+
+
+    # Or operator (||)
+
+    read -p "What is your country? " country
+    read -p "What is your age? " age
+    if [ "$country" = "INDIA" ] || [ "$age" -ge 18 ]; then
+        echo "You are eligible for voting."
+    else
+        echo "You are not eligible."
+    fi
+    </code></pre>
+    </div>
+
+
+    <div class="section">
+    <h2>14. Multiple Conditions in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    read -p "Enter a marks: " marks
+    if [ "$marks" -ge 90 ] && [ "$marks" -le 100 ]; then
+        echo "Grade: A"
+    elif [ "$marks" -ge 80 ] && [ "$marks" -lt 90 ]; then
+        echo "Grade: B"
+    elif [ "$marks" -ge 70 ] && [ "$marks" -lt 80 ]; then
+        echo "Grade: C"
+    else
+        echo "Grade: F"
+    fi
+    </code></pre>
+    </div>
+
+
+    <div class="section">
+    <h2>15. Loops in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+
+    # For loop
+    for i in {1..10}; do
+        echo "Iteration: $i"
+    done
+
+    for name in "pankaj" "pradeep" "Charlie"; do
+        echo "Hello, $name!"
+    done
+
+    # While loop
+    count=1
+    while [ "$count" -le 5 ]; do
+        echo "Count: $count"
+        ((count++))
+    done
+
+    # Until loop
+    counter=10
+    until [ "$counter" -eq 5 ]; do
+        echo "Counter: $counter"
+        ((counter--))
+    done
+
+    # Infinite loop
+    while true; do
+        echo "This will run forever. Press Ctrl+C to stop."
+        sleep 1
+    done
+
+
+    # Infinite loop use for a specific condition
+    while true; do
+        read -p "Enter a number (or 'exit' to quit): " input
+        if [ "$input" = "exit" ]; then
+            echo "Exiting the loop."
+            break
+        elif [[ "$input" =~ ^[0-9]+$ ]]; then
+            echo "You entered the number: $input"
+        else
+            echo "Invalid input. Please enter a number or 'exit'."
+        fi
+    done
+    </code></pre>
+    </div>
+
+    <div class="section">
+    <h2>16. Iterate values from a file</h2>
+        <pre><code>
+    #!/bin/bash
+    file="/home/pankaj/names.txt"
+    for name in $(cat "$file"); do
+        echo "Hello, $name!"
+    done
+    </code></pre>
+    </div>
+
+    <div class="section">
+    <h2>17. Array in loops</h2>
+        <pre><code>
+    #!/bin/bash
+    myarray=("apple" "banana" "cherry" 1 20 5.5)
+    length=${\#myarray[*]}  ########## remove space from string
+    for (( i=0; i<$length; i++ )); do
+        echo "Element $i: ${myarray[i]}"
+    done
+    </code></pre>
+    </div>
+
+    <div class="section">
+    <h2>18. To read file using while loop</h2>
+        <pre><code>
+    #!/bin/bash
+    while read myvar; do
+        echo "Line: $myvar"
+    done < "/home/pankaj/names.txt"
+
+    # To read content from a csv file
+    while IFS=, read -r name age city; do
+        echo "Name: $name, Age: $age, City: $city"
+    done < "/home/pankaj/data.csv"
+
+    # other csv type
+    #!/bin/bash
+    cat text.csv | awk 'NR!=1{print}' | while IFS=, read -r name age city; do
+        echo "Name: $name"
+        echo "Age: $age"
+        echo "City: $city"
+    done
+    </code></pre>
+    </div>
+
+    <div class="section">
+    <h2>19. Functions in Shell Scripting</h2>
+        <pre><code>
+    #!/bin/bash
+    function greet {
+        echo "Hello, $1!"
+    }
+    greet "pankaj"
+
+    # Function with multiple parameters
+    function add {
+        sum=$(($1 + $2))
+        echo "Sum: $sum"
+    }
+    add 10 20
+    </code></pre>
+    </div>
+
+    <div class="section">
+    <h2>20. Function Arguments test</h2>
+        <pre><code>
+    #!/bin/bash
+    function test {
+        echo "Number of arguments: $#"
+        echo "All arguments: $@"
+        echo "First argument: $1"
+        echo "Second argument: $2"
+    }
+    test "pankaj" 30
+
+    # Argument passing
+    #!/bin/bash
+    function greet {
+        echo "Hello, $1!"
+        echo "Hello, $2!"
+    }
+    name="pankaj"
+    greet "$name" "pradeep"
+    </code></pre>
+    </div>
+
+    <div class="container">
+    <h2>21. Shifting Arguments</h2>
+        <pre><code>
+    #!/bin/bash
+    function shift_function {
+        echo "creating user"
+        echo "username is $1"
+        echo "Description is $2"
+    }
+    shift_function "pankaj" "this is a user"
+    </code></pre>
+    </div>
+
+    <div class="container">
+    <h2>22. Other useful concepts (break, continue)</h2>
+        <pre><code>
+# break example
+    #!/bin/bash
+    for i in {1..10}; do
+        if [ $i -eq 5 ]; then
+            echo "Breaking the loop at iteration $i"
+            break
+        fi
+        echo "Iteration: $i"
+    done
+
+# continue example
+    #!/bin/bash
+    for i in {1..10}; do
+        if [ $i -eq 5 ]; then
+            echo "Skipping iteration $i"
+            continue
+        fi
+        echo "Iteration: $i"
+    done
+
+# sleep exit example
+    #!/bin/bash
+    if [ $# -eq 0 ]; then
+        echo "No arguments provided. Exiting."
+        exit 1
+    fi
+    echo "first argument: $1"
+    echo "second argument: $2"
+
+# exit status example
+    #!/bin/bash
+    read -p "which site do you want to open? " site
+    ping -c 2 "$site"
+    sleep 2
+    if [ $? -eq 0 ]; then
+        echo "The site is reachable."
+    else
+        echo "The site is not reachable."
+    fi
+
+# Basename example
+    #!/bin/bash
+    workdir="/home/pankaj/Desktop/script.sh"
+    output=$(basename "$workdir")
+    echo "The basename of the file is: $output"
+
+# Dirname example
+    #!/bin/bash
+    work="/home/pankaj/Desktop/script.sh"
+    output=$(dirname "$work")
+    echo "The dirname of the file is: $output"
+
+# Real path example
+    #!/bin/bash
+    filepath="/home/pankaj/Desktop/script.sh"
+    realpath_output=$(realpath "$filepath")
+    echo "The real path of the file is: $realpath_output"
+
+# file exist or not check example
+    #!/bin/bash
+    read -p "Enter a file path: " filepath
+    if [ -f "$filepath" ]; then
+        echo "The file exists."
+    else
+        echo "The file does not exist."
+    fi
+
+# Bash variables example
+    #!/bin/bash
+    NO=$(($RANDOM % 10 + 1))
+    echo "Random number between 1 and 10: $NO"
+
+# Root user check example
+    #!/bin/bash
+    read -p "Enter your username: " username
+    ID=$(id -u)
+    if [ "$ID" -ne 0 ]; then
+        echo "You are not running as root."
+        exit 1
+    else
+        echo "You are running as root."
+    fi
+
+# Redirecting output to a file example
+    #!/bin/bash
+    echo "This is a message that will be written to a file." > output.txt
+    echo "This is another message that will be appended to the file." >> output.txt
+    ping -c 2 google.com > ping_output.txt
+
+# what is /dev/null example
+    #!/bin/bash
+    echo "This message will be discarded." > /dev/null
+    ping -c 2 google.com > /dev/null
+
+# print name of the script example
+    #!/bin/bash
+    echo "this is print name script ${0}"
+
+# Log messages example
+    #!/bin/bash
+    logger "this is a log from ${0}"
+
+# Debugging script example
+    #!/bin/bash
+    set -x
+    set -e
+
+# run script in background example
+    #!/bin/bash
+    for i in {1..5}; do
+        echo "Background task iteration: $i"
+        sleep 1
+    done &
+    echo "This message is printed while the background task is running."
+    nohup ./script.sh &
+
+# crontab examples
+    # * * * * * bash /home/pankaj/Desktop/script.sh
+    # * * * * * bash /home/pankaj/Desktop/script.sh && ./current_file.sh
+    # * * * * * bash /home/pankaj/Desktop/script.sh >> /home/pankaj/Desktop/script.log 2>&1
+
+    </code></pre>
+    </div>
+
+</div>

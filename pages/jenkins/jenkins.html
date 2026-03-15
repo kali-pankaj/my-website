@@ -1,0 +1,175 @@
+
+
+<div>
+    <h2>Jenkins Are Comming Soon ! </h2>
+    <div>
+        <h2>Jenkins Installating Proccess And Basic Configuration Process</h2>
+        <ul>
+            <li><strong>sudo apt update && sudo apt upgrade -y </strong> System update command run first for debian base operaating system.!! </li>
+            <li><strong>sudo apt install openjdk-17-jdk -y</strong></li>
+            <li><strong>java -version</strong></li>
+            <li><strong>sudo apt install jenkins -y</strong></li>
+            <li><strong>jenkins --version</strong></li>
+            <li><strong>sudo firewall-cmd --add-port=8080/tcp --permanent </strong></li>
+            <li><strong>sudo firewall-cmd --reload</strong></li>
+            <li><strong>sudo systemctl enable --now jenkins</strong></li>
+            <li><strong>sudo systemctl status jenkins</strong></li>
+            <li><strong>http://localhost:8080</strong></li>
+            <li><strong>sudo cat /var/lib/jenkins/secrets/initialAdminPassword</strong></li>
+            <li><p>After unlocking Jenkins, install suggested plugins and create the first administrator account to complete the basic configuration. </p></li>
+        </ul>
+
+       <table>
+        <h3>Jenkins First Job</h3>
+
+    <pre><code>
+    <strong>Step 1: Open Jenkins Dashboard</strong>
+    Dashboard → Click "New Item"
+
+    <strong>Step 2: Create a New Job</strong>
+    Enter Job Name: first-job
+    Select: Freestyle Project
+    Click: OK
+
+    <strong>Step 3: Configure Job</strong>
+    Description: This is my first Jenkins job.
+
+    <strong>Step 4: Build Trigger (Optional)</strong>
+    Build Triggers → Poll SCM 
+    (This step is optional for the first test build.)
+
+    <strong>Step 5: Add Build Step</strong>
+    Scroll to: Build → Add Build Step → Execute Shell
+
+    <strong>Step 6: Add Shell Commands</strong>
+    echo "Hello Jenkins"
+    date
+    whoami
+
+    <strong>Step 7: Save Job</strong>
+    Click "Save"
+
+    <strong>Step 8: Run the Job</strong>
+    Click "Build Now"
+
+    <strong>Step 9: Check Output</strong>
+    Open Build History → Click #1 → Console Output
+
+    Expected Output:
+    Hello Jenkins
+    Fri Mar 6
+    jenkins
+    Finished: SUCCESS
+    </code></pre>
+        </table>
+
+        <table>
+    <h3>Jenkins First Job More Examples</h3>
+
+    <pre><code>
+    ==============================
+    Example 1 : Simple DevOps Practice Job
+    ==============================
+
+    Job Name: devops-test-job
+
+    Build Step → Execute Shell
+
+    Commands:
+    echo "DevOps practice job running..."
+    date
+    uname -a
+    whoami
+
+    Purpose:
+    Practice Jenkins build execution.
+
+
+    ==============================
+    Example 2 : Git Clone Test Job
+    ==============================
+
+    Job Name: git-clone-job
+
+    Source Code Management → Git
+    Repository URL:
+    https://github.com/username/project.git
+
+    Build Step → Execute Shell
+
+    Commands:
+    echo "Repository cloned successfully"
+    ls
+
+    Purpose:
+    Test Git integration with Jenkins.
+
+    </code></pre>
+        </table>
+
+
+       
+        <div>
+            <h2>Jenkins All Pulligin Configuration </h2>
+
+            <pre><code>
+            <strong>#1: ssh node pulligin</strong>
+
+            Name: = node name (worker-jen-01)
+            Discription: = Give any thing for your choose
+            Number of Executation: = 1 (Default)
+            Remote root Directory: = /home/pankaj/Jenkins/
+            Labels: = linux_pankaj
+            Usage: = Default 
+            Lunch Method: = Agents via ssh
+            Host: = IP (Remote Machine) 
+            Creadtials: = ?(add)
+            Host Key Veryfication: = Non verification strategy
+            Availability: = Keep this agent online as much as possible
+
+            <strong> #2: ssh username with private key</strong>
+
+            Scope: = Global (Jenkins, node, items, all, child items)
+            Id: = username-id (pankaj-centos)
+            Discription: = This is remote machine (pankaj-centos)
+            Username: = pankaj (Remote-machine username)
+            private key: = Host-machine
+            Enter Directry: = key => ssh private key pest Host-machine
+
+            <strong>#3: Email Notification</strong>
+
+            Smtp Server: = smtp.gmail.com 
+            Default User email Suffix: = @gmail.com
+            Advance:
+            User Smtp Autherication: 
+            User name: = email id
+            Password: = App Password Create and pest (email ka)
+            Use ssl: = default
+            Smtp Port: = 465
+            Replay-To-Address: = Default
+            Charset: = Default
+            Test Connection By Sending test email: = email id
+
+            <strong>#4: User Managemant Role Base Management</strong>
+
+            Comming Soon !
+
+            <strong>#5: Global Trusted Pipeline Libraries</strong>
+            
+            Name: = Shared
+            Default Version: = main (Branch name)
+            Rrtrieval method: = modern scm 
+            Sorce Cpde Management: = Git
+            Project Repository: = url (Share.grove)
+
+                code pipeline use top line 1st line
+                @Libarary('Shared') --
+            
+            <strong>#6: </strong>
+
+            </code></pre>
+
+        </div>
+
+    </div>
+</div>

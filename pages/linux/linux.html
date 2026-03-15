@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Linux 0 to Hero</title>
+
+    <style>
+
+/* ============================= */
+/* GLOBAL SETTINGS */
+/* ============================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: "Segoe UI", Roboto, Arial, sans-serif;
+    background: #f3f6fb;
+    color: #1e293b;
+    line-height: 1.7;
+}
+
+/* ============================= */
+/* MAIN TITLE */
+/* ============================= */
+
+h1, body > h2:first-of-type {
+    text-align: center;
+    background: #0f172a;
+    color: white;
+    padding: 18px;
+    letter-spacing: 1px;
+}
+
+/* ============================= */
+/* CONTAINER */
+/* ============================= */
+
+.container {
+    max-width: 1250px;
+    margin: 30px auto;
+    padding: 20px;
+}
+
+/* ============================= */
+/* SECTION CARD */
+/* ============================= */
+
+.section {
+    background: #ffffff;
+    padding: 25px;
+    margin-bottom: 40px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+}
+
+/* Section Heading */
+.section h2 {
+    background: #0ea5e9;
+    color: white;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-bottom: 20px;
+    font-size: 25px;
+}
+
+/* ============================= */
+/* TABLE STYLE */
+/* ============================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 20px;
+    background: white;
+}
+
+/* Sticky Header */
+th {
+    background: #1e293b;
+    color: white;
+    padding: 12px;
+    text-align: left;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+}
+
+/* Table Cells */
+td {
+    padding: 12px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+/* Zebra Style */
+tr:nth-child(even) {
+    background: #f8fafc;
+}
+
+/* Hover Effect */
+tr:hover {
+    background: #e0f2fe;
+    transition: 0.2s ease;
+}
+
+/* ============================= */
+/* COMMAND STYLE */
+/* ============================= */
+
+b {
+    background: #f9fcff;
+    padding: 3px 8px;
+    border-radius: 5px;
+    font-family: Consolas, monospace;
+    font-size: 20px;
+}
+
+i {
+    font-style: normal;
+    color: #233246;
+}
+
+/* ============================= */
+/* RESPONSIVE */
+/* ============================= */
+
+@media (max-width: 768px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    .section {
+        padding: 15px;
+    }
+
+    table {
+        font-size: 13px;
+    }
+
+    th, td {
+        padding: 8px;
+    }
+
+}
+
+</style>
+</head>
+
+<body>
+
+<h2>Linux 0 to Hero</h2>
+
+<div class="container">
+
+    <!-- 1 -->
+    <div class="section">
+        <h2>1. Manage File & Directory</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>ls</b></td><td><i>List all files/folders in current directory</i></td></tr>
+            <tr><td><b>cd</b></td><td><i>Change directory</i></td></tr>
+            <tr><td><b>pwd</b></td><td><i>Print current directory path</i></td></tr>
+            <tr><td><b>mkdir</b></td><td><i>Create a directory</i></td></tr>
+            <tr><td><b>touch</b></td><td><i>Create a file</i></td></tr>
+            <tr><td><b>rm</b></td><td><i>Remove file</i></td></tr>
+            <tr><td><b>rmdir</b></td><td><i>Remove directory</i></td></tr>
+            <tr><td><b>cp</b></td><td><i>Copy file</i></td></tr>
+            <tr><td><b>mv</b></td><td><i>Rename or move file</i></td></tr>
+            <tr><td><b>cat</b></td><td><i>View file contents</i></td></tr>
+            <tr><td><b>more</b></td><td><i>View file page by page</i></td></tr>
+            <tr><td><b>less</b></td><td><i>Advanced file viewer</i></td></tr>
+            <tr><td><b>head</b></td><td><i>Show first 10 lines</i></td></tr>
+            <tr><td><b>tail</b></td><td><i>Show last 10 lines</i></td></tr>
+            <tr><td><b>tac</b></td><td><i>Display content in reverse order</i></td></tr>
+            <tr><td><b>vi / vim</b></td><td><i>Powerful text editor (used in servers & DevOps)</i></td></tr>
+            <tr><td><b>nano</b></td><td><i>Simple editor for beginners</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 2 -->
+    <div class="section">
+        <h2>2. Input / Output Redirection</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>set -o noclobber</b></td><td><i>Prevent overwriting files</i></td></tr>
+            <tr><td><b>set +o noclobber</b></td><td><i>Allow overwriting files</i></td></tr>
+            <tr><td><b>ls > file.txt</b></td><td><i>Overwrite output to file</i></td></tr>
+            <tr><td><b>ls >> file.txt</b></td><td><i>Append output to file</i></td></tr>
+            <tr><td><b>ls > output.txt 2>&1</b></td><td><i>Redirect output & error to one file</i></td></tr>
+            <tr><td><b>ls >/dev/null 2>&1</b></td><td><i>Silent execution (no output)</i></td></tr>
+            <tr><td><b>> file.txt</b></td><td><i>Clear file contents</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 3 -->
+    <div class="section">
+        <h2>3. Text Filters & Processing</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>wc</b></td><td><i>Count lines, words, characters</i></td></tr>
+            <tr><td><b>grep</b></td><td><i>Search pattern in files</i></td></tr>
+            <tr><td><b>cut</b></td><td><i>Extract specific columns</i></td></tr>
+            <tr><td><b>awk</b></td><td><i>Advanced text processing</i></td></tr>
+            <tr><td><b>sed</b></td><td><i>Stream editor (find & replace)</i></td></tr>
+            <tr><td><b>sort</b></td><td><i>Sort lines</i></td></tr>
+            <tr><td><b>uniq</b></td><td><i>Remove duplicate lines</i></td></tr>
+            <tr><td><b>find</b></td><td><i>Search files in directories</i></td></tr>
+            <tr><td><b>locate</b></td><td><i>Search using database</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 4 -->
+    <div class="section">
+        <h2>4. File Compression & Archiving</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>gzip</b></td><td><i>Compress files quickly (.gz format)</i></td></tr>
+            <tr><td><b>bzip2</b></td><td><i>Better compression ratio but slower than gzip</i></td></tr>
+            <tr><td><b>tar</b></td><td><i>Archive multiple files into a single file (.tar)</i></td></tr>
+            <tr><td><b>zip</b></td><td><i>Compress files into .zip format</i></td></tr>
+            <tr><td><b>unzip</b></td><td><i>Extract .zip compressed files</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 5 -->
+    <div class="section">
+        <h2>5. Networking</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>ping</b></td><td><i>Check connectivity with a host</i></td></tr>
+            <tr><td><b>dig</b></td><td><i>Query DNS information for a domain</i></td></tr>
+            <tr><td><b>wget</b></td><td><i>Download files from the internet</i></td></tr>
+            <tr><td><b>curl</b></td><td><i>Transfer data from or to a server (API testing)</i></td></tr>
+            <tr><td><b>ssh</b></td><td><i>Securely connect to a remote server</i></td></tr>
+            <tr><td><b>ss</b></td><td><i>Display network connections and socket statistics</i></td></tr>
+            <tr><td><b>netstat</b></td><td><i>Show active connections (older command)</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 6 -->
+    <div class="section">
+        <h2>6. Shell Operators & Symbols</h2>
+        <table>
+            <tr><th>Symbol</th><th>Description</th></tr>
+            <tr><td><b>;</b></td><td><i>Execute multiple commands sequentially</i></td></tr>
+            <tr><td><b>&</b></td><td><i>Run command in background</i></td></tr>
+            <tr><td><b>?</b></td><td><i>Stores exit status of last command ($?)</i></td></tr>
+            <tr><td><b>&&</b></td><td><i>Execute next command only if previous succeeds</i></td></tr>
+            <tr><td><b>||</b></td><td><i>Execute next command only if previous fails</i></td></tr>
+            <tr><td><b>#</b></td><td><i>Comment line in shell script</i></td></tr>
+            <tr><td><b>\</b></td><td><i>Escape special characters</i></td></tr>
+            <tr><td><b>' '</b></td><td><i>Single quotes: treat everything literally</i></td></tr>
+            <tr><td><b>" "</b></td><td><i>Double quotes: allow variables ($) expansion</i></td></tr>
+            <tr><td><b>|</b></td><td><i>Pipe output of one command to another</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 7 -->
+    <div class="section">
+        <h2>7. Permissions & Security</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>chmod</b></td><td><i>Change file or directory permissions</i></td></tr>
+            <tr><td><b>chown</b></td><td><i>Change file or directory ownership</i></td></tr>
+            <tr><td><b>chgrp</b></td><td><i>Change group ownership</i></td></tr>
+            <tr><td><b>umask</b></td><td><i>Set default permissions for new files</i></td></tr>
+            <tr><td><b>setfacl</b></td><td><i>Set Access Control List (ACL)</i></td></tr>
+            <tr><td><b>getfacl</b></td><td><i>Get Access Control List (ACL)</i></td></tr>
+            <tr><td><b>sudo</b></td><td><i>Execute command as superuser (root)</i></td></tr>
+            <tr><td><b>passwd</b></td><td><i>Change user password</i></td></tr>
+            <tr><td><b>gpasswd</b></td><td><i>Manage group passwords and membership</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 8 -->
+    <div class="section">
+        <h2>8. User & Group Management</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>whoami</b></td><td><i>Display current logged-in user</i></td></tr>
+            <tr><td><b>id</b></td><td><i>Show user identity (UID, GID, groups)</i></td></tr>
+            <tr><td><b>who</b></td><td><i>Show currently logged-in users</i></td></tr>
+            <tr><td><b>useradd</b></td><td><i>Create a new user</i></td></tr>
+            <tr><td><b>usermod</b></td><td><i>Modify existing user</i></td></tr>
+            <tr><td><b>userdel</b></td><td><i>Delete a user</i></td></tr>
+            <tr><td><b>groupadd</b></td><td><i>Create a new group</i></td></tr>
+            <tr><td><b>groupmod</b></td><td><i>Modify a group</i></td></tr>
+            <tr><td><b>groupdel</b></td><td><i>Delete a group</i></td></tr>
+            <tr><td><b>chage -l username</b></td><td><i>Check password expiry details</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 9 -->
+    <div class="section">
+        <h2>9. Package Management</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>apt</b></td><td><i>Package manager for Debian-based systems</i></td></tr>
+            <tr><td><b>apt update</b></td><td><i>Update package index</i></td></tr>
+            <tr><td><b>apt upgrade</b></td><td><i>Upgrade installed packages</i></td></tr>
+            <tr><td><b>apt install</b></td><td><i>Install a package</i></td></tr>
+            <tr><td><b>apt remove</b></td><td><i>Remove a package</i></td></tr>
+            <tr><td><b>apt autoremove</b></td><td><i>Remove unused dependencies</i></td></tr>
+            <tr><td><b>yum</b></td><td><i>Package manager for RPM-based systems</i></td></tr>
+            <tr><td><b>dnf</b></td><td><i>Modern replacement for yum</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 10 -->
+    <div class="section">
+        <h2>10. System Service & Daemon Management</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>systemctl</b></td><td><i>Control system services</i></td></tr>
+            <tr><td><b>systemctl start service</b></td><td><i>Start a service</i></td></tr>
+            <tr><td><b>systemctl stop service</b></td><td><i>Stop a service</i></td></tr>
+            <tr><td><b>systemctl restart service</b></td><td><i>Restart a service</i></td></tr>
+            <tr><td><b>systemctl status service</b></td><td><i>Check service status</i></td></tr>
+            <tr><td><b>systemctl enable service</b></td><td><i>Enable service at boot</i></td></tr>
+            <tr><td><b>service</b></td><td><i>Legacy service management command</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 11 -->
+    <div class="section">
+        <h2>11. Scheduling Tasks</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>crontab -e</b></td><td><i>Edit user cron jobs</i></td></tr>
+            <tr><td><b>crontab -l</b></td><td><i>List cron jobs</i></td></tr>
+            <tr><td><b>crontab -r</b></td><td><i>Remove cron jobs</i></td></tr>
+            <tr><td><b>cron</b></td><td><i>Cron daemon to execute scheduled commands</i></td></tr>
+            <tr><td><b>at</b></td><td><i>Schedule a one-time task</i></td></tr>
+            <tr><td><b>atq</b></td><td><i>List scheduled at jobs</i></td></tr>
+            <tr><td><b>atrm</b></td><td><i>Remove scheduled at job</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 12 -->
+    <div class="section">
+        <h2>12. Advanced File Security</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>ls -l</b></td><td><i>Display file permissions</i></td></tr>
+            <tr><td><b>chmod 755</b></td><td><i>Set read, write, execute permissions</i></td></tr>
+            <tr><td><b>chattr</b></td><td><i>Change file attributes (e.g., immutable)</i></td></tr>
+            <tr><td><b>lsattr</b></td><td><i>List file attributes</i></td></tr>
+            <tr><td><b>semanage</b></td><td><i>Manage SELinux policies</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 13 -->
+    <div class="section">
+        <h2>13. System Backup & Restore</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>tar</b></td><td><i>Create and extract archive backups (.tar, .tar.gz)</i></td></tr>
+            <tr><td><b>rsync</b></td><td><i>Efficient file synchronization and incremental backup</i></td></tr>
+            <tr><td><b>dd</b></td><td><i>Low-level disk cloning and full disk backup</i></td></tr>
+            <tr><td><b>scp</b></td><td><i>Securely copy backup files between systems</i></td></tr>
+            <tr><td><b>restore</b></td><td><i>Restore files from backup archives</i></td></tr>
+            <tr><td><b>dump</b></td><td><i>Create filesystem-level backups</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 14 -->
+    <div class="section">
+        <h2>14. System Diagnostics & Troubleshooting</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>top</b></td><td><i>Display real-time running processes</i></td></tr>
+            <tr><td><b>htop</b></td><td><i>Interactive process monitoring tool</i></td></tr>
+            <tr><td><b>free</b></td><td><i>Show memory usage</i></td></tr>
+            <tr><td><b>df</b></td><td><i>Display disk space usage</i></td></tr>
+            <tr><td><b>du</b></td><td><i>Estimate file and directory space usage</i></td></tr>
+            <tr><td><b>dmesg</b></td><td><i>View kernel and boot messages</i></td></tr>
+            <tr><td><b>uptime</b></td><td><i>Show system running time and load</i></td></tr>
+            <tr><td><b>journalctl</b></td><td><i>View systemd logs</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 15 -->
+    <div class="section">
+        <h2>15. Networking & Remote Management</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>ifconfig</b></td><td><i>Configure network interfaces (legacy)</i></td></tr>
+            <tr><td><b>ip</b></td><td><i>Modern network configuration and routing tool</i></td></tr>
+            <tr><td><b>netstat</b></td><td><i>Display network statistics (legacy)</i></td></tr>
+            <tr><td><b>nmap</b></td><td><i>Network scanning and discovery tool</i></td></tr>
+            <tr><td><b>scp</b></td><td><i>Secure remote file transfer</i></td></tr>
+            <tr><td><b>ssh-keygen</b></td><td><i>Generate SSH public/private keys</i></td></tr>
+            <tr><td><b>ss</b></td><td><i>Display socket and connection statistics</i></td></tr>
+        </table>
+    </div>
+
+    <!-- 16 -->
+    <div class="section">
+        <h2>16. System Shutdown & Reboot</h2>
+        <table>
+            <tr><th>Command</th><th>Description</th></tr>
+            <tr><td><b>shutdown</b></td><td><i>Shut down the system safely</i></td></tr>
+            <tr><td><b>shutdown -r</b></td><td><i>Reboot the system</i></td></tr>
+            <tr><td><b>reboot</b></td><td><i>Restart the system immediately</i></td></tr>
+            <tr><td><b>poweroff</b></td><td><i>Power off the system</i></td></tr>
+            <tr><td><b>init 0</b></td><td><i>Shutdown using init system</i></td></tr>
+            <tr><td><b>init 6</b></td><td><i>Reboot using init system</i></td></tr>
+            <tr><td><b>systemctl reboot</b></td><td><i>Reboot using systemd</i></td></tr>
+            <tr><td><b>systemctl poweroff</b></td><td><i>Power off using systemd</i></td></tr>
+        </table>
+    </div>
+
+</div>
+
+</body>
+</html>

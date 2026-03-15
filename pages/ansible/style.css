@@ -1,0 +1,99 @@
+/* ===== Global ===== */
+    body {
+        font-family: 'Segoe UI', Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+        background: #f4f6f9;
+        line-height: 1.7;
+        color: #333;
+    }
+
+    h1 {
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(90deg, #0f2027, #203a43, #2c5364);
+        color: white;
+        margin: 0;
+    }
+
+    h2 {
+        color: #0270e6;
+        border-left: 6px solid #0656a6;
+        padding-left: 10px;
+        margin-top: 40px;
+    }
+
+    /* ===== Container ===== */
+    body > div {
+        max-width: 1100px;
+        margin: auto;
+        padding: 30px;
+        background: white;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+        border-radius: 10px;
+        margin-top: 30px;
+        margin-bottom: 50px;
+    }
+
+    /* ===== Code Styling ===== */
+    code {
+        padding: 4px 8px;
+        border-radius: 5px;
+        font-family: Consolas, monospace;
+        font-size: x-large;
+        color: #031c6d;
+    }
+
+    pre {
+        background: #e9e8e8;
+        color: #84ffd0;
+        padding: 18px;
+        border-radius: 8px;
+        overflow-x: auto;
+        font-size: x-large;
+    }
+
+    /* ===== Lists ===== */
+    ul {
+        padding-left: 20px;
+        margin-bottom: 20px;
+    }
+
+    ul li {
+        margin-bottom: 8px;
+    }
+
+    /* ===== Links ===== */
+    a {
+        color: #0077cc;
+        text-decoration: none;
+    }
+
+    a:hover {
+        text-decoration: underline;
+    }
+
+    /* ===== Section Card Effect ===== */
+    .section {
+        margin-bottom: 35px;
+        padding: 20px;
+        background: #fafafa;
+        border-radius: 8px;
+        transition: 0.3s;
+    }
+
+    .section:hover {
+        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+        transform: translateY(-3px);
+    }
+
+    /* ===== Responsive ===== */
+    @media (max-width: 768px) {
+        body > div {
+            padding: 15px;
+        }
+
+        pre {
+            font-size: 12px;
+        }
+    }
