@@ -1,33 +1,1171 @@
-<div>
-    <h2>AWS (Amazon Web Services)</h2>
+<body>
+    <link rel="stylesheet" href="style.css">
+    <!-- Sidebar -->
+    <div class="sidebar">
+        <h2>DevOps</h2>
+        <a href="#intro">AWS Intro</a>
+        <a href="#services">Services</a>
+        <a href="#iam">IAM</a>
+        <a href="#ec2">EC2</a>
+        <a href="#s3">S3</a>
+        <a href="#vpc">VPC</a>
+        <a href="#rds">RDS</a>
+        <a href="#lambda">Lambda</a>
+        <a href="#cloudwatch">CloudWatch</a>
+        <a href="#session-manager">Session Manager</a>
+        <a href="#route53">Route 53</a>
+        <a href="#cloudtrail">CloudTrail</a>
+        <a href="#eks">EKS</a>
+        <a href="#autoscaling">Auto Scaling</a>
+        <a href="#shield">AWS Shield</a>
+        <a href="#waf">AWS WAF</a>
+        <a href="#guardduty">GuardDuty</a>
+        <a href="#inspector">Inspector</a>
+        <a href="#kms">KMS</a>
+        <a href="#ssm">SSM</a>
+        <a href="#aurora">Aurora</a>
+        <a href="#dynamodb">DynamoDB</a>
+        <a href="#redshift">Redshift</a>
+        <a href="#dms">DMS</a>
+        <a href="#batch">Batch</a>
+        <a href="#glue">Glue</a>
+        <a href="#efs">EFS</a>
+        <a href="#elasticbeanstalk">Beanstalk</a>
+        <a href="#cloudfront">CloudFront</a>
+        <a href="#snowball">Snowball</a>
+        <a href="#codepipeline">CodePipeline</a>
+        <a href="#codebuild">CodeBuild</a>
+        <a href="#codedeploy">CodeDeploy</a>
+        <a href="#xray">X-Ray</a>
+    </div>
 
-    <h3>Q1: What is AWS?</h3>
-    <p>
-        <strong>AWS</strong> is a cloud computing service platform provided by 
-        <strong>Amazon</strong> that allows users to access computing resources 
-        such as servers, storage, databases, networking, and many other services 
-        over the internet.
-    </p>
+    <!-- Main Content -->
+    <div class="main">
 
-    <h3>Q2: What is the simple definition of AWS?</h3>
-    <p>
-        AWS allows you to <strong>rent computers, storage, and software from the internet 
-        instead of buying and maintaining physical servers.</strong>
-    </p>
+        <div class="aws">
 
-    <h3>Q3: What is Cloud Computing in AWS?</h3>
-    <p>
-        Cloud computing means using <strong>servers, storage, networking, and software 
-        over the internet instead of using your own local computer or physical data center.</strong>
-    </p>
+            <!-- Main Title -->
+            <h1>AWS (Amazon Web Services)</h1>
 
-    <h3>Q4: Why do companies use AWS?</h3>
-    <ul>
-        <li>No need to buy expensive hardware</li>
-        <li>Pay only for what you use</li>
-        <li>Easy to scale resources</li>
-        <li>High availability and reliability</li>
-        <li>Global infrastructure</li>
-    </ul>
+            <!-- Introduction -->
+            <section id="intro" class="card">
+                <h2>What is AWS?</h2>
+                <p>
+                    <strong>AWS</strong> is a cloud computing platform provided by Amazon.
+                    It allows users to access computing resources such as servers, storage,
+                    databases, networking, and software over the internet.
+                </p>
+                <p>
+                    AWS allows you to <strong>rent computing resources</strong> instead of
+                    buying and maintaining physical servers.
+                </p>
 
-</div>
+                <h2>What is Cloud Computing?</h2>
+                <p>
+                    Cloud computing means using servers, storage, networking, and software
+                    over the internet instead of using your local computer or physical data center.
+                </p>
+
+                <h2>Why do companies use AWS?</h2>
+                <ul>
+                    <li>No need to buy expensive hardware</li>
+                    <li>Pay only for what you use</li>
+                    <li>Easy to scale resources</li>
+                    <li>High availability and reliability</li>
+                    <li>Global infrastructure</li>
+                </ul>
+            </section>
+
+            <!-- Services Section -->
+            <section id="services" class="services">
+                <h2>AWS Services</h2>
+
+                <!-- IAM -->
+                <div id="iam" class="service-box">
+
+                    <h3 class="service-title">
+                        IAM (Identity and Access Management)
+                        <span class="tag free">Free</span>
+                        <span class="tag global">Global</span>
+                    </h3>
+
+                    <p class="meta">
+                        <strong>Pricing:</strong> Free &nbsp; | &nbsp;
+                        <strong>Scope:</strong> Global (works across all AWS regions)
+                    </p>
+
+                    <p class="desc">
+                        <strong>AWS IAM</strong> is a security service that controls access to AWS resources.
+                        It manages <strong>authentication (who can access)</strong> and 
+                        <strong>authorization (what actions they can perform)</strong>.
+                    </p>
+
+                    <div class="section">
+                        <h4>🔑 Core Components</h4>
+                        <ul>
+                        <li><strong>Users:</strong> Individual identities (admin, developer)</li>
+                        <li><strong>Groups:</strong> Collection of users with same permissions</li>
+                        <li><strong>Roles:</strong> Temporary access for services/users</li>
+                        <li><strong>Policies:</strong> JSON-based permission rules</li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>⚙️ Key Features</h4>
+                        <ul>
+                        <li>Fine-grained access control</li>
+                        <li>Multi-Factor Authentication (MFA)</li>
+                        <li>Role-based secure access</li>
+                        <li>Works with all AWS services</li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>🚀 Use Cases</h4>
+                        <ul>
+                        <li>Manage team access</li>
+                        <li>Secure applications using roles</li>
+                        <li>Provide temporary credentials</li>
+                        <li>Apply least privilege principle</li>
+                        </ul>
+                    </div>
+
+                    <div class="section">
+                        <h4>📌 Example</h4>
+                        <ul>
+                        <li><strong>Admin:</strong> Full access</li>
+                        <li><strong>Developer:</strong> EC2 + S3</li>
+                        <li><strong>Tester:</strong> Read-only</li>
+                        </ul>
+                    </div>
+
+                    <!-- Official Documentation -->
+                    <div class="section docs">
+                        <h4>📚 Official Documentation</h4>
+                        <a href="https://docs.aws.amazon.com/iam/" target="_blank" class="doc-btn">
+                        View IAM Documentation →
+                        </a>
+                    </div>
+
+                    <div class="section interview">
+                        <h4>🎯 Interview Answer</h4>
+                        <p>
+                        IAM is used to manage authentication and authorization in AWS using users, roles, and policies.
+                        </p>
+                    </div>
+
+                </div>
+
+                <!-- EC2 -->
+                <div id="ec2" class="service-box">
+
+                    <h3 class="service-title">
+                        EC2 (Elastic Compute Cloud)
+                        <span class="tag paid">Paid</span>
+                        <span class="tag regional">Regional</span>
+                    </h3>
+
+                    <p class="meta">
+                        <strong>Pricing:</strong> Paid &nbsp; | &nbsp;
+                        <strong>Scope:</strong> Regional (runs inside specific AWS regions)
+                    </p>
+
+                    <p class="desc">
+                        <strong>Amazon EC2</strong> is a compute service that provides 
+                        <strong>virtual servers (instances)</strong> in the cloud to run applications.
+                    </p>
+
+                    <h4>⚙️ Key Features</h4>
+                    <ul>
+                        <li>Launch virtual machines in minutes</li>
+                        <li>Supports Linux and Windows</li>
+                        <li>Pay-as-you-go pricing</li>
+                        <li>Highly scalable and flexible</li>
+                        <li>Secure access using SSH key pairs</li>
+                    </ul>
+
+                    <h4>📌 Example</h4>
+                    <ul>
+                        <li>Launch EC2 → Install Nginx → Host website</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/ec2/" target="_blank" class="doc-btn">
+                        View EC2 Documentation →
+                    </a>
+
+                    <h4>🎯 Interview Answer</h4>
+                    <p>
+                        EC2 is an on-demand compute service that provides scalable virtual machines in AWS.
+                    </p>
+
+                </div>
+                <!-- S3 -->
+                <div id="s3" class="service-box">
+                    <h3 class="service-title">S3 (Simple Storage Service)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        S3 is a storage service in AWS used to store and retrieve data from anywhere on the internet.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Object storage service</li>
+                        <li>Highly scalable</li>
+                        <li>Pay-as-you-go pricing</li>
+                        <li>Stores files in buckets</li>
+                        <li>High durability (99.999999999%)</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Store images, videos, and files</li>
+                        <li>Static website hosting</li>
+                        <li>Backup and restore data</li>
+                        <li>Log storage</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/s3/" target="_blank" class="doc-btn">
+                    View S3 Documentation →
+                    </a>
+                </div>
+
+                <!-- VPC -->
+                <div id="vpc" class="service-box">
+                    <h3 class="service-title">VPC (Virtual Private Cloud)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        VPC is a networking service in AWS that allows you to create a private network in the cloud.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Provides isolated network environment</li>
+                        <li>Custom IP range (CIDR block)</li>
+                        <li>Control inbound and outbound traffic</li>
+                        <li>Supports public and private subnets</li>
+                    </ul>
+
+                    <h4>Components</h4>
+                    <ul>
+                        <li>Subnets</li>
+                        <li>Route Tables</li>
+                        <li>Internet Gateway</li>
+                        <li>NAT Gateway</li>
+                        <li>Security Groups</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Secure application hosting</li>
+                        <li>Network isolation</li>
+                        <li>Hybrid cloud setup</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/vpc/" target="_blank" class="doc-btn">
+                    View VPC Documentation →
+                    </a>
+                </div>
+
+                <!-- RDS -->
+                    <div id="rds" class="service-box">
+                    <h3 class="service-title">RDS (Relational Database Service)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        RDS is a managed database service in AWS that allows you to run relational databases without managing servers.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Managed database service</li>
+                        <li>Supports MySQL, PostgreSQL, MariaDB, Oracle, SQL Server</li>
+                        <li>Automatic backups</li>
+                        <li>High availability (Multi-AZ)</li>
+                        <li>Scalable storage and compute</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Web application databases</li>
+                        <li>E-commerce websites</li>
+                        <li>Application backend storage</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/rds/" target="_blank" class="doc-btn">
+                    View RDS Documentation →
+                    </a>
+                </div>
+
+                <!-- Lambda -->
+                <div id="lambda" class="service-box">
+                    <h3 class="service-title">Lambda (AWS Lambda)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS Lambda is a serverless compute service that lets you run code without managing servers.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>No server management</li>
+                        <li>Runs code on demand (event-driven)</li>
+                        <li>Automatically scales</li>
+                        <li>Pay only for execution time</li>
+                        <li>Supports multiple languages (Python, Node.js, Java, etc.)</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>API backend (with API Gateway)</li>
+                        <li>File processing (S3 trigger)</li>
+                        <li>Automation tasks</li>
+                        <li>Real-time data processing</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/lambda/" target="_blank" class="doc-btn">
+                    View Lambda Documentation →
+                    </a>
+                </div>
+
+                <!-- CloudWatch -->
+                <div id="cloudwatch" class="service-box">
+                    <h3 class="service-title">CloudWatch (Amazon CloudWatch)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        CloudWatch is a monitoring and logging service in AWS used to track performance, logs, and events of AWS resources.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Monitors AWS resources (EC2, Lambda, RDS, etc.)</li>
+                        <li>Collects logs and metrics</li>
+                        <li>Set alarms and notifications</li>
+                        <li>Real-time monitoring</li>
+                        <li>Integrates with SNS for alerts</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Monitor server performance (CPU, memory)</li>
+                        <li>Application log tracking</li>
+                        <li>Alert on failures or high usage</li>
+                        <li>Auto scaling triggers</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/cloudwatch/" target="_blank" class="doc-btn">
+                    View CloudWatch Documentation →
+                    </a>
+                </div>
+
+                <!-- Session Manager -->
+                <div id="session-manager" class="service-box">
+                    <h3 class="service-title">Session Manager (AWS Systems Manager)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Session Manager is a service in AWS Systems Manager that allows you to securely connect to EC2 instances without using SSH or opening ports.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>No need for SSH or key pairs</li>
+                        <li>No open inbound ports required</li>
+                        <li>Secure access using IAM roles</li>
+                        <li>Session logging and auditing</li>
+                        <li>Works via AWS console or CLI</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Secure server access</li>
+                        <li>Remote administration</li>
+                        <li>Troubleshooting EC2 instances</li>
+                        <li>Compliance and audit logging</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager.html" target="_blank" class="doc-btn">
+                    View Session Manager Documentation →
+                    </a>
+                </div>
+
+                <!-- Route 53 -->
+                <div id="route53" class="service-box">
+                    <h3 class="service-title">Route 53 (DNS Service)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Route 53 is a Domain Name System (DNS) service in AWS that connects user requests to your applications.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Domain registration service</li>
+                        <li>DNS routing (domain → IP mapping)</li>
+                        <li>Highly available and scalable</li>
+                        <li>Supports health checks</li>
+                        <li>Traffic routing policies (simple, weighted, latency-based)</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Connect domain to EC2 server</li>
+                        <li>Website hosting (with S3 or EC2)</li>
+                        <li>Load balancing traffic</li>
+                        <li>Failover routing (backup server)</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/route53/" target="_blank" class="doc-btn">
+                    View Route 53 Documentation →
+                    </a>
+                </div>
+
+                <!-- CloudTrail -->
+                <div id="cloudtrail" class="service-box">
+                    <h3 class="service-title">CloudTrail (AWS CloudTrail)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        CloudTrail is a service in AWS that records and logs all API activity and user actions in your AWS account.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Tracks user activity and API calls</li>
+                        <li>Provides event history</li>
+                        <li>Used for security and auditing</li>
+                        <li>Logs stored in S3</li>
+                        <li>Integrates with CloudWatch for alerts</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Track who did what in AWS</li>
+                        <li>Security monitoring</li>
+                        <li>Compliance and auditing</li>
+                        <li>Troubleshooting changes</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/cloudtrail/" target="_blank" class="doc-btn">
+                    View CloudTrail Documentation →
+                    </a>
+                </div>
+
+                <!-- EKS -->
+                <div id="eks" class="service-box">
+                    <h3 class="service-title">EKS (Elastic Kubernetes Service)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        EKS is a managed Kubernetes service in AWS that allows you to deploy, manage,
+                        and scale containerized applications without managing the Kubernetes control plane.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Fully managed Kubernetes control plane</li>
+                        <li>High availability and scalability</li>
+                        <li>Integrates with IAM, VPC, and CloudWatch</li>
+                        <li>Supports Docker containers</li>
+                        <li>Secure and production-ready</li>
+                    </ul>
+
+                    <h4>Core Components</h4>
+                    <ul>
+                        <li>Cluster (control plane managed by AWS)</li>
+                        <li>Worker Nodes (EC2 instances or Fargate)</li>
+                        <li>Pods (running containers)</li>
+                        <li>Services (expose applications)</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Microservices architecture</li>
+                        <li>Containerized web applications</li>
+                        <li>CI/CD pipelines</li>
+                        <li>Cloud-native applications</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/eks/" target="_blank" class="doc-btn">
+                    View EKS Documentation →
+                    </a>
+                </div>
+
+                <!-- Auto Scaling -->
+                <div id="autoscaling" class="service-box">
+                    <h3 class="service-title">Auto Scaling (AWS Auto Scaling)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Auto Scaling is a service in AWS that automatically adjusts the number of EC2 instances based on traffic or demand.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Automatically increases or decreases servers</li>
+                        <li>Improves availability and performance</li>
+                        <li>Cost optimization (only pay for needed resources)</li>
+                        <li>Works with EC2 and Load Balancer</li>
+                        <li>Uses scaling policies (CPU, traffic, etc.)</li>
+                    </ul>
+
+                    <h4>Types</h4>
+                    <ul>
+                        <li>Dynamic Scaling (based on metrics like CPU)</li>
+                        <li>Scheduled Scaling (based on time)</li>
+                        <li>Predictive Scaling (based on forecast)</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Handle high website traffic</li>
+                        <li>Maintain performance during peak load</li>
+                        <li>Reduce cost during low usage</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/autoscaling/" target="_blank" class="doc-btn">
+                    View Auto Scaling Documentation →
+                    </a>
+                </div>
+
+                <!-- AWS Shield -->
+                <div id="shield" class="service-box">
+                    <h3 class="service-title">AWS Shield</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS Shield is a managed Distributed Denial of Service (DDoS) protection service that safeguards your applications running on AWS.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Protects against DDoS attacks</li>
+                        <li>Automatic detection and mitigation</li>
+                        <li>Works with CloudFront, Route 53, and ELB</li>
+                        <li>Provides real-time attack visibility</li>
+                        <li>Always-on protection</li>
+                    </ul>
+
+                    <h4>Types</h4>
+                    <ul>
+                        <li>Shield Standard (Free, basic protection)</li>
+                        <li>Shield Advanced (Paid, enhanced protection + support)</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Protect websites from DDoS attacks</li>
+                        <li>Secure web applications</li>
+                        <li>Ensure application availability</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/shield/" target="_blank" class="doc-btn">
+                    View AWS Shield Documentation →
+                    </a>
+                </div>
+
+                <!-- AWS WAF -->
+                <div id="waf" class="service-box">
+                    <h3 class="service-title">AWS WAF (Web Application Firewall)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS WAF is a web application firewall that protects your applications from common web attacks like SQL injection and cross-site scripting (XSS).
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Protects web applications from attacks</li>
+                        <li>Filters incoming HTTP/HTTPS requests</li>
+                        <li>Custom security rules (allow/block traffic)</li>
+                        <li>Works with CloudFront, ALB, and API Gateway</li>
+                        <li>Real-time monitoring and control</li>
+                    </ul>
+
+                    <h4>Types of Rules</h4>
+                    <ul>
+                        <li>IP-based rules</li>
+                        <li>Rate limiting rules</li>
+                        <li>Geo-blocking</li>
+                        <li>Managed rule groups (AWS provided)</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Block malicious traffic</li>
+                        <li>Prevent SQL injection & XSS attacks</li>
+                        <li>Secure APIs and websites</li>
+                        <li>Control access based on location</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/waf/" target="_blank" class="doc-btn">
+                    View AWS WAF Documentation →
+                    </a>
+                </div>
+
+                <!-- Amazon GuardDuty -->
+                <div id="guardduty" class="service-box">
+                    <h3 class="service-title">Amazon GuardDuty</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Amazon GuardDuty is a threat detection service that continuously monitors your AWS account for malicious activity and unauthorized behavior.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Continuous security monitoring</li>
+                        <li>Detects threats using machine learning</li>
+                        <li>Analyzes VPC Flow Logs, DNS logs, and CloudTrail logs</li>
+                        <li>No infrastructure to manage</li>
+                        <li>Provides detailed security findings</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Detect unauthorized access</li>
+                        <li>Identify compromised EC2 instances</li>
+                        <li>Monitor suspicious API activity</li>
+                        <li>Improve cloud security posture</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/guardduty/" target="_blank" class="doc-btn">
+                    View GuardDuty Documentation →
+                    </a>
+                </div>
+
+                <!-- Amazon Inspector -->
+                <div id="inspector" class="service-box">
+                    <h3 class="service-title">Amazon Inspector</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Amazon Inspector is an automated security assessment service that scans AWS resources for vulnerabilities and security issues.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Automated vulnerability scanning</li>
+                        <li>Checks EC2 instances and container images</li>
+                        <li>Identifies security risks and exposures</li>
+                        <li>Provides detailed findings and recommendations</li>
+                        <li>Integrates with AWS security services</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Find security vulnerabilities in EC2</li>
+                        <li>Scan container images in ECR</li>
+                        <li>Improve system security posture</li>
+                        <li>Compliance and auditing</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/inspector/" target="_blank" class="doc-btn">
+                    View Inspector Documentation →
+                    </a>
+                                    </div>
+
+                <!-- KMS -->
+                <div id="kms" class="service-box">
+                    <h3 class="service-title">AWS KMS (Key Management Service)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS KMS is a service used to create and manage encryption keys to secure data in AWS.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Manages encryption keys</li>
+                        <li>Used for data encryption</li>
+                        <li>Integrated with AWS services (S3, RDS, EBS)</li>
+                        <li>Highly secure and scalable</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Encrypt data in S3 buckets</li>
+                        <li>Secure databases</li>
+                        <li>Protect sensitive information</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/kms/" target="_blank" class="doc-btn">
+                    View KMS Documentation →
+                    </a>
+                </div>
+
+                <!-- SSM -->
+                <div id="ssm" class="service-box">
+                    <h3 class="service-title">AWS Systems Manager (SSM)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS Systems Manager is a service used to manage and automate operations for AWS resources.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Centralized management of EC2 instances</li>
+                        <li>Includes Session Manager (secure access)</li>
+                        <li>Automates patching and updates</li>
+                        <li>Stores parameters securely</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Server management</li>
+                        <li>Automation tasks</li>
+                        <li>Secure configuration storage</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/systems-manager/" target="_blank" class="doc-btn">
+                    View Systems Manager Documentation →
+                    </a>
+                </div>
+
+                <!-- Aurora -->
+                <div id="aurora" class="service-box">
+                    <h3 class="service-title">Amazon Aurora</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Amazon Aurora is a high-performance, fully managed relational database compatible with MySQL and PostgreSQL.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Faster than standard MySQL/PostgreSQL</li>
+                        <li>Fully managed database</li>
+                        <li>High availability and automatic backups</li>
+                        <li>Scalable and fault-tolerant</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>High-performance applications</li>
+                        <li>Enterprise databases</li>
+                        <li>Financial systems</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/aurora/" target="_blank" class="doc-btn">
+                    View Aurora Documentation →
+                    </a>
+                </div>
+
+                <!-- DynamoDB -->
+                <div id="dynamodb" class="service-box">
+                    <h3 class="service-title">Amazon DynamoDB</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        DynamoDB is a fully managed NoSQL database service that provides fast and flexible data storage.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>NoSQL database</li>
+                        <li>High performance (low latency)</li>
+                        <li>Fully managed and serverless</li>
+                        <li>Auto scaling support</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Real-time applications</li>
+                        <li>Gaming applications</li>
+                        <li>IoT data storage</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/dynamodb/" target="_blank" class="doc-btn">
+                    View DynamoDB Documentation →
+                    </a>
+                </div>
+
+                <!-- Redshift -->
+                <div id="redshift" class="service-box">
+                    <h3 class="service-title">Amazon Redshift</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Amazon Redshift is a fully managed data warehouse service used for analyzing large amounts of data.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Column-based storage</li>
+                        <li>Optimized for analytics (OLAP)</li>
+                        <li>High performance for big data queries</li>
+                        <li>Integrates with BI tools</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Business intelligence (BI)</li>
+                        <li>Data analytics</li>
+                        <li>Reporting dashboards</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/redshift/" target="_blank" class="doc-btn">
+                    View Redshift Documentation →
+                    </a>
+                </div>
+
+                <!-- DMS -->
+                <div id="dms" class="service-box">
+                    <h3 class="service-title">AWS DMS (Database Migration Service)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS DMS is a service used to migrate databases to AWS easily and securely.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Supports homogeneous & heterogeneous migration</li>
+                        <li>Minimal downtime migration</li>
+                        <li>Supports many databases</li>
+                        <li>Continuous data replication</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Migrate on-premise DB to AWS</li>
+                        <li>Database upgrades</li>
+                        <li>Cloud migration projects</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/dms/" target="_blank" class="doc-btn">
+                    View DMS Documentation →
+                    </a>
+                </div>
+
+                <!-- AWS Batch -->
+                <div id="batch" class="service-box">
+                    <h3 class="service-title">AWS Batch</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS Batch is a service used to run batch computing jobs efficiently on AWS.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Runs large-scale batch jobs</li>
+                        <li>Automatically provisions compute resources</li>
+                        <li>Supports Docker containers</li>
+                        <li>Cost-efficient execution</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Data processing jobs</li>
+                        <li>Image/video processing</li>
+                        <li>Scientific computing</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/batch/" target="_blank" class="doc-btn">
+                    View AWS Batch Documentation →
+                    </a>
+                </div>
+
+                <!-- AWS Glue -->
+                <div id="glue" class="service-box">
+                    <h3 class="service-title">AWS Glue</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS Glue is a serverless ETL (Extract, Transform, Load) service used for data integration.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Serverless data integration</li>
+                        <li>Automatic schema discovery</li>
+                        <li>Works with S3, Redshift, RDS</li>
+                        <li>Supports big data processing</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Data preparation for analytics</li>
+                        <li>ETL pipelines</li>
+                        <li>Data lake management</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/glue/" target="_blank" class="doc-btn">
+                    View AWS Glue Documentation →
+                    </a>
+                </div>
+
+                <!-- EFS -->
+                <div id="efs" class="service-box">
+                    <h3 class="service-title">Amazon EFS (Elastic File System)</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Amazon EFS is a scalable file storage service for use with AWS cloud services and EC2 instances.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>File storage (like shared drive)</li>
+                        <li>Automatically scales</li>
+                        <li>Accessible from multiple EC2 instances</li>
+                        <li>Fully managed service</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Shared storage for applications</li>
+                        <li>Content management systems</li>
+                        <li>Web servers</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/efs/" target="_blank" class="doc-btn">
+                    View EFS Documentation →
+                    </a>
+                </div>
+
+                <!-- Elastic Beanstalk -->
+                <div id="elasticbeanstalk" class="service-box">
+                    <h3 class="service-title">AWS Elastic Beanstalk</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        Elastic Beanstalk is a Platform as a Service (PaaS) that allows you to deploy and manage applications without handling infrastructure.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Easy application deployment</li>
+                        <li>Automatically manages infrastructure</li>
+                        <li>Supports multiple languages (Java, Python, Node.js)</li>
+                        <li>Handles scaling and load balancing</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Web application deployment</li>
+                        <li>Quick project setup</li>
+                        <li>Dev/test environments</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/elasticbeanstalk/" target="_blank" class="doc-btn">
+                    View Beanstalk Documentation →
+                    </a>
+                </div>
+
+                <!-- CloudFront -->
+                <div id="cloudfront" class="service-box">
+                    <h3 class="service-title">Amazon CloudFront</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        CloudFront is a Content Delivery Network (CDN) that delivers content to users with low latency and high speed.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Global content delivery</li>
+                        <li>Caching for faster performance</li>
+                        <li>Integrates with S3 and EC2</li>
+                        <li>Secure content delivery (HTTPS)</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Website acceleration</li>
+                        <li>Video streaming</li>
+                        <li>Static content delivery</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/cloudfront/" target="_blank" class="doc-btn">
+                    View CloudFront Documentation →
+                    </a>
+                </div>
+
+                <!-- Snowball -->
+                <div id="snowball" class="service-box">
+                    <h3 class="service-title">AWS Snowball</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS Snowball is a data transfer service used to move large amounts of data into and out of AWS using physical devices.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Offline data transfer</li>
+                        <li>Secure and fast migration</li>
+                        <li>Used for large-scale data transfer</li>
+                        <li>Avoids network limitations</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Migrate large data to AWS</li>
+                        <li>Backup data transfer</li>
+                        <li>Data center migration</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/snowball/" target="_blank" class="doc-btn">
+                    View Snowball Documentation →
+                    </a>
+                </div>
+
+                <!-- CodePipeline -->
+                <div id="codepipeline" class="service-box">
+                    <h3 class="service-title">AWS CodePipeline</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        CodePipeline is a continuous integration and continuous delivery (CI/CD) service for automating application build, test, and deployment.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Automates CI/CD pipeline</li>
+                        <li>Integrates with GitHub, CodeBuild, CodeDeploy</li>
+                        <li>Continuous delivery</li>
+                        <li>Supports multiple stages</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Automate deployment pipelines</li>
+                        <li>CI/CD workflows</li>
+                        <li>DevOps automation</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/codepipeline/" target="_blank" class="doc-btn">
+                    View CodePipeline Documentation →
+                    </a>
+                </div>
+
+                <!-- CodeBuild -->
+                <div id="codebuild" class="service-box">
+                    <h3 class="service-title">AWS CodeBuild</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        CodeBuild is a fully managed build service that compiles source code, runs tests, and produces deployable artifacts.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Build and test code automatically</li>
+                        <li>Scales on demand</li>
+                        <li>No server management</li>
+                        <li>Works with CodePipeline</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Compile applications</li>
+                        <li>Run automated tests</li>
+                        <li>Create deployment packages</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/codebuild/" target="_blank" class="doc-btn">
+                    View CodeBuild Documentation →
+                    </a>
+                </div>
+
+                <!-- CodeDeploy -->
+                    <div id="codedeploy" class="service-box">
+                    <h3 class="service-title">AWS CodeDeploy</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS CodeDeploy is a deployment service that automates application deployment to EC2, Lambda, and on-premises servers.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>Automates application deployment</li>
+                        <li>Supports EC2, Lambda, and on-prem servers</li>
+                        <li>Reduces downtime during deployment</li>
+                        <li>Supports blue/green deployment</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Deploy applications automatically</li>
+                        <li>Continuous delivery pipelines</li>
+                        <li>Safe production releases</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/codedeploy/" target="_blank" class="doc-btn">
+                    View CodeDeploy Documentation →
+                    </a>
+                </div>
+
+                <!-- X-Ray -->
+                <div id="xray" class="service-box">
+                    <h3 class="service-title">AWS X-Ray</h3>
+
+                    <h4>Definition</h4>
+                    <p>
+                        AWS X-Ray is a service used to analyze and debug distributed applications by tracing requests across services.
+                    </p>
+
+                    <h4>Key Points</h4>
+                    <ul>
+                        <li>End-to-end request tracing</li>
+                        <li>Helps find performance bottlenecks</li>
+                        <li>Visual service map</li>
+                        <li>Works with Lambda, EC2, API Gateway</li>
+                    </ul>
+
+                    <h4>Use Cases</h4>
+                    <ul>
+                        <li>Debug microservices architecture</li>
+                        <li>Monitor application performance</li>
+                        <li>Identify slow services</li>
+                    </ul>
+
+                    <h4>📚 Official Documentation</h4>
+                    <a href="https://docs.aws.amazon.com/xray/" target="_blank" class="doc-btn">
+                    View X-Ray Documentation →
+                    </a>
+                </div>
+
+            </section>
+
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
