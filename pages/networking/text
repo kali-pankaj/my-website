@@ -1,0 +1,92 @@
+🚀 Networking Roadmap for DevOps
+🟢 1. Basics (Foundation – MUST STRONG)
+
+Start here. Without this, everything else breaks.
+
+<!-- 🔹 Topics
+What is a network?
+OSI Model vs TCP/IP Model
+IP Address (IPv4, IPv6)
+Public vs Private IP
+Subnetting (VERY IMPORTANT)
+MAC Address
+DNS (Domain Name System)
+DHCP
+Ports & Protocols (HTTP, HTTPS, FTP, SSH) -->
+💡 DevOps Use
+Debug why your app is not reachable
+Understand how services talk to each other
+Configure servers and domains
+🌐 How Networking Actually Works
+6
+🟡 2. Intermediate Networking (Real World Usage)
+<!-- 🔹 Topics
+Routing & Switching basics
+NAT (Network Address Translation)
+Firewalls & Security Groups
+Load Balancers (L4 vs L7)
+VPN basics
+CIDR notation -->
+💡 DevOps Use
+Configure AWS security groups
+Route traffic between services
+Expose apps to internet safely
+🟠 3. Linux Networking (VERY IMPORTANT 🔥)
+
+You are using Ubuntu → this is your core skill.
+
+<!-- 🔹 Commands
+ip a, ifconfig
+netstat, ss
+ping, traceroute
+curl, wget
+nslookup, dig
+🔹 Concepts
+Network interfaces
+Routing tables
+Ports listening
+Firewall (iptables, ufw) -->
+💡 DevOps Use
+Debug production issues
+Check open ports (you asked this before 👍)
+Verify service connectivity
+🔵 4. Cloud Networking (AWS Focus)
+🔹 Topics
+VPC (Virtual Private Cloud)
+Subnets (Public & Private)
+Internet Gateway
+NAT Gateway
+Route Tables
+Security Groups vs NACL
+💡 DevOps Use
+Design infrastructure
+Deploy apps securely
+Control traffic flow
+☁️ AWS Networking Architecture
+7
+🔴 5. Advanced Networking (DevOps Pro Level)
+🔹 Topics
+Reverse Proxy (Nginx)
+Load Balancing strategies
+SSL/TLS (HTTPS)
+DNS advanced (TTL, records)
+API Gateway
+Service Mesh (Istio basics)
+💡 DevOps Use
+Secure applications
+Optimize traffic
+Handle high load systems
+🧠 6. Kubernetes Networking (CRITICAL FOR YOU 🚀)
+
+Since you're learning Kubernetes 👇
+
+🔹 Topics
+Pod Networking
+Cluster IP, NodePort, LoadBalancer
+Ingress Controller
+CNI (Calico, Flannel)
+Service Discovery
+💡 DevOps Use
+Connect microservices
+Expose applications
+Debug cluster issues

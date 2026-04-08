@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Advanced DevOps Enrollment Form</title>
+
+<style>
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #1a1818fb;
+    color: #ffffff;
+    margin: 0;
+    padding: 20px;
+    font-size: 18px;   /* 🔥 increase overall font */
+}
+
+.container {
+    max-width: 700px;
+    margin: auto;
+    background-color: #5d8d96;
+    padding: 25px;
+    border-radius: 10px;
+}
+
+/* Headings bigger */
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    font-size: 28px;
+}
+
+h3 {
+    margin-top: 20px;
+    border-bottom: 1px solid #334155;
+    padding-bottom: 5px;
+    font-size: 22px;
+}
+
+/* Labels */
+label {
+    display: block;
+    margin-top: 12px;
+    font-size: 17px;
+}
+
+/* Inputs */
+input, select, textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: none;
+    font-size: 16px;
+}
+
+/* Inline */
+.inline {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 5px;
+}
+
+.inline label {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-size: 16px;
+}
+
+/* Button */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 20px;
+    background-color: #22c55e;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #16a34a;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="container">
+<h2>🚀 DevOps Course Enrollment Form</h2>
+
+<form>
+
+<!-- Personal Info -->
+<h3>👤 Personal Details</h3>
+
+<label>Full Name</label>
+<input type="text" required>
+
+<label>Email</label>
+<input type="email" required>
+
+<label>Phone Number</label>
+<input type="tel" required>
+
+<label>Date of Birth</label>
+<input type="date">
+
+<label>Gender</label>
+<div class="inline">
+<label><input type="radio" name="gender"> Male</label>
+<label><input type="radio" name="gender"> Female</label>
+<label><input type="radio" name="gender"> Other</label>
+</div>
+
+<label>Address</label>
+<textarea></textarea>
+
+<!-- Education -->
+<h3>🎓 Education</h3>
+
+<label>Highest Qualification</label>
+<select>
+<option>10th</option>
+<option>12th</option>
+<option>Diploma</option>
+<option>Bachelor's Degree</option>
+<option>Master's Degree</option>
+</select>
+
+<label>Field of Study</label>
+<input type="text">
+
+<label>College/University</label>
+<input type="text">
+
+<!-- Professional Info -->
+<h3>💼 Professional Details</h3>
+
+<label>Current Role</label>
+<select>
+<option>Student</option>
+<option>Fresher</option>
+<option>Developer</option>
+<option>System Administrator</option>
+<option>Other</option>
+</select>
+
+<label>Years of Experience</label>
+<select>
+<option>0</option>
+<option>1-2</option>
+<option>3-5</option>
+<option>5+</option>
+</select>
+
+<label>Company Name (if any)</label>
+<input type="text">
+
+<!-- DevOps Knowledge -->
+<h3>⚙️ DevOps Knowledge</h3>
+
+<label>Operating Systems Known</label>
+<div class="inline">
+<label><input type="checkbox"> Linux</label>
+<label><input type="checkbox"> Windows</label>
+<label><input type="checkbox"> macOS</label>
+</div>
+
+<label>Linux Skill Level (0-10)</label>
+<input type="range" min="0" max="10">
+
+<label>Tools You Know</label>
+<div class="inline">
+<label><input type="checkbox"> Docker</label>
+<label><input type="checkbox"> Kubernetes</label>
+<label><input type="checkbox"> Jenkins</label>
+<label><input type="checkbox"> Ansible</label>
+<label><input type="checkbox"> Terraform</label>
+<label><input type="checkbox"> Git</label>
+<label><input type="checkbox"> GitHub Actions</label>
+</div>
+
+<label>CI/CD Tools Experience</label>
+<div class="inline">
+<label><input type="checkbox"> Jenkins</label>
+<label><input type="checkbox"> GitHub Actions</label>
+<label><input type="checkbox"> GitLab CI</label>
+<label><input type="checkbox"> Azure DevOps</label>
+</div>
+
+<label>Cloud Platforms</label>
+<div class="inline">
+<label><input type="checkbox"> AWS</label>
+<label><input type="checkbox"> Azure</label>
+<label><input type="checkbox"> GCP</label>
+</div>
+
+<label>Cloud Experience Level</label>
+<select>
+<option>Beginner</option>
+<option>Intermediate</option>
+<option>Advanced</option>
+</select>
+
+<label>Containerization & Orchestration</label>
+<div class="inline">
+<label><input type="checkbox"> Docker</label>
+<label><input type="checkbox"> Kubernetes</label>
+<label><input type="checkbox"> Helm</label>
+</div>
+
+<label>Infrastructure as Code (IaC)</label>
+<div class="inline">
+<label><input type="checkbox"> Terraform</label>
+<label><input type="checkbox"> CloudFormation</label>
+<label><input type="checkbox"> Pulumi</label>
+</div>
+
+<label>Monitoring & Logging Tools</label>
+<div class="inline">
+<label><input type="checkbox"> Prometheus</label>
+<label><input type="checkbox"> Grafana</label>
+<label><input type="checkbox"> ELK Stack</label>
+<label><input type="checkbox"> CloudWatch</label>
+</div>
+
+<label>Programming / Scripting Languages</label>
+<input type="text" placeholder="Python, Bash, Go, JavaScript">
+
+<label>Project Experience</label>
+<textarea rows="3" placeholder="Describe your DevOps projects (CI/CD, Kubernetes, etc.)"></textarea>
+
+<label>GitHub / Portfolio Link</label>
+<input type="url" placeholder="https://github.com/your-profile">
+
+<!-- Online Presence -->
+<h3>🌐 Online Profiles</h3>
+
+<label>GitHub Profile</label>
+<input type="url">
+
+<label>LinkedIn Profile</label>
+<input type="url">
+
+<!-- Course Preferences -->
+<h3>📚 Course Preferences</h3>
+
+<label>Preferred Learning Mode</label>
+<div class="inline">
+<label><input type="radio" name="mode"> Online</label>
+<label><input type="radio" name="mode"> Offline</label>
+</div>
+
+<label>Preferred Batch Timing</label>
+<select>
+<option>Morning</option>
+<option>Afternoon</option>
+<option>Evening</option>
+</select>
+
+<label>Why do you want to learn DevOps?</label>
+<textarea rows="3"></textarea>
+
+<!-- File Upload -->
+<h3>📄 Upload</h3>
+
+<label>Upload Resume</label>
+<input type="file">
+
+<!-- Submit -->
+<button type="submit">🚀 Enroll Now</button>
+
+</form>
+</div>
+
+</body>
+</html>

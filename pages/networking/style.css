@@ -1,0 +1,440 @@
+/* Layout */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+    color: #fff;
+}
+
+/* Sidebar */
+.sidebar {
+    position: fixed;
+    width: 230px;
+    height: 100%;
+    background: #020617;
+    padding: 20px;
+}
+
+.sidebar h2 {
+    color: #22c55e;
+}
+
+.sidebar a {
+    display: block;
+    padding: 10px;
+    color: #cbd5f5;
+    text-decoration: none;
+    border-radius: 6px;
+}
+
+.sidebar a:hover {
+    background: #22c55e;
+    color: #000;
+}
+
+/* Main */
+.main {
+    margin-left: 250px;
+    padding: 25px;
+}
+
+/* Card */
+.card {
+    background: #1e293b;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-radius: 10px;
+}
+
+/* Block */
+.block {
+    margin-top: 15px;
+    padding: 15px;
+    background: #020617;
+    border-radius: 8px;
+}
+
+/* Sub-block */
+.sub-block {
+    margin-top: 10px;
+    padding: 10px;
+    border-left: 3px solid #22c55e;
+}
+
+/* Headings */
+h2 {
+    color: #22c55e;
+}
+
+h3 {
+    color: #38bdf8;
+}
+
+
+.box {
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.pod { background: rgba(59, 130, 246, 0.2); }
+.ingress { background: rgba(34, 197, 94, 0.2); }
+.cni { background: rgba(168, 85, 247, 0.2); }
+.discovery { background: rgba(236, 72, 153, 0.2); }
+
+.box div {
+  margin: 6px 0;
+}
+
+.example {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.compare {
+  display: flex;
+  gap: 15px;
+}
+
+.compare div {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.types div {
+  background: rgba(100, 116, 139, 0.2);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+}
+
+.flow span {
+  background: #0ea5e9;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.devops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.note {
+  color: #94a3b8;
+}
+
+.box {
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.proxy { background: rgba(59, 130, 246, 0.2); }
+.ssl { background: rgba(34, 197, 94, 0.2); }
+.gateway { background: rgba(168, 85, 247, 0.2); }
+.mesh { background: rgba(236, 72, 153, 0.2); }
+
+.box div {
+  margin: 6px 0;
+}
+
+.example {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.types div {
+  background: rgba(100, 116, 139, 0.2);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+}
+
+.flow span {
+  background: #0ea5e9;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.devops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.note {
+  color: #94a3b8;
+}
+
+.box {
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.vpc { background: rgba(59, 130, 246, 0.2); }
+.igw { background: rgba(34, 197, 94, 0.2); }
+.nat { background: rgba(236, 72, 153, 0.2); }
+.route { background: rgba(168, 85, 247, 0.2); }
+
+.box div {
+  margin: 6px 0;
+}
+
+.example {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+.compare {
+  display: flex;
+  gap: 20px;
+}
+
+.compare div {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.flow span {
+  background: #0ea5e9;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.devops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.note {
+  color: #94a3b8;
+}
+
+.cmd-box {
+  background: rgba(168, 85, 247, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.cmd-box div {
+  margin: 6px 0;
+  font-family: monospace;
+}
+
+.example {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #a855f7;
+}
+
+.flow span {
+  background: #0ea5e9;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.compare {
+  display: flex;
+  gap: 20px;
+}
+
+.compare div {
+  flex: 1;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+.devops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.note {
+  color: #94a3b8;
+  margin-top: 10px;
+}
+
+.cmd-box {
+  background: rgba(168, 85, 247, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.cmd-box div {
+  margin: 6px 0;
+  font-family: monospace;
+}
+
+.example {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #a855f7;
+}
+
+.flow span {
+  background: #0ea5e9;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+.devops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+.note {
+  color: #94a3b8;
+  margin-top: 10px;
+}
+
+
+/* CARD */
+.card {
+  background: rgba(30, 41, 59, 0.85);
+  backdrop-filter: blur(10px);
+  padding: 40px;
+  border-radius: 14px;
+  margin-bottom: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.4);
+}
+
+/* HEADINGS */
+h2 {
+  font-size: 28px;
+  margin-bottom: 10px;
+}
+
+h3 {
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+
+/* SUBTITLE */
+.subtitle {
+  color: #94a3b8;
+  font-size: 16px;
+}
+
+/* COMMON BOX */
+.switch-box, .router-box, .nat-box, .firewall-box, .sg-box,
+.lb-box, .l4-box, .l7-box, .vpn-box, .cidr-box {
+  padding: 15px;
+  border-radius: 10px;
+}
+
+.switch-box { background: rgba(59, 130, 246, 0.2); }
+.router-box { background: rgba(34, 197, 94, 0.2); }
+.nat-box { background: rgba(236, 72, 153, 0.2); }
+.firewall-box { background: rgba(239, 68, 68, 0.2); }
+.sg-box { background: rgba(168, 85, 247, 0.2); }
+.lb-box { background: rgba(14, 165, 233, 0.2); }
+.l4-box { background: rgba(251, 191, 36, 0.2); }
+.l7-box { background: rgba(16, 185, 129, 0.2); }
+.vpn-box { background: rgba(99, 102, 241, 0.2); }
+.cidr-box { background: rgba(6, 182, 212, 0.2); }
+
+/* BOX TEXT */
+.switch-box div, .router-box div, .nat-box div,
+.firewall-box div, .sg-box div, .lb-box div,
+.l4-box div, .l7-box div, .vpn-box div,
+.cidr-box div {
+  margin: 6px 0;
+}
+
+/* FLOW */
+.flow span {
+  background: #0ea5e9;
+  padding: 8px 12px;
+  margin: 5px;
+  border-radius: 20px;
+  display: inline-block;
+}
+
+/* COMPARE */
+.compare {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+}
+
+.compare div {
+  flex: 1;
+  min-width: 220px;
+  background: rgba(30, 41, 59, 0.7);
+  padding: 12px;
+  border-radius: 10px;
+}
+
+/* TYPES / RULES / BENEFITS */
+.types div, .rules div, .benefits div, .protocols div {
+  background: rgba(100, 116, 139, 0.2);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+}
+
+/* TABLE */
+.table-box table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.table-box th, .table-box td {
+  padding: 10px;
+  border-bottom: 1px solid #334155;
+}
+
+.table-box th {
+  background: rgba(30, 41, 59, 0.8);
+}
+
+/* STRUCTURE */
+.structure div {
+  background: rgba(100, 116, 139, 0.2);
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 6px;
+}
+
+/* CALCULATION */
+.calc-box {
+  background: rgba(34, 197, 94, 0.2);
+  padding: 15px;
+  border-radius: 10px;
+}
+
+/* DEVOPS GRID */
+.devops-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+}
+
+/* EXAMPLE */
+.example {
+  margin-top: 10px;
+  font-weight: bold;
+}
+
+/* NOTE */
+.note {
+  color: #94a3b8;
+  margin-top: 10px;
+}
