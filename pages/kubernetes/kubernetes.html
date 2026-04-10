@@ -2,822 +2,1082 @@
 
 <body>
 
-<section class="info">
+<!-- ================= KUBERNETES FULL BLOCK ================= -->
+<section class="info" id="kubernetes-complete">
 
+    <!-- HEADER -->
     <header class="section-header">
-        <h2>📦 What is Kubernetes?</h2>
+        <h2>📦 Kubernetes Overview</h2>
     </header>
 
     <div class="section-body">
 
-        <p>
-            <strong>Kubernetes (K8s)</strong> is an <strong>open-source container orchestration platform</strong>
-            used to manage <strong>containerized applications</strong>.
-        </p>
+        <!-- INTRO -->
+        <article class="section-block">
+            <header>
+                <h3>📦 What is Kubernetes?</h3>
+            </header>
 
-        <p>
-            It <strong>automates deployment, scaling, and management</strong> of containers across a
-            cluster of machines.
-        </p>
+            <p>
+                <strong>Kubernetes (K8s)</strong> is an 
+                <strong>open-source container orchestration platform</strong>
+                used to manage <strong>containerized applications</strong>.
+            </p>
 
-    </div>
+            <p>
+                It automates <strong>deployment, scaling, and management</strong> 
+                of containers across a cluster of machines.
+            </p>
+        </article>
 
+        <!-- KEY IDEA -->
+        <article class="section-block">
+            <header>
+                <h3>💡 Key Idea</h3>
+            </header>
 
-    <div class="section-block">
+            <p>
+                Containers are created using tools like <strong>Docker</strong>, 
+                while Kubernetes manages those containers efficiently across systems.
+            </p>
+        </article>
 
-        <h3>Key Idea</h3>
+        <!-- WHY USE -->
+        <article class="section-block">
+            <header>
+                <h3>🎯 Why Kubernetes is Used</h3>
+            </header>
 
-        <p>
-            Containers are usually created using tools like <strong>Docker</strong>, and 
-            <strong>Kubernetes</strong> is used to manage those containers efficiently.
-        </p>
+            <p>
+                Kubernetes ensures applications run reliably across multiple machines:
+            </p>
 
-    </div>
+            <ul class="feature-list">
+                <li>✔ High Availability</li>
+                <li>✔ Scalability</li>
+                <li>✔ Reliability</li>
+            </ul>
+        </article>
 
+        <!-- FEATURES -->
+        <article class="section-block">
+            <header>
+                <h3>⚙️ What Kubernetes Handles</h3>
+            </header>
 
-    <div class="section-block">
+            <ul class="task-list">
+                <li>Deploying and managing containers (Docker)</li>
+                <li>Auto scaling applications</li>
+                <li>Load balancing traffic</li>
+                <li>Managing networking & storage</li>
+                <li>Maintaining desired state</li>
+            </ul>
+        </article>
 
-        <h3>Why Kubernetes is Used</h3>
+        <!-- ARCHITECTURE -->
+        <article class="section-block">
+            <header>
+                <h3>⚙️ Kubernetes Architecture Components</h3>
+            </header>
 
-        <p>
-            Kubernetes helps run applications across multiple machines while ensuring:
-        </p>
+            <p>The Kubernetes architecture consists of two main parts:</p>
 
-        <ul class="feature-list">
-            <li>✔ High Availability</li>
-            <li>✔ Scalability</li>
-            <li>✔ Reliability</li>
-        </ul>
+            <ul class="highlight-list">
+                <li><strong>1. Control Plane (Master Node)</strong></li>
+                <li><strong>2. Worker Nodes</strong></li>
+            </ul>
+        </article>
 
-    </div>
+        <!-- CONTROL PLANE -->
+        <article class="section-block">
+            <header>
+                <h3>🧠 Control Plane</h3>
+            </header>
 
+            <p>
+                The Control Plane manages the cluster and makes global decisions 
+                like scheduling and maintaining the desired state.
+            </p>
+        </article>
 
-    <div class="section-block">
+        <!-- WORKER NODES -->
+        <article class="section-block">
+            <header>
+                <h3>🖥 Worker Nodes</h3>
+            </header>
 
-        <h3>Kubernetes Handles Tasks Like:</h3>
-
-        <ul class="task-list">
-            <li>Deploying and managing containers (e.g., Docker)</li>
-            <li>Scaling applications up or down automatically</li>
-            <li>Load balancing network traffic</li>
-            <li>Managing networking and storage</li>
-            <li>Maintaining the desired state of applications</li>
-        </ul>
+            <p>
+                Worker nodes run actual applications (containers) and execute workloads.
+            </p>
+        </article>
 
     </div>
 
 </section>
 
+<!-- Architecture -->
+<section id="architecture" class="section">
 
-<div class="info">
-    <h2>Kubernetes Architecture</h2>
+  <div class="container">
 
-    <div class="arch-img">
-        <img src="/assets/images/k8s-arch.jpg" 
-        alt="Kubernetes Architecture Diagram">
-    </div>
-
-</div>
-
-<div class="info">
-
-<h2>⚙️ Kubernetes Architecture Components</h2>
-
-<p>The Kubernetes architecture consists of two main parts:</p>
-
-<ul>
-    <li><strong>1. Control Plane (Master Node)</strong></li>
-    <li><strong>2. Worker Nodes</strong></li>
-</ul>
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>⚙️ Kubernetes Architecture</h2>
+      <p>
+        Kubernetes architecture consists of two main components:
+        Control Plane (Master Node) and Worker Nodes.
+      </p>
+    </header>
 
 
-<h3>1️⃣ Control Plane (Master Node)</h3>
+    <!-- CONTROL PLANE -->
+    <article class="content-block">
 
-<p>
-The <strong>Control Plane</strong> manages the entire Kubernetes cluster.
-It makes global decisions such as <b>scheduling pods</b>, maintaining the 
-<b>desired state</b>, and managing cluster operations.
-</p>
+      <header>
+        <h3>1️⃣ Control Plane (Master Node)</h3>
+      </header>
 
+      <div class="content">
 
-<h4>🔹 API Server (kube-apiserver)</h4>
+        <p>
+          The <strong>Control Plane</strong> is responsible for managing the entire cluster.
+          It handles scheduling, maintains the desired state, and manages cluster operations.
+        </p>
 
-<ul>
-<li>The <strong>API Server</strong> is the main entry point for the Kubernetes cluster.</li>
-<li>It exposes the Kubernetes API used by users, CLI tools, and components.</li>
-<li>All communication between components passes through the API Server.</li>
-<li>It processes REST requests and updates cluster state.</li>
-</ul>
+        <div class="component-grid">
 
+          <!-- API SERVER -->
+          <div class="component-card">
+            <h4>🔹 API Server</h4>
+            <ul>
+              <li>Main entry point of cluster</li>
+              <li>Handles REST API requests</li>
+              <li>All communication passes through it</li>
+              <li>Updates cluster state</li>
+            </ul>
+          </div>
 
-<h4>🔹 etcd</h4>
+          <!-- ETCD -->
+          <div class="component-card">
+            <h4>🔹 etcd</h4>
+            <ul>
+              <li>Distributed key-value store</li>
+              <li>Stores cluster data</li>
+              <li>Pods, services, nodes info</li>
+              <li>Maintains desired state</li>
+            </ul>
+          </div>
 
-<ul>
-<li><strong>etcd</strong> is a distributed <b>key-value store</b>.</li>
-<li>It stores all cluster data such as configuration and metadata.</li>
-<li>Information about <b>pods, deployments, services, and nodes</b> is stored here.</li>
-<li>It is critical for maintaining the cluster’s desired state.</li>
-</ul>
+          <!-- CONTROLLER -->
+          <div class="component-card">
+            <h4>🔹 Controller Manager</h4>
+            <ul>
+              <li>Maintains desired state</li>
+              <li>Watches cluster continuously</li>
+              <li>Fixes differences automatically</li>
+            </ul>
 
+            <div class="sub-list">
+              <p><b>Controllers:</b></p>
+              <ul>
+                <li>ReplicaSet Controller</li>
+                <li>Deployment Controller</li>
+                <li>Job Controller</li>
+                <li>Node Controller</li>
+              </ul>
+            </div>
+          </div>
 
-<h4>🔹 Controller Manager (kube-controller-manager)</h4>
+          <!-- SCHEDULER -->
+          <div class="component-card">
+            <h4>🔹 Scheduler</h4>
+            <ul>
+              <li>Assigns pods to nodes</li>
+              <li>Uses CPU, memory, policies</li>
+              <li>Ensures efficient distribution</li>
+            </ul>
+          </div>
 
-<ul>
-<li>The controller manager ensures the cluster stays in the <b>desired state</b>.</li>
-<li>It continuously watches the cluster and fixes differences automatically.</li>
-</ul>
+          <!-- CLOUD -->
+          <div class="component-card">
+            <h4>🔹 Cloud Controller</h4>
+            <ul>
+              <li>Cloud-specific operations</li>
+              <li>Manages LB, storage, networking</li>
+              <li>Used in AWS, GCP, Azure</li>
+            </ul>
+          </div>
 
-<p><strong>Important Controllers:</strong></p>
+        </div>
 
-<ul>
-<li><b>ReplicaSet Controller</b> – Maintains the required number of pod replicas.</li>
-<li><b>Deployment Controller</b> – Manages deployment updates.</li>
-<li><b>Job Controller</b> – Handles batch jobs.</li>
-<li><b>Node Controller</b> – Monitors node health.</li>
-</ul>
+      </div>
 
+    </article>
 
-<h4>🔹 Scheduler (kube-scheduler)</h4>
+    <!-- WORKER NODES -->
+    <article class="content-block">
 
-<ul>
-<li>The scheduler assigns pods to worker nodes.</li>
-<li>It selects the best node based on resources such as <b>CPU, memory, and policies</b>.</li>
-<li>It ensures efficient workload distribution.</li>
-</ul>
+      <header>
+        <h3>2️⃣ Worker Nodes</h3>
+      </header>
 
+      <div class="content">
 
-<h4>🔹 Cloud Controller Manager</h4>
+        <p>
+          Worker nodes are where applications actually run. They contain components
+          that execute workloads and maintain communication with the control plane.
+        </p>
 
-<ul>
-<li>Handles cloud-provider specific operations.</li>
-<li>Manages resources like <b>load balancers, storage volumes, and networking</b>.</li>
-<li>Used when Kubernetes runs on cloud platforms such as AWS, GCP, or Azure.</li>
-</ul>
+        <div class="component-grid">
 
+          <!-- KUBELET -->
+          <div class="component-card">
+            <h4>🔹 Kubelet</h4>
+            <ul>
+              <li>Node agent</li>
+              <li>Ensures containers are running</li>
+              <li>Communicates with API Server</li>
+            </ul>
+          </div>
 
+          <!-- KUBE PROXY -->
+          <div class="component-card">
+            <h4>🔹 Kube Proxy</h4>
+            <ul>
+              <li>Manages networking rules</li>
+              <li>Handles pod-to-service communication</li>
+              <li>Uses iptables/IPVS</li>
+            </ul>
+          </div>
 
-<h3>2️⃣ Worker Nodes</h3>
+          <!-- RUNTIME -->
+          <div class="component-card">
+            <h4>🔹 Container Runtime</h4>
+            <ul>
+              <li>Runs containers</li>
+              <li>Pulls images</li>
+              <li>Manages lifecycle</li>
+              <li>Examples: containerd, CRI-O</li>
+            </ul>
+          </div>
 
-<p>
-Worker nodes are where the <strong>actual applications (containers)</strong> run.
-Each worker node contains components that allow Kubernetes to run workloads.
-</p>
+          <!-- PODS -->
+          <div class="component-card">
+            <h4>🔹 Pods</h4>
+            <ul>
+              <li>Smallest deployable unit</li>
+              <li>Can have multiple containers</li>
+              <li>Shared network & storage</li>
+              <li>Each pod has unique IP</li>
+            </ul>
+          </div>
 
+        </div>
 
-<h4>🔹 Kubelet</h4>
+      </div>
 
-<ul>
-<li>The <strong>kubelet</strong> is an agent running on every worker node.</li>
-<li>It ensures containers are running inside pods.</li>
-<li>It communicates with the API Server to receive instructions.</li>
-</ul>
+    </article>
 
+  </div>
 
-<h4>🔹 Kube Proxy</h4>
+</section>
 
-<ul>
-<li><strong>kube-proxy</strong> manages networking rules.</li>
-<li>It enables communication between pods and services.</li>
-<li>It routes traffic using <b>iptables or IPVS</b>.</li>
-</ul>
+<!-- NAMESPACES -->
 
+<section id="namespaces" class="section">
 
-<h4>🔹 Container Runtime</h4>
+  <div class="container">
 
-<ul>
-<li>The container runtime is responsible for running containers.</li>
-<li>It pulls images, creates containers, and manages their lifecycle.</li>
-<li>Common runtimes include <b>containerd</b> and <b>CRI-O</b>.</li>
-</ul>
+    <header class="section-header">
+      <h2>📚 Namespaces</h2>
+      <p>
+        Namespaces divide a Kubernetes cluster into logical groups for better
+        organization, isolation, and resource management.
+      </p>
+    </header>
 
+    <article class="content-block">
 
-<h4>🔹 Pods</h4>
+      <div class="content">
 
-<ul>
-<li><strong>Pods</strong> are the smallest deployable unit in Kubernetes.</li>
-<li>A pod can contain <b>one or more containers</b>.</li>
-<li>Containers in the same pod share <b>network and storage</b>.</li>
-<li>Each pod receives its own <b>IP address</b>.</li>
-</ul>
+        <p>
+          Namespaces allow multiple teams or environments to share the same cluster
+          while keeping their resources isolated.
+        </p>
 
-</div>
+        <div class="grid">
 
-<div class="info">
+          <div class="card">
+            <h4>📦 Organization</h4>
+            <p>Group resources by project/team</p>
+          </div>
 
-<h2>📚 Other Key Kubernetes Concepts</h2>
+          <div class="card">
+            <h4>🔒 Isolation</h4>
+            <p>Separate workloads securely</p>
+          </div>
 
-<!-- Namespaces -->
+          <div class="card">
+            <h4>🔑 Access Control</h4>
+            <p>RBAC per namespace</p>
+          </div>
 
-<h3>🔹 Namespaces</h3>
+          <div class="card">
+            <h4>📊 Resource Control</h4>
+            <p>Limit CPU & memory usage</p>
+          </div>
 
-<p>
-<strong>Namespaces</strong> are used to logically divide a Kubernetes cluster into multiple
-virtual clusters. This allows different teams, projects, or environments to share the
-same physical Kubernetes cluster while keeping their resources isolated.
-</p>
+          <div class="card">
+            <h4>👥 Multi-Tenant</h4>
+            <p>Multiple teams share cluster</p>
+          </div>
 
-<p>
-Each namespace contains its own set of resources such as Pods, Services,
-Deployments, and ConfigMaps. This makes it easier to organize workloads
-and manage permissions.
-</p>
+        </div>
 
-<p><strong>Namespaces help in:</strong></p>
+      </div>
 
-<ul>
-<li><b>Organizing resources</b> – Resources can be grouped based on project or team.</li>
-<li><b>Isolation</b> – Applications in one namespace do not interfere with others.</li>
-<li><b>Access control</b> – Permissions can be applied per namespace using RBAC.</li>
-<li><b>Resource management</b> – Resource quotas can limit CPU and memory usage.</li>
-<li><b>Multi-tenant environments</b> – Multiple teams can safely use the same cluster.</li>
-</ul>
+    </article>
 
-<h4>Default Namespaces in Kubernetes</h4>
+    <!-- DEFAULT NAMESPACES -->
+    <article class="content-block">
 
-<ul>
-<li>
-<strong>default</strong> – The namespace used when no namespace is specified while creating resources.
-</li>
+      <header>
+        <h3>🔹 Default Namespaces</h3>
+      </header>
 
-<li>
-<strong>kube-system</strong> – Contains important Kubernetes system components like
-DNS, scheduler, and controller manager.
-</li>
+      <div class="content">
 
-<li>
-<strong>kube-public</strong> – A namespace that is readable by all users. Used for
-cluster information that needs to be publicly accessible.
-</li>
+        <div class="namespace-grid">
 
-<li>
-<strong>kube-node-lease</strong> – Used by Kubernetes nodes to send heartbeat signals
-to the control plane for node health monitoring.
-</li>
-</ul>
+          <div class="namespace-card">
+            <h4>default</h4>
+            <p>Used when no namespace is specified</p>
+          </div>
 
-<p><b>In short:</b> Namespaces organize and isolate resources inside a Kubernetes cluster.</p>
+          <div class="namespace-card">
+            <h4>kube-system</h4>
+            <p>System components (DNS, scheduler)</p>
+          </div>
 
+          <div class="namespace-card">
+            <h4>kube-public</h4>
+            <p>Publicly readable resources</p>
+          </div>
 
+          <div class="namespace-card">
+            <h4>kube-node-lease</h4>
+            <p>Node heartbeat tracking</p>
+          </div>
+
+        </div>
+
+        <div class="highlight">
+          Namespaces provide logical separation and help manage large Kubernetes environments efficiently.
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
 
 <!-- Services -->
+<section id="services" class="section">
 
-<h3>🔹 Services</h3>
+  <div class="container">
 
-<p>
-A <strong>Service</strong> in Kubernetes is an abstraction that defines a logical
-group of Pods and provides a stable network endpoint to access them.
-</p>
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>🌐 Kubernetes Services</h2>
+      <p>
+        A Service in Kubernetes provides a stable network endpoint to access a 
+        dynamic set of Pods. It enables reliable communication inside and outside 
+        the cluster.
+      </p>
+    </header>
 
-<p>
-Pods are dynamic and may be created, destroyed, or replaced at any time.
-Because of this, their IP addresses constantly change. A Kubernetes Service
-solves this problem by providing a permanent IP address and DNS name.
-</p>
+    <!-- INTRO -->
+    <article class="content-block">
 
-<p>A Service provides:</p>
+      <div class="content">
 
-<ul>
-<li><b>Stable IP Address</b> – Even if pods restart.</li>
-<li><b>DNS Name</b> – Services can be accessed using service-name.namespace.</li>
-<li><b>Load Balancing</b> – Traffic is distributed across multiple pods.</li>
-<li><b>Service Discovery</b> – Applications can find each other easily.</li>
-</ul>
+        <p>
+          A <strong>Service</strong> is an abstraction that defines a logical group 
+          of Pods and exposes them using a stable <strong>IP address</strong> and 
+          <strong>DNS name</strong>.
+        </p>
 
-<p>
-Services use <b>labels and selectors</b> to identify which pods should receive traffic.
-Whenever new pods are created or removed, the service automatically updates
-its routing configuration.
-</p>
+        <p>
+          Since Pods are ephemeral (they can be created, deleted, or replaced),
+          their IP addresses keep changing. Services solve this problem by providing 
+          a permanent endpoint.
+        </p>
 
-<p><b>In short:</b> Services provide stable communication between pods and applications.</p>
+      </div>
 
+    </article>
 
+    <!-- FEATURES -->
+    <article class="content-block">
 
-<h4>Service Types in Kubernetes</h4>
+      <header>
+        <h3>🔹 What a Service Provides</h3>
+      </header>
 
-<h5>1️⃣ ClusterIP (Default)</h5>
+      <div class="content">
 
-<ul>
-<li>This is the default service type.</li>
-<li>The service is only accessible from inside the cluster.</li>
-<li>Other pods communicate using the internal cluster network.</li>
-<li>Commonly used for internal microservices communication.</li>
-</ul>
+        <div class="grid">
 
-<h5>2️⃣ NodePort</h5>
+          <div class="card">
+            <h4>📌 Stable IP</h4>
+            <p>Remains constant even if pods restart</p>
+          </div>
+
+          <div class="card">
+            <h4>🌍 DNS Name</h4>
+            <p>Access using service-name.namespace</p>
+          </div>
+
+          <div class="card">
+            <h4>⚖ Load Balancing</h4>
+            <p>Distributes traffic across pods</p>
+          </div>
+
+          <div class="card">
+            <h4>🔎 Service Discovery</h4>
+            <p>Pods can find each other easily</p>
+          </div>
+
+        </div>
+
+        <div class="note">
+          👉 Services use <strong>labels & selectors</strong> to dynamically map traffic to Pods.
+        </div>
+
+      </div>
+
+    </article>
+
+    <!-- WORKING -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 How Services Work</h3>
+      </header>
+
+      <div class="content">
 
-<ul>
-<li>Exposes the service on a specific port of every worker node.</li>
-<li>The port range is <b>30000 – 32767</b>.</li>
-<li>Users can access the service using the node's IP address.</li>
-<li>Mostly used for development or testing environments.</li>
-</ul>
+        <div class="flow">
 
-<h5>3️⃣ LoadBalancer</h5>
+          <div class="flow-step">Client Request</div>
+          <div class="arrow">➡</div>
+          <div class="flow-step">Service (Stable IP)</div>
+          <div class="arrow">➡</div>
+          <div class="flow-step">Pod (via Labels)</div>
 
-<ul>
-<li>Creates an external load balancer provided by the cloud platform.</li>
-<li>Automatically distributes traffic across pods.</li>
-<li>Commonly used for production web applications.</li>
-</ul>
+        </div>
 
-<h5>4️⃣ ExternalName</h5>
+        <p class="center">
+          Traffic is automatically routed to healthy pods using label selectors.
+        </p>
 
-<ul>
-<li>Maps a Kubernetes service to an external DNS name.</li>
-<li>Allows applications inside the cluster to access external services.</li>
-<li>Example: connecting to an external database.</li>
-</ul>
+      </div>
 
-<h5>5️⃣ Headless Service</h5>
+    </article>
+
+    <!-- TYPES -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 Service Types</h3>
+      </header>
+
+      <div class="content">
+
+        <div class="service-grid">
+
+          <!-- ClusterIP -->
+          <div class="service-card">
+            <h4>1️⃣ ClusterIP (Default)</h4>
+            <ul>
+              <li>Accessible only inside cluster</li>
+              <li>Used for internal communication</li>
+              <li>Default service type</li>
+            </ul>
+          </div>
+
+          <!-- NodePort -->
+          <div class="service-card">
+            <h4>2️⃣ NodePort</h4>
+            <ul>
+              <li>Exposes service on node IP</li>
+              <li>Port range: <b>30000–32767</b></li>
+              <li>Used for testing/dev</li>
+            </ul>
+          </div>
+
+          <!-- LoadBalancer -->
+          <div class="service-card">
+            <h4>3️⃣ LoadBalancer</h4>
+            <ul>
+              <li>Creates cloud load balancer</li>
+              <li>Public access to application</li>
+              <li>Used in production</li>
+            </ul>
+          </div>
 
-<ul>
-<li>Created by setting <b>ClusterIP: None</b>.</li>
-<li>Does not assign a single service IP.</li>
-<li>DNS returns the IP addresses of all pods.</li>
-<li>Used in StatefulSets like Kafka, Cassandra, or databases.</li>
-</ul>
+          <!-- ExternalName -->
+          <div class="service-card">
+            <h4>4️⃣ ExternalName</h4>
+            <ul>
+              <li>Maps to external DNS</li>
+              <li>No proxying inside cluster</li>
+              <li>Used for external services</li>
+            </ul>
+          </div>
+
+          <!-- Headless -->
+          <div class="service-card">
+            <h4>5️⃣ Headless Service</h4>
+            <ul>
+              <li><b>ClusterIP: None</b></li>
+              <li>Returns all pod IPs</li>
+              <li>Used with StatefulSets</li>
+            </ul>
+          </div>
 
+        </div>
 
+      </div>
 
-<!-- Deployments -->
+    </article>
 
-<h3>🔹 Deployments</h3>
+    <!-- SUMMARY -->
+    <article class="content-block">
 
-<p>
-A <strong>Deployment</strong> is a higher-level Kubernetes object that manages
-the lifecycle of pods and ReplicaSets.
-</p>
+      <header>
+        <h3>📌 Summary</h3>
+      </header>
 
-<p>
-Deployments are commonly used for stateless applications and provide
-advanced features for managing updates and scaling.
-</p>
+      <div class="content">
 
-<p><strong>Main features of Deployments:</strong></p>
+        <div class="highlight">
+          Services provide stable networking, load balancing, and service discovery 
+          in Kubernetes, ensuring reliable communication between applications.
+        </div>
 
-<ul>
-<li><b>Scaling</b> – Increase or decrease the number of running pods.</li>
-<li><b>Rolling Updates</b> – Update application versions without downtime.</li>
-<li><b>Rollback</b> – Revert to a previous version if an update fails.</li>
-<li><b>Self-healing</b> – Automatically replace failed pods.</li>
-</ul>
+      </div>
 
+    </article>
 
+  </div>
 
-<!-- ReplicaSets -->
+</section>
 
-<h3>🔹 ReplicaSets</h3>
+<!-- ================= AFFINITY ================= -->
 
-<p>
-A <strong>ReplicaSet</strong> ensures that a specified number of pod replicas
-are running at any given time.
-</p>
+<section id="affinity" class="section">
 
-<p>
-If a pod crashes or is deleted, the ReplicaSet automatically creates a new pod
-to maintain the desired number of replicas.
-</p>
+  <div class="container">
 
-<p>
-ReplicaSets are usually managed indirectly through Deployments rather than
-created manually.
-</p>
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>📍 Affinity and Anti-Affinity</h2>
+      <p>
+        Kubernetes Affinity rules control how pods are scheduled across nodes. 
+        They help optimize performance, reliability, and availability by defining 
+        placement preferences.
+      </p>
+    </header>
 
+    <!-- NODE AFFINITY -->
+    <article class="content-block">
 
+      <header>
+        <h3>🔹 Node Affinity</h3>
+      </header>
 
-<!-- StatefulSets -->
+      <div class="content">
 
-<h3>🔹 StatefulSets</h3>
+        <p>
+          Node Affinity allows pods to be scheduled on specific nodes based on 
+          node labels.
+        </p>
 
-<p>
-A <strong>StatefulSet</strong> is used for stateful applications that require
-stable identities and persistent storage.
-</p>
+        <ul class="list">
+          <li>Run pods only on selected nodes</li>
+          <li>Based on node labels (e.g., SSD, region)</li>
+          <li>Improves workload placement control</li>
+        </ul>
 
-<p>
-Unlike Deployments, StatefulSets maintain unique network identities and
-persistent volumes for each pod.
-</p>
+        <div class="example-box">
+          👉 Example: Schedule pods only on nodes with SSD storage
+        </div>
 
-<p><b>Common use cases:</b></p>
+      </div>
 
-<ul>
-<li>Databases (MySQL, PostgreSQL)</li>
-<li>Distributed systems (Kafka, Cassandra)</li>
-<li>Applications requiring stable storage</li>
-</ul>
+    </article>
 
+    <!-- POD AFFINITY -->
+    <article class="content-block">
 
+      <header>
+        <h3>🔹 Pod Affinity</h3>
+      </header>
 
-<!-- DaemonSets -->
+      <div class="content">
 
-<h3>🔹 DaemonSets</h3>
+        <p>
+          Pod Affinity schedules pods close to other pods for better communication.
+        </p>
 
-<p>
-A <strong>DaemonSet</strong> ensures that a specific pod runs on all nodes
-(or selected nodes) in the cluster.
-</p>
+        <ul class="list">
+          <li>Used for low-latency communication</li>
+          <li>Groups related services together</li>
+          <li>Improves performance</li>
+        </ul>
 
-<p>
-Whenever a new node joins the cluster, the DaemonSet automatically schedules
-a pod on that node.
-</p>
+        <div class="example-box">
+          👉 Example: App pods placed near Redis cache pods
+        </div>
 
-<p><b>Common use cases:</b></p>
+      </div>
 
-<ul>
-<li>Log collection agents (Fluentd)</li>
-<li>Monitoring agents (Prometheus Node Exporter)</li>
-<li>Network plugins</li>
-</ul>
+    </article>
 
+    <!-- POD ANTI-AFFINITY -->
+    <article class="content-block">
 
+      <header>
+        <h3>🔹 Pod Anti-Affinity</h3>
+      </header>
 
-<!-- Jobs -->
+      <div class="content">
 
-<h3>🔹 Jobs and CronJobs</h3>
+        <p>
+          Pod Anti-Affinity ensures pods are scheduled away from certain pods.
+        </p>
 
-<p>
-Kubernetes Jobs are used for running tasks that must complete successfully.
-</p>
+        <ul class="list">
+          <li>Prevents same pods from running on same node</li>
+          <li>Improves high availability</li>
+          <li>Avoids single point of failure</li>
+        </ul>
 
-<ul>
-<li>
-<strong>Job</strong> – Runs a task until it finishes successfully.
-Example: database migration or batch processing.
-</li>
+        <div class="example-box">
+          👉 Example: Spread replicas across different nodes
+        </div>
 
-<li>
-<strong>CronJob</strong> – Runs jobs on a schedule similar to Linux cron.
-Example: daily backup tasks.
-</li>
-</ul>
+      </div>
 
+    </article>
 
+    <!-- COMPARISON -->
+    <article class="content-block">
 
-<!-- Ingress -->
+      <header>
+        <h3>🔹 Affinity Comparison</h3>
+      </header>
 
-<h3>🔹 Ingress</h3>
+      <div class="content">
 
-<p>
-An <strong>Ingress</strong> manages external access to services in the cluster.
-It allows HTTP and HTTPS traffic to reach internal services.
-</p>
+        <div class="table-box">
+          <table>
+            <tr>
+              <th>Type</th>
+              <th>Meaning</th>
+              <th>Based On</th>
+            </tr>
 
-<p>
-Ingress also provides advanced routing capabilities and centralized control
-over incoming traffic.
-</p>
+            <tr>
+              <td>Node Affinity</td>
+              <td>Run pods on specific nodes</td>
+              <td>Node Labels</td>
+            </tr>
 
-<p><b>Features:</b></p>
+            <tr>
+              <td>Pod Affinity</td>
+              <td>Run pods near specific pods</td>
+              <td>Pod Labels</td>
+            </tr>
 
-<ul>
-<li>HTTP/HTTPS routing</li>
-<li>SSL termination</li>
-<li>Load balancing</li>
-<li>Host-based routing</li>
-<li>Path-based routing</li>
-</ul>
+            <tr>
+              <td>Pod Anti-Affinity</td>
+              <td>Avoid running near certain pods</td>
+              <td>Pod Labels</td>
+            </tr>
+          </table>
+        </div>
 
+        <div class="note">
+          👉 Node Affinity = Node based | Pod Affinity = Pod based
+        </div>
 
+      </div>
 
-<!-- Networking -->
+    </article>
 
-<h2>🌐 Kubernetes Networking</h2>
+  </div>
 
-<h3>Pod-to-Pod Networking</h3>
+</section>
 
-<p>
-In Kubernetes, every pod receives a unique IP address.
-Pods can communicate with each other directly without NAT.
-</p>
+<!-- ================= EKS UPGRADE INTRO ================= -->
 
-<h3>Service Discovery</h3>
+<section id="eks-upgrade-intro" class="section success">
 
-<p>
-Kubernetes provides built-in DNS that automatically assigns
-DNS names to services.
-</p>
+  <div class="container">
 
-<p>
-Pods can communicate using service names instead of IP addresses,
-making applications easier to manage.
-</p>
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>🚀 Amazon EKS Cluster Upgrade Guide</h2>
+    </header>
 
-<h3>Network Policies</h3>
+    <!-- CONTENT -->
+    <article class="content-block">
 
-<p>
-Network Policies define rules that control communication between pods.
-</p>
+      <div class="content">
 
-<p>
-They allow administrators to specify which pods can communicate with each
-other based on labels, namespaces, and ports.
-</p>
+        <p>
+          Upgrading an Amazon EKS cluster is a critical operational task that ensures 
+          your Kubernetes environment remains secure, stable, and compatible with 
+          the latest features.
+        </p>
 
+        <p>
+          Each Kubernetes release introduces:
+        </p>
 
+        <div class="grid">
+          <div>🔐 Security patches</div>
+          <div>⚡ Performance improvements</div>
+          <div>🆕 New features</div>
+          <div>⚠️ API changes</div>
+        </div>
 
-<!-- Affinity -->
+        <div class="note">
+          👉 Upgrades must be done carefully to avoid downtime or failures.
+        </div>
 
-<h2>📍 Affinity and AntiAffinity</h2>
+      </div>
 
-<h3>Node Affinity</h3>
+    </article>
 
-<p>
-Node Affinity allows pods to be scheduled on specific nodes based on node labels.
-</p>
+    <!-- STEPS -->
+    <article class="content-block">
 
-<ul>
-<li>Example: Run pods only on nodes with SSD storage.</li>
-<li>Helps control where workloads run.</li>
-</ul>
+      <header>
+        <h3>🔹 Upgrade Workflow</h3>
+      </header>
 
+      <div class="content">
 
-<h3>Pod Affinity</h3>
+        <div class="steps">
 
-<p>
-Pod Affinity schedules pods close to other pods.
-</p>
+          <div class="step">1️⃣ Pre-Upgrade Preparation</div>
+          <div class="step">2️⃣ Upgrade Add-ons</div>
+          <div class="step">3️⃣ Upgrade Control Plane</div>
+          <div class="step">4️⃣ Upgrade Worker Nodes</div>
+          <div class="step">5️⃣ Post-Upgrade Validation</div>
 
-<ul>
-<li>Used when applications need low latency communication.</li>
-<li>Example: Application pods running close to cache pods.</li>
-</ul>
+        </div>
 
+        <div class="note">
+          👉 Always follow this sequence to ensure a safe upgrade process.
+        </div>
 
-<h3>Pod AntiAffinity</h3>
+      </div>
 
-<p>
-Pod AntiAffinity ensures pods are scheduled away from certain pods.
-</p>
+    </article>
 
-<ul>
-<li>Improves high availability.</li>
-<li>Prevents all replicas from running on the same node.</li>
-</ul>
+  </div>
 
-
-<h3>Pod Affinity vs Node Affinity</h3>
-
-<table border="1" cellpadding="8">
-
-<tr>
-<th>Type</th>
-<th>Meaning</th>
-<th>Based On</th>
-</tr>
-
-<tr>
-<td>Node Affinity</td>
-<td>Run pods on specific nodes</td>
-<td>Node Labels</td>
-</tr>
-
-<tr>
-<td>Pod Affinity</td>
-<td>Run pods near specific pods</td>
-<td>Pod Labels</td>
-</tr>
-
-<tr>
-<td>Pod AntiAffinity</td>
-<td>Avoid running near specific pods</td>
-<td>Pod Labels</td>
-</tr>
-
-</table>
-
-</div>
-
-<div class="success">
-
-<h2>🚀 Amazon EKS Cluster Upgrade Guide</h2>
-
-<p>
-Upgrading an Amazon EKS cluster is an important operational task that ensures
-your Kubernetes environment stays secure, stable, and compatible with the
-latest Kubernetes features. Each Kubernetes release introduces security patches,
-performance improvements, and sometimes breaking API changes. Because of this,
-cluster upgrades must be performed carefully and in a controlled sequence.
-</p>
-
-<p>
-A typical EKS upgrade process involves the following stages:
-</p>
-
-<ul>
-<li>Preparing the cluster for upgrade</li>
-<li>Upgrading cluster add-ons</li>
-<li>Upgrading the Kubernetes control plane</li>
-<li>Upgrading worker nodes</li>
-<li>Validating workloads after the upgrade</li>
-</ul>
-
-
+</section>
 
 <!-- ================= PRE-UPGRADE ================= -->
 
-<h3>1️⃣ Pre-Upgrade Checklist</h3>
+<section id="pre-upgrade" class="section">
 
-<p>
-Before upgrading your EKS cluster, it is critical to complete several
-preparation steps. These checks ensure that the upgrade does not introduce
-unexpected failures or downtime for running workloads.
-</p>
+  <div class="container">
 
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>1️⃣ Pre-Upgrade Checklist</h2>
+      <p>
+        Upgrading an EKS cluster is a critical operation that must be carefully planned 
+        to avoid service disruption. A proper pre-upgrade checklist ensures cluster stability, 
+        workload compatibility, and minimal downtime during the upgrade process.
+      </p>
+    </header>
 
-<h4>🔹 Backup Cluster State</h4>
+    <!-- BACKUP -->
+    <article id="backup-cluster-state" class="content-block">
 
-<p>
-In a self-managed Kubernetes cluster, the <strong>etcd database</strong>
-stores the entire cluster state. This includes information such as:
-</p>
+      <header>
+        <h3>🔹 Backup Cluster State</h3>
+      </header>
 
-<ul>
-<li>Cluster configuration</li>
-<li>Pod definitions</li>
-<li>Secrets and ConfigMaps</li>
-<li>Service configurations</li>
-<li>Node information</li>
-</ul>
+      <div class="content">
 
-<p>
-If the cluster is self-managed (for example, installed using kubeadm or running
-on-premises), administrators must create a backup of the etcd database before
-performing an upgrade. This backup allows the cluster to be restored if an
-upgrade fails or introduces configuration issues.
-</p>
+        <p>
+          In a self-managed Kubernetes environment, the <strong>etcd database</strong> acts as 
+          the central source of truth for the cluster. It stores all critical state data required 
+          for cluster recovery and operation.
+        </p>
 
-<p>
-However, in Amazon EKS the Kubernetes control plane and etcd database are fully
-managed by AWS. This means administrators do not directly manage etcd backups.
-AWS automatically ensures high availability and reliability of the control plane.
-</p>
+        <ul class="list">
+          <li>Cluster configuration and API objects</li>
+          <li>Pod specifications and deployments</li>
+          <li>Sensitive data such as Secrets and ConfigMaps</li>
+          <li>Service discovery and networking configurations</li>
+          <li>Node metadata and cluster topology</li>
+        </ul>
 
+        <p>
+          Before performing any upgrade in a self-managed cluster (kubeadm/on-prem),
+          administrators must take a snapshot backup of etcd. This ensures that the 
+          cluster can be restored in case of upgrade failures, misconfigurations, or data corruption.
+        </p>
 
+        <div class="note">
+          <p>
+            👉 In Amazon EKS, the control plane (including etcd) is fully managed. AWS 
+            automatically handles backups, replication, and high availability, so manual 
+            intervention is not required.
+          </p>
+        </div>
 
-<h4>🔹 Check Current Kubernetes Version</h4>
+      </div>
 
-<p>
-Before performing an upgrade, administrators must determine the current
-Kubernetes version running in the cluster. Kubernetes upgrades must follow
-a sequential minor version path. This means you cannot skip minor versions
-during upgrades.
-</p>
+    </article>
 
-<p>For example:</p>
+    <!-- VERSION -->
+    <article id="check-version" class="content-block">
 
-<ul>
-<li>Kubernetes v1.31 → v1.32 (Allowed)</li>
-<li>Kubernetes v1.31 → v1.33 (Not allowed directly)</li>
-</ul>
+      <header>
+        <h3>🔹 Check Current Kubernetes Version</h3>
+      </header>
 
-<p>
-You can check the cluster version using the following command:
-</p>
+      <div class="content">
 
-<pre>
+        <p>
+          Kubernetes enforces a <strong>sequential version upgrade policy</strong>. This means 
+          clusters must be upgraded one minor version at a time to maintain compatibility 
+          between the control plane and worker nodes.
+        </p>
+
+        <div class="example-box">
+
+          <div class="allowed">
+            <h4>✅ Allowed Upgrade Path</h4>
+            <p>v1.31 → v1.32</p>
+          </div>
+
+          <div class="not-allowed">
+            <h4>❌ Unsupported Upgrade</h4>
+            <p>v1.31 → v1.33 (Skipping versions is not allowed)</p>
+          </div>
+
+        </div>
+
+        <p>
+          To verify the current cluster version and metadata, use the following command:
+        </p>
+
+        <div class="code-block">
+          <pre>
 eksctl get cluster --name &lt;cluster-name&gt; --region &lt;region&gt;
-</pre>
+          </pre>
+        </div>
 
-<p>
-This command displays important information about the cluster including:
-</p>
+        <div class="list-block">
+          <ul>
+            <li>Cluster name and status</li>
+            <li>Current Kubernetes version</li>
+            <li>AWS region and availability zones</li>
+            <li>Cluster health and endpoint details</li>
+          </ul>
+        </div>
 
-<ul>
-<li>Cluster name</li>
-<li>Kubernetes version</li>
-<li>Cluster region</li>
-<li>Cluster status</li>
-</ul>
+        <div class="note">
+          👉 Alternatively, verify via AWS Console → EKS → Cluster → Details tab.
+        </div>
 
-<p>
-You can also verify the Kubernetes version using the AWS Management Console:
-</p>
+      </div>
 
-<ul>
-<li>Open the AWS Console</li>
-<li>Navigate to EKS</li>
-<li>Select your cluster</li>
-<li>View the Kubernetes version in the cluster details</li>
-</ul>
+    </article>
 
+    <!-- DOCUMENTATION -->
+    <article id="review-docs" class="content-block">
 
+      <header>
+        <h3>🔹 Review Official Documentation</h3>
+      </header>
 
-<h4>🔹 Review Official Kubernetes and EKS Documentation</h4>
+      <div class="content">
 
-<p>
-Before upgrading to a new Kubernetes version, administrators should always
-review the official release notes and documentation. Each Kubernetes version
-may introduce changes that affect cluster behavior or application compatibility.
-</p>
+        <p>
+          Before upgrading, always review the official Kubernetes and EKS release notes 
+          for the target version. This helps identify breaking changes and compatibility issues.
+        </p>
 
-<p>Release notes typically include:</p>
+        <div class="grid">
 
-<ul>
-<li>New features added in the version</li>
-<li>Deprecated APIs</li>
-<li>Removed functionality</li>
-<li>Security improvements</li>
-<li>Performance optimizations</li>
-</ul>
+          <div>✨ Newly introduced features and enhancements</div>
+          <div>⚠️ Deprecated APIs that may be removed soon</div>
+          <div>❌ Removed or unsupported functionalities</div>
+          <div>🔐 Security patches and vulnerability fixes</div>
+          <div>⚡ Performance improvements and optimizations</div>
 
-<p>
-Reviewing these changes helps ensure that your workloads, CI/CD pipelines,
-and infrastructure tools remain compatible with the new version.
-</p>
+        </div>
 
+        <p>
+          Understanding these changes ensures that your applications, CI/CD pipelines, 
+          and infrastructure configurations continue to work seamlessly after the upgrade.
+        </p>
 
+      </div>
 
-<h4>🔹 Document Running Add-ons</h4>
+    </article>
 
-<p>
-Most Kubernetes clusters rely on several add-ons that extend core cluster
-functionality. These components handle networking, DNS, monitoring,
-autoscaling, and service communication.
-</p>
+    <!-- ADDONS -->
+    <article id="addons" class="content-block">
 
-<p>
-Before upgrading the cluster, it is important to identify all running
-add-ons and confirm that they support the target Kubernetes version.
-</p>
+      <header>
+        <h3>🔹 Document Running Add-ons</h3>
+      </header>
 
-<p>Use the following command to list system components:</p>
+      <div class="content">
 
-<pre>
+        <p>
+          Kubernetes clusters rely heavily on add-ons for networking, DNS resolution, 
+          monitoring, and autoscaling. Before upgrading, all add-ons must be identified 
+          and verified for compatibility with the target Kubernetes version.
+        </p>
+
+        <div class="code-block">
+          <pre>
 kubectl get deployments -n kube-system
-</pre>
+          </pre>
+        </div>
 
-<p><strong>Key add-ons to verify:</strong></p>
+        <div class="addons-list">
 
-<ul>
+          <div class="addon">
+            <strong>CoreDNS</strong>
+            <p>Handles internal DNS resolution for service-to-service communication.</p>
+          </div>
 
-<li>
-<strong>CoreDNS</strong><br>
-Provides DNS resolution inside the Kubernetes cluster so that services
-can communicate using service names instead of IP addresses.
-</li>
+          <div class="addon">
+            <strong>VPC CNI</strong>
+            <p>Manages pod networking by assigning IP addresses from the VPC.</p>
+          </div>
 
-<li>
-<strong>VPC CNI (Amazon VPC CNI Plugin)</strong><br>
-Handles pod networking by assigning IP addresses from the AWS VPC
-network to Kubernetes pods.
-</li>
+          <div class="addon">
+            <strong>Metrics Server</strong>
+            <p>Collects CPU and memory usage metrics required for autoscaling.</p>
+          </div>
 
-<li>
-<strong>Metrics Server</strong><br>
-Collects resource usage metrics such as CPU and memory. These metrics
-are required for autoscaling components.
-</li>
+          <div class="addon">
+            <strong>HPA (Horizontal Pod Autoscaler)</strong>
+            <p>Automatically scales pods based on resource utilization.</p>
+          </div>
 
-<li>
-<strong>Horizontal Pod Autoscaler (HPA)</strong><br>
-Automatically increases or decreases the number of pods based on
-resource usage metrics.
-</li>
+          <div class="addon">
+            <strong>Istio</strong>
+            <p>Provides service mesh capabilities like traffic routing and observability.</p>
+          </div>
 
-<li>
-<strong>Istio</strong><br>
-A service mesh used for traffic management, security policies, and
-observability between microservices.
-</li>
+          <div class="addon">
+            <strong>KEDA</strong>
+            <p>Enables event-driven autoscaling based on external triggers.</p>
+          </div>
 
-<li>
-<strong>KEDA</strong><br>
-Kubernetes Event Driven Autoscaling, used for event-based scaling
-such as message queues.
-</li>
+          <div class="addon">
+            <strong>Karpenter</strong>
+            <p>Dynamically provisions nodes based on workload demand.</p>
+          </div>
 
-<li>
-<strong>Karpenter</strong><br>
-A modern node autoscaler that dynamically provisions worker nodes
-based on workload demands.
-</li>
+        </div>
 
-</ul>
+        <div class="note">
+          👉 Always upgrade add-ons before upgrading the control plane to avoid compatibility issues.
+        </div>
 
+      </div>
 
+    </article>
+
+  </div>
+
+</section>
 
 <!-- ================= ADDON UPGRADE ================= -->
 
-<h3>2️⃣ Upgrade Add-ons First</h3>
+<section id="addon-upgrade" class="section">
 
-<p>
-Add-ons should be upgraded before upgrading the Kubernetes control plane.
-This ensures that networking, DNS, and autoscaling components remain
-compatible with the newer Kubernetes version.
-</p>
+  <div class="container">
 
-<p>
-Amazon EKS supports managed add-ons that can be upgraded easily
-using the <strong>eksctl</strong> CLI.
-</p>
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>2️⃣ Upgrade Add-ons First</h2>
+      <p>
+        Before upgrading the Kubernetes control plane, it is essential to upgrade 
+        all cluster add-ons. These components handle networking, DNS, and service 
+        communication, and must remain compatible with the target Kubernetes version.
+      </p>
 
+      <div class="note">
+        📘 Best Practice: Always upgrade add-ons before the control plane to avoid compatibility issues.
+      </div>
+    </header>
 
-<h4>Upgrade Managed Add-ons Using eksctl</h4>
+    <!-- WHY IMPORTANT -->
+    <article class="content-block">
 
-<pre>
+      <header>
+        <h3>🔹 Why Upgrade Add-ons First?</h3>
+      </header>
+
+      <div class="content">
+
+        <p>
+          Add-ons are tightly coupled with Kubernetes APIs. If they are not upgraded, 
+          they may break due to deprecated or removed APIs in newer Kubernetes versions.
+        </p>
+
+        <div class="grid">
+          <div>🌐 Networking (VPC CNI)</div>
+          <div>📡 DNS Resolution (CoreDNS)</div>
+          <div>🔀 Service Routing (kube-proxy)</div>
+          <div>📊 Monitoring & Autoscaling</div>
+        </div>
+
+        <div class="note">
+          👉 Failure to upgrade add-ons can lead to pod networking issues, DNS failures, or service downtime.
+        </div>
+
+      </div>
+
+    </article>
+
+    <!-- MANAGED ADDONS -->
+    <article id="managed-addons" class="content-block">
+
+      <header>
+        <h3>🔹 Upgrade Managed Add-ons (eksctl)</h3>
+      </header>
+
+      <div class="content">
+
+        <p>
+          Amazon EKS provides <strong>managed add-ons</strong> that can be upgraded 
+          easily using the <strong>eksctl CLI</strong>.
+        </p>
+
+        <div class="code-block">
+          <pre>
 eksctl update addon --name coredns \
 --cluster &lt;cluster-name&gt; \
 --region &lt;region&gt; \
@@ -832,94 +1092,225 @@ eksctl update addon --name vpc-cni \
 --cluster &lt;cluster-name&gt; \
 --region &lt;region&gt; \
 --force
-</pre>
+          </pre>
+        </div>
 
-<p>
-Upgrading these add-ons ensures that cluster networking, service routing,
-and DNS resolution continue working correctly after the control plane upgrade.
-</p>
+        <div class="addons-list">
 
+          <div class="addon">
+            <strong>CoreDNS</strong>
+            <p>Handles DNS resolution inside the cluster</p>
+          </div>
 
+          <div class="addon">
+            <strong>kube-proxy</strong>
+            <p>Manages service networking and routing</p>
+          </div>
 
-<h4>Manually Upgrade Other Add-ons</h4>
+          <div class="addon">
+            <strong>VPC CNI</strong>
+            <p>Provides pod networking using AWS VPC</p>
+          </div>
 
-<p>
-Some add-ons are not managed by EKS and must be upgraded manually.
-Examples include Istio, Prometheus, KEDA, and other monitoring tools.
-</p>
+        </div>
 
-<p>
-Administrators should follow the official upgrade documentation for each
-component to ensure compatibility with the new Kubernetes version.
-</p>
+        <div class="note">
+          👉 Use <strong>--force</strong> to overwrite existing versions if required.
+        </div>
 
-<pre>
+      </div>
+
+    </article>
+
+    <!-- MANUAL ADDONS -->
+    <article id="manual-addons" class="content-block">
+
+      <header>
+        <h3>🔹 Manually Upgrade Other Add-ons</h3>
+      </header>
+
+      <div class="content">
+
+        <p>
+          Some add-ons are not managed by EKS and must be upgraded manually 
+          using their official installation manifests or Helm charts.
+        </p>
+
+        <div class="addons-list">
+
+          <div class="addon">
+            <strong>Istio</strong>
+            <p>Service mesh for traffic management</p>
+          </div>
+
+          <div class="addon">
+            <strong>Prometheus</strong>
+            <p>Monitoring and alerting system</p>
+          </div>
+
+          <div class="addon">
+            <strong>KEDA</strong>
+            <p>Event-driven autoscaling</p>
+          </div>
+
+        </div>
+
+        <p>
+          Follow official documentation for each tool to ensure compatibility 
+          with the Kubernetes version you are upgrading to.
+        </p>
+
+        <div class="code-block">
+          <pre>
 kubectl apply -f https://github.com/aws/amazon-vpc-cni-k8s/releases/download/v1.11.7/amazon-vpc-cni-k8s-1.11.7.yaml
-</pre>
+          </pre>
+        </div>
 
+        <div class="note">
+          👉 Always verify version compatibility before applying updates.
+        </div>
 
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
 
 <!-- ================= CONTROL PLANE ================= -->
 
-<h3>3️⃣ Upgrade the EKS Control Plane</h3>
+<section id="control-plane-upgrade" class="section">
 
-<p>
-After all add-ons have been upgraded, the next step is upgrading the
-Kubernetes control plane. The control plane includes components such as:
-</p>
+  <div class="container">
 
-<ul>
-<li>Kubernetes API Server</li>
-<li>Controller Manager</li>
-<li>Scheduler</li>
-<li>etcd database</li>
-</ul>
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>3️⃣ Upgrade the EKS Control Plane</h2>
+      <p>
+        After upgrading all add-ons, the next step is upgrading the Kubernetes 
+        control plane. This ensures that core Kubernetes components are updated 
+        to the target version while maintaining cluster availability.
+      </p>
 
-<p>
-In Amazon EKS, the control plane is fully managed by AWS. When you upgrade
-the control plane, AWS automatically upgrades these components while
-maintaining cluster availability.
-</p>
+      <div class="note">
+        📘 Official Docs: https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html
+      </div>
+    </header>
 
-<h4>Upgrade Using eksctl</h4>
+    <!-- CONTROL PLANE COMPONENTS -->
+    <article class="content-block">
 
-<pre>
-eksctl upgrade cluster --name &lt;cluster-name&gt; --region &lt;region&gt;
-</pre>
+      <header>
+        <h3>🔹 Control Plane Components</h3>
+      </header>
 
-<p>
-This upgrade process is <strong>non-disruptive</strong>, meaning that
-running workloads continue operating during the upgrade.
-</p>
+      <div class="content">
 
-<h4>Alternative: Upgrade via AWS Console</h4>
+        <p>
+          The Kubernetes control plane consists of critical components responsible 
+          for cluster management and orchestration:
+        </p>
 
-<ul>
-<li>Open AWS Console</li>
-<li>Navigate to EKS → Clusters</li>
-<li>Select your cluster</li>
-<li>Click "Update Version"</li>
-<li>Select the target Kubernetes version</li>
-</ul>
+        <ul class="list">
+          <li>Kubernetes API Server</li>
+          <li>Controller Manager</li>
+          <li>Scheduler</li>
+          <li>etcd database</li>
+        </ul>
 
-<p>
-EKS upgrades must follow sequential versions and cannot skip minor versions.
-</p>
+        <div class="note">
+          👉 In Amazon EKS, these components are fully managed by AWS.
+        </div>
 
+      </div>
 
+    </article>
+
+    <!-- UPGRADE USING EKSCTL -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 Upgrade Using eksctl</h3>
+      </header>
+
+      <div class="content">
+
+        <p>
+          You can upgrade the control plane using the <strong>eksctl CLI</strong>.
+        </p>
+
+        <div class="code-block">
+          <pre>
+eksctl upgrade cluster \
+--name &lt;cluster-name&gt; \
+--region &lt;region&gt;
+          </pre>
+        </div>
+
+        <div class="note">
+          👉 This process is <strong>non-disruptive</strong>, meaning workloads continue running.
+        </div>
+
+      </div>
+
+    </article>
+
+    <!-- AWS CONSOLE -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 Upgrade via AWS Console</h3>
+      </header>
+
+      <div class="content">
+
+        <ul class="list">
+          <li>Open AWS Console</li>
+          <li>Go to EKS → Clusters</li>
+          <li>Select your cluster</li>
+          <li>Click <strong>Update Version</strong></li>
+          <li>Select target Kubernetes version</li>
+        </ul>
+
+        <div class="note">
+          👉 Upgrades must follow sequential minor versions (no skipping).
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
 
 <!-- ================= NODE UPGRADE ================= -->
 
-<h3>4️⃣ Upgrade Worker Nodes</h3>
+<section id="node-upgrade" class="section">
 
-<p>
-After upgrading the control plane, worker nodes must also be upgraded so
-that their kubelet version matches the control plane version.
-</p>
+  <div class="container">
 
-<h4>Create a New Node Group</h4>
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>4️⃣ Upgrade Worker Nodes</h2>
+      <p>
+        After upgrading the control plane, worker nodes must be upgraded to 
+        match the Kubernetes version to ensure compatibility and stability.
+      </p>
+    </header>
 
-<pre>
+    <!-- CREATE NODEGROUP -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 Create New Node Group</h3>
+      </header>
+
+      <div class="content">
+
+        <div class="code-block">
+          <pre>
 eksctl create nodegroup \
 --cluster &lt;cluster-name&gt; \
 --name &lt;new-nodegroup-name&gt; \
@@ -930,121 +1321,169 @@ eksctl create nodegroup \
 --node-ami-family AmazonLinux2 \
 --version &lt;target-k8s-version&gt; \
 --region &lt;region&gt;
-</pre>
+          </pre>
+        </div>
 
-<h4>Cordon and Drain Old Nodes</h4>
+        <div class="note">
+          👉 Always create a new node group instead of upgrading in-place.
+        </div>
 
-<pre>
+      </div>
+
+    </article>
+
+    <!-- DRAIN -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 Cordon and Drain Old Nodes</h3>
+      </header>
+
+      <div class="content">
+
+        <div class="code-block">
+          <pre>
 kubectl cordon &lt;old-node-name&gt;
 
 kubectl drain &lt;old-node-name&gt; \
 --ignore-daemonsets \
 --delete-emptydir-data
-</pre>
+          </pre>
+        </div>
 
-<h4>Delete Old Node Group</h4>
+        <div class="note">
+          👉 This safely moves workloads to new nodes.
+        </div>
 
-<pre>
+      </div>
+
+    </article>
+
+    <!-- DELETE -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 Delete Old Node Group</h3>
+      </header>
+
+      <div class="content">
+
+        <div class="code-block">
+          <pre>
 eksctl delete nodegroup \
 --cluster &lt;cluster-name&gt; \
 --name &lt;old-nodegroup-name&gt;
-</pre>
+          </pre>
+        </div>
 
-<h4>Self-Managed Node Groups:</h4>
-<p>For self-managed node groups (EC2 instances in an Auto Scaling group):</p>
-<ul>
-    <li><strong>1.Update the Launch Template </strong>with the latest EKS-optimized AMI for the
-    new Kubernetes version.</li>
-    <li><strong>2. Update the Auto Scaling Group </strong>to use the updated AMI.</li>
-    <li><strong>3. Cordon and Drain Old Nodes </strong>as with managed node groups.</li>
-</ul>
+      </div>
 
+    </article>
 
+    <!-- SELF MANAGED -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 Self-Managed Node Groups</h3>
+      </header>
+
+      <div class="content">
+
+        <ul class="list">
+          <li>Update Launch Template with latest EKS AMI</li>
+          <li>Update Auto Scaling Group</li>
+          <li>Cordon and drain old nodes</li>
+        </ul>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
 
 <!-- ================= VALIDATION ================= -->
 
-<h3>5️⃣ Post-Upgrade Validation</h3>
+<section id="post-validation" class="section">
 
-<p>
-After completing the upgrade, administrators must validate that the cluster
-and workloads are functioning correctly.
-</p>
+  <div class="container">
 
-<h4>Check Node Status</h4>
+    <!-- HEADER -->
+    <header class="section-header">
+      <h2>5️⃣ Post-Upgrade Validation</h2>
+      <p>
+        After completing the upgrade, validate that all cluster components 
+        and workloads are functioning correctly.
+      </p>
+    </header>
 
-<pre>
+    <!-- CHECKS -->
+    <article class="content-block">
+
+      <header>
+        <h3>🔹 Verification Commands</h3>
+      </header>
+
+      <div class="content">
+
+        <div class="code-block">
+          <pre>
 kubectl get nodes
-</pre>
-
-<h4>Check Pod Status</h4>
-
-<pre>
 kubectl get pods --all-namespaces
-</pre>
-
-<h4>Verify System Add-ons</h4>
-
-<pre>
 kubectl get deployment -n kube-system
-</pre>
+          </pre>
+        </div>
 
-<p>
-If all nodes are in the <strong>Ready</strong> state and pods are running
-without errors, the upgrade is considered successful.
-</p>
+        <div class="note">
+          👉 All nodes should be in <strong>Ready</strong> state and pods running.
+        </div>
 
-<h3>🎯 Interview Question</h3>
+      </div>
 
-<p>
-<strong>Interviewer:</strong> Can you walk me through the process of upgrading
-a Kubernetes cluster on EKS?
-</p>
+    </article>
 
-<p><strong>Answer:</strong></p>
+  </div>
 
-<ul>
+</section>
 
-<li>
-<strong>Pre-Upgrade:</strong>
-First, I check the current Kubernetes version using eksctl, review
-release notes, and identify all running add-ons such as CoreDNS,
-VPC CNI, Metrics Server, Istio, KEDA, and Karpenter.
-</li>
+<!-- ================= INTERVIEW ================= -->
 
-<li>
-<strong>Upgrade Add-ons:</strong>
-Next, I upgrade critical managed add-ons using eksctl to ensure
-compatibility with the new Kubernetes version.
-</li>
+<section id="interview" class="section">
 
-<li>
-<strong>Upgrade Control Plane:</strong>
-Then I upgrade the control plane using eksctl or the AWS Console.
-This step is non-disruptive, so workloads keep running.
-</li>
+  <div class="container">
 
-<li>
-<strong>Upgrade Worker Nodes:</strong>
-After that, I create a new node group with the updated version and
-migrate workloads by draining and deleting the old nodes.
-</li>
+    <header class="section-header">
+      <h2>🎯 Interview Question</h2>
+    </header>
 
-<li>
-<strong>Post-Upgrade Validation:</strong>
-Finally, I verify node status, pod health, and add-on functionality
-to ensure the cluster is operating correctly.
-</li>
+    <article class="content-block">
 
-<li>
-<strong>Rollback Strategy:</strong>
-If issues occur, I can revert add-on versions or recreate node
-groups because EKS does not support direct rollback of cluster
-versions.
-</li>
+      <div class="content">
 
-</ul>
+        <p><strong>Q:</strong> Can you explain EKS upgrade process?</p>
 
-</div>
+        <div class="list-block">
+          <ul>
+            <li><strong>Pre-Upgrade:</strong> Check version, review docs, list add-ons</li>
+            <li><strong>Add-ons:</strong> Upgrade CoreDNS, kube-proxy, VPC CNI</li>
+            <li><strong>Control Plane:</strong> Upgrade using eksctl/console</li>
+            <li><strong>Nodes:</strong> Create new node group, drain old nodes</li>
+            <li><strong>Validation:</strong> Verify nodes and pods</li>
+            <li><strong>Rollback:</strong> Recreate nodes / downgrade add-ons</li>
+          </ul>
+        </div>
 
+        <div class="note">
+          👉 EKS does NOT support direct control plane rollback.
+        </div>
+
+      </div>
+
+    </article>
+
+  </div>
+
+</section>
 
 </body>

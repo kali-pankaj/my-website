@@ -1,210 +1,526 @@
-/* RESET */
+
+/* ================= GOOGLE FONT ================= */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap');
+
+/* ================= ROOT VARIABLES ================= */
+:root {
+    --bg: #0b1220;
+    --sidebar: #020617;
+    --card: #0f172a;
+    --border: #1e293b;
+
+    --text: #e2e8f0;
+    --muted: #94a3b8;
+
+    --primary: #38bdf8;
+    --accent: #6366f1;
+
+    /* UX tuning */
+    --radius-sm: 8px;
+    --radius-md: 12px;
+    --radius-lg: 18px;
+
+    --shadow-sm: 0 4px 10px rgba(0,0,0,0.2);
+    --shadow-md: 0 10px 25px rgba(0,0,0,0.35);
+}
+
+/* ================= RESET (CLEAN VERSION) ================= */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
-/* BODY */
+/* Smooth but controlled transitions (avoid global lag) */
+button,
+a,
+.card,
+.service-box,
+.doc-btn {
+    transition: all 0.25s ease-in-out;
+}
+
+/* ================= BODY ================= */
 body {
-  font-family: "Segoe UI", sans-serif;
-  background: linear-gradient(135deg, #020617, #0f172a);
-  color: #e2e8f0;
-  display: flex;
-}
+    display: flex;
+    min-height: 100vh;
 
-/* SIDEBAR */
-.sidebar {
-  width: 240px;
-  height: 100vh;
-  background: rgba(2, 6, 23, 0.95);
-  backdrop-filter: blur(12px);
-  padding: 20px;
-  position: fixed;
-  overflow-y: auto;
-  border-right: 1px solid #1e293b;
-}
+    font-family: 'Inter', sans-serif;
+    background: var(--bg);
+    color: var(--text);
 
-.sidebar h2 {
-  color: #38bdf8;
-  margin-bottom: 15px;
-  font-size: 22px;
-  letter-spacing: 1px;
-}
-
-/* Sidebar Links */
-.sidebar a {
-  display: block;
-  color: #cbd5f5;
-  margin: 5px 0;
-  padding: 7px 10px;
-  border-radius: 6px;
-  text-decoration: none;
-  transition: 0.25s ease;
-}
-
-.sidebar a:hover {
-  background: #1e293b;
-  color: #38bdf8;
-  transform: translateX(6px);
-}
-
-/* Active */
-.sidebar a:active {
-  background: #38bdf8;
-  color: #020617;
-}
-
-/* Scrollbar */
-.sidebar::-webkit-scrollbar {
-  width: 5px;
-}
-.sidebar::-webkit-scrollbar-thumb {
-  background: #38bdf8;
-  border-radius: 10px;
-}
-
-/* MAIN */
-.main {
-  margin-left: 260px;
-  padding: 30px;
-  width: 100%;
-}
-
-/* HEADINGS */
-h1 {
-  color: #38bdf8;
-  margin-bottom: 15px;
-}
-
-h2 {
-  color: #facc15; 
-  margin: 15px 0 8px;
-}
-
-h3 {
-  color: #f0ea3e;
-  display: flex;
-  align-items: center;
-  gap: 6px;
-}
-
-h4 {
-  color: #a78bfa;
-  margin-top: 8px;
-}
-
-/* CARD */
-.card {
-  background: rgba(30, 41, 59, 0.85);
-  backdrop-filter: blur(10px);
-  padding: 50px;
-  border-radius: 14px;
-  margin-bottom: 20px;
-  box-shadow: 0 6px 15px rgba(0,0,0,0.3);
-  font-size: x-large;
-}
-
-.card ul li {
-  position: relative;
-  padding: 8px 0 8px 20px;
-  color: #e2e8f0;
-  font-size: 22px;
-  line-height: 1.5;
-  margin: 10px;
-}
-
-/* SERVICE BOX */
-.service-box {
-  background: rgba(30, 41, 59, 0.9);
-  padding: 50px;
-  margin-top: 15px;
-  border-left: 4px solid #38bdf8;
-  border-radius: 14px;
-  transition: all 0.25s ease;
-  font-size: x-large;
-}
-
-.service-box ul li {
-  position: relative;
-  padding: 8px 0 8px 20px;
-  color: #e2e8f0;
-  font-size: 18px;
-  line-height: 1.5;
-}
-
-.service-box:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
-  border-left-color: #22c545;
-}
-
-/* TAG BASE */
-.tag {
-  font-size: 10px;
-  padding: 4px 10px;
-  border-radius: 20px;
-  font-weight: 600;
-  letter-spacing: 0.4px;
-}
-
-/* TAG COLORS (PROFESSIONAL) */
-.paid {
-  background: rgba(239, 68, 68, 0.15);
-  color: #ef4444;
-  font-size: large;
-}
-
-.free {
-  background: rgba(34, 197, 94, 0.15);
-  color: #22c55e;
-  font-size: large;
-}
-
-.global {
-  background: rgba(59, 130, 246, 0.15);
-  color: #3b82f6;
-  font-size: large;
-}
-
-.regional {
-  background: rgba(250, 204, 21, 0.15);
-  color: #facc15;
-  font-size: large;
-}
-
-/* dos */
-.section.docs {
-    padding: 16px;
-    margin-top: 20px;
-}
-
-.section.docs h4 {
     font-size: 16px;
-    margin-bottom: 12px;
-    color: #ffffff;
+    line-height: 1.6;
+
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
+/* Optional: better text rendering */
+html {
+    text-rendering: optimizeLegibility;
+    scroll-behavior: smooth;
+}
+
+/* ================= SELECTION ================= */
+::selection {
+    background: rgba(56,189,248,0.3);
+    color: white;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+    width: 280px;
+    height: 100vh;
+    background: linear-gradient(180deg, #020617, #020617e6);
+    position: fixed;
+    padding: 25px 15px;
+    border-right: 1px solid var(--border);
+    overflow-y: auto;
+}
+
+/* Title */
+.sidebar h2 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: var(--primary);
+    font-weight: 600;
+    letter-spacing: 0.5px;
+}
+
+/* ================= LINKS ================= */
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 14px 16px;
+    margin: 6px 0;
+    font-size: 14px;
+    color: var(--muted);
+    text-decoration: none;
+    border-radius: 12px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* LEFT ACTIVE BAR */
+.sidebar a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 3px;
+    background: var(--primary);
+    border-radius: 4px;
+    opacity: 0;
+    transition: 0.3s;
+}
+
+/* HOVER EFFECT */
+.sidebar a:hover {
+    background: rgba(56,189,248,0.12);
+    color: var(--primary);
+    transform: translateX(8px);
+    box-shadow: 0 0 10px rgba(56,189,248,0.15);
+}
+
+/* ACTIVE LINK */
+.sidebar a.active {
+    background: rgba(56,189,248,0.18);
+    color: var(--primary);
+    font-weight: 500;
+}
+
+.sidebar a.active::before {
+    opacity: 1;
+}
+
+/* ================= ICON STYLE ================= */
+.sidebar a i {
+    font-size: 16px;
+    opacity: 0.8;
+}
+
+/* ICON ANIMATION */
+.sidebar a:hover i {
+    transform: scale(1.2);
+    opacity: 1;
+}
+
+/* ================= HOVER GLOW LINE ================= */
+.sidebar a::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: linear-gradient(90deg, transparent, rgba(56,189,248,0.2), transparent);
+    opacity: 0;
+    transition: 0.4s;
+}
+
+.sidebar a:hover::after {
+    opacity: 1;
+}
+
+/* ================= SCROLL SHADOW ================= */
+.sidebar::after {
+    content: "";
+    position: sticky;
+    bottom: 0;
+    display: block;
+    height: 20px;
+    background: linear-gradient(to top, var(--sidebar), transparent);
+}
+
+/* ================= TOOLTIP (FOR FUTURE COLLAPSE) ================= */
+.sidebar a span {
+    position: relative;
+}
+
+.sidebar a span::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 110%;
+    top: 50%;
+    transform: translateY(-50%);
+    background: #020617;
+    color: white;
+    padding: 4px 8px;
+    font-size: 11px;
+    border-radius: 6px;
+    opacity: 0;
+    pointer-events: none;
+    white-space: nowrap;
+}
+
+.sidebar a:hover span::after {
+    opacity: 1;
+}
+
+/* ================= MAIN ================= */
+.main {
+    margin-left: 280px;
+    padding: 40px;
+    width: 100%;
+    background: radial-gradient(
+        circle at top,
+        rgba(56,189,248,0.05),
+        transparent 60%
+    );
+}
+
+/* ================= HEADER ================= */
+.aws h1 {
+    font-size: 42px;
+    margin-bottom: 25px;
+    font-weight: 600;
+    letter-spacing: -0.6px;
+    color: var(--text);
+}
+
+/* ================= CARD ================= */
+.card,
+.service-box {
+    background: linear-gradient(
+        145deg,
+        rgba(15,23,42,0.92),
+        rgba(2,6,23,0.92)
+    );
+    border: 1px solid rgba(148,163,184,0.15);
+    border-radius: 20px;
+    padding: 32px;
+    margin-bottom: 28px;
+
+    box-shadow:
+        0 10px 30px rgba(0,0,0,0.45),
+        inset 0 0 0 1px rgba(56,189,248,0.03);
+
+    transition: all 0.3s ease;
+}
+
+/* Hover = premium lift */
+.card:hover,
+.service-box:hover {
+    transform: translateY(-8px) scale(1.015);
+    box-shadow:
+        0 25px 50px rgba(56,189,248,0.18),
+        0 10px 30px rgba(0,0,0,0.6);
+    border-color: rgba(56,189,248,0.4);
+}
+
+/* ================= TITLE ================= */
+.service-title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    color: var(--text);
+}
+
+/* ================= TAGS ================= */
+.tag {
+    font-size: 12px;
+    padding: 6px 10px;
+    border-radius: 10px;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+
+.tag.free { background: rgba(74,222,128,0.1); color: #4ade80; }
+.tag.paid { background: rgba(248,113,113,0.1); color: #f87171; }
+.tag.global { background: rgba(56,189,248,0.1); color: #38bdf8; }
+.tag.regional { background: rgba(250,204,21,0.1); color: #facc15; }
+
+/* ================= TEXT ================= */
+.meta {
+    font-size: 14px;
+    color: var(--muted);
+    margin-bottom: 18px;
+    line-height: 1.6;
+}
+
+/* ================= SECTION ================= */
+.section {
+    margin-top: 18px;
+    padding-top: 10px;
+}
+
+/* Section heading */
+.section h4 {
+    font-size: 16px;
+    margin-bottom: 8px;
+    color: var(--primary);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+/* subtle accent dot */
+.section h4::before {
+    content: "●";
+    font-size: 10px;
+    color: var(--primary);
+}
+
+/* ================= LIST ================= */
+.section ul {
+    padding-left: 20px;
+}
+
+.section ul li {
+    font-size: 15px;
+    margin-bottom: 10px;
+    line-height: 1.6;
+    transition: all 0.25s ease;
+}
+
+/* marker */
+.section ul li::marker {
+    color: var(--primary);
+}
+
+/* hover effect */
+.section ul li:hover {
+    transform: translateX(4px);
+    color: var(--text);
+}
+
+/* ================= CODE BLOCK ================= */
+.code-box {
+    background: linear-gradient(145deg, #020617, #0a0f1f);
+    border: 1px solid rgba(148,163,184,0.15);
+    border-radius: 16px;
+    padding: 20px;
+    margin-top: 12px;
+    overflow-x: auto;
+    position: relative;
+
+    box-shadow:
+        inset 0 0 15px rgba(0,0,0,0.7),
+        0 10px 25px rgba(0,0,0,0.4);
+}
+
+/* ================= TOP BAR (TERMINAL HEADER) ================= */
+.code-box::before {
+    content: "●  ●  ●   Terminal";
+    position: absolute;
+    top: 10px;
+    left: 14px;
+    font-size: 11px;
+    letter-spacing: 1px;
+    color: rgba(148,163,184,0.6);
+}
+
+/* ================= CODE TEXT ================= */
+.code-box pre {
+    margin-top: 25px;
+    font-family: "Fira Code", monospace;
+    font-size: 14px;
+    line-height: 1.75;
+    color: #38bdf8;
+    white-space: pre-wrap;
+}
+
+/* ================= COPY BUTTON ================= */
+.code-box button {
+    position: absolute;
+    top: 10px;
+    right: 12px;
+
+    background: rgba(56,189,248,0.15);
+    border: 1px solid rgba(56,189,248,0.3);
+    color: var(--primary);
+
+    padding: 6px 10px;
+    font-size: 11px;
+    border-radius: 8px;
+    cursor: pointer;
+
+    transition: all 0.25s ease;
+}
+
+/* Hover effect */
+.code-box button:hover {
+    background: var(--primary);
+    color: #020617;
+    transform: scale(1.05);
+    box-shadow: 0 0 12px rgba(56,189,248,0.3);
+}
+
+/* ================= HOVER LIFT ================= */
+.code-box {
+    transition: all 0.3s ease;
+}
+
+.code-box:hover {
+    transform: translateY(-3px);
+    border-color: rgba(56,189,248,0.4);
+}
+
+/* ================= SCROLLBAR INSIDE CODE ================= */
+.code-box::-webkit-scrollbar {
+    height: 6px;
+}
+
+.code-box::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--primary), var(--accent));
+    border-radius: 10px;
+}
+
+
+/* ================= BUTTON ================= */
 .doc-btn {
     display: inline-block;
-    padding: 8px 14px;
-    background: #216d0f;
-    color: #fff;
-    text-decoration: none;
-    border-radius: 5px;
+    margin-top: 12px;
+    padding: 12px 18px;
     font-size: 14px;
+    border-radius: 10px;
+
+    background: linear-gradient(135deg, var(--primary), var(--accent));
+    color: white;
+    text-decoration: none;
+
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
 }
 
+/* Hover effect */
 .doc-btn:hover {
-    background: #0c00e6;
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 10px 25px rgba(99,102,241,0.35);
 }
 
-/* TEXT */
-strong {
-  color: #6bb7e6;
+/* Click effect */
+.doc-btn:active {
+    transform: scale(0.98);
 }
 
-/* SCROLL */
+/* Glow ripple effect */
+.doc-btn::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    background: rgba(255,255,255,0.2);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    transition: width 0.4s ease, height 0.4s ease;
+}
+
+.doc-btn:hover::after {
+    width: 200%;
+    height: 200%;
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: linear-gradient(var(--primary), var(--accent));
+    border-radius: 10px;
+    transition: all 0.3s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    box-shadow: 0 0 10px rgba(99,102,241,0.4);
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ================= SMOOTH SCROLL ================= */
 html {
-  scroll-behavior: smooth;
+    scroll-behavior: smooth;
+}
+
+/* ================= MOBILE ================= */
+@media (max-width: 768px) {
+
+    /* Sidebar becomes top drawer */
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+        padding: 15px;
+
+        border-right: none;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* Main content reset */
+    .main {
+        margin-left: 0;
+        padding: 18px;
+    }
+
+    /* Typography scaling */
+    .aws h1 {
+        font-size: 26px;
+    }
+
+    .service-title {
+        font-size: 18px;
+    }
+
+    body {
+        font-size: 15px;
+    }
 }
