@@ -1,0 +1,19 @@
+YES — backend different languages me likha ja sakta hai
+BUT ek hi application ka backend normally ek hi language me hota hai
+| Service         | Language |
+| --------------- | -------- |
+| Login service   | Java     |
+| Payment service | Go       |
+| AI service      | Python   |
+| API gateway     | Node.js  |
+
+
+Simple real-world frontend stack
+Frontend me bhi mainly 3 languages hoti hain, but mostly ek hi core hota hai:
+| Layer     | Tech            |
+| --------- | --------------- |
+| Structure | HTML            |
+| Design    | CSS             |
+| Logic     | JavaScript      |
+| Advanced  | React / Angular |
+| Better JS | TypeScript      |
