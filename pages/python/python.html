@@ -1,0 +1,2458 @@
+<link rel="stylesheet" href="style.css">
+<!-- SideBar -->
+<div class="sidebar">
+    <h3 class="logo">Python for DevOps</h3>
+
+    <a class="menu-link" href="#introduction">Introduction</a><br>
+    <a class="menu-link" href="#variables">Variables & Data Types</a><br>
+    <a class="menu-link" href="#operators">Operators</a><br>
+    <a class="menu-link" href="#strings">Strings</a><br>
+    <a class="menu-link" href="#input-output">Input & Output</a><br>
+    <a class="menu-link" href="#conditionals">Conditional Statements</a><br>
+    <a class="menu-link" href="#loops">Loops</a><br>
+    <a class="menu-link" href="#data-structures">Data Structures</a><br>
+    <a class="menu-link" href="#functions">Functions</a><br>
+    <a class="menu-link" href="#modules-packages">Modules & Packages</a><br>
+    <a class="menu-link" href="#file-handling">File Handling</a><br>
+    <a class="menu-link" href="#error-handling">Error Handling</a><br>
+    <a class="menu-link" href="#oop">OOP (Object-Oriented Programming)</a><br>
+    <a class="menu-link" href="#advanced-python">Advanced Python</a><br>
+    <a class="menu-link" href="#libraries">Libraries</a><br>
+    <a class="menu-link" href="#database">Database (Basic)</a><br>
+    <a class="menu-link" href="#web-basics">Web Basics</a><br>
+    <a class="menu-link" href="#automation-devops">Automation / DevOps Python</a><br>
+    <a class="menu-link" href="#api-json">API & JSON</a><br>
+    <a class="menu-link" href="#projects">Projects 🚀</a><br>
+    </div>
+
+<!-- Main Content -->
+<div class="main-content">
+
+    <!-- Introduction -->
+    <section id="introduction" class="section">
+        <div class="card">
+
+            <h2 class="title">Introduction to Python</h2>
+
+            <p class="text">
+                <strong>Python</strong> is a powerful, simple, and beginner-friendly programming language.
+                It is widely used in DevOps, Automation, Web Development, Data Science, Artificial Intelligence, and Cloud Computing.
+            </p>
+
+            <h4 class="sub-title">What is Python?</h4>
+
+            <p class="text">
+                Python is a high-level, interpreted programming language created by Guido van Rossum in 1991.
+                It focuses on readability and simplicity, making it perfect for beginners and professionals.
+            </p>
+
+            <h4 class="sub-title">Installing Python</h4>
+
+            <h5>Windows</h5>
+            <ul class="list">
+                <li>Go to https://python.org</li>
+                <li>Download Python installer</li>
+                <li>Run setup and check "Add Python to PATH"</li>
+            </ul>
+
+            <h5>Linux (Ubuntu)</h5>
+            <pre class="code">
+sudo apt update
+sudo apt install python3
+            </pre>
+
+            <h5>Mac OS</h5>
+            <pre class="code">
+brew install python
+            </pre>
+
+            <h4 class="sub-title">Running Python</h4>
+
+            <h5>CLI (Command Line)</h5>
+            <pre class="code">
+python3
+print("Hello CLI")
+            </pre>
+
+            <h5>Run Python File</h5>
+            <pre class="code">
+python3 app.py
+            </pre>
+
+            <h5>VS Code</h5>
+            <ul class="list">
+                <li>Install VS Code</li>
+                <li>Install Python Extension</li>
+                <li>Create .py file and click Run</li>
+            </ul>
+
+            <h4 class="sub-title">Python Syntax</h4>
+
+            <pre class="code">
+if 5 > 2:
+    print("Five is greater than two")
+            </pre>
+
+            <h4 class="sub-title">Comments in Python</h4>
+
+            <pre class="code">
+# Single line comment
+
+"""
+Multi line comment
+"""
+            </pre>
+
+        </div>
+    </section>
+
+    <!-- Variables -->
+    <section id="variables" class="section">
+        <div class="card">
+
+            <h2 class="title">Variables and Data Types</h2>
+
+            <p class="text">
+                Variables are used to store data values in Python.
+                Python automatically detects the type of data stored in a variable.
+            </p>
+
+            <h4 class="sub-title">Types of Data</h4>
+
+            <ul class="list">
+                <li><strong>int</strong> - Whole numbers (10, 20)</li>
+                <li><strong>float</strong> - Decimal numbers (10.5, 3.14)</li>
+                <li><strong>str</strong> - Text data ("Hello")</li>
+                <li><strong>bool</strong> - True / False</li>
+            </ul>
+
+            <h4 class="sub-title">Type Casting</h4>
+
+            <p class="text">Converting one data type into another.</p>
+
+            <pre class="code">
+x = 10
+y = float(x)
+
+print(x)
+print(y)
+            </pre>
+
+        </div>
+    </section>
+
+    <!-- Operators -->
+    <section id="operators" class="section">
+        <div class="card">
+
+            <h2 class="title">Operators</h2>
+
+            <p class="text">
+                Operators are symbols used to perform operations on variables and values.
+            </p>
+
+            <h4 class="sub-title">Arithmetic Operators</h4>
+            <ul class="list">
+                <li>+ Addition</li>
+                <li>- Subtraction</li>
+                <li>* Multiplication</li>
+                <li>/ Division</li>
+                <li>% Modulus</li>
+            </ul>
+
+            <h4 class="sub-title">Comparison Operators</h4>
+            <ul class="list">
+                <li>== Equal to</li>
+                <li>!= Not equal to</li>
+                <li>&gt; Greater than</li>
+                <li>&lt; Less than</li>
+                <li>&gt;= Greater than or equal</li>
+                <li>&lt;= Less than or equal</li>
+            </ul>
+
+            <h4 class="sub-title">Logical Operators</h4>
+            <ul class="list">
+                <li>and</li>
+                <li>or</li>
+                <li>not</li>
+            </ul>
+
+            <h4 class="sub-title">Assignment Operators</h4>
+            <ul class="list">
+                <li>=</li>
+                <li>+=</li>
+                <li>-=</li>
+                <li>*=</li>
+                <li>/=</li>
+            </ul>
+
+            <h4 class="sub-title">Example</h4>
+
+            <pre class="code">
+a = 10
+b = 5
+
+print(a + b)
+print(a > b)
+a += 5
+print(a)
+            </pre>
+
+        </div>
+    </section>
+
+    <!-- Strings -->
+<section id="strings" class="section">
+    <div class="card">
+
+        <h2 class="title">Strings</h2>
+
+        <p class="text">
+            A string is a sequence of characters used to store and manipulate text in Python.
+            Strings are enclosed in single quotes (' '), double quotes (" "), or triple quotes (""" """).
+        </p>
+
+        <h4 class="sub-title">String Indexing</h4>
+
+        <p class="text">
+            Indexing means accessing individual characters of a string using their position.
+            Python strings are zero-indexed, meaning the first character is at index 0.
+        </p>
+
+        <ul class="list">
+            <li><b>Positive Indexing:</b> Starts from 0 (left to right)</li>
+            <li><b>Negative Indexing:</b> Starts from -1 (right to left)</li>
+        </ul>
+
+        <pre class="code">
+text = "PYTHON"
+
+# Positive indexing
+print(text[0])   # P
+print(text[1])   # Y
+
+# Negative indexing
+print(text[-1])  # N
+print(text[-2])  # O
+        </pre>
+
+        <h4 class="sub-title">String Slicing</h4>
+
+        <p class="text">
+            Slicing is used to extract a part (substring) of a string.
+            It follows the syntax: <b>string[start:end:step]</b>
+        </p>
+
+        <ul class="list">
+            <li><b>start:</b> Starting index (included)</li>
+            <li><b>end:</b> Ending index (not included)</li>
+            <li><b>step:</b> Jump size (optional)</li>
+        </ul>
+
+        <pre class="code">
+text = "PYTHON PROGRAM"
+
+print(text[0:6])     # PYTHON
+print(text[7:14])    # PROGRAM
+print(text[:6])      # PYTHON
+print(text[::2])     # PTOPRGM (every 2nd character)
+        </pre>
+
+        <h4 class="sub-title">String Methods</h4>
+
+        <p class="text">
+            Python provides built-in methods to modify and analyze strings.
+        </p>
+
+        <ul class="list">
+            <li>upper() → Converts string to uppercase</li>
+            <li>lower() → Converts string to lowercase</li>
+            <li>strip() → Removes whitespace from both ends</li>
+            <li>replace(old, new) → Replaces characters or words</li>
+            <li>find() → Returns index of first occurrence</li>
+            <li>len() → Returns length of string</li>
+        </ul>
+
+        <pre class="code">
+text = "  Hello Python  "
+
+print(text.upper())       # HELLO PYTHON
+print(text.lower())       # hello python
+print(text.strip())       # Hello Python
+print(text.replace("Python", "World"))
+
+print(len(text))          # length of string
+print(text.find("Python"))
+        </pre>
+
+        <h4 class="sub-title">Formatting (f-strings)</h4>
+
+        <p class="text">
+            f-strings allow embedding variables directly inside strings for easy formatting.
+            They were introduced in Python 3.6.
+        </p>
+
+        <ul class="list">
+            <li>Prefix string with <b>f</b></li>
+            <li>Use curly braces {} for variables</li>
+            <li>Supports expressions inside braces</li>
+        </ul>
+
+        <pre class="code">
+name = "Kali"
+age = 20
+
+print(f"My name is {name}")
+print(f"I am {age} years old")
+
+# Expression inside f-string
+print(f"Next year age will be {age + 1}")
+        </pre>
+
+        <h4 class="sub-title">Real-Life Example</h4>
+
+        <pre class="code">
+student = "Aman"
+marks = 85
+
+print(f"Student {student} scored {marks} marks in Python exam.")
+        </pre>
+
+    </div>
+</section>
+
+<!-- Input and Output -->
+<section id="input-output" class="section">
+    <div class="card">
+
+        <h2 class="title">Input and Output</h2>
+
+        <p class="text">
+            Input and output are fundamental parts of any programming language.
+            They allow interaction between the user and the program.
+            In Python, we use <b>input()</b> for taking input and <b>print()</b> for displaying output.
+        </p>
+
+        <h4 class="sub-title">What is Input?</h4>
+
+        <p class="text">
+            Input means receiving data from the user during program execution.
+            Python uses the <b>input()</b> function to take input from the keyboard.
+        </p>
+
+        <ul class="list">
+            <li>Takes data from user during runtime</li>
+            <li>Always returns data as a string</li>
+            <li>Can include a message (prompt) inside brackets</li>
+        </ul>
+
+        <h4 class="sub-title">Input Syntax</h4>
+
+        <pre class="code">
+variable = input("Prompt message")
+        </pre>
+
+        <h4 class="sub-title">Input Example</h4>
+
+        <pre class="code">
+name = input("Enter your name: ")
+age = input("Enter your age: ")
+
+print(name)
+print(age)
+        </pre>
+
+        <h4 class="sub-title">Important Note About Input</h4>
+
+        <ul class="list">
+            <li>input() always returns a string (even numbers)</li>
+            <li>To use numbers, convert using int() or float()</li>
+        </ul>
+
+        <pre class="code">
+age = input("Enter age: ")
+print(type(age))   # str
+
+age = int(input("Enter age: "))
+print(type(age))   # int
+        </pre>
+
+        <h4 class="sub-title">What is Output?</h4>
+
+        <p class="text">
+            Output means displaying data to the user.
+            Python uses the <b>print()</b> function to show output on the screen.
+        </p>
+
+        <ul class="list">
+            <li>Displays results of program execution</li>
+            <li>Can print text, variables, or expressions</li>
+            <li>Supports multiple values in one line</li>
+        </ul>
+
+        <h4 class="sub-title">Print Syntax</h4>
+
+        <pre class="code">
+print(value1, value2, ...)
+        </pre>
+
+        <h4 class="sub-title">Print Example</h4>
+
+        <pre class="code">
+print("Hello World")
+print("Python is easy to learn")
+
+name = "Kali"
+print("My name is", name)
+        </pre>
+
+        <h4 class="sub-title">Example Program (Input + Output)</h4>
+
+        <p class="text">
+            This program takes user input and displays a greeting message.
+        </p>
+
+        <pre class="code">
+name = input("Enter name: ")
+print("Hello", name)
+        </pre>
+
+        <h4 class="sub-title">Advanced Example</h4>
+
+        <p class="text">
+            You can also combine input with numbers and calculations.
+        </p>
+
+        <pre class="code">
+num1 = int(input("Enter first number: "))
+num2 = int(input("Enter second number: "))
+
+sum = num1 + num2
+
+print("Sum is:", sum)
+        </pre>
+
+        <h4 class="sub-title">Common Mistakes</h4>
+
+        <ul class="list">
+            <li>Forgetting that input() returns a string</li>
+            <li>Not converting input before mathematical operations</li>
+            <li>Incorrect use of print formatting</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Conditional Statements -->
+<section id="conditionals" class="section">
+    <div class="card">
+
+        <h2 class="title">Conditional Statements</h2>
+
+        <p class="text">
+            Conditional statements are used to make decisions in a program.
+            They execute different blocks of code based on conditions (True or False).
+            Python provides <b>if</b>, <b>elif</b>, <b>else</b>, and nested if statements.
+        </p>
+
+        <h4 class="sub-title">if Statement</h4>
+
+        <p class="text">
+            The <b>if</b> statement executes a block of code only when the condition is True.
+        </p>
+
+        <ul class="list">
+            <li>Used for single condition checking</li>
+            <li>Executes only if condition is True</li>
+        </ul>
+
+        <pre class="code">
+age = 18
+
+if age >= 18:
+    print("You are eligible to vote")
+        </pre>
+
+        <h4 class="sub-title">if-else Statement</h4>
+
+        <p class="text">
+            The <b>else</b> block executes when the if condition is False.
+        </p>
+
+        <ul class="list">
+            <li>Used when two outcomes are possible</li>
+            <li>Either if or else will execute</li>
+        </ul>
+
+        <pre class="code">
+age = 16
+
+if age >= 18:
+    print("You can vote")
+else:
+    print("You cannot vote")
+        </pre>
+
+        <h4 class="sub-title">if-elif-else Statement</h4>
+
+        <p class="text">
+            The <b>elif</b> (else if) is used when multiple conditions need to be checked.
+        </p>
+
+        <ul class="list">
+            <li>Used for multiple conditions</li>
+            <li>Checks conditions one by one</li>
+            <li>Only one block will execute</li>
+        </ul>
+
+        <pre class="code">
+marks = 75
+
+if marks >= 90:
+    print("Grade A")
+elif marks >= 75:
+    print("Grade B")
+elif marks >= 50:
+    print("Grade C")
+else:
+    print("Fail")
+        </pre>
+
+        <h4 class="sub-title">Nested if Statement</h4>
+
+        <p class="text">
+            A nested if is an if statement inside another if statement.
+            It is used when multiple conditions depend on each other.
+        </p>
+
+        <ul class="list">
+            <li>One if inside another if</li>
+            <li>Used for complex decision making</li>
+        </ul>
+
+        <pre class="code">
+age = 20
+citizen = True
+
+if age >= 18:
+    if citizen:
+        print("You are eligible to vote")
+    else:
+        print("You must be a citizen to vote")
+else:
+    print("You are not eligible to vote")
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Conditions must return True or False</li>
+            <li>Indentation is very important in Python</li>
+            <li>Only one block executes in if-elif-else chain</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Loops -->
+<section id="loops" class="section">
+    <div class="card">
+
+        <h2 class="title">Loops</h2>
+
+        <p class="text">
+            Loops are used to execute a block of code multiple times.
+            They help avoid repetition and make programs efficient.
+            Python provides <b>for loop</b> and <b>while loop</b>, along with control statements like <b>break</b>, <b>continue</b>, and <b>pass</b>.
+        </p>
+
+        <h4 class="sub-title">for Loop</h4>
+
+        <p class="text">
+            The <b>for loop</b> is used to iterate over a sequence like list, string, or range.
+        </p>
+
+        <ul class="list">
+            <li>Used when number of iterations is known</li>
+            <li>Works with sequences (list, string, range)</li>
+        </ul>
+
+        <pre class="code">
+for i in range(5):
+    print(i)
+        </pre>
+
+        <p class="text">
+            Example with list:
+        </p>
+
+        <pre class="code">
+fruits = ["apple", "banana", "mango"]
+
+for fruit in fruits:
+    print(fruit)
+        </pre>
+
+        <h4 class="sub-title">while Loop</h4>
+
+        <p class="text">
+            The <b>while loop</b> runs as long as a condition is True.
+        </p>
+
+        <ul class="list">
+            <li>Used when number of iterations is unknown</li>
+            <li>Runs until condition becomes False</li>
+        </ul>
+
+        <pre class="code">
+i = 0
+
+while i < 5:
+    print(i)
+    i += 1
+        </pre>
+
+        <h4 class="sub-title">break Statement</h4>
+
+        <p class="text">
+            The <b>break</b> statement is used to stop the loop immediately.
+        </p>
+
+        <ul class="list">
+            <li>Terminates loop execution</li>
+            <li>Used when condition is met early</li>
+        </ul>
+
+        <pre class="code">
+for i in range(10):
+    if i == 5:
+        break
+    print(i)
+        </pre>
+
+        <h4 class="sub-title">continue Statement</h4>
+
+        <p class="text">
+            The <b>continue</b> statement skips the current iteration and moves to the next one.
+        </p>
+
+        <ul class="list">
+            <li>Skips current loop iteration</li>
+            <li>Does not stop the loop</li>
+        </ul>
+
+        <pre class="code">
+for i in range(5):
+    if i == 2:
+        continue
+    print(i)
+        </pre>
+
+        <h4 class="sub-title">pass Statement</h4>
+
+        <p class="text">
+            The <b>pass</b> statement is a placeholder that does nothing.
+            It is used when code is required syntactically but no action is needed.
+        </p>
+
+        <ul class="list">
+            <li>Used as a placeholder</li>
+            <li>Does nothing when executed</li>
+        </ul>
+
+        <pre class="code">
+for i in range(5):
+    if i == 2:
+        pass
+    print(i)
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>for loop is used for known iterations</li>
+            <li>while loop depends on condition</li>
+            <li>break stops loop completely</li>
+            <li>continue skips current iteration</li>
+            <li>pass does nothing (placeholder)</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Data Structures -->
+<section id="data-structures" class="section">
+    <div class="card">
+
+        <h2 class="title">Data Structures</h2>
+
+        <p class="text">
+            Data structures are used to store and organize data in Python.
+            Python provides built-in data structures like <b>Lists</b>, <b>Tuples</b>, <b>Sets</b>, and <b>Dictionaries</b>.
+        </p>
+
+        <!-- LISTS -->
+        <h4 class="sub-title">Lists</h4>
+
+        <p class="text">
+            A list is an ordered, changeable collection that allows duplicate values.
+        </p>
+
+        <ul class="list">
+            <li>Ordered (index-based)</li>
+            <li>Mutable (can be changed)</li>
+            <li>Allows duplicates</li>
+        </ul>
+
+        <pre class="code">
+fruits = ["apple", "banana", "mango"]
+print(fruits)
+        </pre>
+
+        <h4 class="sub-title">List Methods</h4>
+
+        <ul class="list">
+            <li>append() → Adds item at end</li>
+            <li>insert() → Adds item at specific position</li>
+            <li>remove() → Removes specific item</li>
+            <li>pop() → Removes item by index</li>
+        </ul>
+
+        <pre class="code">
+fruits = ["apple", "banana", "mango"]
+
+fruits.append("orange")
+fruits.insert(1, "grapes")
+fruits.remove("banana")
+fruits.pop(0)
+
+print(fruits)
+        </pre>
+
+        <!-- TUPLES -->
+        <h4 class="sub-title">Tuples</h4>
+
+        <p class="text">
+            A tuple is an ordered collection that is immutable (cannot be changed after creation).
+        </p>
+
+        <ul class="list">
+            <li>Ordered</li>
+            <li>Immutable (unchangeable)</li>
+            <li>Allows duplicates</li>
+        </ul>
+
+        <pre class="code">
+colors = ("red", "green", "blue")
+print(colors)
+        </pre>
+
+        <p class="text">
+            Tuples are used when data should not be modified.
+        </p>
+
+        <!-- SETS -->
+        <h4 class="sub-title">Sets</h4>
+
+        <p class="text">
+            A set is an unordered collection of unique elements.
+        </p>
+
+        <ul class="list">
+            <li>Unordered</li>
+            <li>No duplicate values allowed</li>
+            <li>Mutable (can add/remove items)</li>
+        </ul>
+
+        <pre class="code">
+numbers = {1, 2, 3, 3, 4}
+print(numbers)   # duplicates removed
+        </pre>
+
+        <h4 class="sub-title">Set Methods</h4>
+
+        <ul class="list">
+            <li>add() → Adds element</li>
+            <li>remove() → Removes element</li>
+        </ul>
+
+        <pre class="code">
+numbers = {1, 2, 3}
+
+numbers.add(4)
+numbers.remove(2)
+
+print(numbers)
+        </pre>
+
+        <!-- DICTIONARIES -->
+        <h4 class="sub-title">Dictionaries</h4>
+
+        <p class="text">
+            A dictionary stores data in key-value pairs.
+        </p>
+
+        <ul class="list">
+            <li>Key-value structure</li>
+            <li>Keys must be unique</li>
+            <li>Values can be any type</li>
+        </ul>
+
+        <pre class="code">
+student = {
+    "name": "Kali",
+    "age": 20,
+    "course": "Python"
+}
+
+print(student)
+print(student["name"])
+        </pre>
+
+        <h4 class="sub-title">Dictionary Methods</h4>
+
+        <ul class="list">
+            <li>keys() → Returns all keys</li>
+            <li>values() → Returns all values</li>
+            <li>items() → Returns key-value pairs</li>
+        </ul>
+
+        <pre class="code">
+print(student.keys())
+print(student.values())
+print(student.items())
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Lists are mutable and ordered</li>
+            <li>Tuples are immutable</li>
+            <li>Sets store unique values only</li>
+            <li>Dictionaries use key-value mapping</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Functions -->
+<section id="functions" class="section">
+    <div class="card">
+
+        <h2 class="title">Functions</h2>
+
+        <p class="text">
+            Functions are reusable blocks of code that perform a specific task.
+            They help in making programs modular, readable, and reusable.
+        </p>
+
+        <h4 class="sub-title">Defining Functions</h4>
+
+        <p class="text">
+            In Python, a function is defined using the <b>def</b> keyword.
+        </p>
+
+        <ul class="list">
+            <li>Starts with def keyword</li>
+            <li>Function name should be meaningful</li>
+            <li>Code inside function must be indented</li>
+        </ul>
+
+        <pre class="code">
+def greet():
+    print("Hello, Welcome to Python!")
+
+greet()
+        </pre>
+
+        <h4 class="sub-title">Functions with Arguments</h4>
+
+        <p class="text">
+            Arguments are values passed to a function when it is called.
+            They allow functions to work with different inputs.
+        </p>
+
+        <ul class="list">
+            <li>Arguments are passed inside parentheses</li>
+            <li>Can have multiple arguments</li>
+        </ul>
+
+        <pre class="code">
+def greet(name):
+    print("Hello", name)
+
+greet("Kali")
+greet("Aman")
+        </pre>
+
+        <h4 class="sub-title">Return Values</h4>
+
+        <p class="text">
+            The <b>return</b> statement is used to send a result back from a function.
+        </p>
+
+        <ul class="list">
+            <li>Returns output from function</li>
+            <li>Ends function execution</li>
+        </ul>
+
+        <pre class="code">
+def add(a, b):
+    return a + b
+
+result = add(5, 3)
+print("Sum is:", result)
+        </pre>
+
+        <h4 class="sub-title">Types of Arguments</h4>
+
+        <ul class="list">
+            <li><b>Positional arguments:</b> Passed in order</li>
+            <li><b>Keyword arguments:</b> Passed with parameter name</li>
+        </ul>
+
+        <pre class="code">
+def student(name, age):
+    print(name, age)
+
+student("Kali", 20)          # positional
+student(age=21, name="Aman") # keyword
+        </pre>
+
+        <h4 class="sub-title">Lambda Functions</h4>
+
+        <p class="text">
+            Lambda functions are small anonymous functions defined in a single line.
+        </p>
+
+        <ul class="list">
+            <li>Used for simple operations</li>
+            <li>No function name required</li>
+            <li>Defined using lambda keyword</li>
+        </ul>
+
+        <pre class="code">
+square = lambda x: x * x
+
+print(square(5))
+        </pre>
+
+        <h4 class="sub-title">Lambda with Multiple Arguments</h4>
+
+        <pre class="code">
+add = lambda a, b: a + b
+
+print(add(10, 5))
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Functions make code reusable</li>
+            <li>Arguments pass input to functions</li>
+            <li>Return gives output from function</li>
+            <li>Lambda is used for short functions</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Modules and Packages -->
+<section id="modules-packages" class="section">
+    <div class="card">
+
+        <h2 class="title">Modules and Packages</h2>
+
+        <p class="text">
+            Modules and packages are used to organize Python code into reusable files.
+            They help break large programs into smaller, manageable parts.
+        </p>
+
+        <h4 class="sub-title">What is a Module?</h4>
+
+        <p class="text">
+            A module is a Python file that contains functions, variables, or classes that can be reused in other programs.
+        </p>
+
+        <ul class="list">
+            <li>Each Python file (.py) is a module</li>
+            <li>Helps in code reusability</li>
+            <li>Reduces code duplication</li>
+        </ul>
+
+        <h4 class="sub-title">Importing a Module</h4>
+
+        <p class="text">
+            The <b>import</b> keyword is used to include a module in your program.
+        </p>
+
+        <pre class="code">
+import math
+
+print(math.sqrt(16))
+        </pre>
+
+        <p class="text">
+            You can also import specific functions:
+        </p>
+
+        <pre class="code">
+from math import sqrt
+
+print(sqrt(25))
+        </pre>
+
+        <h4 class="sub-title">Built-in Modules</h4>
+
+        <p class="text">
+            Python provides many built-in modules for common tasks.
+        </p>
+
+        <!-- MATH -->
+        <h4 class="sub-title">math Module</h4>
+
+        <ul class="list">
+            <li>Used for mathematical operations</li>
+            <li>Provides functions like sqrt, pow, ceil</li>
+        </ul>
+
+        <pre class="code">
+import math
+
+print(math.sqrt(49))
+print(math.pow(2, 3))
+print(math.ceil(4.3))
+        </pre>
+
+        <!-- RANDOM -->
+        <h4 class="sub-title">random Module</h4>
+
+        <ul class="list">
+            <li>Used to generate random numbers</li>
+            <li>Useful for games and simulations</li>
+        </ul>
+
+        <pre class="code">
+import random
+
+print(random.randint(1, 10))
+print(random.random())
+        </pre>
+
+        <!-- OS -->
+        <h4 class="sub-title">os Module</h4>
+
+        <ul class="list">
+            <li>Used to interact with the operating system</li>
+            <li>Helps manage files and directories</li>
+        </ul>
+
+        <pre class="code">
+import os
+
+print(os.getcwd())  # current directory
+        </pre>
+
+        <h4 class="sub-title">Creating Your Own Module</h4>
+
+        <p class="text">
+            You can create your own module by saving Python code in a .py file and importing it in another file.
+        </p>
+
+        <ul class="list">
+            <li>Create a file with .py extension</li>
+            <li>Define functions or variables inside it</li>
+            <li>Import it into another program</li>
+        </ul>
+
+        <h4 class="sub-title">Example: mymodule.py</h4>
+
+        <pre class="code">
+# mymodule.py
+
+def greet(name):
+    print("Hello", name)
+
+def add(a, b):
+    return a + b
+        </pre>
+
+        <h4 class="sub-title">Using Custom Module</h4>
+
+        <pre class="code">
+import mymodule
+
+mymodule.greet("Kali")
+
+print(mymodule.add(5, 3))
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Modules help organize code</li>
+            <li>Built-in modules save time</li>
+            <li>Custom modules improve reusability</li>
+            <li>Packages are collections of modules</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- File Handling -->
+<section id="file-handling" class="section">
+    <div class="card">
+
+        <h2 class="title">File Handling</h2>
+
+        <p class="text">
+            File handling is used to store data permanently in files.
+            Python allows us to create, read, write, and append files easily using built-in functions.
+        </p>
+
+        <h4 class="sub-title">Opening a File</h4>
+
+        <p class="text">
+            The <b>open()</b> function is used to open a file in Python.
+        </p>
+
+        <ul class="list">
+            <li>Syntax: open(filename, mode)</li>
+            <li>Mode defines the purpose (read, write, append)</li>
+        </ul>
+
+        <pre class="code">
+f = open("file.txt", "r")
+        </pre>
+
+        <h4 class="sub-title">File Modes</h4>
+
+        <ul class="list">
+            <li><b>r</b> → Read mode (default)</li>
+            <li><b>w</b> → Write mode (creates new file or overwrites existing)</li>
+            <li><b>a</b> → Append mode (adds data at end of file)</li>
+            <li><b>r+</b> → Read and write mode</li>
+        </ul>
+
+        <h4 class="sub-title">Reading a File</h4>
+
+        <p class="text">
+            The <b>read()</b> method is used to read the content of a file.
+        </p>
+
+        <pre class="code">
+f = open("file.txt", "r")
+print(f.read())
+f.close()
+        </pre>
+
+        <p class="text">
+            You can also read line by line:
+        </p>
+
+        <pre class="code">
+f = open("file.txt", "r")
+
+print(f.readline())
+print(f.readline())
+
+f.close()
+        </pre>
+
+        <h4 class="sub-title">Writing to a File</h4>
+
+        <p class="text">
+            The <b>write()</b> method is used to write data into a file.
+            It overwrites existing content.
+        </p>
+
+        <pre class="code">
+f = open("file.txt", "w")
+f.write("Hello Python!")
+f.close()
+        </pre>
+
+        <h4 class="sub-title">Appending to a File</h4>
+
+        <p class="text">
+            The <b>append mode (a)</b> is used to add data at the end of the file without deleting existing content.
+        </p>
+
+        <pre class="code">
+f = open("file.txt", "a")
+f.write("\nNew line added")
+f.close()
+        </pre>
+
+        <h4 class="sub-title">Best Practice: Using with Statement</h4>
+
+        <p class="text">
+            The <b>with</b> statement automatically closes the file after use.
+            It is the recommended way to handle files.
+        </p>
+
+        <pre class="code">
+with open("file.txt", "r") as f:
+    print(f.read())
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Always close files after opening</li>
+            <li>Use "w" carefully (it deletes old data)</li>
+            <li>"a" is safe for adding data</li>
+            <li>with statement is best practice</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Error Handling -->
+<section id="error-handling" class="section">
+    <div class="card">
+
+        <h2 class="title">Error Handling</h2>
+
+        <p class="text">
+            Error handling is used to handle runtime errors in Python without stopping the program.
+            It helps make programs more stable and user-friendly.
+        </p>
+
+        <h4 class="sub-title">What is an Error?</h4>
+
+        <p class="text">
+            An error occurs when a program cannot execute properly due to invalid input, logic mistakes, or system issues.
+        </p>
+
+        <ul class="list">
+            <li>Errors stop program execution</li>
+            <li>Common errors: division by zero, invalid input, file not found</li>
+        </ul>
+
+        <h4 class="sub-title">try and except Block</h4>
+
+        <p class="text">
+            The <b>try</b> block contains code that might cause an error.
+            The <b>except</b> block handles the error if it occurs.
+        </p>
+
+        <ul class="list">
+            <li>Prevents program crash</li>
+            <li>Handles errors gracefully</li>
+        </ul>
+
+        <pre class="code">
+try:
+    num = int(input("Enter number: "))
+    print(10 / num)
+
+except:
+    print("Something went wrong!")
+        </pre>
+
+        <h4 class="sub-title">Handling Specific Errors</h4>
+
+        <p class="text">
+            You can handle specific types of errors for better control.
+        </p>
+
+        <pre class="code">
+try:
+    num = int(input("Enter number: "))
+    print(10 / num)
+
+except ZeroDivisionError:
+    print("Cannot divide by zero")
+
+except ValueError:
+    print("Invalid input! Please enter a number")
+        </pre>
+
+        <h4 class="sub-title">finally Block</h4>
+
+        <p class="text">
+            The <b>finally</b> block always executes, whether an error occurs or not.
+            It is commonly used for cleanup tasks like closing files.
+        </p>
+
+        <ul class="list">
+            <li>Always executes</li>
+            <li>Used for cleanup operations</li>
+        </ul>
+
+        <pre class="code">
+try:
+    num = int(input("Enter number: "))
+    print(10 / num)
+
+except ZeroDivisionError:
+    print("Error: Division by zero")
+
+finally:
+    print("Execution completed")
+        </pre>
+
+        <h4 class="sub-title">Raising Errors</h4>
+
+        <p class="text">
+            The <b>raise</b> keyword is used to manually generate an error in Python.
+        </p>
+
+        <ul class="list">
+            <li>Used to create custom errors</li>
+            <li>Helps enforce rules in programs</li>
+        </ul>
+
+        <pre class="code">
+age = int(input("Enter age: "))
+
+if age < 18:
+    raise ValueError("Age must be 18 or above")
+
+print("Access granted")
+        </pre>
+
+        <h4 class="sub-title">Custom Error Message Example</h4>
+
+        <pre class="code">
+try:
+    password = input("Enter password: ")
+
+    if len(password) < 6:
+        raise Exception("Password too short")
+
+except Exception as e:
+    print("Error:", e)
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>try block runs risky code</li>
+            <li>except handles errors</li>
+            <li>finally always runs</li>
+            <li>raise creates custom errors</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Object-Oriented Programming -->
+<section id="oop" class="section">
+    <div class="card">
+
+        <h2 class="title">Object-Oriented Programming (OOP)</h2>
+
+        <p class="text">
+            Object-Oriented Programming (OOP) is a programming style based on objects and classes.
+            It helps organize code into reusable and structured components.
+        </p>
+
+        <h4 class="sub-title">Class and Object</h4>
+
+        <p class="text">
+            A <b>class</b> is a blueprint, and an <b>object</b> is an instance of a class.
+        </p>
+
+        <ul class="list">
+            <li>Class defines properties and behavior</li>
+            <li>Object is a real-world representation</li>
+        </ul>
+
+        <pre class="code">
+class Student:
+    def show(self):
+        print("Hello, I am a student")
+
+s1 = Student()
+s1.show()
+        </pre>
+
+        <h4 class="sub-title">Constructor (__init__)</h4>
+
+        <p class="text">
+            The constructor is a special method that runs automatically when an object is created.
+        </p>
+
+        <ul class="list">
+            <li>Used to initialize object values</li>
+            <li>Called automatically</li>
+            <li>Defined using __init__ method</li>
+        </ul>
+
+        <pre class="code">
+class Student:
+    def __init__(self, name, age):
+        self.name = name
+        self.age = age
+
+    def show(self):
+        print(self.name, self.age)
+
+s1 = Student("Kali", 20)
+s1.show()
+        </pre>
+
+        <h4 class="sub-title">Inheritance</h4>
+
+        <p class="text">
+            Inheritance allows a class to acquire properties and methods from another class.
+        </p>
+
+        <ul class="list">
+            <li>Promotes code reuse</li>
+            <li>Parent → Child relationship</li>
+        </ul>
+
+        <pre class="code">
+class Parent:
+    def show(self):
+        print("This is parent class")
+
+class Child(Parent):
+    def display(self):
+        print("This is child class")
+
+c1 = Child()
+c1.show()
+c1.display()
+        </pre>
+
+        <h4 class="sub-title">Polymorphism</h4>
+
+        <p class="text">
+            Polymorphism means "many forms". It allows the same function name to behave differently.
+        </p>
+
+        <ul class="list">
+            <li>Same function, different behavior</li>
+            <li>Improves flexibility</li>
+        </ul>
+
+        <pre class="code">
+class Bird:
+    def sound(self):
+        print("Bird sound")
+
+class Dog:
+    def sound(self):
+        print("Dog barks")
+
+def make_sound(animal):
+    animal.sound()
+
+make_sound(Bird())
+make_sound(Dog())
+        </pre>
+
+        <h4 class="sub-title">Encapsulation</h4>
+
+        <p class="text">
+            Encapsulation is the concept of hiding internal data and restricting direct access.
+        </p>
+
+        <ul class="list">
+            <li>Protects data from outside access</li>
+            <li>Uses private variables</li>
+            <li>Improves security</li>
+        </ul>
+
+        <pre class="code">
+class Bank:
+    def __init__(self, balance):
+        self.__balance = balance
+
+    def show_balance(self):
+        print(self.__balance)
+
+b1 = Bank(1000)
+b1.show_balance()
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Class is a blueprint, object is instance</li>
+            <li>Constructor initializes data</li>
+            <li>Inheritance reuses code</li>
+            <li>Polymorphism allows multiple behaviors</li>
+            <li>Encapsulation protects data</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Advanced Python -->
+<section id="advanced-python" class="section">
+    <div class="card">
+
+        <h2 class="title">Advanced Python</h2>
+
+        <p class="text">
+            Advanced Python concepts help you write more efficient, clean, and powerful code.
+            This includes Decorators, Generators, Iterators, and Comprehensions.
+        </p>
+
+        <!-- DECORATORS -->
+        <h4 class="sub-title">Decorators</h4>
+
+        <p class="text">
+            Decorators are functions that modify the behavior of another function without changing its code.
+        </p>
+
+        <ul class="list">
+            <li>Used to extend functionality</li>
+            <li>Applied using @ symbol</li>
+            <li>Useful in logging, authentication, etc.</li>
+        </ul>
+
+        <pre class="code">
+def decorator(func):
+    def wrapper():
+        print("Before function")
+        func()
+        print("After function")
+    return wrapper
+
+@decorator
+def hello():
+    print("Hello World")
+
+hello()
+        </pre>
+
+        <!-- GENERATORS -->
+        <h4 class="sub-title">Generators (yield)</h4>
+
+        <p class="text">
+            Generators are special functions that return values one at a time using the <b>yield</b> keyword.
+        </p>
+
+        <ul class="list">
+            <li>Efficient for large data</li>
+            <li>Do not store entire data in memory</li>
+            <li>Use yield instead of return</li>
+        </ul>
+
+        <pre class="code">
+def my_generator():
+    yield 1
+    yield 2
+    yield 3
+
+for value in my_generator():
+    print(value)
+        </pre>
+
+        <!-- ITERATORS -->
+        <h4 class="sub-title">Iterators</h4>
+
+        <p class="text">
+            An iterator is an object that allows traversing through all elements one by one.
+        </p>
+
+        <ul class="list">
+            <li>Uses __iter__() and __next__() methods</li>
+            <li>Returns one element at a time</li>
+        </ul>
+
+        <pre class="code">
+numbers = [1, 2, 3]
+
+it = iter(numbers)
+
+print(next(it))
+print(next(it))
+print(next(it))
+        </pre>
+
+        <!-- COMPREHENSIONS -->
+        <h4 class="sub-title">Comprehensions</h4>
+
+        <p class="text">
+            Comprehensions provide a shorter way to create lists, sets, or dictionaries.
+        </p>
+
+        <ul class="list">
+            <li>More readable and compact</li>
+            <li>Faster than traditional loops</li>
+        </ul>
+
+        <h4 class="sub-title">List Comprehension</h4>
+
+        <pre class="code">
+numbers = [x for x in range(5)]
+print(numbers)
+        </pre>
+
+        <h4 class="sub-title">With Condition</h4>
+
+        <pre class="code">
+even = [x for x in range(10) if x % 2 == 0]
+print(even)
+        </pre>
+
+        <h4 class="sub-title">Dictionary Comprehension</h4>
+
+        <pre class="code">
+squares = {x: x*x for x in range(5)}
+print(squares)
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Decorators modify functions</li>
+            <li>Generators use yield for memory efficiency</li>
+            <li>Iterators provide step-by-step access</li>
+            <li>Comprehensions make code shorter and faster</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Working with Libraries -->
+<section id="libraries" class="section">
+    <div class="card">
+
+        <h2 class="title">Working with Libraries</h2>
+
+        <p class="text">
+            Python libraries are pre-written collections of functions and tools that help in solving complex problems easily.
+            Some popular libraries are NumPy, Pandas, and Matplotlib.
+        </p>
+
+        <!-- NUMPY -->
+        <h4 class="sub-title">NumPy (Numerical Python)</h4>
+
+        <p class="text">
+            NumPy is used for numerical operations, especially with arrays and matrices.
+            It is faster and more efficient than normal Python lists.
+        </p>
+
+        <ul class="list">
+            <li>Used for mathematical computations</li>
+            <li>Supports multi-dimensional arrays</li>
+            <li>Faster than lists</li>
+        </ul>
+
+        <pre class="code">
+import numpy as np
+
+arr = np.array([1, 2, 3, 4])
+print(arr)
+
+print(arr * 2)
+print(np.mean(arr))
+        </pre>
+
+        <h4 class="sub-title">NumPy Arrays Example</h4>
+
+        <pre class="code">
+import numpy as np
+
+matrix = np.array([[1, 2], [3, 4]])
+
+print(matrix)
+print(matrix.shape)
+        </pre>
+
+        <!-- PANDAS -->
+        <h4 class="sub-title">Pandas (Data Analysis)</h4>
+
+        <p class="text">
+            Pandas is used for data manipulation and analysis.
+            It provides powerful data structures like DataFrames.
+        </p>
+
+        <ul class="list">
+            <li>Used for handling structured data</li>
+            <li>Works with CSV, Excel, databases</li>
+            <li>Provides DataFrame and Series</li>
+        </ul>
+
+        <pre class="code">
+import pandas as pd
+
+data = {
+    "Name": ["Kali", "Aman", "John"],
+    "Age": [20, 21, 22]
+}
+
+df = pd.DataFrame(data)
+print(df)
+        </pre>
+
+        <h4 class="sub-title">Reading CSV File</h4>
+
+        <pre class="code">
+import pandas as pd
+
+df = pd.read_csv("data.csv")
+print(df.head())
+        </pre>
+
+        <!-- MATPLOTLIB -->
+        <h4 class="sub-title">Matplotlib (Data Visualization)</h4>
+
+        <p class="text">
+            Matplotlib is used to create graphs and charts for data visualization.
+        </p>
+
+        <ul class="list">
+            <li>Used for plotting graphs</li>
+            <li>Helps visualize data trends</li>
+            <li>Supports line, bar, pie charts</li>
+        </ul>
+
+        <pre class="code">
+import matplotlib.pyplot as plt
+
+x = [1, 2, 3, 4]
+y = [10, 20, 25, 30]
+
+plt.plot(x, y)
+plt.title("Sample Graph")
+plt.show()
+        </pre>
+
+        <h4 class="sub-title">Bar Chart Example</h4>
+
+        <pre class="code">
+import matplotlib.pyplot as plt
+
+names = ["A", "B", "C"]
+marks = [80, 90, 70]
+
+plt.bar(names, marks)
+plt.show()
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>NumPy is used for numerical operations</li>
+            <li>Pandas is used for data analysis</li>
+            <li>Matplotlib is used for visualization</li>
+            <li>These libraries are essential for Data Science</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Database (Basic) -->
+<section id="database" class="section">
+    <div class="card">
+
+        <h2 class="title">Database (Basic)</h2>
+
+        <p class="text">
+            A database is used to store data permanently in an organized way.
+            Python provides built-in support for SQLite to work with databases easily.
+        </p>
+
+        <h4 class="sub-title">What is SQLite?</h4>
+
+        <p class="text">
+            SQLite is a lightweight, file-based database system used for small to medium applications.
+            It does not require a separate server.
+        </p>
+
+        <ul class="list">
+            <li>Built into Python (no installation needed)</li>
+            <li>Stores data in a single file</li>
+            <li>Easy to use for beginners</li>
+        </ul>
+
+        <h4 class="sub-title">Connecting to SQLite</h4>
+
+        <p class="text">
+            The <b>sqlite3</b> module is used to connect Python with SQLite database.
+        </p>
+
+        <pre class="code">
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+print("Database connected successfully")
+        </pre>
+
+        <h4 class="sub-title">Creating a Table</h4>
+
+        <p class="text">
+            SQL commands are used to create tables inside the database.
+        </p>
+
+        <pre class="code">
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+cursor = conn.cursor()
+
+cursor.execute("""
+CREATE TABLE students (
+    id INTEGER PRIMARY KEY,
+    name TEXT,
+    age INTEGER
+)
+""")
+
+conn.commit()
+conn.close()
+        </pre>
+
+        <h4 class="sub-title">CRUD Operations</h4>
+
+        <p class="text">
+            CRUD stands for Create, Read, Update, and Delete — the basic operations in a database.
+        </p>
+
+        <!-- CREATE -->
+        <h4 class="sub-title">1. Create (Insert Data)</h4>
+
+        <pre class="code">
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+cursor = conn.cursor()
+
+cursor.execute("INSERT INTO students (name, age) VALUES ('Kali', 20)")
+
+conn.commit()
+conn.close()
+        </pre>
+
+        <!-- READ -->
+        <h4 class="sub-title">2. Read (Fetch Data)</h4>
+
+        <pre class="code">
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+cursor = conn.cursor()
+
+cursor.execute("SELECT * FROM students")
+
+data = cursor.fetchall()
+
+for row in data:
+    print(row)
+
+conn.close()
+        </pre>
+
+        <!-- UPDATE -->
+        <h4 class="sub-title">3. Update Data</h4>
+
+        <pre class="code">
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+cursor = conn.cursor()
+
+cursor.execute("UPDATE students SET age = 21 WHERE name = 'Kali'")
+
+conn.commit()
+conn.close()
+        </pre>
+
+        <!-- DELETE -->
+        <h4 class="sub-title">4. Delete Data</h4>
+
+        <pre class="code">
+import sqlite3
+
+conn = sqlite3.connect("database.db")
+cursor = conn.cursor()
+
+cursor.execute("DELETE FROM students WHERE name = 'Kali'")
+
+conn.commit()
+conn.close()
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>SQLite is lightweight and beginner-friendly</li>
+            <li>Always commit changes after insert/update/delete</li>
+            <li>Close connection after operations</li>
+            <li>CRUD is the base of all database systems</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Web Basics -->
+<section id="web-basics" class="section">
+    <div class="card">
+
+        <h2 class="title">Web Basics</h2>
+
+        <p class="text">
+            Python is widely used for web development.
+            It provides powerful frameworks like Flask and Django to build web applications easily.
+        </p>
+
+        <!-- FLASK -->
+        <h4 class="sub-title">Flask (Simple Web Framework)</h4>
+
+        <p class="text">
+            Flask is a lightweight web framework used to build simple and small web applications quickly.
+        </p>
+
+        <ul class="list">
+            <li>Minimal and easy to use</li>
+            <li>Good for beginners</li>
+            <li>Flexible and lightweight</li>
+        </ul>
+
+        <h4 class="sub-title">Flask Installation</h4>
+
+        <pre class="code">
+pip install flask
+        </pre>
+
+        <h4 class="sub-title">Basic Flask App</h4>
+
+        <pre class="code">
+from flask import Flask
+
+app = Flask(__name__)
+
+@app.route("/")
+def home():
+    return "Hello, Flask Web App!"
+
+if __name__ == "__main__":
+    app.run(debug=True)
+        </pre>
+
+        <h4 class="sub-title">Flask Routing Example</h4>
+
+        <pre class="code">
+@app.route("/about")
+def about():
+    return "This is About Page"
+        </pre>
+
+        <!-- DJANGO -->
+        <h4 class="sub-title">Django (Full Web Framework)</h4>
+
+        <p class="text">
+            Django is a powerful full-stack web framework used to build large and scalable web applications.
+        </p>
+
+        <ul class="list">
+            <li>Follows MVC/MVT architecture</li>
+            <li>Built-in admin panel</li>
+            <li>Secure and scalable</li>
+        </ul>
+
+        <h4 class="sub-title">Django Installation</h4>
+
+        <pre class="code">
+pip install django
+        </pre>
+
+        <h4 class="sub-title">Create Django Project</h4>
+
+        <pre class="code">
+django-admin startproject myproject
+cd myproject
+python manage.py runserver
+        </pre>
+
+        <h4 class="sub-title">Create Django App</h4>
+
+        <pre class="code">
+python manage.py startapp myapp
+        </pre>
+
+        <h4 class="sub-title">Simple Django View</h4>
+
+        <pre class="code">
+from django.http import HttpResponse
+
+def home(request):
+    return HttpResponse("Hello Django!")
+        </pre>
+
+        <h4 class="sub-title">Flask vs Django</h4>
+
+        <ul class="list">
+            <li><b>Flask:</b> Lightweight, simple, best for small apps</li>
+            <li><b>Django:</b> Full-featured, best for large applications</li>
+            <li>Flask gives flexibility, Django gives structure</li>
+        </ul>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Flask is beginner-friendly and minimal</li>
+            <li>Django is powerful and production-ready</li>
+            <li>Both are widely used in real-world projects</li>
+            <li>Python is strong in backend web development</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Automation / DevOps Python -->
+<section id="automation-devops" class="section">
+    <div class="card">
+
+        <h2 class="title">Automation / DevOps with Python</h2>
+
+        <p class="text">
+            Python is widely used in DevOps and automation to manage systems, run commands, and interact with APIs.
+            It helps automate repetitive tasks and improve productivity.
+        </p>
+
+        <!-- OS MODULE -->
+        <h4 class="sub-title">OS Module</h4>
+
+        <p class="text">
+            The <b>os</b> module is used to interact with the operating system.
+            It helps manage files, directories, and system-level operations.
+        </p>
+
+        <ul class="list">
+            <li>Work with files and folders</li>
+            <li>Get system information</li>
+            <li>Run OS-level operations</li>
+        </ul>
+
+        <pre class="code">
+import os
+
+print(os.getcwd())   # current directory
+os.mkdir("test_folder")
+os.listdir()
+        </pre>
+
+        <h4 class="sub-title">Common OS Functions</h4>
+
+        <pre class="code">
+import os
+
+os.rename("old.txt", "new.txt")
+os.remove("file.txt")
+        </pre>
+
+        <!-- SUBPROCESS -->
+        <h4 class="sub-title">subprocess Module</h4>
+
+        <p class="text">
+            The <b>subprocess</b> module allows Python to run system commands and external programs.
+        </p>
+
+        <ul class="list">
+            <li>Execute shell commands</li>
+            <li>Interact with system processes</li>
+            <li>Useful in DevOps automation</li>
+        </ul>
+
+        <pre class="code">
+import subprocess
+
+subprocess.run(["echo", "Hello World"])
+        </pre>
+
+        <h4 class="sub-title">Running System Commands</h4>
+
+        <pre class="code">
+import subprocess
+
+subprocess.run(["ls"])       # Linux/Mac
+subprocess.run(["dir"], shell=True)  # Windows
+        </pre>
+
+        <!-- AUTOMATION SCRIPTS -->
+        <h4 class="sub-title">Automation Scripts</h4>
+
+        <p class="text">
+            Automation scripts are used to perform repetitive tasks automatically without manual effort.
+        </p>
+
+        <ul class="list">
+            <li>File management automation</li>
+            <li>System cleanup scripts</li>
+            <li>Backup automation</li>
+        </ul>
+
+        <pre class="code">
+import os
+
+folder = "test_folder"
+
+if not os.path.exists(folder):
+    os.mkdir(folder)
+    print("Folder created automatically")
+        </pre>
+
+        <h4 class="sub-title">Example: File Organizer Script</h4>
+
+        <pre class="code">
+import os
+
+for file in os.listdir():
+    if file.endswith(".txt"):
+        print("Text file found:", file)
+        </pre>
+
+        <!-- REQUESTS LIBRARY -->
+        <h4 class="sub-title">API Requests (requests library)</h4>
+
+        <p class="text">
+            The <b>requests</b> library is used to interact with APIs and fetch data from the internet.
+        </p>
+
+        <ul class="list">
+            <li>Used for API communication</li>
+            <li>Fetch data from websites</li>
+            <li>Send HTTP requests (GET, POST)</li>
+        </ul>
+
+        <h4 class="sub-title">Installation</h4>
+
+        <pre class="code">
+pip install requests
+        </pre>
+
+        <h4 class="sub-title">GET Request Example</h4>
+
+        <pre class="code">
+import requests
+
+response = requests.get("https://api.github.com")
+
+print(response.status_code)
+print(response.text)
+        </pre>
+
+        <h4 class="sub-title">POST Request Example</h4>
+
+        <pre class="code">
+import requests
+
+data = {"name": "Kali", "age": 20}
+
+response = requests.post("https://httpbin.org/post", data=data)
+
+print(response.json())
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>OS module interacts with system</li>
+            <li>subprocess runs shell commands</li>
+            <li>Automation saves time and effort</li>
+            <li>requests is used for APIs and web data</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- API & JSON -->
+<section id="api-json" class="section">
+    <div class="card">
+
+        <h2 class="title">API & JSON</h2>
+
+        <p class="text">
+            APIs (Application Programming Interfaces) allow different applications to communicate with each other.
+            JSON (JavaScript Object Notation) is the most common format used to exchange data between systems.
+        </p>
+
+        <!-- API BASICS -->
+        <h4 class="sub-title">What is an API?</h4>
+
+        <p class="text">
+            An API is a bridge that allows one software application to talk to another and exchange data.
+        </p>
+
+        <ul class="list">
+            <li>Used to fetch data from servers</li>
+            <li>Connects frontend and backend systems</li>
+            <li>Returns data in JSON format</li>
+        </ul>
+
+        <h4 class="sub-title">Working with APIs (GET Request)</h4>
+
+        <p class="text">
+            Python uses the <b>requests</b> library to interact with APIs.
+            A GET request is used to fetch data from a server.
+        </p>
+
+        <pre class="code">
+import requests
+
+response = requests.get("https://api.github.com/users")
+
+print(response.status_code)
+print(response.text)
+        </pre>
+
+        <h4 class="sub-title">API Response Example</h4>
+
+        <pre class="code">
+{
+  "login": "octocat",
+  "id": 1,
+  "node_id": "MDQ6VXNlcjE"
+}
+        </pre>
+
+        <!-- JSON BASICS -->
+        <h4 class="sub-title">What is JSON?</h4>
+
+        <p class="text">
+            JSON is a lightweight data format used to store and exchange data between systems.
+        </p>
+
+        <ul class="list">
+            <li>Human-readable format</li>
+            <li>Used in APIs and web services</li>
+            <li>Works like Python dictionaries</li>
+        </ul>
+
+        <h4 class="sub-title">JSON Structure</h4>
+
+        <pre class="code">
+{
+    "name": "Kali",
+    "age": 20,
+    "course": "Python"
+}
+        </pre>
+
+        <!-- JSON PARSING -->
+        <h4 class="sub-title">JSON Parsing in Python</h4>
+
+        <p class="text">
+            JSON data can be converted into Python dictionaries using the <b>json</b> module.
+        </p>
+
+        <pre class="code">
+import json
+
+data = '{"name": "Kali", "age": 20}'
+
+parsed_data = json.loads(data)
+
+print(parsed_data)
+print(parsed_data["name"])
+        </pre>
+
+        <h4 class="sub-title">Converting Python to JSON</h4>
+
+        <p class="text">
+            Python objects can be converted into JSON format using <b>json.dumps()</b>.
+        </p>
+
+        <pre class="code">
+import json
+
+data = {
+    "name": "Aman",
+    "age": 22
+}
+
+json_data = json.dumps(data)
+
+print(json_data)
+        </pre>
+
+        <h4 class="sub-title">API + JSON Example</h4>
+
+        <pre class="code">
+import requests
+import json
+
+response = requests.get("https://api.github.com/users")
+
+data = response.json()
+
+for user in data:
+    print(user["login"])
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>APIs are used for communication between apps</li>
+            <li>JSON is the most common data format</li>
+            <li>requests library is used for API calls</li>
+            <li>json module is used for parsing data</li>
+        </ul>
+
+    </div>
+</section>
+
+<!-- Projects -->
+<section id="projects" class="section">
+    <div class="card">
+
+        <h2 class="title">Projects (Very Important 🚀)</h2>
+
+        <p class="text">
+            Projects are the best way to apply Python knowledge in real-world scenarios.
+            They help you improve problem-solving skills and build your portfolio for jobs or internships.
+        </p>
+
+        <!-- CALCULATOR -->
+        <h4 class="sub-title">1. Calculator Project</h4>
+
+        <p class="text">
+            A calculator performs basic arithmetic operations like addition, subtraction, multiplication, and division.
+        </p>
+
+        <ul class="list">
+            <li>Uses functions for operations</li>
+            <li>Takes user input</li>
+            <li>Performs calculations dynamically</li>
+        </ul>
+
+        <pre class="code">
+num1 = float(input("Enter first number: "))
+num2 = float(input("Enter second number: "))
+
+print("Sum:", num1 + num2)
+print("Difference:", num1 - num2)
+print("Product:", num1 * num2)
+print("Division:", num1 / num2)
+        </pre>
+
+        <!-- TO-DO APP -->
+        <h4 class="sub-title">2. To-Do App</h4>
+
+        <p class="text">
+            A To-Do app helps users manage tasks by adding, viewing, and removing tasks.
+        </p>
+
+        <ul class="list">
+            <li>Uses lists for task storage</li>
+            <li>Supports add and remove operations</li>
+            <li>Simple task management system</li>
+        </ul>
+
+        <pre class="code">
+tasks = []
+
+tasks.append("Learn Python")
+tasks.append("Build Project")
+
+print("Tasks:", tasks)
+
+tasks.remove("Learn Python")
+print("Updated Tasks:", tasks)
+        </pre>
+
+        <!-- LOGIN SYSTEM -->
+        <h4 class="sub-title">3. Login System</h4>
+
+        <p class="text">
+            A login system checks username and password for authentication.
+        </p>
+
+        <ul class="list">
+            <li>Uses conditional statements</li>
+            <li>Validates user credentials</li>
+            <li>Basic security logic</li>
+        </ul>
+
+        <pre class="code">
+username = input("Enter username: ")
+password = input("Enter password: ")
+
+if username == "admin" and password == "1234":
+    print("Login successful")
+else:
+    print("Invalid credentials")
+        </pre>
+
+        <!-- FILE ORGANIZER -->
+        <h4 class="sub-title">4. File Organizer</h4>
+
+        <p class="text">
+            A file organizer automatically sorts files into folders based on type.
+        </p>
+
+        <ul class="list">
+            <li>Uses OS module</li>
+            <li>Sorts files by extension</li>
+            <li>Automates file management</li>
+        </ul>
+
+        <pre class="code">
+import os
+
+for file in os.listdir():
+    if file.endswith(".txt"):
+        print("Text file:", file)
+    elif file.endswith(".jpg"):
+        print("Image file:", file)
+        </pre>
+
+        <!-- WEB SCRAPER -->
+        <h4 class="sub-title">5. Web Scraper</h4>
+
+        <p class="text">
+            A web scraper extracts data from websites automatically.
+        </p>
+
+        <ul class="list">
+            <li>Uses requests library</li>
+            <li>Fetches HTML content</li>
+            <li>Extracts useful data</li>
+        </ul>
+
+        <pre class="code">
+import requests
+
+url = "https://example.com"
+response = requests.get(url)
+
+print(response.text[:200])  # first 200 characters
+        </pre>
+
+        <!-- AUTOMATION SCRIPTS -->
+        <h4 class="sub-title">6. Automation Scripts</h4>
+
+        <p class="text">
+            Automation scripts perform repetitive tasks automatically without human effort.
+        </p>
+
+        <ul class="list">
+            <li>File backup automation</li>
+            <li>System cleanup tasks</li>
+            <li>Email or report automation</li>
+        </ul>
+
+        <pre class="code">
+import os
+
+for i in range(1, 6):
+    filename = f"file{i}.txt"
+    with open(filename, "w") as f:
+        f.write("This is an automated file")
+        </pre>
+
+        <h4 class="sub-title">Important Notes</h4>
+
+        <ul class="list">
+            <li>Projects build real coding experience</li>
+            <li>Start with simple projects and scale up</li>
+            <li>Combine multiple concepts in one project</li>
+            <li>These projects are important for interviews</li>
+        </ul>
+
+    </div>
+</section>
+
+</div>
+
+

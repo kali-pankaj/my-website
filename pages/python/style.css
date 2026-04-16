@@ -1,0 +1,241 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+}
+
+/* SMOOTH SCROLL */
+html {
+    scroll-behavior: smooth;
+}
+
+/* BODY */
+body {
+    display: flex;
+    min-height: 100vh;
+    background: linear-gradient(135deg, #0f172a, #020617);
+    color: #e2e8f0;
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+/* TEXT SELECTION */
+::selection {
+    background: #22c55e;
+    color: #0f172a;
+}
+
+/* LINKS DEFAULT */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* SCROLLBAR (GLOBAL) */
+::-webkit-scrollbar {
+    width: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #16a34a;
+}
+
+/* SIDEBAR */
+.sidebar {
+    width: 250px;
+    height: 100vh;
+    position: fixed;
+    background: #020617;
+    padding: 20px;
+    border-right: 1px solid #1e293b;
+
+    /* ✅ ADD SCROLLBAR */
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+/* Optional: better scrollbar styling */
+.sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.sidebar::-webkit-scrollbar-track {
+    background: #0f172a;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: #22c55e;
+    border-radius: 10px;
+}
+
+.sidebar::-webkit-scrollbar-thumb:hover {
+    background: #16a34a;
+}
+
+/* LOGO */
+.logo {
+    color: #22c55e;
+    margin-bottom: 20px;
+}
+
+/* MENU LINKS */
+.menu-link {
+    display: block;
+    color: #cbd5e1;
+    text-decoration: none;
+    padding: 10px 12px;
+    border-radius: 10px;
+    margin-bottom: 6px;
+
+    font-size: 18px;
+    font-weight: 500;
+
+    transition: all 0.25s ease;
+    position: relative;
+}
+
+/* HOVER EFFECT */
+.menu-link:hover {
+    background: rgba(34, 197, 94, 0.15);
+    color: #22c55e;
+    transform: translateX(6px);
+}
+
+/* ACTIVE LINK (important for LMS feel) */
+.menu-link.active {
+    background: #22c55e;
+    color: #0f172a;
+    font-weight: 600;
+    box-shadow: 0 0 10px rgba(34, 197, 94, 0.4);
+}
+
+/* LEFT INDICATOR BAR ON HOVER */
+.menu-link::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 20%;
+    height: 60%;
+    width: 3px;
+    background: transparent;
+    border-radius: 10px;
+    transition: 0.3s;
+}
+
+.menu-link:hover::before {
+    background: #22c55e;
+}
+
+/* SMOOTH CLICK FEEL */
+.menu-link:active {
+    transform: scale(0.98) translateX(4px);
+}
+
+
+/* MAIN LAYOUT */
+.main-content {
+    margin-left: 270px;
+    padding: 30px;
+    min-height: 100vh;
+    background: transparent;
+}
+
+/* CARD (modern glass + depth) */
+.card {
+    background: rgba(30, 41, 59, 0.75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    padding: 28px;
+    border-radius: 16px;
+    margin-bottom: 22px;
+
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.35);
+    border: 1px solid rgba(148, 163, 184, 0.1);
+
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+}
+
+/* MAIN TITLE */
+.title {
+    color: #22c55e;
+    margin-bottom: 12px;
+    font-size: 30px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+}
+
+/* SUB TITLE */
+.sub-title {
+    color: #38bdf8;
+    margin-top: 18px;
+    margin-bottom: 8px;
+    font-size: 20px;
+    font-weight: 600;
+}
+
+/* TEXT */
+.text {
+    color: #cbd5e1;
+    line-height: 1.8;
+    font-size: 16px;
+}
+
+/* LIST */
+.list {
+    margin-left: 22px;
+    margin-top: 10px;
+    color: #cbd5e1;
+    font-size: 16px;
+}
+
+.list li {
+    margin-bottom: 6px;
+    line-height: 1.6;
+}
+
+/* CODE BLOCK (modern terminal style) */
+.code {
+    background: #020617;
+    color: #38bdf8;
+
+    padding: 14px;
+    border-radius: 10px;
+    margin-top: 12px;
+
+    overflow-x: auto;
+    border: 1px solid #1e293b;
+
+    font-size: 15px;
+    line-height: 1.6;
+
+    box-shadow: inset 0 0 10px rgba(0,0,0,0.4);
+}
+
+/* SCROLL BEHAVIOR */
+html {
+    scroll-behavior: smooth;
+}
+
+/* BETTER SELECTION */
+::selection {
+    background: #22c55e;
+    color: #0f172a;
+}

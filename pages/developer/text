@@ -1,5 +1,6 @@
 YES — backend different languages me likha ja sakta hai
 BUT ek hi application ka backend normally ek hi language me hota hai
+
 | Service         | Language |
 | --------------- | -------- |
 | Login service   | Java     |
@@ -10,6 +11,7 @@ BUT ek hi application ka backend normally ek hi language me hota hai
 
 Simple real-world frontend stack
 Frontend me bhi mainly 3 languages hoti hain, but mostly ek hi core hota hai:
+
 | Layer     | Tech            |
 | --------- | --------------- |
 | Structure | HTML            |
@@ -17,3 +19,15 @@ Frontend me bhi mainly 3 languages hoti hain, but mostly ek hi core hota hai:
 | Logic     | JavaScript      |
 | Advanced  | React / Angular |
 | Better JS | TypeScript      |
+
+
+These are “Triggers” in Jenkins — they decide when your build should start automatically.
+Let’s break each one in simple terms 👇
+
+| Trigger              | When it runs      | Best use          |
+| -------------------- | ----------------- | ----------------- |
+| After other projects | After another job | Pipeline chaining |
+| Build periodically   | On schedule       | Nightly jobs      |
+| GitHub hook          | On code push      | CI/CD (best)      |
+| Poll SCM             | Checks repeatedly | Backup method     |
+| Remote trigger       | API/URL call      | Automation        |
