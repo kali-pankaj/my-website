@@ -10,285 +10,32 @@
 <body>
 <?php include 'header.php'; ?>
 
-<header class="navbar">
+<!-- Heder -->
+<div id="headerContainer"></div>
 
-    <div class="logo">
-        <img src="/assets/images/profile.jpg" alt="logo" class="logo-img">
-        <h3>DevOps Learning Journey</h3>
-    </div>
-
-    <nav>
-        <ul class="nav-links">
-            <li><a href="/index.html">Home</a></li>
-            <li><a href="pages/devopsForm/form.html">Enrollment</a></li>
-            <li><a href="#">About</a></li>
-            <li><a href="pages/resume/form_resume.html">Resume-Template</a></li>
-            <li><a href="#">Contact</a></li>
-            <li><a href="/pages/login/login.html">Sign In</a></li>
-        </ul>
-    </nav>
-
-</header>
-
+<!-- Job -->
 <section class="jobs">
-
     <h2>DevOps Engineer Job Titles</h2>
-
-    <div class="jobs-container">
-
-        <div class="job-card">DevOps Engineer</div>
-        <div class="job-card">Site Reliability Engineer</div>
-        <div class="job-card">Infrastructure Engineer</div>
-        <div class="job-card">Automation Engineer</div>
-        <div class="job-card">Build & Release Engineer</div>
-        <div class="job-card">Platform Engineer</div>
-        <div class="job-card">Configuration Management Engineer</div>
-        <div class="job-card">CI/CD Engineer</div>
-
-        <div class="job-card">Operations Engineer</div>
-        <div class="job-card">Cloud Engineer</div>
-        <div class="job-card">Cloud System Administrator</div>
-        <div class="job-card">Systems Administrator</div>
-        <div class="job-card">System Engineer</div>
-        <div class="job-card">Architect & Requirements Engineer</div>
-        <div class="job-card">Software Engineer</div>
-        <div class="job-card">Web Infrastructure Architect</div>
-
-    </div>
-
+    <div class="jobs-container" id="jobsContainer"></div>
 </section>
 
-<!-- ================= DevOps Roadmap ================= -->
+<!--  DevOps Roadmap -->
 <section class="roadmap">
-    <h2>DEVOPS ROAD-MAP</h2>
-
-    <!-- Core -->
-    <div class="roadmap-box">
-        <h3>Core Technologies</h3>
-        <ul>
-            <li><a href="pages/linux/linux.html">Linux</a></li>
-            <li><a href="pages/git/git.html">Git</a></li>
-            <li><a href="pages/aws/aws.html">AWS</a></li>
-            <li><a href="pages/networking/networking.html">Networking</a></li>
-        </ul>
+    <div class="roadmap-wrapper">
+        <h2>DEVOPS ROAD-MAP</h2>
+        <div id="roadmapContainer"></div>
     </div>
-
-    <!-- Automation -->
-    <div class="roadmap-box">
-        <h3>Automation & Scripting</h3>
-        <ul>
-            <li><a href="pages/shell/shell.html">Bash / Shell</a></li>
-            <li><a href="pages/python/python.html">Python</a></li>
-        </ul>
-    </div>
-
-    <!-- Containers -->
-    <div class="roadmap-box">
-        <h3>Containers & Orchestration</h3>
-        <ul>
-            <li><a href="pages/docker/docker.html">Docker</a></li>
-            <li><a href="pages/kubernetes/kubernetes.html">Kubernetes</a></li>
-            <li><a href="pages/helm/helm.html">Helm</a></li>
-        </ul>
-    </div>
-
-    <!-- IaC -->
-    <div class="roadmap-box">
-        <h3>Infrastructure as Code</h3>
-        <ul>
-            <li><a href="pages/ansible/ansible.html">Ansible</a></li>
-            <li><a href="pages/terraform/terraform.html">Terraform</a></li>
-        </ul>
-    </div>
-
-    <!-- CI/CD -->
-    <div class="roadmap-box">
-        <h3>CI/CD Pipelines</h3>
-        <ul>
-            <li><a href="pages/jenkins/jenkins.html">Jenkins</a></li>
-            <li><a href="pages/github-actions/github-actions.html">GitHub Actions</a></li>
-            <li><a href="pages/gitlab/gitlab.html">GitLab</a></li>
-            <li><a href="pages/argocd/argocd.html">Argo CD</a></li>
-        </ul>
-    </div>
-
-    <!-- Monitoring -->
-    <div class="roadmap-box">
-        <h3>Monitoring & Observability</h3>
-        <ul>
-            <li><a href="pages/prometheus/prometheus.html">Prometheus</a></li>
-            <li><a href="pages/grafana/grafana.html">Grafana</a></li>
-            <li><a href="pages/datadog/datadog.html">Datadog</a></li>
-            <li><a href="pages/elk/elk.html">ELK Stack</a></li>
-        </ul>
-    </div>
-
-    <!-- Messaging -->
-    <div class="roadmap-box">
-        <h3>Messaging / Streaming</h3>
-        <ul>
-            <li><a href="pages/kafka/kafka.html">Kafka</a></li>
-            <li><a href="pages/confluent/confluent.html">Confluent</a></li>
-            <li><a href="pages/aws-msk/aws-msk.html">AWS MSK</a></li>
-        </ul>
-    </div>
-
-    <!-- SRE -->
-    <div class="roadmap-box">
-        <h3>Site Reliability Engineering</h3>
-        <ul>
-            <li><a href="#pages/">Monitoring – Prometheus, Grafana, Datadog, New Relic</a></li>
-            <li><a href="#pages/">Logging – ELK Stack, Fluentd, Loki</a></li>
-            <li><a href="#pages/">Automation – Terraform, Ansible, Chef, Puppet</a></li>
-            <li><a href="#pages/">CI/CD – Jenkins, GitLab CI, ArgoCD</a></li>
-            <li><a href="#pages/">Incident Response Tools – PagerDuty, Opsgenie, Slack integrations</a></li>
-        </ul>
-    </div>
-
-    <!-- Security -->
-    <div class="roadmap-box">
-        <h3>Security (DevSecOps)</h3>
-        <ul>
-            <li><a href="#pages/sonarqube/sonarqube.html">SAST :– SonarQube, Semgrep</a></li>
-            <li><a href="#pages/trivy/trivy.html">SCA :– Snyk, Trivy</a></li>
-            <li><a href="#pages/kube-bench/kube-bench.html">Container Security :– Clair, Anchore, Docker Bench</a></li>
-            <li><a href="#pages/checkov/checkov.html">IaC Security :– Checkov, Terrascan</a></li>
-            <li><a href="#pages/owaspzap/zap.html">DAST – OWASP ZAP, Burp Suite</a></li>
-            <li><a href="#pages/gitleaks/gitleaks.html">Secrets Detection & Management – Vault, Gitleaks, TruffleHog</a></li>
-            <li><a href="#pages/vault/vault.html">Runtime Protection – Falco, AppArmor</a></li>
-            <li><a href="#pages/logging/logging.html">Logging & Monitoring – ELK Stack, Wazuh</a></li>
-            <li><a href="#pages/defectdojo/defectdojo.html">Vulnerability Management – DefectDojo</a></li>
-            <li><a href="#pages/cicd/cicd.html">CI/CD Integration – GitLab/Jenkins with scanners</a></li>
-        </ul>
-    </div>
-
 </section>
 
-<!--DevOps Tools-->
+<!-- Tools -->
 <section class="tools">
     <h2>Start Learning DevOps Tools ↓</h2>
-
-    <div class="tools-container">
-
-        <div class="box">
-            <a href="/pages/linux/linux.html">
-                <img src="/pages/linux/Linux.jpg" alt="Linux">
-                <p>Linux</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/networking/networking.html">
-                <img src="/pages/networking/networking.jpg" alt="Linux">
-                <p>Networking</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/shell/shell.html">
-                <img src="/pages/shell/shel.jpg" alt="Shell Scripting">
-                <p>Scripting</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/ansible/ansible.html">
-                <img src="/pages/ansible/ansible.jpg" alt="Ansible">
-                <p>Ansible</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/docker/docker.html">
-                <img src="/pages/docker/docker.jpg" alt="Docker">
-                <p>Docker</p>
-            </a>
-        </div>
-
-         <div class="box">
-            <a href="/pages/git/git.html">
-                <img src="/pages/git/github.jpg" alt="GitHub">
-                <p>GitHub</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/jenkins/jenkins.html">
-                <img src="/pages/jenkins/jenkins.jpg" alt="Jenkins">
-                <p>Jenkins</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/kubernetes/kubernetes.html">
-                <img src="/pages/kubernetes/k8s.jpg" alt="Kubernetes">
-                <p>Kubernetes</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/aws/aws.html">
-                <img src="/pages/aws/aws.jpg" alt="AWS">
-                <p>AWS</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/grafana/grafana.html">
-                <img src="/pages/grafana/grafana.jpg" alt="Grafana">
-                <p>Grafana</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/helm/helm.html">
-                <img src="/pages/helm/helm.jpg" alt="Shell Scripting">
-                <p>Helm</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/argo-cd/argo.html">
-                <img src="/pages/argocd/argo.jpg" alt="Shell Scripting">
-                <p>Argo CD</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/python/python.html">
-                <img src="/pages/python/python.jpg" alt="Shell Scripting">
-                <p>Python</p>
-            </a>
-        </div>
-
-         <div class="box">
-            <a href="/pages/data-dog/data-dog.html">
-                <img src="/pages/datadog/data_dog.jpg" alt="Shell Scripting">
-                <p>DataDog</p>
-            </a>
-        </div>
-
-        <div class="box">
-            <a href="/pages/developer/text">
-                <img >
-                <p>text</p>
-            </a>
-        </div>
-
-    </div>
+    <div class="tools-container" id="toolsContainer"></div>
 </section>
 
 <!--Footer-->
-<footer class="footer">
-    <div class="footer-content">
-        <h2>🚀 Start Your DevOps Journey</h2>
-        <p>
-            Learn DevOps tools in depth and build real-world skills.
-            Stay consistent, practice daily, break systems and fix them —
-            that’s how real DevOps Engineers grow.
-        </p>
-    </div>
-</footer>
+<div id="footerContainer"></div>
 
+<script src="assets/js/javascript.js"></script> 
 </body>
 </html>
