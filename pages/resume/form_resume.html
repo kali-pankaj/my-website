@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>DevOps Resume Builder Pro</title>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+<link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+
+<!-- FORM -->
+<div class="form">
+
+<h3>User Info</h3>
+    <div id="info">
+        <label>Name</label>
+        <input id="name" type="text" value="Your Name"><br><br>
+
+        <label>Phone</label>
+        <input id="phone" type="text" value="+91-XXXXXXXXXX"><br><br>
+
+        <label>Email</label>
+        <input id="email" type="email" value="your.email@gmail.com"><br><br>
+
+        <label>LinkedIn</label>
+        <input id="linkedin" type="text" value="linkedin.com/in/yourname"><br><br>
+
+        <label>GitHub</label>
+        <input id="github" type="text" value="github.com/yourname"><br><br>
+
+        <label>Location</label>
+        <input id="location" type="text" value="India"><br><br>
+    </div>
+
+<hr>
+
+<h3>Professional Summary</h3>
+<select onchange="toggle('summary', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="summary"></textarea>
+
+<h3>Technical Skills</h3>
+<select onchange="toggle('skills', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="skills"></textarea>
+
+<h3>Projects</h3>
+<select onchange="toggle('projects', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="projects"></textarea>
+
+<h3>DevSecOps Pipeline</h3>
+<select onchange="toggle('devsecops', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="devsecops"></textarea>
+
+<h3>Monitoring & Logging</h3>
+<select onchange="toggle('monitoring', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="monitoring"></textarea>
+
+<h3>DevOps Workflow</h3>
+<select onchange="toggle('workflow', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="workflow"></textarea>
+
+<h3>Professional Experience</h3>
+<select onchange="toggle('exp', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="exp"></textarea>
+
+<h3>Junior DevOps Engineer</h3>
+<select onchange="toggle('junior', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="junior"></textarea>
+
+<h3>Key Achievements</h3>
+<select onchange="toggle('achievements', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="achievements"></textarea>
+
+<h3>Certifications</h3>
+<select onchange="toggle('cert', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="cert"></textarea>
+
+<h3>Education</h3>
+<select onchange="toggle('edu', this)">
+<option value="default">DEFAULT</option>
+<option value="custom">CUSTOM</option>
+</select>
+<textarea id="edu"></textarea>
+
+<button onclick="generate()">Generate Resume</button>
+<button onclick="downloadPDF()">Download PDF</button>
+
+</div>
+
+<!-- PREVIEW -->
+<div class="preview" id="resume"></div>
+
+<script>
+
+// DEFAULT DATA
+const data = {
+name: "Your Name",
+phone: "+91-XXXXXXXXXX",
+email: "your.email@gmail.com",
+linkedin: "linkedin.com/in/yourname",
+github: "github.com/yourname",
+location: "India",
+
+summary: "DevOps Engineer with hands-on experience in building and automating end-to-end CI/CD pipelines including build, test, security scanning, and deployment. Strong expertise in Kubernetes (Pods, Deployments, Services, Ingress) and AWS cloud (EC2, VPC, IAM, EKS). Focused on improving deployment speed, system reliability, and implementing DevSecOps best practices.",
+skills: `Cloud: AWS (EC2, S3, IAM, VPC, EKS, Auto Scaling, Load Balancer)
+Containerization: Docker, Kubernetes, Helm
+CI/CD: Jenkins, GitHub Actions, GitLab CI (Build, Test, Deploy)
+Infrastructure as Code: Terraform, Ansible
+Monitoring: Prometheus, Grafana
+Logging: ELK Stack
+Security: SonarQube (SAST), Trivy (Image Scan), OWASP ZAP (DAST), Vault, Falco
+Version Control: Git, GitHub
+Scripting: Bash, Python
+Operating Systems: Linux (Ubuntu, CentOS)`,
+
+projects: `CI/CD Pipeline with Kubernetes Deployment
+GitHub: https://github.com/yourname/devops-project
+
+Designed and implemented end-to-end CI/CD pipeline using GitHub Actions and Jenkins
+Automated build, test, security scan, and deployment stages
+Containerized application using Docker and deployed on Kubernetes (AWS EKS)
+Integrated SonarQube (SAST) and Trivy (container scanning) for security
+Provisioned infrastructure using Terraform (IaC)
+Impact: Reduced deployment time by 60% and improved release efficiency`,
+
+devsecops: `DevSecOps Pipeline Implementation
+Integrated OWASP ZAP for dynamic application security testing (DAST)
+Used HashiCorp Vault for secure secrets management
+Implemented Checkov for infrastructure security scanning
+Deployed Falco for runtime threat detection in Kubernetes
+Impact: Reduced security vulnerabilities before production deployment`,
+
+monitoring: `Monitoring and Logging System
+Implemented Prometheus and Grafana for real-time monitoring
+Configured ELK Stack for centralized logging and analysis
+Monitored system metrics (CPU, memory, pod health)
+Impact: Improved system observability and reduced downtime incidents`,
+
+workflow: `DevOps Workflow
+Source Control: Git, GitHub
+CI/CD Pipeline: Jenkins, GitHub Actions
+Build Tools: Maven, npm
+Containerization: Docker
+Orchestration: Kubernetes
+Security: SonarQube, Trivy, OWASP ZAP
+Monitoring: Prometheus, Grafana`,
+
+exp: `Professional Experience
+DevOps Engineer | Company Name
+Month Year – Present
+
+Automated CI/CD pipelines reducing manual deployment effort by 70%
+Managed Kubernetes clusters and containerized microservices
+Optimized AWS infrastructure for performance and cost efficiency
+Improved system uptime to 99.9% using monitoring tools
+Troubleshooted pipeline failures and improved deployment reliability`,
+
+junior: `Junior DevOps Engineer | Company Name
+Month Year – Month Year
+
+Supported CI/CD pipeline implementation and deployments
+Maintained Linux servers and handled system troubleshooting
+Worked with Docker containers and Git version control`,
+
+achievements: `Key Achievements
+Reduced deployment time by 60% through CI/CD automation
+Improved application uptime to 99.9%
+Implemented DevSecOps practices to enhance application security`,
+
+cert: `Certifications
+AWS Certified Solutions Architect (In Progress)
+Certified Kubernetes Administrator (CKA)`,
+
+edu: `Bachelor of Technology (B.Tech) in Computer Science
+Your College Name – Year`
+
+};
+
+// DEBOUNCE CONTROL (FIX LAG)
+let timeout;
+
+function debounceGenerate() {
+    clearTimeout(timeout);
+    timeout = setTimeout(generate, 200);
+}
+
+// AUTO LOAD DEFAULT DATA
+window.onload = function () {
+
+    Object.keys(data).forEach(id => {
+        let box = document.getElementById(id);
+        if (!box) return;
+
+        let select = box.previousElementSibling;
+
+        if (!box.value) {
+            box.value = data[id];
+        }
+
+        if (box.tagName === "TEXTAREA") {
+            box.disabled = true;
+        }
+
+        if (select && select.tagName === "SELECT") {
+            select.value = "default";
+        }
+
+        box.oninput = debounceGenerate;
+    });
+
+    generate();
+};
+
+function toggle(id, select) {
+    let box = document.getElementById(id);
+    if (!box) return;
+
+    if (select.value === "default") {
+        box.value = data[id] || "";
+        if (box.tagName === "TEXTAREA") box.disabled = true;
+    } else {
+        box.disabled = false;
+        box.focus();
+    }
+
+    generate();
+}
+
+function generate() {
+
+    const resume = document.getElementById("resume");
+    if (!resume) return;
+
+    const get = (id) => document.getElementById(id)?.value || "";
+
+    resume.innerHTML = `
+        <h1>${get("name")}</h1>
+        <p>
+        DevOps Engineer <br>
+        Email: ${get("email")} |
+        Phone: ${get("phone")} <br>
+        LinkedIn: ${get("linkedin")} |
+        GitHub: ${get("github")} <br>
+        Location: ${get("location")}
+        </p>
+
+        <h2>Professional Summary</h2>
+        <p>${get("summary")}</p>
+
+        <h2>Technical Skills</h2>
+        <p>${get("skills")}</p>
+
+        <h2>Projects</h2>
+        <p>${get("projects")}</p>
+
+        <h2>DevSecOps Pipeline</h2>
+        <p>${get("devsecops")}</p>
+
+        <h2>Monitoring & Logging</h2>
+        <p>${get("monitoring")}</p>
+
+        <h2>DevOps Workflow</h2>
+        <p>${get("workflow")}</p>
+
+        <h2>Professional Experience</h2>
+        <p>${get("exp")}</p>
+
+        <h2>Junior DevOps Engineer</h2>
+        <p>${get("junior")}</p>
+
+        <h2>Key Achievements</h2>
+        <p>${get("achievements")}</p>
+
+        <h2>Certifications</h2>
+        <p>${get("cert")}</p>
+
+        <h2>Education</h2>
+        <p>${get("edu")}</p>
+    `;
+}
+
+function downloadPDF() {
+
+    if (typeof html2pdf === "undefined") {
+        alert("PDF library not loaded!");
+        return;
+    }
+
+    html2pdf()
+        .set({
+            margin: 0.5,
+            filename: "resume.pdf",
+            image: { type: "jpeg", quality: 0.98 },
+            html2canvas: { scale: 2 },
+            jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
+        })
+        .from(document.getElementById("resume"))
+        .save();
+}
+
+</script>
+
+</body>
+</html>

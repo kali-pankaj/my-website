@@ -1,0 +1,125 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    display: flex;
+    background: #f4f6f9;
+    height: 100vh;
+}
+
+/* LEFT PANEL (FORM) */
+.form {
+    width: 40%;
+    padding: 20px;
+    background: white;
+    height: 100vh;
+    overflow-y: auto;
+
+    box-shadow: 2px 0 10px rgba(0,0,0,0.08);
+    padding-right: 25px;
+}
+
+/* RIGHT PANEL (PREVIEW) */
+.preview {
+    width: 60%;
+    padding: 40px;
+    background: white;
+    height: 100vh;
+    overflow-y: auto;
+
+    box-shadow: -2px 0 15px rgba(0,0,0,0.05);
+    padding-right: 25px;
+}
+
+/* INPUT FIELDS */
+input, textarea, select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0 12px 0;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+    transition: 0.2s;
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: #007bff;
+    outline: none;
+    box-shadow: 0 0 5px rgba(0,123,255,0.25);
+}
+
+/* TEXTAREA FIX (IMPORTANT FOR YOUR SCREENSHOT ISSUE) */
+textarea {
+    min-height: 120px;
+    resize: vertical;
+    line-height: 1.5;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    margin-top: 10px;
+    background: #007bff;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+    transition: 0.2s;
+}
+
+button:hover {
+    background: #0056b3;
+}
+
+/* HEADINGS */
+h1 {
+    margin-bottom: 5px;
+    font-size: 28px;
+}
+
+h2 {
+    border-bottom: 2px solid #000;
+    padding-bottom: 6px;
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+h3 {
+    margin-top: 18px;
+    margin-bottom: 6px;
+}
+
+/* TEXT FORMATTING */
+.preview p {
+    white-space: pre-line;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+/* DISABLED TEXTAREA */
+textarea:disabled {
+    background: #f3f3f3;
+    color: #333;
+}
+
+/* SCROLLBAR CLEAN UI */
+.form::-webkit-scrollbar,
+.preview::-webkit-scrollbar {
+    width: 8px;
+}
+
+.form::-webkit-scrollbar-thumb,
+.preview::-webkit-scrollbar-thumb {
+    background: #bbb;
+    border-radius: 10px;
+}
+
+.form::-webkit-scrollbar-thumb:hover,
+.preview::-webkit-scrollbar-thumb:hover {
+    background: #888;
+}
