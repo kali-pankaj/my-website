@@ -1,116 +1,135 @@
 * {
     box-sizing: border-box;
-}
-
-body {
     margin: 0;
-    font-family: Arial, sans-serif;
+    padding: 0;
+}
+
+/* BODY */
+body {
+    font-family: 'Inter', Arial, sans-serif;
     display: flex;
-    background: #f4f6f9;
     height: 100vh;
+    background: linear-gradient(135deg, #667eea, #764ba2);
+    gap: 15px;
+    padding: 15px;
 }
 
-/* LEFT PANEL (FORM) */
+/* PANELS (GLASS EFFECT) */
+.form, .preview {
+    backdrop-filter: blur(12px);
+    background: rgba(255, 255, 255, 0.85);
+    border-radius: 16px;
+    padding: 25px;
+    overflow-y: auto;
+    height: 100%;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: 0.3s ease;
+}
+
+/* FLEX LAYOUT */
 .form {
-    width: 40%;
-    padding: 20px;
-    background: white;
-    height: 100vh;
-    overflow-y: auto;
-
-    box-shadow: 2px 0 10px rgba(0,0,0,0.08);
-    padding-right: 25px;
+    flex: 4;
 }
 
-/* RIGHT PANEL (PREVIEW) */
 .preview {
-    width: 60%;
-    padding: 40px;
-    background: white;
-    height: 100vh;
-    overflow-y: auto;
-
-    box-shadow: -2px 0 15px rgba(0,0,0,0.05);
-    padding-right: 25px;
+    flex: 6;
 }
 
-/* INPUT FIELDS */
+/* HOVER LIFT EFFECT */
+.form:hover, .preview:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(0,0,0,0.15);
+}
+
+/* HEADINGS */
+h1 {
+    font-size: 26px;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 18px;
+    margin-top: 25px;
+    border-left: 4px solid #667eea;
+    padding-left: 10px;
+}
+
+h3 {
+    margin-top: 15px;
+    font-size: 15px;
+}
+
+/* INPUTS */
 input, textarea, select {
     width: 100%;
     padding: 12px;
-    margin: 8px 0 12px 0;
-    border-radius: 8px;
+    margin: 8px 0 14px 0;
+    border-radius: 10px;
     border: 1px solid #ddd;
     font-size: 14px;
-    transition: 0.2s;
+    transition: 0.25s;
+    background: #f9fafc;
 }
 
+/* INPUT FOCUS */
 input:focus, textarea:focus, select:focus {
-    border-color: #007bff;
+    border-color: #667eea;
+    background: white;
+    box-shadow: 0 0 0 3px rgba(102,126,234,0.2);
     outline: none;
-    box-shadow: 0 0 5px rgba(0,123,255,0.25);
 }
 
-/* TEXTAREA FIX (IMPORTANT FOR YOUR SCREENSHOT ISSUE) */
+/* TEXTAREA */
 textarea {
     min-height: 120px;
     resize: vertical;
-    line-height: 1.5;
+    line-height: 1.6;
 }
 
 /* BUTTON */
 button {
     width: 100%;
-    padding: 12px;
-    margin-top: 10px;
-    background: #007bff;
+    padding: 13px;
+    margin-top: 12px;
+    background: linear-gradient(135deg, #667eea, #764ba2);
     color: white;
     border: none;
     cursor: pointer;
-    border-radius: 8px;
-    font-weight: bold;
-    transition: 0.2s;
+    border-radius: 10px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    transition: 0.3s;
 }
 
+/* BUTTON HOVER */
 button:hover {
-    background: #0056b3;
+    transform: translateY(-2px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.2);
 }
 
-/* HEADINGS */
-h1 {
-    margin-bottom: 5px;
-    font-size: 28px;
+/* BUTTON CLICK */
+button:active {
+    transform: scale(0.97);
 }
 
-h2 {
-    border-bottom: 2px solid #000;
-    padding-bottom: 6px;
-    margin-top: 20px;
-    font-size: 18px;
-}
-
-h3 {
-    margin-top: 18px;
-    margin-bottom: 6px;
-}
-
-/* TEXT FORMATTING */
+/* PREVIEW TEXT */
 .preview p {
     white-space: pre-line;
     font-size: 14px;
-    line-height: 1.6;
+    line-height: 1.7;
+    color: #333;
 }
 
 /* DISABLED TEXTAREA */
 textarea:disabled {
-    background: #f3f3f3;
-    color: #333;
+    background: #ececec;
 }
 
-/* SCROLLBAR CLEAN UI */
+/* SCROLLBAR */
 .form::-webkit-scrollbar,
 .preview::-webkit-scrollbar {
-    width: 8px;
+    width: 6px;
 }
 
 .form::-webkit-scrollbar-thumb,
@@ -119,7 +138,15 @@ textarea:disabled {
     border-radius: 10px;
 }
 
-.form::-webkit-scrollbar-thumb:hover,
-.preview::-webkit-scrollbar-thumb:hover {
-    background: #888;
+/* RESPONSIVE DESIGN */
+@media (max-width: 900px) {
+    body {
+        flex-direction: column;
+        height: auto;
+    }
+
+    .form, .preview {
+        width: 100%;
+        height: auto;
+    }
 }
