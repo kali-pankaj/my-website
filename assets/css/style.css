@@ -135,58 +135,56 @@ body {
     background:#facc15;
 }
 
-/* =========================
-   DEVOPS ROADMAP SECTION
-========================= */
+/* =========== DevOps Road Map ==========*/
 
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #0f172a;
+}
+
+/* MAIN SECTION */
 .roadmap {
     padding: 60px 20px;
-    background: linear-gradient(135deg,#0f172a,#1e293b);
+    background: linear-gradient(135deg, #0f172a, #1e293b);
     color: white;
     text-align: center;
 }
 
+/* TITLE */
 .roadmap h2 {
     font-size: 40px;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     letter-spacing: 1px;
-    
-    line-height: 1.4;
 }
 
+/* GRID CONTAINER */
 #roadmapContainer {
     display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 25px;
+    max-width: 1400px;
+    margin: auto;
 }
 
-/* Container Grid */
-.roadmap {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-}
-
-/* Roadmap Card */
+/* CARD */
 .roadmap-box {
     background: white;
     color: #111;
-    width: 300px;
-    padding: 25px;
-    border-radius: 12px;
-    box-shadow: 0px 8px 25px rgba(0,0,0,0.3);
-    transition: 0.3s;
+    padding: 22px;
+    border-radius: 15px;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.3);
+    transition: all 0.3s ease;
     text-align: left;
 }
 
-/* Hover Animation */
+/* HOVER EFFECT */
 .roadmap-box:hover {
-    transform: translateY(-10px) scale(1.03);
-    box-shadow: 0px 15px 40px rgba(0,0,0,0.5);
+    transform: translateY(-10px);
+    box-shadow: 0 15px 40px rgba(0,0,0,0.5);
 }
 
-/* Heading */
+/* CARD TITLE */
 .roadmap-box h3 {
     font-size: 20px;
     margin-bottom: 15px;
@@ -194,23 +192,36 @@ body {
     padding-left: 10px;
 }
 
-/* List */
+/* LIST RESET */
 .roadmap-box ul {
     list-style: none;
     padding: 0;
+    margin: 0;
 }
 
+/* LIST ITEM */
 .roadmap-box ul li {
-    padding: 6px 0;
-    font-size: 15px;
+    padding: 10px 0;
     border-bottom: 1px solid #eee;
+    transition: 0.2s;
 }
 
-/* List hover effect */
+/* LINKS */
+.roadmap-box ul li a {
+    text-decoration: none;
+    color: #111;
+    font-size: 16px;
+    display: block;
+}
+
+/* LINK HOVER */
 .roadmap-box ul li:hover {
-    color: #2563eb;
-    padding-left: 5px;
-    transition: 0.2s;
+    padding-left: 10px;
+    background: #b4f7b7;
+}
+
+.roadmap-box ul li a:hover {
+    color: #0051ff;
 }
 
 /* ===============================
