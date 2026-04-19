@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Kubernetes Cheat Sheet</title>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<!-- ================= SIDEBAR ================= -->
+<div class="sidebar">
+    <h3>🚀 Kubernetes Menu</h3>
+    <a href="#cluster">Cluster</a>
+    <a href="#nodes">Nodes</a>
+    <a href="#pods">Pods</a>
+    <a href="#deployments">Deployments</a>
+    <a href="#services">Services</a>
+    <a href="#namespaces">Namespaces</a>
+    <a href="#config">Config</a>
+    <a href="#yaml">YAML</a>
+    <a href="#debug">Debug</a>
+    <a href="#monitor">Monitoring</a>
+    <a href="#labels">Labels</a>
+    <a href="#port">Port</a>
+    <a href="#copy">Copy</a>
+    <a href="#all">All</a>
+    <a href="#delete">Delete</a>
+    <a href="#short">Short</a>
+    <a href="#watch">Watch</a>
+    <a href="#explain">Explain</a>
+</div>
+
+<!-- ================= MAIN ================= -->
+<div class="container">
+
+<div class="title">🚀 Kubernetes (kubectl) Cheat Sheet</div>
+
+<!-- ALL YOUR SECTIONS (UNCHANGED CONTENT) -->
+
+<div class="section" id="cluster">
+<h2>Cluster & Context</h2>
+<div class="command">kubectl cluster-info → cluster details</div>
+<div class="command">kubectl version --short → version</div>
+<div class="command">kubectl config view → config</div>
+<div class="command">kubectl config current-context → active cluster</div>
+<div class="command">kubectl config use-context minikube → switch cluster</div>
+</div>
+
+<div class="section" id="nodes">
+<h2>Nodes</h2>
+<div class="command">kubectl get nodes → list nodes</div>
+<div class="command">kubectl describe node minikube → node info</div>
+</div>
+
+<div class="section" id="pods">
+<h2>Pods</h2>
+<div class="command">kubectl get pods → list pods</div>
+<div class="command">kubectl logs nginx → logs</div>
+<div class="command">kubectl exec -it nginx -- bash → enter pod</div>
+</div>
+
+<div class="section" id="deployments">
+<h2>Deployments</h2>
+<div class="command">kubectl create deployment nginx --image=nginx → create app</div>
+<div class="command">kubectl scale deployment nginx --replicas=3 → scale</div>
+</div>
+
+<div class="section" id="services">
+<h2>Services</h2>
+<div class="command">kubectl expose deployment nginx --type=NodePort --port=80 → expose</div>
+</div>
+
+<div class="section" id="namespaces">
+<h2>Namespaces</h2>
+<div class="command">kubectl create ns dev → create namespace</div>
+</div>
+
+<div class="section" id="config">
+<h2>Config</h2>
+<div class="command">kubectl create configmap my-config --from-literal=key=value</div>
+<div class="command">kubectl create secret generic my-secret --from-literal=password=1234</div>
+</div>
+
+<div class="section" id="yaml">
+<h2>YAML</h2>
+<div class="command">kubectl apply -f file.yaml → apply</div>
+<div class="command">kubectl delete -f file.yaml → delete</div>
+</div>
+
+<div class="section" id="debug">
+<h2>Debug</h2>
+<div class="command">kubectl describe pod nginx</div>
+<div class="command">kubectl get events</div>
+</div>
+
+<div class="section" id="monitor">
+<h2>Monitoring</h2>
+<div class="command">kubectl top pods</div>
+</div>
+
+<div class="section" id="labels">
+<h2>Labels</h2>
+<div class="command">kubectl label pod nginx env=dev</div>
+</div>
+
+<div class="section" id="port">
+<h2>Port Forward</h2>
+<div class="command">kubectl port-forward pod/nginx 8080:80</div>
+</div>
+
+<div class="section" id="copy">
+<h2>Copy</h2>
+<div class="command">kubectl cp nginx:/app/file.txt ./file.txt</div>
+</div>
+
+<div class="section" id="all">
+<h2>All Resources</h2>
+<div class="command">kubectl get all</div>
+</div>
+
+<div class="section" id="delete">
+<h2>Delete</h2>
+<div class="command">kubectl delete all --all</div>
+</div>
+
+<div class="section" id="short">
+<h2>Short</h2>
+<div class="command">kubectl get po</div>
+<div class="command">kubectl get svc</div>
+</div>
+
+<div class="section" id="watch">
+<h2>Watch</h2>
+<div class="command">kubectl get pods -w</div>
+</div>
+
+<div class="section" id="explain">
+<h2>Explain</h2>
+<div class="command">kubectl explain pod</div>
+</div>
+
+</div>
+
+<!-- ================= JS FEATURES ================= -->
+<script>
+
+/* CLICK TO COPY */
+document.querySelectorAll(".command").forEach(cmd => {
+    cmd.addEventListener("click", () => {
+        navigator.clipboard.writeText(cmd.innerText);
+        cmd.style.borderLeft = "3px solid #22c55e";
+        setTimeout(() => {
+            cmd.style.borderLeft = "3px solid #38bdf8";
+        }, 500);
+    });
+});
+
+/* ACTIVE SIDEBAR SCROLLSPY */
+const sections = document.querySelectorAll(".section");
+const links = document.querySelectorAll(".sidebar a");
+
+window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(sec => {
+        if (scrollY >= sec.offsetTop - 120) {
+            current = sec.getAttribute("id");
+        }
+    });
+
+    links.forEach(link => {
+        link.classList.remove("active");
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
+});
+
+</script>
+
+</body>
+</html>
