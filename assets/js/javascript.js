@@ -82,7 +82,8 @@ document.addEventListener("DOMContentLoaded", () => {
             items: [
                 { name: "Docker", link: "pages/docker/docker.html" },
                 { name: "Kubernetes", link: "pages/kubernetes/kubernetes.html" },
-                { name: "Helm", link: "pages/helm/helm.html" }
+                { name: "Helm", link: "pages/helm/helm.html" },
+                { name: "Argo CD", link: "pages/argocd/argocd.html" }
             ]
         },
         {
@@ -97,8 +98,7 @@ document.addEventListener("DOMContentLoaded", () => {
             items: [
                 { name: "Jenkins", link: "pages/jenkins/jenkins.html" },
                 { name: "GitHub Actions", link: "pages/github-actions/github-actions.html" },
-                { name: "GitLab", link: "pages/gitlab/gitlab.html" },
-                { name: "Argo CD", link: "pages/argocd/argocd.html" }
+                { name: "GitLab", link: "pages/gitlab/gitlab.html" }
             ]
         },
         {
@@ -129,18 +129,26 @@ document.addEventListener("DOMContentLoaded", () => {
             ]
         },
         {
-            title: "Security (DevSecOps)",
+            title: "Security (DevSecOps) – Beginner",
             items: [
                 { name: "SAST – SonarQube, Semgrep", link: "pages/sonarqube/sonarqube.html" },
                 { name: "SCA – Snyk, Trivy", link: "pages/trivy/trivy.html" },
-                { name: "Container Security – Clair, Anchore, Docker Bench", link: "pages/kube-bench/kube-bench.html" },
+                { name: "DAST – OWASP ZAP", link: "pages/owaspzap/zap.html" },
+                { name: "Secrets Detection – Gitleaks, TruffleHog", link: "pages/gitleaks/gitleaks.html" },
+                { name: "Basic Container Security – Docker Bench", link: "pages/kube-bench/kube-bench.html" },
+                { name: "CI/CD Security – GitLab/Jenkins basic scanners", link: "pages/cicd/cicd.html" }
+            ]
+        },
+        {
+            title: "Security (DevSecOps) – Advanced",
+            items: [
+                { name: "Container Security – Clair, Anchore", link: "pages/kube-bench/kube-bench.html" },
                 { name: "IaC Security – Checkov, Terrascan", link: "pages/checkov/checkov.html" },
-                { name: "DAST – OWASP ZAP, Burp Suite", link: "pages/owaspzap/zap.html" },
-                { name: "Secrets Detection – Vault, Gitleaks, TruffleHog", link: "pages/gitleaks/gitleaks.html" },
+                { name: "Secrets Management – Vault", link: "pages/vault/vault.html" },
                 { name: "Runtime Protection – Falco, AppArmor", link: "pages/vault/vault.html" },
                 { name: "Logging & Monitoring – ELK Stack, Wazuh", link: "pages/logging/logging.html" },
                 { name: "Vulnerability Management – DefectDojo", link: "pages/defectdojo/defectdojo.html" },
-                { name: "CI/CD Integration – GitLab/Jenkins scanners", link: "pages/cicd/cicd.html" }
+                { name: "Advanced CI/CD Security – Integrated pipelines & policy enforcement", link: "pages/cicd/cicd.html" }
             ]
         }
     ];

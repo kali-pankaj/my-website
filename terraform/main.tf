@@ -1,89 +1,87 @@
-# Provider Defiend
-provider "aws"{
-    region = "us-east-1"
-    profile = "default"
+provider "aws" {
+  region  = var.region
+  profile = "default"
 }
 
 # VPC
 resource "aws_vpc" "my_vpc" {
-    cidr_block = "10.100.0.0/16"
+  cidr_block = var.vpc_cidr
 
-    tags = {
-        Name = "my-vpc"
-    }
+  tags = {
+    Name = "my-vpc"
+  }
 }
 
-# SUBNET
+# Subnet
 resource "aws_subnet" "my_subnet" {
-    vpc_id                  = aws_vpc.my_vpc.id
-    cidr_block              = "10.100.1.0/24"
-    availability_zone       = "us-east-1a"
-    map_public_ip_on_launch = true  
+  vpc_id                  = aws_vpc.my_vpc.id
+  cidr_block              = var.subnet_cidr
+  availability_zone       = var.availability_zone
+  map_public_ip_on_launch = true
 
-    tags = {
-      Name = "my-subnet"
-    }
+  tags = {
+    Name = "my-subnet"
+  }
 }
 
-# SECURITY GROUPS
+# Security Group
 resource "aws_security_group" "my_sg" {
-  name    = "my-sg"
-  vpc_id  = aws_vpc.my_vpc.id
+  name   = "my-sg"
+  vpc_id = aws_vpc.my_vpc.id
 
-  ingress  {
-    from_port   = 22
-    to_port     = 22
+  ingress {
+    from_port   = var.ssh_port
+    to_port     = var.ssh_port
     protocol    = "tcp"
-    cidr_blocks  = ["0.0.0.0/0"]
+    cidr_blocks = var.allowed_cidr_blocks
   }
 
-  ingress  {
-    from_port   = 80
-    to_port     = 80
+  ingress {
+    from_port   = var.http_port
+    to_port     = var.http_port
     protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.allowed_cidr_blocks
   }
 
   egress {
     from_port   = 0
     to_port     = 0
     protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
+    cidr_blocks = var.allowed_cidr_blocks
   }
 
-  tags  = {
-    Name    = "my-sg"
+  tags = {
+    Name = "my-sg"
   }
 }
 
-# KEY PEIR
+# Key Pair
 resource "aws_key_pair" "my_key" {
-  key_name   = "my-ec2-key"
+  key_name   = var.key_name
   public_key = file("~/.ssh/id_ed25519.pub")
 }
 
-# EE2 INSTANCE
+# EC2 Instance
 resource "aws_instance" "my_instance" {
-  ami               = "ami-0c02fb55956c7d316" 
-  instance_type     = "t3.medium" 
-  subnet_id         =  aws_subnet.my_subnet.id
+  ami                    = var.ami
+  instance_type          = var.instance_type
+  subnet_id              = aws_subnet.my_subnet.id
   vpc_security_group_ids = [aws_security_group.my_sg.id]
 
-  key_name = aws_key_pair.my_key.key_name
+  key_name = var.key_name
 
   tags = {
-    Name            = "pankaj"
-    Team            = "DevOps"
-    Application     = "website"
+    Name        = "pankaj"
+    Team        = "DevOps"
+    Application = "website"
   }
 }
 
-# OUTPUT 
+# Outputs
 output "instance_public_ip" {
   value = aws_instance.my_instance.public_ip
 }
 
-#  OUTPUT
 output "instance_id" {
-    value = aws_instance.my_instance.id
+  value = aws_instance.my_instance.id
 }
