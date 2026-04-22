@@ -1,2 +1,7 @@
 /pages/developer__mode/*
 
+# Ignore terraform generated files
+terraform/.terraform/
+terraform/*.tfstate
+terraform/*.tfstate.*
+terraform/*

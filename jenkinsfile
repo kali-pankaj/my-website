@@ -1,0 +1,130 @@
+
+// Code Checkout
+// Docker Build
+// Docker Tag
+// Push to Docker Hub
+// Run Container
+// Deploy in Minikube
+// Health Check
+// Cleanup
+
+pipeline {
+
+    agent any
+
+    environment {
+        IMAGE_NAME = "my-web-app"
+        IMAGE_TAG  = "v1.${BUILD_NUMBER}"
+        DOCKER_USER = "kalitesthub"
+    }
+
+    stages {
+        
+        stage ('Code Checkout') {
+            steps {
+                git url: "https://github.com/kali-pankaj/my-website.git", branch: "main"
+                echo "Code pulled successfully..."
+            }
+        }
+        stage ('Code Test') {
+            steps {
+                sh '''
+                    echo "I can't code test becouse this project only html and css ..."
+                '''
+            }
+        }
+        stage('Code Quality Check') {
+            steps {
+                echo "Check only frontend code like ( html css javascript ) "
+                
+            }
+        }
+        stage ('Docker Build') {
+            steps {
+                sh '''
+                    docker build -t $IMAGE_NAME:$IMAGE_TAG .
+                    echo "Image build success..."
+                '''
+            }
+        }
+        stage ('Security Scan') {
+            steps {
+                sh '''
+                    echo "Scanning image..."
+                    trivy image $IMAGE_NAME:$IMAGE_TAG || true
+                '''
+            }
+        }
+        stage ('Docker Tag') {
+            steps {
+                sh '''
+                    docker tag $IMAGE_NAME:$IMAGE_TAG $DOCKER_USER/$IMAGE_NAME:$IMAGE_TAG
+                    echo "Docker image tag success..."
+                '''
+            }
+        }
+        stage ('Push to Docker Hub') {
+            steps {
+                withCredentials([usernamePassword(
+                    credentialsId: 'docker-creds',
+                    usernameVariable: 'DOCKER_USER',
+                    passwordVariable: 'DOCKER_PASS'
+                )]) {
+                    sh '''
+                        echo $DOCKER_PASS | docker login -u $DOCKER_USER --password-stdin
+                        docker push $DOCKER_USER/$IMAGE_NAME:$IMAGE_TAG
+                    '''
+                }
+            }
+        }
+        stage ('Run Container') {
+            steps {
+                sh '''
+                    docker stop my-web-app || true
+                    docker rm my-web-app || true
+
+                    docker run -d -p 8085:80 --name my-web-app $DOCKER_USER/$IMAGE_NAME:$IMAGE_TAG
+                    echo "Container deployed on port 8085"
+                '''
+            }
+        }
+         stage ('minkkube deploy ') {
+            steps {
+                sh '''
+                    minikube start --cpus=2 --memory=4096
+                    cd kubernetes/my-webapp
+                    sh auto.sh 
+                    
+                '''
+            }
+        }
+        stage ('Health Check') {
+            steps {
+                sh '''
+                    sleep 5
+                    curl -f http://localhost:8085 || exit 1
+                    echo "Application is live" 
+                '''
+            }
+        }
+        stage ('Cleanup') {
+            steps {
+                sh '''
+                    docker image prune -f
+                    echo "Cleanup Done"
+                '''
+            }
+        }
+    }
+    post {
+        success {
+            echo "Pipeline executed successfully..."
+        }
+        failure {
+            echo "Pipeline failed! Check logs"
+        }
+        always {
+            cleanWs()
+        }
+    }
+}

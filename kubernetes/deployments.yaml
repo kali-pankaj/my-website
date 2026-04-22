@@ -1,24 +1,21 @@
 apiVersion: apps/v1
 kind: Deployment
-metadata:
-  name: pankaj
-  namespace: my-app
-
-spec:
+metadata: 
+  name: myapp-deployment
+spec: 
   replicas: 2
-
-  selector:
-    matchLabels:
-      app: my-app
-
-  template:
-    metadata:
+  selector: 
+    matchLabels: 
+      app: myapp
+  template: 
+    metadata: 
       labels:
-        app: my-app
-
-    spec:
+        app: myapp
+    spec: 
       containers:
-        - name: my-app
-          image: kalitesthub/my-web-app:latest
-          ports:
+        - name: myapp 
+          image: kalitesthub/my-web-app:v1.8
+          imagePullPolicy: Always
+          ports: 
             - containerPort: 80
+            
