@@ -98,7 +98,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    cd kubernetes/my-webapp
+                    cd kubernetes
                     sh auto.sh 
                     
                 '''
