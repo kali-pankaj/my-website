@@ -98,7 +98,6 @@ pipeline {
             }
             steps {
                 sh '''
-                    // minikube start --cpus=2 --memory=4096
                     cd kubernetes/my-webapp
                     sh auto.sh 
                     
