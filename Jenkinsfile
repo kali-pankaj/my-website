@@ -17,6 +17,10 @@ pipeline {
         IMAGE_TAG  = "v1.${BUILD_NUMBER}"
         DOCKER_USER = "kalitesthub"
     }
+    
+    parameters {
+        choice(name: 'RUN_STAGE', choices: ['minikube'], description: 'Select stage to run')
+    }
 
     stages {
         
@@ -89,9 +93,12 @@ pipeline {
             }
         }
          stage ('minkkube deploy ') {
+             when {
+                expression { params.RUN_STAGE == 'minikube' }
+            }
             steps {
                 sh '''
-                    minikube start --cpus=2 --memory=4096
+                    // minikube start --cpus=2 --memory=4096
                     cd kubernetes/my-webapp
                     sh auto.sh 
                     
