@@ -8,15 +8,13 @@ echo "============================================"
 # set script write or not 
 set -e
 
-if ! command -v minikube &> /dev/null 
-then
-    echo "Minikube is Installing..."
-    curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
-    sudo install minikube-linux-amd64 /usr/local/bin/minikube 
-    rm minikube-linux-amd64
-    echo "Minikube Install Successful..."
+if [ -x "/usr/local/bin/minikube" ]; then
+    echo "Minikube already installed"
 else
-    echo "Minikube already Install"
+    echo "Installing Minikube..."
+    curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
+    sudo install minikube-linux-amd64 /usr/local/bin/minikube
+    rm -rf minikube-linux-amd64
 fi
 
 # Check minikube version 
