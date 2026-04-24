@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Self Improvement Guide</title>
+  <style>
+
+    /* ================= FONT ================= */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+
+/* ================= VARIABLES ================= */
+:root {
+  --bg: #f9fafb;
+  --card: #ffffff;
+  --primary: #2563eb;
+  --primary-dark: #1d4ed8;
+  --text: #111827;
+  --subtext: #6b7280;
+}
+
+/* ================= DARK MODE ================= */
+body.dark {
+  --bg: #020617;
+  --card: #0f172a;
+  --primary: #3b82f6;
+  --primary-dark: #2563eb;
+  --text: #e5e7eb;
+  --subtext: #9ca3af;
+}
+
+/* ================= BASE ================= */
+body {
+  font-family: 'Poppins', sans-serif;
+  margin: 0;
+  display: flex;
+  background: var(--bg);
+  color: var(--text);
+  transition: all 0.3s ease;
+}
+
+/* ================= SIDEBAR ================= */
+.sidebar {
+  width: 240px;
+  background: linear-gradient(180deg, #1f2937, #020617);
+  color: white;
+  height: 100vh;
+  padding: 20px;
+  position: fixed;
+  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+body.dark .sidebar {
+  background: linear-gradient(180deg, #020617, #000);
+}
+
+.sidebar h2 {
+  font-weight: 600;
+  margin-bottom: 25px;
+  letter-spacing: 1px;
+}
+
+/* ================= SIDEBAR LINKS ================= */
+.sidebar a {
+  display: block;
+  color: #d1d5db;
+  text-decoration: none;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-size: 14px;
+}
+
+.sidebar a:hover {
+  background: rgba(255,255,255,0.08);
+  color: #fff;
+  transform: translateX(6px);
+}
+
+body.dark .sidebar a {
+  color: #9ca3af;
+}
+
+body.dark .sidebar a:hover {
+  color: #fff;
+}
+
+/* ================= CONTENT ================= */
+.content {
+  margin-left: 260px;
+  padding: 30px;
+  width: 100%;
+}
+
+/* ================= CARDS ================= */
+.section {
+  background: var(--card);
+  padding: 25px;
+  margin-bottom: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.section::before {
+  content: "";
+  position: absolute;
+  height: 4px;
+  width: 100%;
+  top: 0;
+  left: 0;
+  background: linear-gradient(90deg, var(--primary), #06b6d4);
+}
+
+.section:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+}
+
+body.dark .section {
+  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* ================= TEXT ================= */
+h2 {
+  color: rgb(0, 114, 254);
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+ul {
+  margin-left: 20px;
+  color: var(--subtext);
+  line-height: 1.7;
+}
+
+li {
+  margin-bottom: 6px;
+}
+
+/* ================= BUTTON ================= */
+button {
+  padding: 10px 18px;
+  margin-top: 12px;
+  cursor: pointer;
+  border: none;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  border-radius: 10px;
+  transition: all 0.3s ease;
+  font-weight: 500;
+}
+
+button:hover {
+  transform: scale(1.05);
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.4);
+}
+
+body.dark button {
+  box-shadow: 0 6px 15px rgba(59,130,246,0.3);
+}
+
+/* ================= TIP ================= */
+#tip {
+  margin-top: 10px;
+  font-weight: 500;
+  color: var(--primary);
+  animation: fadeIn 0.3s ease;
+}
+
+/* ================= ANIMATION ================= */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================= SCROLLBAR ================= */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #9ca3af;
+  border-radius: 10px;
+}
+
+body.dark ::-webkit-scrollbar-thumb {
+  background: #374151;
+}
+
+/* ================= RESPONSIVE ================= */
+@media (max-width: 768px) {
+  .sidebar {
+    width: 200px;
+  }
+
+  .content {
+    margin-left: 210px;
+    padding: 20px;
+  }
+}
+
+  </style>
+</head>
+
+<body>
+
+<div class="sidebar">
+  <h2>Guide</h2>
+  <a href="#self">Self-Awareness</a>
+  <a href="#think">Think Before Speak</a>
+  <a href="#ego">Ego Control</a>
+  <a href="#language">Respectful Language</a>
+  <a href="#anger">Anger Control</a>
+  <a href="#empathy">Empathy</a>
+</div>
+
+<div class="content">
+
+  <div class="section" id="self">
+    <h2>1. Self-Awareness</h2>
+    <ul>
+      <li>Pause करना सीखो (5–10 सेकंड रुक जाओ)</li>
+      <li>Daily self-check:
+        <ul>
+          <li>आज मैंने कहाँ अच्छा behave किया?</li>
+          <li>कहाँ मैं गलत था?</li>
+        </ul>
+      </li>
+      <li>Trigger पहचानो (गुस्सा कब आता है)</li>
+      <li>Feedback लो</li>
+      <li>Journal लिखो (आज क्या हुआ)</li>
+      <li>Emotion पहचानो: irritation, jealousy, insecurity</li>
+    </ul>
+  </div>
+
+  <div class="section" id="think">
+    <h2>2. बोलने से पहले सोचो</h2>
+    <ul>
+      <li>क्या ये जरूरी है?</li>
+      <li>क्या मैं सही तरीके से बोल रहा हूँ?</li>
+      <li>क्या इससे सामने वाले को hurt होगा?</li>
+      <li>क्या मैं calm हूँ?</li>
+    </ul>
+  </div>
+
+  <div class="section" id="ego">
+    <h2>3. Ego Control</h2>
+    <ul>
+      <li>हर बार खुद को सही मत मानो</li>
+      <li>Sorry बोलना सीखो</li>
+      <li>Listen more</li>
+      <li>Compare मत करो</li>
+      <li>Feedback accept करो</li>
+      <li>Argument जीतना जरूरी नहीं</li>
+      <li>Gratitude practice करो</li>
+    </ul>
+  </div>
+
+  <div class="section" id="language">
+    <h2>4. Respectful Language</h2>
+    <p>“मुझे लगता है हम ऐसे try कर सकते हैं”</p>
+    <p>बात करने का तरीका बदलो, attitude खुद बदल जाएगा</p>
+  </div>
+
+  <div class="section" id="anger">
+    <h2>5. गुस्सा Control</h2>
+    <ul>
+      <li>Pause Rule</li>
+      <li>Deep Breathing (4-4-6)</li>
+      <li>Situation से दूर जाओ</li>
+      <li>Reframe सोच</li>
+      <li>Calm होकर बोलो</li>
+      <li>Triggers पहचानो</li>
+      <li>Daily Practice</li>
+    </ul>
+    <button onclick="showTip()">Get Tip</button>
+    <p id="tip"></p>
+  </div>
+
+  <div class="section" id="empathy">
+    <h2>6. Empathy</h2>
+    <ul>
+      <li>Active Listening</li>
+      <li>खुद को उसकी जगह रखो</li>
+      <li>सवाल पूछो</li>
+      <li>Judge मत करो</li>
+      <li>Feelings acknowledge करो</li>
+    </ul>
+  </div>
+
+</div>
+
+<script>
+  function showTip() {
+    const tips = [
+      "Pause करो, तुरंत react मत करो",
+      "Deep breathing करो",
+      "Walk पर जाओ",
+      "Calm होकर बोलो",
+      "सोच बदलो (Reframe)"
+    ];
+
+    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+    document.getElementById("tip").innerText = randomTip;
+  }
+</script>
+
+</body>
+</html>
