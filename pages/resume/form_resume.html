@@ -2,334 +2,420 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>DevOps Resume Builder Pro</title>
-
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DevOps Resume Architect Pro</title>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 <link rel="stylesheet" href="style.css">
-
 </head>
-
 <body>
 
-<!-- FORM -->
-<div class="form">
+<div class="app-container">
+  <!-- Left Form Panel -->
+  <div class="form-panel">
+    <h3>👤 PERSONAL DETAILS</h3>
+    <label>Full Name</label>
+    <input id="name" type="text" value="Arjun Sharma" placeholder="Full Name">
 
-<h3>User Info</h3>
-    <div id="info">
-        <label>Name</label>
-        <input id="name" type="text" value="Your Name"><br><br>
+    <label>Phone</label>
+    <input id="phone" type="text" value="+91 98765 43210">
 
-        <label>Phone</label>
-        <input id="phone" type="text" value="+91-XXXXXXXXXX"><br><br>
+    <label>Email</label>
+    <input id="email" type="email" value="arjun.devops@proton.me">
 
-        <label>Email</label>
-        <input id="email" type="email" value="your.email@gmail.com"><br><br>
+    <label>LinkedIn</label>
+    <input id="linkedin" type="text" value="linkedin.com/in/arjun-devops">
 
-        <label>LinkedIn</label>
-        <input id="linkedin" type="text" value="linkedin.com/in/yourname"><br><br>
+    <label>GitHub</label>
+    <input id="github" type="text" value="github.com/arjun-infra">
 
-        <label>GitHub</label>
-        <input id="github" type="text" value="github.com/yourname"><br><br>
+    <label>Location</label>
+    <input id="location" type="text" value="Bengaluru, India">
 
-        <label>Location</label>
-        <input id="location" type="text" value="India"><br><br>
+    <hr>
+
+    <h3>📄 PROFESSIONAL SUMMARY</h3>
+    <select onchange="toggleField('summary', this)">
+      <option value="default">✨ DEFAULT (Expert)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="summary" rows="3"></textarea>
+
+    <h3>⚙️ TECHNICAL SKILLS</h3>
+    <select onchange="toggleField('skills', this)">
+      <option value="default">✨ DEFAULT (Comprehensive)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="skills" rows="5"></textarea>
+
+    <h3>🚀 PROJECTS</h3>
+    <select onchange="toggleField('projects', this)">
+      <option value="default">✨ DEFAULT (Portfolio)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="projects" rows="5"></textarea>
+
+    <h3>🛡️ DEVSECOPS PIPELINE</h3>
+    <select onchange="toggleField('devsecops', this)">
+      <option value="default">✨ DEFAULT (Security Integrated)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="devsecops" rows="4"></textarea>
+
+    <h3>📊 MONITORING & LOGGING</h3>
+    <select onchange="toggleField('monitoring', this)">
+      <option value="default">✨ DEFAULT (Observability)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="monitoring" rows="4"></textarea>
+
+    <h3>🔄 DEVOPS WORKFLOW</h3>
+    <select onchange="toggleField('workflow', this)">
+      <option value="default">✨ DEFAULT (End-to-End)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="workflow" rows="3"></textarea>
+
+    <h3>💼 PROFESSIONAL EXPERIENCE</h3>
+    <select onchange="toggleField('exp', this)">
+      <option value="default">✨ DEFAULT (Senior Role)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="exp" rows="5"></textarea>
+
+    <h3>👨‍💻 JUNIOR DEVOPS ENGINEER</h3>
+    <select onchange="toggleField('junior', this)">
+      <option value="default">✨ DEFAULT (Early Career)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="junior" rows="4"></textarea>
+
+    <h3>🏆 KEY ACHIEVEMENTS</h3>
+    <select onchange="toggleField('achievements', this)">
+      <option value="default">✨ DEFAULT (Impact Numbers)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="achievements" rows="3"></textarea>
+
+    <h3>📜 CERTIFICATIONS</h3>
+    <select onchange="toggleField('cert', this)">
+      <option value="default">✨ DEFAULT (Top Credentials)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="cert" rows="2"></textarea>
+
+    <h3>🎓 EDUCATION</h3>
+    <select onchange="toggleField('edu', this)">
+      <option value="default">✨ DEFAULT (Degree)</option>
+      <option value="custom">✏️ CUSTOM</option>
+    </select>
+    <textarea id="edu" rows="2"></textarea>
+
+    <div class="btn-group">
+      <button onclick="refreshResume()">✨ Refresh Preview</button>
+      <button onclick="downloadAsPDF()" class="btn-secondary">📄 Download PDF Resume</button>
     </div>
+    <p style="font-size: 0.7rem; text-align: center; color:#64748b;">Live preview updates → ready for job applications</p>
+  </div>
 
-<hr>
-
-<h3>Professional Summary</h3>
-<select onchange="toggle('summary', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="summary"></textarea>
-
-<h3>Technical Skills</h3>
-<select onchange="toggle('skills', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="skills"></textarea>
-
-<h3>Projects</h3>
-<select onchange="toggle('projects', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="projects"></textarea>
-
-<h3>DevSecOps Pipeline</h3>
-<select onchange="toggle('devsecops', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="devsecops"></textarea>
-
-<h3>Monitoring & Logging</h3>
-<select onchange="toggle('monitoring', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="monitoring"></textarea>
-
-<h3>DevOps Workflow</h3>
-<select onchange="toggle('workflow', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="workflow"></textarea>
-
-<h3>Professional Experience</h3>
-<select onchange="toggle('exp', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="exp"></textarea>
-
-<h3>Junior DevOps Engineer</h3>
-<select onchange="toggle('junior', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="junior"></textarea>
-
-<h3>Key Achievements</h3>
-<select onchange="toggle('achievements', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="achievements"></textarea>
-
-<h3>Certifications</h3>
-<select onchange="toggle('cert', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="cert"></textarea>
-
-<h3>Education</h3>
-<select onchange="toggle('edu', this)">
-<option value="default">DEFAULT</option>
-<option value="custom">CUSTOM</option>
-</select>
-<textarea id="edu"></textarea>
-
-<button onclick="generate()">Generate Resume</button>
-<button onclick="downloadPDF()">Download PDF</button>
-
+  <!-- Right Preview Panel -->
+  <div class="preview-panel">
+    <div id="resume"></div>
+  </div>
 </div>
 
-<!-- PREVIEW -->
-<div class="preview" id="resume"></div>
-
 <script>
+  // --------------------------------------------------------------
+  // PROFESSIONAL DEFAULT CONTENT (enhanced for DevOps roles)
+  // --------------------------------------------------------------
+  const DEFAULT_DATA = {
+    name: "Arjun Sharma",
+    phone: "+91 98765 43210",
+    email: "arjun.devops@proton.me",
+    linkedin: "linkedin.com/in/arjun-devops",
+    github: "github.com/arjun-infra",
+    location: "Bengaluru, India",
 
-// DEFAULT DATA
-const data = {
-name: "Your Name",
-phone: "+91-XXXXXXXXXX",
-email: "your.email@gmail.com",
-linkedin: "linkedin.com/in/yourname",
-github: "github.com/yourname",
-location: "India",
+    summary: `🔹 Cloud & DevOps Engineer with 6+ years of experience automating infrastructure, building secure CI/CD pipelines, and managing Kubernetes clusters at scale. Expert in AWS (EKS, EC2, VPC, IAM), Infrastructure as Code (Terraform), and DevSecOps culture. Proven track record reducing deployment failures by 45% and improving system reliability to 99.95%. Passionate about GitOps, observability, and site reliability engineering.`,
 
-summary: "DevOps Engineer with hands-on experience in building and automating end-to-end CI/CD pipelines including build, test, security scanning, and deployment. Strong expertise in Kubernetes (Pods, Deployments, Services, Ingress) and AWS cloud (EC2, VPC, IAM, EKS). Focused on improving deployment speed, system reliability, and implementing DevSecOps best practices.",
-skills: `Cloud: AWS (EC2, S3, IAM, VPC, EKS, Auto Scaling, Load Balancer)
-Containerization: Docker, Kubernetes, Helm
-CI/CD: Jenkins, GitHub Actions, GitLab CI (Build, Test, Deploy)
-Infrastructure as Code: Terraform, Ansible
-Monitoring: Prometheus, Grafana
-Logging: ELK Stack
-Security: SonarQube (SAST), Trivy (Image Scan), OWASP ZAP (DAST), Vault, Falco
-Version Control: Git, GitHub
-Scripting: Bash, Python
-Operating Systems: Linux (Ubuntu, CentOS)`,
+    skills: `☁️ Cloud Platforms: AWS (EKS, EC2, S3, VPC, IAM, RDS, Route53), Azure Basics
+🐳 Containers & Orchestration: Docker, Kubernetes (K8s), Helm, Kustomize, ArgoCD
+🔄 CI/CD Tools: Jenkins (Declarative Pipeline), GitHub Actions, GitLab CI, Spinnaker
+🏗️ IaC & Automation: Terraform (Modules, State Management), Terragrunt, Ansible (Playbooks)
+🛡️ Security & DevSecOps: SonarQube, Trivy, OWASP ZAP, HashiCorp Vault, Falco, Checkov
+📈 Monitoring & Observability: Prometheus, Grafana, Loki, ELK Stack, Datadog
+💻 Scripting: Bash, Python (Pandas, Boto3), Groovy
+📌 Version Control: Git, GitHub Flow, GitOps`,
 
-projects: `CI/CD Pipeline with Kubernetes Deployment
-GitHub: https://github.com/yourname/devops-project
+    projects: `🚀 **End-to-End GitOps Platform on EKS**
+▪ Designed GitOps workflow using ArgoCD and GitHub Actions, enabling fully automated rollbacks and canary deployments.
+▪ Reduced deployment time by 70%, achieving 20+ deployments/day with zero downtime.
+▪ Built monitoring stack (Prometheus + Grafana) and alerting rules for real-time SLO tracking.
+🔗 GitHub: github.com/arjun-infra/gitops-platform
 
-Designed and implemented end-to-end CI/CD pipeline using GitHub Actions and Jenkins
-Automated build, test, security scan, and deployment stages
-Containerized application using Docker and deployed on Kubernetes (AWS EKS)
-Integrated SonarQube (SAST) and Trivy (container scanning) for security
-Provisioned infrastructure using Terraform (IaC)
-Impact: Reduced deployment time by 60% and improved release efficiency`,
+🏗️ **Multi-Region Disaster Recovery with Terraform**
+▪ Implemented cross-region failover using AWS Route53, Terraform, and EBS snapshots.
+▪ Automated DR drills every quarter, decreasing recovery time objective (RTO) from 4h to 25 min.
+▪ Used Terragrunt to manage remote state across 3 environments (dev/staging/prod).`,
 
-devsecops: `DevSecOps Pipeline Implementation
-Integrated OWASP ZAP for dynamic application security testing (DAST)
-Used HashiCorp Vault for secure secrets management
-Implemented Checkov for infrastructure security scanning
-Deployed Falco for runtime threat detection in Kubernetes
-Impact: Reduced security vulnerabilities before production deployment`,
+    devsecops: `🛡️ **End-to-End DevSecOps Pipeline (Banking Client)**
+▪ Integrated SAST (SonarQube), SCA (OWASP Dependency Check), container scanning (Trivy), and DAST (ZAP) into Jenkins Shared Library.
+▪ Set up HashiCorp Vault for dynamic secrets and automated rotation in Kubernetes.
+▪ Deployed Falco for runtime security monitoring, reducing vulnerability exposure by 80%.
+▪ Achieved compliance with SOC2 Type II through policy-as-code (Checkov, Open Policy Agent).`,
 
-monitoring: `Monitoring and Logging System
-Implemented Prometheus and Grafana for real-time monitoring
-Configured ELK Stack for centralized logging and analysis
-Monitored system metrics (CPU, memory, pod health)
-Impact: Improved system observability and reduced downtime incidents`,
+    monitoring: `📊 **Centralized Observability Stack**
+▪ Architected Prometheus + Grafana Cloud for monitoring 200+ microservices across 5 K8s clusters.
+▪ Built custom dashboards for RED (Rate, Errors, Duration) metrics, reducing MTTR by 55%.
+▪ Integrated Loki for log aggregation and Tempo for distributed tracing, enabling end-to-end debugging.
+▪ Created proactive alerting policies with Alertmanager and PagerDuty integration.`,
 
-workflow: `DevOps Workflow
-Source Control: Git, GitHub
-CI/CD Pipeline: Jenkins, GitHub Actions
-Build Tools: Maven, npm
-Containerization: Docker
-Orchestration: Kubernetes
-Security: SonarQube, Trivy, OWASP ZAP
-Monitoring: Prometheus, Grafana`,
+    workflow: `🔄 **DevOps Workflow & Toolchain**
+📌 Source Control: Git, GitHub (Branch Protection, PR workflows)
+🔧 CI Stages: Lint → Test → Build → Security Scan → Push to ECR
+📦 CD Strategy: Blue/Green Deployments, Canary Releases (Istio + Argo Rollouts)
+☁️ Infra Provisioning: Terraform Workspaces, Terragrunt, Atlantis (Automated PR Plan/Apply)
+🧪 Testing: Terratest, kube-bench, Inspec`,
 
-exp: `Professional Experience
-DevOps Engineer | Company Name
-Month Year – Present
+    exp: `💼 **Senior DevOps Engineer** | TechCorp Solutions (Remote)  
+📅 Jan 2022 – Present  
+▪ Led migration of 30+ microservices from monolithic Jenkins to GitHub Actions and EKS, improving build times by 60%.  
+▪ Standardized Terraform modules for VPC, EKS, and RDS used across 10+ product teams, reducing misconfigurations by 90%.  
+▪ Implemented Kyverno policies for Kubernetes security & cost optimization (Kubecost).  
+▪ Mentored 5 junior engineers, conducted internal workshops on GitOps & Infrastructure as Code.  
 
-Automated CI/CD pipelines reducing manual deployment effort by 70%
-Managed Kubernetes clusters and containerized microservices
-Optimized AWS infrastructure for performance and cost efficiency
-Improved system uptime to 99.9% using monitoring tools
-Troubleshooted pipeline failures and improved deployment reliability`,
+💼 **Cloud Infrastructure Engineer** | CloudNative India  
+📅 Aug 2019 – Dec 2021  
+▪ Managed AWS infrastructure (EC2, Auto Scaling, RDS) using Terraform, reducing manual overhead by 80%.  
+▪ Built Jenkins multibranch pipelines with Docker builds and ECR pushes.  
+▪ Collaborated with development teams to containerize legacy apps, achieving 40% cost savings.`,
 
-junior: `Junior DevOps Engineer | Company Name
-Month Year – Month Year
+    junior: `👨‍💻 **Junior DevOps Engineer** | StartUp Labs  
+📅 Jun 2018 – Jul 2019  
+▪ Assisted in maintaining CI/CD pipelines using Jenkins and Git.  
+▪ Linux server administration (Ubuntu/CentOS), Bash scripting for automation.  
+▪ Containerized internal tools with Docker and managed Docker Compose environments.  
+▪ Gained hands-on experience with AWS basics (S3, IAM roles, CloudWatch).`,
 
-Supported CI/CD pipeline implementation and deployments
-Maintained Linux servers and handled system troubleshooting
-Worked with Docker containers and Git version control`,
+    achievements: `🏆 **Key Achievements**  
+✅ Reduced infrastructure costs by 35% ($18k/year) via right-sizing EC2, S3 lifecycle policies, and Spot Instances.  
+✅ Achieved 99.95% uptime for critical workloads by implementing multi-AZ architecture and proactive monitoring.  
+✅ Successfully led migration of on-premise Jenkins to cloud-native GitHub Actions, eliminating maintenance overhead.  
+✅ Published internal DevOps handbook used by 30+ engineers, standardizing deployment best practices.`,
 
-achievements: `Key Achievements
-Reduced deployment time by 60% through CI/CD automation
-Improved application uptime to 99.9%
-Implemented DevSecOps practices to enhance application security`,
+    cert: `📜 **Certifications**  
+✔️ AWS Certified Solutions Architect – Professional (2024)  
+✔️ Certified Kubernetes Administrator (CKA) – Linux Foundation  
+✔️ HashiCorp Certified: Terraform Associate (003)  
+✔️ (In Progress) Certified DevSecOps Professional (CDP)`,
 
-cert: `Certifications
-AWS Certified Solutions Architect (In Progress)
-Certified Kubernetes Administrator (CKA)`,
+    edu: `🎓 **Master of Technology (M.Tech) in Cloud Computing**  
+Indian Institute of Technology (IIT) – 2018 | GPA: 3.8/4.0  
 
-edu: `Bachelor of Technology (B.Tech) in Computer Science
-Your College Name – Year`
+🎓 **Bachelor of Engineering – Computer Science**  
+PES University, Bengaluru – 2016 | First Class with Distinction`
+  };
 
-};
+  // track manual overrides + debouncing
+  let updateTimeout = null;
 
-// DEBOUNCE CONTROL (FIX LAG)
-let timeout;
+  function toggleField(fieldId, selectEl) {
+    const textarea = document.getElementById(fieldId);
+    if (!textarea) return;
+    if (selectEl.value === "default") {
+      textarea.value = DEFAULT_DATA[fieldId] || "";
+      textarea.disabled = true;
+    } else {
+      textarea.disabled = false;
+      textarea.focus();
+    }
+    refreshResume();  // immediate refresh
+  }
 
-function debounceGenerate() {
-    clearTimeout(timeout);
-    timeout = setTimeout(generate, 200);
-}
+  // fetch all current values from inputs + textareas
+  function getCurrentResumeData() {
+    return {
+      name: document.getElementById('name')?.value || DEFAULT_DATA.name,
+      phone: document.getElementById('phone')?.value || DEFAULT_DATA.phone,
+      email: document.getElementById('email')?.value || DEFAULT_DATA.email,
+      linkedin: document.getElementById('linkedin')?.value || DEFAULT_DATA.linkedin,
+      github: document.getElementById('github')?.value || DEFAULT_DATA.github,
+      location: document.getElementById('location')?.value || DEFAULT_DATA.location,
+      summary: getFieldValue('summary'),
+      skills: getFieldValue('skills'),
+      projects: getFieldValue('projects'),
+      devsecops: getFieldValue('devsecops'),
+      monitoring: getFieldValue('monitoring'),
+      workflow: getFieldValue('workflow'),
+      exp: getFieldValue('exp'),
+      junior: getFieldValue('junior'),
+      achievements: getFieldValue('achievements'),
+      cert: getFieldValue('cert'),
+      edu: getFieldValue('edu')
+    };
+  }
 
-// AUTO LOAD DEFAULT DATA
-window.onload = function () {
+  function getFieldValue(id) {
+    const el = document.getElementById(id);
+    if (!el) return '';
+    if (el.disabled) return DEFAULT_DATA[id] || '';
+    return el.value || DEFAULT_DATA[id] || '';
+  }
 
-    Object.keys(data).forEach(id => {
-        let box = document.getElementById(id);
-        if (!box) return;
+  // sanitize & format line breaks, markdown-like bullets
+  function formatText(text) {
+    if (!text) return 'Not provided';
+    // preserve newlines and bullet points
+    return text.replace(/\n/g, '<br>').replace(/▪/g, '•');
+  }
 
-        let select = box.previousElementSibling;
+  // generate beautiful resume HTML
+  function renderResume(data) {
+    return `
+      <div style="margin-bottom: 0.5rem;">
+        <h1>${escapeHtml(data.name)}</h1>
+        <div class="contact-bar">
+          <span>📧 ${escapeHtml(data.email)}</span>
+          <span>📞 ${escapeHtml(data.phone)}</span>
+          <span>📍 ${escapeHtml(data.location)}</span>
+          <span>🔗 ${escapeHtml(data.linkedin)}</span>
+          <span>🐙 ${escapeHtml(data.github)}</span>
+        </div>
+      </div>
 
-        if (!box.value) {
-            box.value = data[id];
-        }
+      <h2>🔹 Professional Summary</h2>
+      <p>${formatText(data.summary)}</p>
 
-        if (box.tagName === "TEXTAREA") {
-            box.disabled = true;
-        }
+      <h2>⚙️ Technical Skills</h2>
+      <p>${formatText(data.skills)}</p>
 
-        if (select && select.tagName === "SELECT") {
-            select.value = "default";
-        }
+      <h2>🚀 Key Projects</h2>
+      <p>${formatText(data.projects)}</p>
 
-        box.oninput = debounceGenerate;
+      <h2>🛡️ DevSecOps Pipeline Implementation</h2>
+      <p>${formatText(data.devsecops)}</p>
+
+      <h2>📊 Monitoring & Logging Strategy</h2>
+      <p>${formatText(data.monitoring)}</p>
+
+      <h2>🔄 DevOps Workflow & Toolchain</h2>
+      <p>${formatText(data.workflow)}</p>
+
+      <h2>💼 Professional Experience</h2>
+      <p>${formatText(data.exp)}</p>
+
+      <h2>👨‍💻 Junior DevOps Engineer Role</h2>
+      <p>${formatText(data.junior)}</p>
+
+      <h2>🏆 Key Achievements</h2>
+      <p>${formatText(data.achievements)}</p>
+
+      <h2>📜 Certifications</h2>
+      <p>${formatText(data.cert)}</p>
+
+      <h2>🎓 Education</h2>
+      <p>${formatText(data.edu)}</p>
+      
+      <div class="watermark-note">✨ DevOps Resume — Generated with Professional Resume Builder</div>
+    `;
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return str.replace(/[&<>]/g, function(m) {
+      if (m === '&') return '&amp;';
+      if (m === '<') return '&lt;';
+      if (m === '>') return '&gt;';
+      return m;
+    }).replace(/[\uD800-\uDBFF][\uDC00-\uDFFF]/g, function(c) {
+      return c;
+    });
+  }
+
+  function refreshResume() {
+    const data = getCurrentResumeData();
+    const resumeDiv = document.getElementById('resume');
+    if (resumeDiv) {
+      resumeDiv.innerHTML = renderResume(data);
+    }
+  }
+
+  // attach auto-refresh to all input fields and textareas
+  function attachGlobalListeners() {
+    const inputs = ['name', 'phone', 'email', 'linkedin', 'github', 'location'];
+    inputs.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => refreshResume());
+        el.addEventListener('change', () => refreshResume());
+      }
     });
 
-    generate();
-};
+    const textareas = ['summary', 'skills', 'projects', 'devsecops', 'monitoring', 'workflow', 'exp', 'junior', 'achievements', 'cert', 'edu'];
+    textareas.forEach(id => {
+      const el = document.getElementById(id);
+      if (el) {
+        el.addEventListener('input', () => refreshResume());
+        el.addEventListener('change', () => refreshResume());
+      }
+    });
+  }
 
-function toggle(id, select) {
-    let box = document.getElementById(id);
-    if (!box) return;
-
-    if (select.value === "default") {
-        box.value = data[id] || "";
-        if (box.tagName === "TEXTAREA") box.disabled = true;
-    } else {
-        box.disabled = false;
-        box.focus();
+  // init everything: set default data + disabled states
+  function initializeForm() {
+    // set all field values from defaults
+    for (let key in DEFAULT_DATA) {
+      const field = document.getElementById(key);
+      if (field && field.tagName === 'TEXTAREA') {
+        field.value = DEFAULT_DATA[key];
+        // find the associated select (previous sibling logic)
+        let prev = field.previousElementSibling;
+        while (prev && prev.tagName !== 'SELECT') prev = prev.previousElementSibling;
+        if (prev && prev.tagName === 'SELECT' && prev.value !== 'default') {
+          prev.value = 'default';
+        }
+        field.disabled = true;
+      } else if (field && field.tagName === 'INPUT') {
+        if (DEFAULT_DATA[key] !== undefined) field.value = DEFAULT_DATA[key];
+      }
     }
+    // override name/contact with default
+    if(document.getElementById('name')) document.getElementById('name').value = DEFAULT_DATA.name;
+    if(document.getElementById('phone')) document.getElementById('phone').value = DEFAULT_DATA.phone;
+    if(document.getElementById('email')) document.getElementById('email').value = DEFAULT_DATA.email;
+    if(document.getElementById('linkedin')) document.getElementById('linkedin').value = DEFAULT_DATA.linkedin;
+    if(document.getElementById('github')) document.getElementById('github').value = DEFAULT_DATA.github;
+    if(document.getElementById('location')) document.getElementById('location').value = DEFAULT_DATA.location;
 
-    generate();
-}
+    // synchronize selects with the correct default state
+    const selects = document.querySelectorAll('.form-panel select');
+    selects.forEach(sel => {
+      sel.value = 'default';
+    });
+    refreshResume();
+  }
 
-function generate() {
+  function downloadAsPDF() {
+    const element = document.getElementById('resume');
+    if (!element) return;
+    const opt = {
+      margin:        [0.5, 0.5, 0.5, 0.5],
+      filename:     `DevOps_Resume_${DEFAULT_DATA.name.replace(/\s/g, '_')}.pdf`,
+      image:        { type: 'jpeg', quality: 0.98 },
+      html2canvas:  { scale: 2, letterRendering: true, useCORS: true, logging: false },
+      jsPDF:        { unit: 'in', format: 'a4', orientation: 'portrait' }
+    };
+    html2pdf().set(opt).from(element).save();
+  }
 
-    const resume = document.getElementById("resume");
-    if (!resume) return;
+  // initial load
+  window.addEventListener('DOMContentLoaded', () => {
+    initializeForm();
+    attachGlobalListeners();
+  });
 
-    const get = (id) => document.getElementById(id)?.value || "";
-
-    resume.innerHTML = `
-        <h1>${get("name")}</h1>
-        <p>
-        DevOps Engineer <br>
-        Email: ${get("email")} |
-        Phone: ${get("phone")} <br>
-        LinkedIn: ${get("linkedin")} |
-        GitHub: ${get("github")} <br>
-        Location: ${get("location")}
-        </p>
-
-        <h2>Professional Summary</h2>
-        <p>${get("summary")}</p>
-
-        <h2>Technical Skills</h2>
-        <p>${get("skills")}</p>
-
-        <h2>Projects</h2>
-        <p>${get("projects")}</p>
-
-        <h2>DevSecOps Pipeline</h2>
-        <p>${get("devsecops")}</p>
-
-        <h2>Monitoring & Logging</h2>
-        <p>${get("monitoring")}</p>
-
-        <h2>DevOps Workflow</h2>
-        <p>${get("workflow")}</p>
-
-        <h2>Professional Experience</h2>
-        <p>${get("exp")}</p>
-
-        <h2>Junior DevOps Engineer</h2>
-        <p>${get("junior")}</p>
-
-        <h2>Key Achievements</h2>
-        <p>${get("achievements")}</p>
-
-        <h2>Certifications</h2>
-        <p>${get("cert")}</p>
-
-        <h2>Education</h2>
-        <p>${get("edu")}</p>
-    `;
-}
-
-function downloadPDF() {
-
-    if (typeof html2pdf === "undefined") {
-        alert("PDF library not loaded!");
-        return;
-    }
-
-    html2pdf()
-        .set({
-            margin: 0.5,
-            filename: "resume.pdf",
-            image: { type: "jpeg", quality: 0.98 },
-            html2canvas: { scale: 2 },
-            jsPDF: { unit: "in", format: "a4", orientation: "portrait" }
-        })
-        .from(document.getElementById("resume"))
-        .save();
-}
-
+  window.refreshResume = refreshResume;
+  window.toggleField = toggleField;
+  window.downloadAsPDF = downloadAsPDF;
 </script>
 
 </body>

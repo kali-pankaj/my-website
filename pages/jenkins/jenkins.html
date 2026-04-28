@@ -1,175 +1,584 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>🏗️ Jenkins CI/CD Mastery · DevOps Pipeline Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
+        body {
+            font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Fira Code', monospace;
+            background: #eef2f7;
+            color: #142830;
+            line-height: 1.5;
+        }
 
-<div>
-    <h2>Jenkins Are Comming Soon ! </h2>
-    <div>
-        <h2>Jenkins Installating Proccess And Basic Configuration Process</h2>
-        <ul>
-            <li><strong>sudo apt update && sudo apt upgrade -y </strong> System update command run first for debian base operaating system.!! </li>
-            <li><strong>sudo apt install openjdk-17-jdk -y</strong></li>
-            <li><strong>java -version</strong></li>
-            <li><strong>sudo apt install jenkins -y</strong></li>
-            <li><strong>jenkins --version</strong></li>
-            <li><strong>sudo firewall-cmd --add-port=8080/tcp --permanent </strong></li>
-            <li><strong>sudo firewall-cmd --reload</strong></li>
-            <li><strong>sudo systemctl enable --now jenkins</strong></li>
-            <li><strong>sudo systemctl status jenkins</strong></li>
-            <li><strong>http://localhost:8080</strong></li>
-            <li><strong>sudo cat /var/lib/jenkins/secrets/initialAdminPassword</strong></li>
-            <li><p>After unlocking Jenkins, install suggested plugins and create the first administrator account to complete the basic configuration. </p></li>
-        </ul>
+        /* SIDEBAR - professional study layout */
+        .dashboard-wrapper {
+            display: flex;
+            min-height: 100vh;
+        }
 
-       <table>
-        <h3>Jenkins First Job</h3>
+        .sidebar {
+            width: 280px;
+            background: linear-gradient(165deg, #1a2a35 0%, #0f1e26 100%);
+            color: #e3f0f7;
+            position: fixed;
+            top: 0;
+            left: 0;
+            bottom: 0;
+            overflow-y: auto;
+            z-index: 200;
+            box-shadow: 3px 0 20px rgba(0,0,0,0.08);
+            padding: 2rem 0 2rem 0;
+            transition: all 0.2s;
+        }
 
-    <pre><code>
-    <strong>Step 1: Open Jenkins Dashboard</strong>
-    Dashboard → Click "New Item"
+        .sidebar-brand {
+            padding: 0 1.5rem 1.8rem 1.8rem;
+            border-bottom: 1px solid #3a6275;
+            margin-bottom: 1.5rem;
+        }
+        .sidebar-brand h2 {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            background: linear-gradient(135deg, #7fd1e0, #f3b28c);
+            background-clip: text;
+            -webkit-background-clip: text;
+            color: transparent;
+        }
+        .sidebar-brand p {
+            font-size: 0.75rem;
+            opacity: 0.7;
+            margin-top: 0.3rem;
+        }
 
-    <strong>Step 2: Create a New Job</strong>
-    Enter Job Name: first-job
-    Select: Freestyle Project
-    Click: OK
+        .nav-section {
+            margin: 1.2rem 0 0.5rem 1.5rem;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 600;
+            color: #6da5bb;
+        }
+        .sidebar a {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 1.8rem;
+            color: #d1e5f0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            transition: all 0.2s;
+            border-left: 3px solid transparent;
+        }
+        .sidebar a:hover, .sidebar a.active {
+            background: #2c5568;
+            color: white;
+            border-left-color: #5bc0be;
+            padding-left: 1.6rem;
+        }
 
-    <strong>Step 3: Configure Job</strong>
-    Description: This is my first Jenkins job.
+        .main-content {
+            margin-left: 280px;
+            flex: 1;
+            padding: 2rem 2rem 3rem 2rem;
+            max-width: calc(100% - 280px);
+        }
 
-    <strong>Step 4: Build Trigger (Optional)</strong>
-    Build Triggers → Poll SCM 
-    (This step is optional for the first test build.)
+        /* Top search + note badge */
+        .top-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            background: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 60px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+            border: 1px solid #dfecf2;
+        }
+        .search-global {
+            flex: 1;
+            max-width: 400px;
+            background: #f8fafd;
+            border-radius: 48px;
+            padding: 0.4rem 1rem;
+            border: 1px solid #d4e2ec;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .search-global input {
+            border: none;
+            background: transparent;
+            width: 100%;
+            padding: 8px 0;
+            font-size: 0.9rem;
+            outline: none;
+        }
+        .note-badge {
+            background: #eef3fc;
+            padding: 5px 16px;
+            border-radius: 60px;
+            font-size: 0.75rem;
+            font-weight: 500;
+        }
 
-    <strong>Step 5: Add Build Step</strong>
-    Scroll to: Build → Add Build Step → Execute Shell
+        /* Study note cards (pro study tips) */
+        .study-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+        .note-card {
+            background: white;
+            border-radius: 28px;
+            flex: 1 1 250px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            border: 1px solid #e2ecf0;
+            overflow: hidden;
+        }
+        .note-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 18px 30px -12px rgba(0,0,0,0.12);
+        }
+        .card-header {
+            background: #f8fdfe;
+            padding: 1rem 1.2rem;
+            font-weight: 700;
+            font-size: 1rem;
+            border-bottom: 2px solid #e7f0f5;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .card-body {
+            padding: 1.2rem;
+            font-size: 0.85rem;
+            color: #2c4b5c;
+        }
+        .card-body code {
+            background: #ecf3f8;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 0.75rem;
+        }
 
-    <strong>Step 6: Add Shell Commands</strong>
-    echo "Hello Jenkins"
-    date
-    whoami
+        /* Section styling */
+        .section {
+            background: white;
+            border-radius: 28px;
+            margin-bottom: 2rem;
+            border: 1px solid #e2ecf2;
+            overflow-x: auto;
+            transition: all 0.1s;
+        }
+        .section h2 {
+            padding: 1.2rem 1.5rem 0.2rem 1.5rem;
+            font-size: 1.5rem;
+            color: #155868;
+        }
+        .section h3 {
+            padding: 1rem 1.5rem 0.2rem 1.5rem;
+            font-size: 1.2rem;
+            color: #1f6d84;
+        }
+        .section p, .section ul {
+            padding: 0 1.5rem 0.8rem 1.5rem;
+        }
+        pre {
+            background: #0f212e;
+            color: #cde9f5;
+            padding: 1.2rem;
+            border-radius: 20px;
+            overflow-x: auto;
+            margin: 0.8rem 1.5rem 1rem 1.5rem;
+            font-size: 0.8rem;
+            font-family: 'Fira Code', monospace;
+        }
+        code {
+            font-family: 'Fira Code', monospace;
+        }
+        .copy-btn {
+            background: #ecf3f8;
+            border: none;
+            border-radius: 30px;
+            padding: 4px 14px;
+            margin-left: 1.5rem;
+            margin-bottom: 1rem;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.1s;
+        }
+        .copy-btn:hover {
+            background: #2c7da0;
+            color: white;
+        }
+        .inline-code {
+            background: #ecf3f8;
+            font-family: monospace;
+            padding: 2px 6px;
+            border-radius: 12px;
+            font-size: 0.8rem;
+        }
+        .pro-tip {
+            background: #e4f3f5;
+            border-left: 5px solid #2c7da0;
+            padding: 0.8rem 1rem;
+            border-radius: 20px;
+            margin: 1rem 1.5rem;
+        }
+        footer {
+            text-align: center;
+            margin-top: 2rem;
+            opacity: 0.6;
+            font-size: 0.8rem;
+        }
+        hr {
+            margin: 1rem 1.5rem;
+            border-color: #e0ecf2;
+        }
+        @media (max-width: 780px) {
+            .sidebar { width: 85px; }
+            .sidebar a span:not(.icon) { display: none; }
+            .sidebar-brand h2 { font-size: 1rem; }
+            .main-content { margin-left: 85px; max-width: calc(100% - 85px); }
+        }
+        .icon-em {
+            font-size: 1.2rem;
+        }
+        .warning-note {
+            background: #fff3e0;
+            border-left-color: #e67e22;
+        }
+    </style>
+</head>
+<body>
+<div class="dashboard-wrapper">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2>🏗️ Jenkins<span style="font-size:1rem;">_Pipeline</span></h2>
+            <p>CI/CD · automation · mastery</p>
+        </div>
+        <div class="nav-section">📚 CORE STUDY</div>
+        <a href="#intro" class="nav-link"><span class="icon-em">⚙️</span> <span>Installation & Setup</span></a>
+        <a href="#first-job" class="nav-link"><span class="icon-em">📦</span> <span>First Jenkins Job</span></a>
+        <a href="#plugins" class="nav-link"><span class="icon-em">🔌</span> <span>Plugins & Integrations</span></a>
+        <a href="#advanced" class="nav-link"><span class="icon-em">🚀</span> <span>Pipeline Examples</span></a>
+        <div class="nav-section">🧠 PRO NOTES</div>
+        <a href="#study-notes" class="nav-link"><span>📘</span> <span>Best Practices</span></a>
+        <a href="#security" class="nav-link"><span>🔐</span> <span>Security & Roles</span></a>
+        <div class="nav-section">🔗 RESOURCES</div>
+        <a href="#resources" class="nav-link"><span>🌐</span> <span>Docs & Community</span></a>
+    </div>
 
-    <strong>Step 7: Save Job</strong>
-    Click "Save"
-
-    <strong>Step 8: Run the Job</strong>
-    Click "Build Now"
-
-    <strong>Step 9: Check Output</strong>
-    Open Build History → Click #1 → Console Output
-
-    Expected Output:
-    Hello Jenkins
-    Fri Mar 6
-    jenkins
-    Finished: SUCCESS
-    </code></pre>
-        </table>
-
-        <table>
-    <h3>Jenkins First Job More Examples</h3>
-
-    <pre><code>
-    ==============================
-    Example 1 : Simple DevOps Practice Job
-    ==============================
-
-    Job Name: devops-test-job
-
-    Build Step → Execute Shell
-
-    Commands:
-    echo "DevOps practice job running..."
-    date
-    uname -a
-    whoami
-
-    Purpose:
-    Practice Jenkins build execution.
-
-
-    ==============================
-    Example 2 : Git Clone Test Job
-    ==============================
-
-    Job Name: git-clone-job
-
-    Source Code Management → Git
-    Repository URL:
-    https://github.com/username/project.git
-
-    Build Step → Execute Shell
-
-    Commands:
-    echo "Repository cloned successfully"
-    ls
-
-    Purpose:
-    Test Git integration with Jenkins.
-
-    </code></pre>
-        </table>
-
-
-       
-        <div>
-            <h2>Jenkins All Pulligin Configuration </h2>
-
-            <pre><code>
-            <strong>#1: ssh node pulligin</strong>
-
-            Name: = node name (worker-jen-01)
-            Discription: = Give any thing for your choose
-            Number of Executation: = 1 (Default)
-            Remote root Directory: = /home/pankaj/Jenkins/
-            Labels: = linux_pankaj
-            Usage: = Default 
-            Lunch Method: = Agents via ssh
-            Host: = IP (Remote Machine) 
-            Creadtials: = ?(add)
-            Host Key Veryfication: = Non verification strategy
-            Availability: = Keep this agent online as much as possible
-
-            <strong> #2: ssh username with private key</strong>
-
-            Scope: = Global (Jenkins, node, items, all, child items)
-            Id: = username-id (pankaj-centos)
-            Discription: = This is remote machine (pankaj-centos)
-            Username: = pankaj (Remote-machine username)
-            private key: = Host-machine
-            Enter Directry: = key => ssh private key pest Host-machine
-
-            <strong>#3: Email Notification</strong>
-
-            Smtp Server: = smtp.gmail.com 
-            Default User email Suffix: = @gmail.com
-            Advance:
-            User Smtp Autherication: 
-            User name: = email id
-            Password: = App Password Create and pest (email ka)
-            Use ssl: = default
-            Smtp Port: = 465
-            Replay-To-Address: = Default
-            Charset: = Default
-            Test Connection By Sending test email: = email id
-
-            <strong>#4: User Managemant Role Base Management</strong>
-
-            Comming Soon !
-
-            <strong>#5: Global Trusted Pipeline Libraries</strong>
-            
-            Name: = Shared
-            Default Version: = main (Branch name)
-            Rrtrieval method: = modern scm 
-            Sorce Cpde Management: = Git
-            Project Repository: = url (Share.grove)
-
-                code pipeline use top line 1st line
-                @Libarary('Shared') --
-            
-            <strong>#6: </strong>
-
-            </code></pre>
-
+    <div class="main-content">
+        <div class="top-actions">
+            <div class="search-global">
+                <span>🔍</span>
+                <input type="text" id="globalSearch" placeholder="Search jobs, plugins, commands (e.g., 'ssh agent', 'email', 'pipeline')">
+            </div>
+            <div class="note-badge">📘 Study Mode — Click Copy to grab configs & commands</div>
         </div>
 
+        <!-- PRO STUDY NOTES CARDS -->
+        <div class="study-grid" id="study-notes">
+            <div class="note-card">
+                <div class="card-header">🧠 Pipeline as Code</div>
+                <div class="card-body">Always prefer <strong>Jenkinsfile</strong> over freestyle jobs. Store pipeline in SCM (Git) for versioning, review, and reusability.</div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">⚡ Agent Strategy</div>
+                <div class="card-body">Use ephemeral agents (Docker/K8s) for each build. Label agents properly: <code>linux_agent</code>, <code>windows_agent</code> to route jobs.</div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">🔐 Credentials Security</div>
+                <div class="card-body">Store SSH keys, tokens in Jenkins Credentials Store. Never hardcode secrets in pipeline. Use <code>withCredentials</code> block.</div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">📦 Shared Libraries</div>
+                <div class="card-body">Create shared pipeline libraries for reusable functions (email notifications, slack alerts, custom steps).</div>
+            </div>
+        </div>
+
+        <!-- INTRODUCTION / INSTALLATION SECTION -->
+        <div class="section" id="intro">
+            <h2>📡 Jenkins Installation & Initial Setup (Ubuntu/Debian)</h2>
+            <ul>
+                <li><code>sudo apt update && sudo apt upgrade -y</code> – Update system packages.</li>
+                <li><code>sudo apt install openjdk-17-jdk -y</code> – Install Java 17 (Jenkins requirement).</li>
+                <li><code>java -version</code> – Verify Java installation.</li>
+                <li><code>sudo apt install jenkins -y</code> – Install Jenkins LTS.</li>
+                <li><code>jenkins --version</code> – Confirm Jenkins version.</li>
+                <li><code>sudo firewall-cmd --add-port=8080/tcp --permanent</code> (if using firewalld) or <code>sudo ufw allow 8080</code> for UFW.</li>
+                <li><code>sudo systemctl enable --now jenkins</code> – Start Jenkins on boot.</li>
+                <li><code>sudo systemctl status jenkins</code> – Check service status.</li>
+                <li>Open browser: <code>http://localhost:8080</code></li>
+                <li>Get initial admin password: <code>sudo cat /var/lib/jenkins/secrets/initialAdminPassword</code></li>
+                <li>Install suggested plugins, create admin user, set Jenkins URL.</li>
+            </ul>
+            <div class="pro-tip">✨ Pro tip: Use <code>/etc/default/jenkins</code> to change HTTP port if needed (e.g., <code>HTTP_PORT=9090</code>).</div>
+            <button class="copy-btn" data-copyall="install-cmds">📋 Copy installation commands</button>
+        </div>
+
+        <!-- FIRST JOB: FREESTYLE -->
+        <div class="section" id="first-job">
+            <h2>🚀 First Jenkins Freestyle Job</h2>
+            <pre><code>Step 1: Dashboard → New Item
+Step 2: Enter Job Name: first-job | Freestyle Project → OK
+Step 3: Description: "My first Jenkins automation test"
+Step 4: Build Triggers: (optional) Poll SCM
+Step 5: Build → Add Build Step → Execute Shell
+Step 6: Commands:
+   echo "Hello Jenkins"
+   date
+   whoami
+   echo "Build successful!"
+Step 7: Save → Build Now → Console Output</code></pre>
+            <button class="copy-btn" data-copy="freestyle-job">Copy job configuration</button>
+            
+            <h3>🔀 Git Clone Test Job (SCM Integration)</h3>
+            <pre><code>Job Name: git-clone-test
+Source Code Management → Git
+Repository URL: https://github.com/jenkins-docs/simple-java-maven-app.git
+Branches to build: */main
+Build Step → Execute Shell:
+   echo "Repository cloned successfully"
+   ls -la
+   echo "Build completed"</code></pre>
+            <button class="copy-btn" data-copy="git-job">Copy Git job example</button>
+        </div>
+
+        <!-- PLUGINS: SSH AGENT, EMAIL, ROLE-BASED, SHARED LIBS -->
+        <div class="section" id="plugins">
+            <h2>🔌 Essential Jenkins Plugins Configuration</h2>
+            
+            <h3>⚡ 1. SSH Agent (Node/Worker Setup)</h3>
+            <pre><code>→ Manage Jenkins → Nodes → New Node
+Name: worker-jen-01
+Number of Executors: 1
+Remote root directory: /home/jenkins/workspace
+Labels: linux_worker
+Launch method: Launch agents via SSH
+Host: 192.168.1.100 (remote IP)
+Credentials: Add SSH key (private key)
+Host Key Verification Strategy: Non verifying Verification Strategy
+Availability: Keep this agent online as much as possible</code></pre>
+            <button class="copy-btn" data-copy="ssh-node">Copy SSH agent config</button>
+
+            <h3>📧 2. Email Notification (SMTP - Gmail)</h3>
+            <pre><code>Manage Jenkins → System → E-mail Notification
+SMTP server: smtp.gmail.com
+Use SSL: Yes
+SMTP Port: 465
+User Name: your-email@gmail.com
+Password: [App Password from Google Account]
+Default user email suffix: @gmail.com
+Test connection: send test e-mail.</code></pre>
+            <button class="copy-btn" data-copy="email-config">Copy Email config</button>
+
+            <h3>🔐 3. Role-Based Strategy (Authorization)</h3>
+            <pre><code>Install "Role-based Strategy" plugin
+Manage Jenkins → Security → Authorization → Role-Based Strategy
+Manage Roles:
+  - Global roles: admin (full access), read-only (overall read)
+  - Project roles: dev-team (pattern: dev-.*) with build/cancel permissions.
+Assign roles to users/groups for fine-grained access control.</code></pre>
+            <button class="copy-btn" data-copy="role-strat">Copy Role strategy notes</button>
+
+            <h3>📚 4. Global Trusted Pipeline Libraries</h3>
+            <pre><code>Manage Jenkins → Configure System → Global Pipeline Libraries
+Name: shared-library
+Default version: main (branch)
+Retrieval method: Modern SCM
+SCM: Git
+Project Repository: https://github.com/org/shared-pipeline-lib.git
+Usage: @Library('shared-library') _ at top of Jenkinsfile</code></pre>
+            <button class="copy-btn" data-copy="shared-lib">Copy Global Lib config</button>
+        </div>
+
+        <!-- PIPELINE EXAMPLES (Declarative) -->
+        <div class="section" id="advanced">
+            <h2>📜 Declarative Pipeline Examples (Jenkinsfile)</h2>
+            <pre><code>pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                git 'https://github.com/example/app.git'
+            }
+        }
+        stage('Build') {
+            steps {
+                sh 'mvn clean compile'
+            }
+        }
+        stage('Test') {
+            steps {
+                sh 'mvn test'
+            }
+            post {
+                always {
+                    junit 'target/surefire-reports/*.xml'
+                }
+            }
+        }
+        stage('Deploy') {
+            when { branch 'main' }
+            steps {
+                echo 'Deploying to production server'
+            }
+        }
+    }
+    post {
+        failure {
+            emailext subject: "Pipeline Failed", body: "Job ${env.JOB_NAME}", to: "team@example.com"
+        }
+    }
+}</code></pre>
+            <button class="copy-btn" data-copy="decl-pipeline">Copy Declarative Pipeline</button>
+
+            <h3>🧪 SSH Agent Pipeline with Credentials</h3>
+            <pre><code>pipeline {
+    agent { label 'linux_worker' }
+    environment {
+        APP_HOME = '/opt/app'
+    }
+    stages {
+        stage('Deploy via SSH') {
+            steps {
+                sshagent(['deploy-ssh-key']) {
+                    sh 'scp target/app.jar user@server:/opt/app/'
+                    sh 'ssh user@server "systemctl restart myapp"'
+                }
+            }
+        }
+    }
+}</code></pre>
+            <button class="copy-btn" data-copy="ssh-pipeline">Copy SSH Pipeline</button>
+        </div>
+
+        <!-- BEST PRACTICES & SECURITY -->
+        <div class="section" id="security">
+            <h2>🔐 Jenkins Security & Role Management</h2>
+            <ul>
+                <li><strong>Disable script security in sandbox?</strong> Only for trusted users. Use <code>Approval</code> for scripts.</li>
+                <li><strong>Matrix-based security:</strong> Fine-grained project-level permissions.</li>
+                <li><strong>Credentials binding:</strong> Use <code>withCredentials([string(credentialsId: 'api-token', variable: 'TOKEN')])</code> in pipelines.</li>
+                <li><strong>Audit logging:</strong> Enable "Job Configuration History" plugin to track changes.</li>
+                <li><strong>Backup Jenkins home:</strong> Archive <code>/var/lib/jenkins</code> regularly (config, jobs, workspaces).</li>
+            </ul>
+            <div class="pro-tip">🔐 Always run Jenkins behind reverse proxy (nginx/Apache) with HTTPS enabled. Use <code>Jenkins CLI</code> safely with RBAC.</div>
+        </div>
+
+        <!-- RESOURCES SECTION -->
+        <div class="section" id="resources">
+            <h2>📚 Official Resources & Community</h2>
+            <ul>
+                <li><a href="https://www.jenkins.io/doc/" target="_blank">📘 Jenkins Official Documentation</a></li>
+                <li><a href="https://plugins.jenkins.io/" target="_blank">🔌 Jenkins Plugin Index</a></li>
+                <li><a href="https://www.jenkins.io/blog/" target="_blank">📢 Jenkins Blog & Updates</a></li>
+                <li><a href="https://stackoverflow.com/questions/tagged/jenkins" target="_blank">💬 Stack Overflow (Jenkins tag)</a></li>
+                <li><a href="https://www.jenkins.io/projects/" target="_blank">🏗️ Jenkins X & Cloud Native</a></li>
+            </ul>
+            <div class="pro-tip">⭐ Pro Lab: Setup master-agent with Docker agents using Docker Pipeline plugin -> truly scalable CI/CD.</div>
+        </div>
+
+        <footer>🏗️ Jenkins Mastery Hub — Complete CI/CD reference: installation, freestyle jobs, pipeline as code, plugins and security best practices.</footer>
     </div>
 </div>
+
+<script>
+    // COPY BUTTON: dynamic capturing of pre content or command list
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            let codeToCopy = "";
+            if (this.hasAttribute('data-copy')) {
+                let parentDiv = this.closest('.section');
+                let preElem = parentDiv ? parentDiv.querySelector('pre') : null;
+                if (preElem) codeToCopy = preElem.innerText;
+                else codeToCopy = "Content not found";
+            } else if (this.hasAttribute('data-copyall')) {
+                let installSection = document.getElementById('intro');
+                if (installSection) {
+                    let listItems = installSection.querySelectorAll('ul li');
+                    let commands = Array.from(listItems).map(li => li.innerText.replace(/\s*–\s*/g, ' – ')).join('\n');
+                    codeToCopy = commands;
+                }
+            } else {
+                let preElem = this.closest('.section')?.querySelector('pre');
+                if (preElem) codeToCopy = preElem.innerText;
+                else codeToCopy = "Jenkins config ready";
+            }
+            if (codeToCopy) {
+                navigator.clipboard.writeText(codeToCopy).then(() => {
+                    this.innerText = '✓ Copied!';
+                    setTimeout(() => {
+                        if (this.hasAttribute('data-copyall')) this.innerText = '📋 Copy installation commands';
+                        else if (this.hasAttribute('data-copy')) this.innerText = 'Copy config';
+                        else this.innerText = 'Copy';
+                    }, 1500);
+                }).catch(() => alert('Could not copy, select manually'));
+            } else {
+                alert('No content to copy');
+            }
+        });
+    });
+
+    // GLOBAL SEARCH: filters sections AND study cards
+    const searchInput = document.getElementById('globalSearch');
+    function filterAll() {
+        let term = searchInput.value.toLowerCase().trim();
+        const allSections = document.querySelectorAll('.section');
+        const noteCards = document.querySelectorAll('.note-card');
+        allSections.forEach(sec => {
+            if (term === "") sec.style.display = "";
+            else {
+                let text = sec.innerText.toLowerCase();
+                sec.style.display = text.includes(term) ? "" : "none";
+            }
+        });
+        noteCards.forEach(card => {
+            if (term === "") card.style.display = "";
+            else {
+                let text = card.innerText.toLowerCase();
+                card.style.display = text.includes(term) ? "" : "none";
+            }
+        });
+        if (term !== "") {
+            const introBlock = document.getElementById('intro');
+            if (introBlock && !introBlock.innerText.toLowerCase().includes(term)) introBlock.style.display = "none";
+        } else {
+            document.querySelectorAll('.section, .note-card').forEach(el => el.style.display = "");
+        }
+    }
+    searchInput.addEventListener('keyup', filterAll);
+    
+    // Smooth sidebar navigation
+    document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const targetElem = document.getElementById(targetId);
+            if (targetElem) {
+                const offset = 70;
+                const y = targetElem.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        });
+    });
+</script>
+</body>
+</html>

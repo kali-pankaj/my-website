@@ -2,318 +2,652 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Self Improvement Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Self Mastery Guide | Complete Personality Development</title>
   <style>
 
     /* ================= FONT ================= */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+    @import url('https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap');
 
-/* ================= VARIABLES ================= */
-:root {
-  --bg: #f9fafb;
-  --card: #ffffff;
-  --primary: #2563eb;
-  --primary-dark: #1d4ed8;
-  --text: #111827;
-  --subtext: #6b7280;
-}
+    /* ================= VARIABLES ================= */
+    :root {
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --secondary: #7c3aed;
+      --text: #0f172a;
+      --subtext: #475569;
+      --border: #e2e8f0;
+      --success: #10b981;
+      --warning: #f59e0b;
+      --danger: #ef4444;
+    }
 
-/* ================= DARK MODE ================= */
-body.dark {
-  --bg: #020617;
-  --card: #0f172a;
-  --primary: #3b82f6;
-  --primary-dark: #2563eb;
-  --text: #e5e7eb;
-  --subtext: #9ca3af;
-}
+    /* ================= DARK MODE ================= */
+    body.dark {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --primary: #3b82f6;
+      --primary-dark: #2563eb;
+      --secondary: #8b5cf6;
+      --text: #f1f5f9;
+      --subtext: #cbd5e1;
+      --border: #334155;
+    }
 
-/* ================= BASE ================= */
-body {
-  font-family: 'Poppins', sans-serif;
-  margin: 0;
-  display: flex;
-  background: var(--bg);
-  color: var(--text);
-  transition: all 0.3s ease;
-}
+    /* ================= BASE ================= */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-/* ================= SIDEBAR ================= */
-.sidebar {
-  width: 240px;
-  background: linear-gradient(180deg, #1f2937, #020617);
-  color: white;
-  height: 100vh;
-  padding: 20px;
-  position: fixed;
-  box-shadow: 4px 0 20px rgba(0, 0, 0, 0.15);
-  transition: all 0.3s ease;
-}
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      transition: all 0.3s ease;
+      line-height: 1.5;
+    }
 
-body.dark .sidebar {
-  background: linear-gradient(180deg, #020617, #000);
-}
+    /* ================= HEADER ================= */
+    .top-bar {
+      position: sticky;
+      top: 0;
+      background: var(--bg);
+      backdrop-filter: blur(10px);
+      border-bottom: 1px solid var(--border);
+      padding: 0.8rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      z-index: 100;
+    }
 
-.sidebar h2 {
-  font-weight: 600;
-  margin-bottom: 25px;
-  letter-spacing: 1px;
-}
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, var(--primary), var(--secondary));
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
 
-/* ================= SIDEBAR LINKS ================= */
-.sidebar a {
-  display: block;
-  color: #d1d5db;
-  text-decoration: none;
-  margin: 8px 0;
-  padding: 12px;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  font-size: 14px;
-}
+    .theme-toggle {
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 50px;
+      padding: 0.5rem 1rem;
+      cursor: pointer;
+      font-weight: 500;
+      transition: all 0.2s;
+    }
 
-.sidebar a:hover {
-  background: rgba(255,255,255,0.08);
-  color: #fff;
-  transform: translateX(6px);
-}
+    /* ================= SIDEBAR ================= */
+    .sidebar {
+      width: 280px;
+      background: var(--card);
+      border-right: 1px solid var(--border);
+      height: calc(100vh - 60px);
+      position: fixed;
+      top: 60px;
+      left: 0;
+      overflow-y: auto;
+      padding: 1.5rem;
+      transition: all 0.3s ease;
+    }
 
-body.dark .sidebar a {
-  color: #9ca3af;
-}
+    .sidebar h3 {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      color: var(--subtext);
+      margin-bottom: 1rem;
+    }
 
-body.dark .sidebar a:hover {
-  color: #fff;
-}
+    .sidebar a {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--text);
+      text-decoration: none;
+      padding: 0.7rem 1rem;
+      margin: 0.3rem 0;
+      border-radius: 12px;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
 
-/* ================= CONTENT ================= */
-.content {
-  margin-left: 260px;
-  padding: 30px;
-  width: 100%;
-}
+    .sidebar a:hover {
+      background: var(--primary);
+      color: white;
+      transform: translateX(5px);
+    }
 
-/* ================= CARDS ================= */
-.section {
-  background: var(--card);
-  padding: 25px;
-  margin-bottom: 25px;
-  border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
-}
+    body.dark .sidebar a:hover {
+      background: var(--primary);
+    }
 
-.section::before {
-  content: "";
-  position: absolute;
-  height: 4px;
-  width: 100%;
-  top: 0;
-  left: 0;
-  background: linear-gradient(90deg, var(--primary), #06b6d4);
-}
+    /* ================= CONTENT ================= */
+    .content {
+      margin-left: 280px;
+      margin-top: 60px;
+      padding: 2rem;
+      max-width: 1200px;
+    }
 
-.section:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 15px 35px rgba(0,0,0,0.08);
-}
+    /* ================= CARDS ================= */
+    .section {
+      background: var(--card);
+      border-radius: 20px;
+      padding: 1.8rem;
+      margin-bottom: 1.8rem;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
 
-body.dark .section {
-  box-shadow: 0 10px 30px rgba(0,0,0,0.5);
-}
+    .section:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
 
-/* ================= TEXT ================= */
-h2 {
-  color: rgb(0, 114, 254);
-  margin-bottom: 12px;
-  font-weight: 600;
-}
+    .section h2 {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: var(--primary);
+    }
 
-ul {
-  margin-left: 20px;
-  color: var(--subtext);
-  line-height: 1.7;
-}
+    .section h3 {
+      font-size: 1rem;
+      color: var(--secondary);
+      margin: 1rem 0 0.5rem 0;
+    }
 
-li {
-  margin-bottom: 6px;
-}
+    ul, .checklist {
+      margin-left: 1.5rem;
+      color: var(--subtext);
+      line-height: 1.8;
+    }
 
-/* ================= BUTTON ================= */
-button {
-  padding: 10px 18px;
-  margin-top: 12px;
-  cursor: pointer;
-  border: none;
-  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
-  color: white;
-  border-radius: 10px;
-  transition: all 0.3s ease;
-  font-weight: 500;
-}
+    li {
+      margin-bottom: 0.4rem;
+    }
 
-button:hover {
-  transform: scale(1.05);
-  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.4);
-}
+    /* ================= PROGRESS ================= */
+    .progress-track {
+      background: var(--border);
+      border-radius: 12px;
+      height: 8px;
+      margin: 1rem 0;
+      overflow: hidden;
+    }
 
-body.dark button {
-  box-shadow: 0 6px 15px rgba(59,130,246,0.3);
-}
+    .progress-fill {
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      border-radius: 12px;
+      transition: width 0.5s;
+    }
 
-/* ================= TIP ================= */
-#tip {
-  margin-top: 10px;
-  font-weight: 500;
-  color: var(--primary);
-  animation: fadeIn 0.3s ease;
-}
+    .habit-btn {
+      background: var(--primary);
+      border: none;
+      padding: 0.5rem 1.2rem;
+      border-radius: 30px;
+      color: white;
+      cursor: pointer;
+      font-weight: 500;
+      margin-right: 0.5rem;
+      margin-top: 0.5rem;
+      transition: all 0.2s;
+    }
 
-/* ================= ANIMATION ================= */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(5px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
-}
+    .habit-btn.completed {
+      background: var(--success);
+      text-decoration: line-through;
+      opacity: 0.7;
+    }
 
-/* ================= SCROLLBAR ================= */
-::-webkit-scrollbar {
-  width: 8px;
-}
+    /* ================= TIP CARD ================= */
+    .tip-card {
+      background: linear-gradient(135deg, rgba(37,99,235,0.1), rgba(124,58,237,0.1));
+      border-radius: 16px;
+      padding: 1rem;
+      margin-top: 1rem;
+      text-align: center;
+    }
 
-::-webkit-scrollbar-thumb {
-  background: #9ca3af;
-  border-radius: 10px;
-}
+    #tip {
+      font-weight: 500;
+      color: var(--primary);
+    }
 
-body.dark ::-webkit-scrollbar-thumb {
-  background: #374151;
-}
+    /* ================= BREATHING ================= */
+    .breath-circle {
+      width: 100px;
+      height: 100px;
+      background: var(--primary);
+      border-radius: 50%;
+      margin: 1rem auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      cursor: pointer;
+      transition: transform 0.3s ease;
+    }
 
-/* ================= RESPONSIVE ================= */
-@media (max-width: 768px) {
-  .sidebar {
-    width: 200px;
-  }
+    .breath-circle.animate {
+      animation: breathe 4s ease-in-out infinite;
+    }
 
-  .content {
-    margin-left: 210px;
-    padding: 20px;
-  }
-}
+    @keyframes breathe {
+      0%, 100% { transform: scale(1); background: var(--primary); }
+      50% { transform: scale(1.2); background: var(--secondary); }
+    }
+
+    /* ================= AFFIRMATION ================= */
+    .affirmation-card {
+      background: var(--card);
+      border: 2px dashed var(--primary);
+      border-radius: 16px;
+      padding: 1.2rem;
+      text-align: center;
+    }
+
+    /* ================= MOOD ================= */
+    .mood-buttons {
+      display: flex;
+      gap: 1rem;
+      margin: 1rem 0;
+      flex-wrap: wrap;
+    }
+
+    .mood {
+      padding: 0.5rem 1rem;
+      border-radius: 30px;
+      background: var(--border);
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .mood.selected {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* ================= RESPONSIVE ================= */
+    @media (max-width: 768px) {
+      .sidebar {
+        transform: translateX(-100%);
+        z-index: 200;
+      }
+      .sidebar.open {
+        transform: translateX(0);
+      }
+      .content {
+        margin-left: 0;
+        padding: 1rem;
+      }
+      .menu-btn {
+        display: block;
+      }
+    }
+
+    .menu-btn {
+      display: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      padding: 0.5rem;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    /* ================= STATS ================= */
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .stat-card {
+      background: var(--bg);
+      padding: 1rem;
+      border-radius: 12px;
+      text-align: center;
+    }
 
   </style>
 </head>
 
 <body>
-
-<div class="sidebar">
-  <h2>Guide</h2>
-  <a href="#self">Self-Awareness</a>
-  <a href="#think">Think Before Speak</a>
-  <a href="#ego">Ego Control</a>
-  <a href="#language">Respectful Language</a>
-  <a href="#anger">Anger Control</a>
-  <a href="#empathy">Empathy</a>
-</div>
-
-<div class="content">
-
-  <div class="section" id="self">
-    <h2>1. Self-Awareness</h2>
-    <ul>
-      <li>Pause करना सीखो (5–10 सेकंड रुक जाओ)</li>
-      <li>Daily self-check:
-        <ul>
-          <li>आज मैंने कहाँ अच्छा behave किया?</li>
-          <li>कहाँ मैं गलत था?</li>
-        </ul>
-      </li>
-      <li>Trigger पहचानो (गुस्सा कब आता है)</li>
-      <li>Feedback लो</li>
-      <li>Journal लिखो (आज क्या हुआ)</li>
-      <li>Emotion पहचानो: irritation, jealousy, insecurity</li>
-    </ul>
+  <div class="top-bar">
+    <div style="display: flex; align-items: center; gap: 1rem;">
+      <div class="menu-btn" onclick="toggleSidebar()">☰</div>
+      <div class="logo">🌟 SelfMastery Guide</div>
+    </div>
+    <button class="theme-toggle" onclick="toggleTheme()">🌓 Dark/Light</button>
   </div>
 
-  <div class="section" id="think">
-    <h2>2. बोलने से पहले सोचो</h2>
-    <ul>
-      <li>क्या ये जरूरी है?</li>
-      <li>क्या मैं सही तरीके से बोल रहा हूँ?</li>
-      <li>क्या इससे सामने वाले को hurt होगा?</li>
-      <li>क्या मैं calm हूँ?</li>
-    </ul>
+  <div class="sidebar" id="sidebar">
+    <h3>📚 SECTIONS</h3>
+    <a href="#self">🔍 Self-Awareness</a>
+    <a href="#think">💭 Think Before Speak</a>
+    <a href="#ego">🦁 Ego Control</a>
+    <a href="#language">🗣️ Respectful Language</a>
+    <a href="#anger">😤 Anger Control</a>
+    <a href="#empathy">❤️ Empathy</a>
+    <a href="#habits">✅ Daily Habits</a>
+    <a href="#mindfulness">🧘 Mindfulness</a>
+    <a href="#communication">💬 Communication Skills</a>
+    <a href="#gratitude">🙏 Gratitude</a>
+    <a href="#forgiveness">🕊️ Forgiveness</a>
+    <a href="#boundaries">🛡️ Boundaries</a>
+    <hr style="margin: 1rem 0; border-color: var(--border);">
+    <a href="#affirmations">✨ Affirmations</a>
+    <a href="#mood">😊 Mood Tracker</a>
   </div>
 
-  <div class="section" id="ego">
-    <h2>3. Ego Control</h2>
-    <ul>
-      <li>हर बार खुद को सही मत मानो</li>
-      <li>Sorry बोलना सीखो</li>
-      <li>Listen more</li>
-      <li>Compare मत करो</li>
-      <li>Feedback accept करो</li>
-      <li>Argument जीतना जरूरी नहीं</li>
-      <li>Gratitude practice करो</li>
-    </ul>
+  <div class="content">
+    <!-- Section 1 -->
+    <div class="section" id="self">
+      <h2>🔍 1. Self-Awareness</h2>
+      <ul>
+        <li>⏸️ Pause करना सीखो (5–10 सेकंड रुक जाओ)</li>
+        <li>📝 Daily self-check: "आज मैंने कहाँ अच्छा behave किया? कहाँ मैं गलत था?"</li>
+        <li>🎯 Trigger पहचानो (गुस्सा कब आता है, किस situation में)</li>
+        <li>🗣️ Feedback लो (trusted friends/family से)</li>
+        <li>📓 Journal लिखो (आज क्या हुआ, कैसा feel किया)</li>
+        <li>❤️ Emotion पहचानो: irritation, jealousy, insecurity, fear</li>
+      </ul>
+      <div class="progress-track"><div class="progress-fill" id="progress-self" style="width: 0%;"></div></div>
+      <button class="habit-btn" onclick="markProgress('self')">✅ Mark Complete</button>
+    </div>
+
+    <div class="section" id="think">
+      <h2>💭 2. बोलने से पहले सोचो (THINK Filter)</h2>
+      <ul>
+        <li>❓ क्या ये <strong>T</strong>rue (सच) है?</li>
+        <li>❓ क्या ये <strong>H</strong>elpful (मददगार) है?</li>
+        <li>❓ क्या ये <strong>I</strong>nspiring (प्रेरित करने वाला) है?</li>
+        <li>❓ क्या ये <strong>N</strong>ecessary (जरूरी) है?</li>
+        <li>❓ क्या ये <strong>K</strong>ind (दयालु) है?</li>
+      </ul>
+      <div class="tip-card">💡 THINK फिल्टर हर बात को बोलने से पहले लगाओ</div>
+    </div>
+
+    <div class="section" id="ego">
+      <h2>🦁 3. Ego Control</h2>
+      <ul>
+        <li>हर बार खुद को सही मत मानो — सुनने की कला सीखो</li>
+        <li>🙏 Sorry बोलना सीखो — यह weakness नहीं, strength है</li>
+        <li>👂 Listen more than you speak</li>
+        <li>⚖️ Compare मत करो — अपनी growth पर focus करो</li>
+        <li>📥 Feedback accept करो बिना defensive हुए</li>
+        <li>🎯 Argument जीतना जरूरी नहीं, relationship जरूरी है</li>
+        <li>🌟 Gratitude practice करो — दूसरों के contribution को value दो</li>
+      </ul>
+    </div>
+
+    <div class="section" id="language">
+      <h2>🗣️ 4. Respectful Language</h2>
+      <p><strong>Examples:</strong> "मुझे लगता है हम ऐसे try कर सकते हैं", "आपका point समझ आया, मैं अपनी बात रखूँ?"</p>
+      <p>बात करने का तरीका बदलो, attitude खुद बदल जाएगा। "You" के बजाय "I" statements use करो।</p>
+      <ul><li>❌ "तुमने गलत किया" → ✅ "मुझे ऐसा लग रहा है कि यह सही नहीं हुआ"</li></ul>
+    </div>
+
+    <div class="section" id="anger">
+      <h2>😤 5. गुस्सा Control (Anger Management)</h2>
+      <ul>
+        <li>⏸️ <strong>Pause Rule</strong> — 10 सेकंड रुको</li>
+        <li>🌬️ <strong>Deep Breathing</strong> (4-4-6 तकनीक)</li>
+        <li>🚶 Situation से दूर जाओ (walk ले लो)</li>
+        <li>🧠 Reframe सोच — "क्या ये 5 साल बाद matter करेगा?"</li>
+        <li>😌 Calm होकर बोलो — tone soft रखो</li>
+      </ul>
+      <div class="breath-circle" id="breathCircle" onclick="startBreathing()">🌬️</div>
+      <button onclick="showAngerTip()">💡 Anger Management Tip</button>
+      <p id="tip"></p>
+    </div>
+
+    <div class="section" id="empathy">
+      <h2>❤️ 6. Empathy (दूसरों को समझना)</h2>
+      <ul>
+        <li>👂 Active Listening — बिना interrupt किए सुनो</li>
+        <li>🪞 खुद को उसकी जगह रखो — "अगर मैं उसकी जगह होता तो कैसा feel करता?"</li>
+        <li>❓ सवाल पूछो — "ऐसा क्यों हुआ? तुम्हें कैसा लगा?"</li>
+        <li>🚫 Judge मत करो — पहले समझो, फिर जवाब दो</li>
+        <li>💬 Feelings acknowledge करो — "मैं समझ सकता हूँ तुम परेशान हो"</li>
+      </ul>
+    </div>
+
+    <div class="section" id="habits">
+      <h2>✅ 7. Daily Habits for Better Personality</h2>
+      <div id="habitList">
+        <div><input type="checkbox" class="dailyHabit"> 🌅 सुबह 5 मिनट meditation</div>
+        <div><input type="checkbox" class="dailyHabit"> 📖 10 मिनट self-reflection journal</div>
+        <div><input type="checkbox" class="dailyHabit"> 🧘 5 deep breaths before reacting</div>
+        <div><input type="checkbox" class="dailyHabit"> 🙏 Thank someone today</div>
+        <div><input type="checkbox" class="dailyHabit"> 👂 Active listening practice (5 min)</div>
+      </div>
+      <div class="stats-grid">
+        <div class="stat-card">📊 Daily Progress: <span id="habitCount">0</span>/5</div>
+      </div>
+      <button onclick="resetHabits()">🔄 Reset Today</button>
+    </div>
+
+    <div class="section" id="mindfulness">
+      <h2>🧘 8. Mindfulness & Meditation</h2>
+      <ul>
+        <li>🧠 Present moment में रहो — past/future की चिंता मत करो</li>
+        <li>🫂 Body scan technique: अपने शरीर के हर हिस्से पर focus करो</li>
+        <li>🎧 Mindful listening — बिना judgement के सिर्फ सुनो</li>
+        <li>🍽️ Mindful eating — खाने का स्वाद और बनावट महसूस करो</li>
+      </ul>
+      <div class="tip-card">🧘‍♀️ "Mindfulness is the aware, balanced acceptance of the present experience."</div>
+    </div>
+
+    <div class="section" id="communication">
+      <h2>💬 9. Effective Communication Skills</h2>
+      <ul>
+        <li>🗣️ Clear & Concise — short sentences में बोलो</li>
+        <li>👀 Eye contact — confidence दिखाता है</li>
+        <li>📢 Tone of voice — गुस्से की जगह firm but calm tone</li>
+        <li>🔄 Paraphrasing — "तो तुम्हारा मतलब ये है कि..."</li>
+        <li>🙅 Avoid "always/never" जैसे extreme words</li>
+      </ul>
+    </div>
+
+    <div class="section" id="gratitude">
+      <h2>🙏 10. Gratitude Practice</h2>
+      <ul><li>रोज 3 चीजें लिखो जिनके लिए तुम grateful हो</li>
+      <li>किसी को thank you बोलो बिना किसी reason के</li>
+      <li>Gratitude journal — छोटी-छोटी खुशियों को appreciate करो</li></ul>
+      <button onclick="showGratitude()">✨ Show Gratitude Prompt</button>
+      <p id="gratitudeMsg"></p>
+    </div>
+
+    <div class="section" id="forgiveness">
+      <h2>🕊️ 11. Forgiveness (क्षमा)</h2>
+      <ul><li>Forgiveness दूसरे के लिए नहीं, अपनी mental peace के लिए जरूरी है</li>
+      <li>Holding grudge = खुद को जहर देना</li>
+      <li>Practice: "I release this anger for my own freedom"</li></ul>
+    </div>
+
+    <div class="section" id="boundaries">
+      <h2>🛡️ 12. Setting Healthy Boundaries</h2>
+      <ul><li>"No" बोलना सीखो बिना guilt के</li>
+      <li>अपनी limits को पहचानो और दूसरों को बताओ</li>
+      <li>Boundaries = self-respect का symbol</li></ul>
+    </div>
+
+    <div class="section" id="affirmations">
+      <h2>✨ 13. Daily Affirmations</h2>
+      <div class="affirmation-card" id="affirmationBox">
+        <p id="affirmationText">"I am calm, confident, and in control of my emotions."</p>
+        <button onclick="newAffirmation()">🔄 New Affirmation</button>
+      </div>
+    </div>
+
+    <div class="section" id="mood">
+      <h2>😊 14. Mood Tracker</h2>
+      <div class="mood-buttons">
+        <div class="mood" onclick="setMood('😊 Happy')">😊 Happy</div>
+        <div class="mood" onclick="setMood('😌 Calm')">😌 Calm</div>
+        <div class="mood" onclick="setMood('😤 Angry')">😤 Angry</div>
+        <div class="mood" onclick="setMood('😔 Sad')">😔 Sad</div>
+        <div class="mood" onclick="setMood('🤔 Anxious')">🤔 Anxious</div>
+      </div>
+      <p>Today's Mood: <strong id="todayMood">Not set yet</strong></p>
+      <button onclick="saveMood()">💾 Save Mood for Today</button>
+      <p><small>📈 Tracking helps you identify emotional patterns</small></p>
+    </div>
   </div>
 
-  <div class="section" id="language">
-    <h2>4. Respectful Language</h2>
-    <p>“मुझे लगता है हम ऐसे try कर सकते हैं”</p>
-    <p>बात करने का तरीका बदलो, attitude खुद बदल जाएगा</p>
-  </div>
+  <script>
+    // Theme Toggle
+    function toggleTheme() {
+      document.body.classList.toggle('dark');
+      localStorage.setItem('theme', document.body.classList.contains('dark') ? 'dark' : 'light');
+    }
+    if (localStorage.getItem('theme') === 'dark') document.body.classList.add('dark');
 
-  <div class="section" id="anger">
-    <h2>5. गुस्सा Control</h2>
-    <ul>
-      <li>Pause Rule</li>
-      <li>Deep Breathing (4-4-6)</li>
-      <li>Situation से दूर जाओ</li>
-      <li>Reframe सोच</li>
-      <li>Calm होकर बोलो</li>
-      <li>Triggers पहचानो</li>
-      <li>Daily Practice</li>
-    </ul>
-    <button onclick="showTip()">Get Tip</button>
-    <p id="tip"></p>
-  </div>
+    // Sidebar Toggle Mobile
+    function toggleSidebar() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
 
-  <div class="section" id="empathy">
-    <h2>6. Empathy</h2>
-    <ul>
-      <li>Active Listening</li>
-      <li>खुद को उसकी जगह रखो</li>
-      <li>सवाल पूछो</li>
-      <li>Judge मत करो</li>
-      <li>Feelings acknowledge करो</li>
-    </ul>
-  </div>
+    // Progress for Self-Awareness
+    let progress = { self: false };
+    function markProgress(section) {
+      let fill = document.getElementById(`progress-${section}`);
+      if (fill) {
+        fill.style.width = '100%';
+        alert(`✅ Great! You've completed ${section.replace('-',' ')} section. Keep growing!`);
+      }
+    }
 
-</div>
+    // Anger Tips
+    function showAngerTip() {
+      const tips = [
+        "⏸️ 10 सेकंड pause करो — गहरी सांस लो",
+        "🌬️ 4 सेकंड inhale, 4 hold, 6 exhale",
+        "🚶 कमरे से बाहर निकल जाओ, 5 मिनट walk करो",
+        "🧠 सोचो: क्या यह 1 साल बाद मायने रखेगा?",
+        "💧 ठंडे पानी से face धो लो",
+        "📝 गुस्सा आए तो लिखो, फिर कागज फाड़ दो"
+      ];
+      document.getElementById("tip").innerText = tips[Math.floor(Math.random() * tips.length)];
+    }
 
-<script>
-  function showTip() {
-    const tips = [
-      "Pause करो, तुरंत react मत करो",
-      "Deep breathing करो",
-      "Walk पर जाओ",
-      "Calm होकर बोलो",
-      "सोच बदलो (Reframe)"
+    // Breathing Exercise
+    let breathingActive = false;
+    function startBreathing() {
+      let circle = document.getElementById('breathCircle');
+      if (breathingActive) {
+        circle.classList.remove('animate');
+        breathingActive = false;
+        circle.innerText = "🌬️";
+      } else {
+        circle.classList.add('animate');
+        breathingActive = true;
+        circle.innerText = "🧘";
+        setTimeout(() => {
+          if (breathingActive) {
+            circle.innerText = "🌬️";
+          }
+        }, 4000);
+      }
+    }
+
+    // Daily Habits
+    function updateHabitCount() {
+      let checkboxes = document.querySelectorAll('.dailyHabit');
+      let checked = 0;
+      checkboxes.forEach(cb => { if (cb.checked) checked++; });
+      document.getElementById('habitCount').innerText = checked;
+      localStorage.setItem('habits', JSON.stringify(Array.from(checkboxes).map(cb => cb.checked)));
+    }
+    function resetHabits() {
+      let checkboxes = document.querySelectorAll('.dailyHabit');
+      checkboxes.forEach(cb => cb.checked = false);
+      updateHabitCount();
+    }
+    function loadHabits() {
+      let saved = localStorage.getItem('habits');
+      if (saved) {
+        let states = JSON.parse(saved);
+        let checkboxes = document.querySelectorAll('.dailyHabit');
+        checkboxes.forEach((cb, i) => { if (states[i]) cb.checked = states[i]; });
+        updateHabitCount();
+      }
+    }
+    document.querySelectorAll('.dailyHabit').forEach(cb => cb.addEventListener('change', updateHabitCount));
+    loadHabits();
+
+    // Gratitude
+    function showGratitude() {
+      const prompts = ["आज की एक छोटी सी खुशी: ______", "किसी ने तुम्हारी कैसे मदद की?", "आज तुमने क्या सीखा?"];
+      document.getElementById('gratitudeMsg').innerText = prompts[Math.floor(Math.random() * prompts.length)];
+    }
+
+    // Affirmations
+    const affirmations = [
+      "I am enough, just as I am.",
+      "I choose peace over anger.",
+      "Every day, I grow stronger and wiser.",
+      "I forgive myself and others.",
+      "My words create harmony.",
+      "I am in control of my reactions."
     ];
+    function newAffirmation() {
+      let rand = affirmations[Math.floor(Math.random() * affirmations.length)];
+      document.getElementById('affirmationText').innerText = rand;
+    }
 
-    const randomTip = tips[Math.floor(Math.random() * tips.length)];
-    document.getElementById("tip").innerText = randomTip;
-  }
-</script>
+    // Mood Tracker
+    let selectedMood = null;
+    function setMood(mood) {
+      selectedMood = mood;
+      document.querySelectorAll('.mood').forEach(m => m.classList.remove('selected'));
+      event.target.classList.add('selected');
+      document.getElementById('todayMood').innerText = mood;
+    }
+    function saveMood() {
+      if (selectedMood) {
+        let today = new Date().toDateString();
+        let moods = JSON.parse(localStorage.getItem('moodHistory') || '{}');
+        moods[today] = selectedMood;
+        localStorage.setItem('moodHistory', JSON.stringify(moods));
+        alert(`Mood saved: ${selectedMood} for ${today}`);
+      } else alert("Please select a mood first!");
+    }
+    function loadTodayMood() {
+      let today = new Date().toDateString();
+      let moods = JSON.parse(localStorage.getItem('moodHistory') || '{}');
+      if (moods[today]) document.getElementById('todayMood').innerText = moods[today];
+    }
+    loadTodayMood();
 
+    // extra: mark progress fix
+    window.markProgress = markProgress;
+    window.toggleTheme = toggleTheme;
+    window.toggleSidebar = toggleSidebar;
+    window.showAngerTip = showAngerTip;
+    window.startBreathing = startBreathing;
+    window.showGratitude = showGratitude;
+    window.newAffirmation = newAffirmation;
+    window.setMood = setMood;
+    window.saveMood = saveMood;
+    window.resetHabits = resetHabits;
+  </script>
 </body>
 </html>

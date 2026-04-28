@@ -1,632 +1,348 @@
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔥 COMPLETE Git Mastery · DevOps Bible (No stone left unturned)</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-<h2>GitHub Zero to Hero</h2>
-
-<!-- 1 -->
-<div class="container">
-
-    <!-- 1 -->
-    <div class="section">
-        <h2>1. Basics of GitHub Commands</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git init</b></td><td><i>Initializes a new Git repository in the current directory</i></td></tr>
-            <tr><td><b>git clone [url]</b></td><td><i>Clones an existing repository from a URL to the local machine</i></td></tr>
-            <tr><td><b>git status</b></td><td><i>Shows the status of changes in the working directory</i></td></tr>
-            <tr><td><b>git add [file]</b></td><td><i>Stages changes for the next commit</i></td></tr>
-            <tr><td><b>git commit -m "message"</b></td><td><i>Commits staged changes with a message</i></td></tr>
-            <tr><td><b>git push</b></td><td><i>Pushes commits to a remote repository</i></td></tr>
-            <tr><td><b>git pull</b></td><td><i>Fetches and merges changes from a remote repository</i></td></tr>
-            <tr><td><b>git fetch</b></td><td><i>Fetches changes without merging</i></td></tr>
-            <tr><td><b>git merge [branch]</b></td><td><i>Merges a branch into the current branch</i></td></tr>
-            <tr><td><b>git log</b></td><td><i>Shows commit history</i></td></tr>
-            <tr><td><b>git diff</b></td><td><i>Shows differences between changes</i></td></tr>
-        </table>
-    </div>
-
-     <!-- 2 -->
-    <div class="section">
-        <h2>2. Branching Commands (Managing Branches)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git branch</b></td><td><i>Lists all local branches</i></td></tr>
-            <tr><td><b>git branch [branch-name]</b></td><td><i>Creates a new branch</i></td></tr>
-            <tr><td><b>git checkout [branch-name]</b></td><td><i>Switches to a branch</i></td></tr>
-            <tr><td><b>git checkout -b [branch-name]</b></td><td><i>Creates and switches to a new branch</i></td></tr>
-            <tr><td><b>git merge [branch-name]</b></td><td><i>Merges the specified branch into the current branch</i></td></tr>
-            <tr><td><b>git rebase [branch-name]</b></td><td><i>Reapplies commits on top of another base branch</i></td></tr>
-            <tr><td><b>git branch -d [branch-name]</b></td><td><i>Deletes a branch (if fully merged)</i></td></tr>
-            <tr><td><b>git branch -D [branch-name]</b></td><td><i>Force deletes a branch</i></td></tr>
-            <tr><td><b>git remote set-head origin [branch-name]</b></td><td><i>Sets the default remote branch</i></td></tr>
-            <tr><td><b>git delete [branch-name]</b></td><td><i>Deletes a branch (alternative)</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 3 -->
-    <div class="section">
-        <h2>3. Remote Commands (Managing Remote and Syncing)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git remote -v</b></td><td><i>Lists all remotes</i></td></tr>
-            <tr><td><b>git remote add [name] [url]</b></td><td><i>Adds a remote repository</i></td></tr>
-            <tr><td><b>git remote remove [name]</b></td><td><i>Removes a remote repository</i></td></tr>
-            <tr><td><b>git push [remote] [branch]</b></td><td><i>Pushes a branch to remote</i></td></tr>
-            <tr><td><b>git push -u [remote] [branch]</b></td><td><i>Pushes and sets upstream</i></td></tr>
-            <tr><td><b>git pull [remote] [branch]</b></td><td><i>Pulls a branch from remote</i></td></tr>
-            <tr><td><b>git fetch [remote]</b></td><td><i>Fetches updates from remote without merging</i></td></tr>
-            <tr><td><b>git remote show [remote-name]</b></td><td><i>Displays detailed remote info</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 4 -->
-    <div class="section">
-        <h2>4. Staging and Committing (Managing Changes in Working Directory)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git add [file]</b></td><td><i>Stages changes for the next commit</i></td></tr>
-            <tr><td><b>git add -A</b></td><td><i>Stages all changes</i></td></tr>
-            <tr><td><b>git reset [file]</b></td><td><i>Unstages changes</i></td></tr>
-            <tr><td><b>git commit --amend</b></td><td><i>Amends the last commit</i></td></tr>
-            <tr><td><b>git commit --all</b></td><td><i>Commits all changes with default message</i></td></tr>
-            <tr><td><b>git commit -a</b></td><td><i>Commits all modified files</i></td></tr>
-            <tr><td><b>git commit --no-verify</b></td><td><i>Commits without running hooks</i></td></tr>
-            <tr><td><b>git reset --soft HEAD~1</b></td><td><i>Resets last commit, keeps staged changes</i></td></tr>
-            <tr><td><b>git reset --hard HEAD~1</b></td><td><i>Resets last commit and discards changes</i></td></tr>
-            <tr><td><b>git commit -m "message"</b></td><td><i>Commits changes with a message</i></td></tr>
-            <tr><td><b>git status</b></td><td><i>Shows current file status</i></td></tr>
-            <tr><td><b>git diff [file]</b></td><td><i>Shows differences for a file</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 5 -->
-    <div class="section">
-        <h2>5. Viewing and Comparing Changes (Inspecting Changes)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git diff</b></td><td><i>Compare working directory with staging</i></td></tr>
-            <tr><td><b>git diff --staged</b></td><td><i>Compare staged changes with last commit</i></td></tr>
-            <tr><td><b>git log</b></td><td><i>Shows commit history</i></td></tr>
-            <tr><td><b>git log --oneline</b></td><td><i>Compact view of commit history</i></td></tr>
-            <tr><td><b>git log --graph</b></td><td><i>Graphical view of commits</i></td></tr>
-            <tr><td><b>git show [commit]</b></td><td><i>Shows details of a specific commit</i></td></tr>
-            <tr><td><b>git diff HEAD~1 HEAD</b></td><td><i>Compares last two commits</i></td></tr>
-            <tr><td><b>git log --author="name"</b></td><td><i>Filters commits by author</i></td></tr>
-            <tr><td><b>git log --since="date"</b></td><td><i>Filters commits since a date</i></td></tr>
-            <tr><td><b>git blame [file]</b></td><td><i>Shows author of each line in a file</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 6 -->
-    <div class="section">
-        <h2>6. Reverting and Resetting Changes</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git reset --soft HEAD~1</b></td><td><i>Resets last commit, keeps staged changes</i></td></tr>
-            <tr><td><b>git reset --hard HEAD~1</b></td><td><i>Resets last commit and deletes changes</i></td></tr>
-            <tr><td><b>git reset [commit]</b></td><td><i>Resets to a specific commit</i></td></tr>
-            <tr><td><b>git revert [commit]</b></td><td><i>Safely undoes a commit by creating a new commit</i></td></tr>
-            <tr><td><b>git clean -f</b></td><td><i>Removes untracked files</i></td></tr>
-            <tr><td><b>git clean -fd</b></td><td><i>Removes untracked files and directories</i></td></tr>
-            <tr><td><b>git restore --staged [file]</b></td><td><i>Unstages a specific file</i></td></tr>
-            <tr><td><b>git reset --mixed HEAD~1</b></td><td><i>Resets commit but keeps working files</i></td></tr>
-            <tr><td><b>git reset --merge HEAD~1</b></td><td><i>Resets but preserves working state</i></td></tr>
-        </table>
-    </div>
-
-    
-    <!-- 7 -->
-    <div class="section">
-        <h2>7. Stashing Changes (Temporary Saving)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git stash</b></td><td><i>Stash all changes</i></td></tr>
-            <tr><td><b>git stash save "message"</b></td><td><i>Stash changes with a message</i></td></tr>
-            <tr><td><b>git stash list</b></td><td><i>List all stashes</i></td></tr>
-            <tr><td><b>git stash show</b></td><td><i>Show details of the latest stash</i></td></tr>
-            <tr><td><b>git stash apply</b></td><td><i>Apply a stash without removing it</i></td></tr>
-            <tr><td><b>git stash pop</b></td><td><i>Apply and remove the latest stash</i></td></tr>
-            <tr><td><b>git stash drop</b></td><td><i>Delete the most recent stash</i></td></tr>
-            <tr><td><b>git stash clear</b></td><td><i>Delete all stashes</i></td></tr>
-            <tr><td><b>git stash drop [stash]</b></td><td><i>Delete a specific stash</i></td></tr>
-            <tr><td><b>git stash branch [branchname] [stash]</b></td><td><i>Create a branch from a stash</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 8 -->
-    <div class="section">
-        <h2>8. Tag (Managing Versions)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git tag</b></td><td><i>List all tags</i></td></tr>
-            <tr><td><b>git tag [tag-name]</b></td><td><i>Create a new tag</i></td></tr>
-            <tr><td><b>git tag -d [tag-name]</b></td><td><i>Delete a tag</i></td></tr>
-            <tr><td><b>git tag -a [tag-name] -m "message"</b></td><td><i>Create an annotated tag</i></td></tr>
-            <tr><td><b>git push [remote] [tag-name]</b></td><td><i>Push a specific tag to remote</i></td></tr>
-            <tr><td><b>git push --tags</b></td><td><i>Push all tags to remote</i></td></tr>
-            <tr><td><b>git show [tag-name]</b></td><td><i>Show tag information</i></td></tr>
-            <tr><td><b>git checkout [tag-name]</b></td><td><i>Checkout a tag (detached HEAD)</i></td></tr>
-            <tr><td><b>git tag -l "pattern"</b></td><td><i>List tags matching a pattern</i></td></tr>
-            <tr><td><b>git fetch --tags</b></td><td><i>Fetch remote tags</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 9 -->
-    <div class="section">
-        <h2>9. Git Config and Info (Configuration & Repository Info)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git config --global user.name "name"</b></td><td><i>Set global username</i></td></tr>
-            <tr><td><b>git config --global user.email "email"</b></td><td><i>Set global email</i></td></tr>
-            <tr><td><b>git config --list</b></td><td><i>List all configuration settings</i></td></tr>
-            <tr><td><b>git config --global core.editor [editor]</b></td><td><i>Set default editor</i></td></tr>
-            <tr><td><b>git config --global merge.tool [tool]</b></td><td><i>Set merge tool</i></td></tr>
-            <tr><td><b>git config --global diff.tool [tool]</b></td><td><i>Set diff tool</i></td></tr>
-            <tr><td><b>git config --global alias.[alias-name] [command]</b></td><td><i>Create a custom alias</i></td></tr>
-            <tr><td><b>git rev-parse HEAD</b></td><td><i>Show current commit hash</i></td></tr>
-            <tr><td><b>git rev-parse --abbrev-ref HEAD</b></td><td><i>Show current branch name</i></td></tr>
-            <tr><td><b>git config --global color.ui auto</b></td><td><i>Enable colored output</i></td></tr>
-            <tr><td><b>git config --global alias.st status</b></td><td><i>Alias for git status</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 10 -->
-    <div class="section">
-        <h2>10. Git Aliases (Custom Commands)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git config --global alias.[alias-name] [command]</b></td><td><i>Create custom alias</i></td></tr>
-            <tr><td><b>git st</b></td><td><i>Alias for git status</i></td></tr>
-            <tr><td><b>git co</b></td><td><i>Alias for git checkout</i></td></tr>
-            <tr><td><b>git br</b></td><td><i>Alias for git branch</i></td></tr>
-            <tr><td><b>git ci</b></td><td><i>Alias for git commit</i></td></tr>
-            <tr><td><b>git lg</b></td><td><i>Alias for custom log view</i></td></tr>
-            <tr><td><b>git amend</b></td><td><i>Alias for commit amend</i></td></tr>
-            <tr><td><b>git unstage</b></td><td><i>Alias for git reset file</i></td></tr>
-            <tr><td><b>git last</b></td><td><i>Alias for last commit</i></td></tr>
-            <tr><td><b>git graph</b></td><td><i>Alias for git log --graph</i></td></tr>
-            <tr><td><b>git clean -n</b></td><td><i>Preview which files would be removed</i></td></tr>
-            <tr><td><b>git clean -f</b></td><td><i>Remove untracked files</i></td></tr>
-            <tr><td><b>git clean -fd</b></td><td><i>Remove untracked files and directories</i></td></tr>
-            <tr><td><b>git gc</b></td><td><i>Optimize repository</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 11 -->
-    <div class="section">
-        <h2>11. Git Hooks (Automated Scripts Triggered by Git Actions)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git init</b></td><td><i>Initializes a new Git repository</i></td></tr>
-            <tr><td><b>pre-commit</b></td><td><i>Runs before a commit is created</i></td></tr>
-            <tr><td><b>post-commit</b></td><td><i>Runs after a commit is created</i></td></tr>
-            <tr><td><b>post-merge</b></td><td><i>Runs after a merge is completed</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 12 -->
-    <div class="section">
-        <h2>12. Git Submodule (Managing External Repositories)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git submodule add [repository-url] [path]</b></td><td><i>Adds a submodule</i></td></tr>
-            <tr><td><b>git submodule update --init</b></td><td><i>Initialize and update submodules</i></td></tr>
-            <tr><td><b>git submodule update --remote</b></td><td><i>Update to latest remote commit</i></td></tr>
-            <tr><td><b>git submodule status</b></td><td><i>Show submodule status</i></td></tr>
-            <tr><td><b>git submodule foreach [command]</b></td><td><i>Run command in each submodule</i></td></tr>
-            <tr><td><b>git submodule deinit [path]</b></td><td><i>Deinitialize a submodule</i></td></tr>
-            <tr><td><b>git rm --cached [path]</b></td><td><i>Remove submodule from index</i></td></tr>
-            <tr><td><b>git commit -m "message"</b></td><td><i>Commit submodule changes</i></td></tr>
-            <tr><td><b>git push</b></td><td><i>Push submodule changes</i></td></tr>
-            <tr><td><b>git submodule init</b></td><td><i>Initialize submodules</i></td></tr>
-            <tr><td><b>git submodule update</b></td><td><i>Update submodules</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 13 -->
-    <div class="section">
-        <h2>13. Git Workflow Commands (Collaboration & Team Work)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git pull</b></td><td><i>Fetch and merge remote changes</i></td></tr>
-            <tr><td><b>git push</b></td><td><i>Push commits to remote</i></td></tr>
-            <tr><td><b>git fetch</b></td><td><i>Fetch remote changes without merging</i></td></tr>
-            <tr><td><b>git merge [branch]</b></td><td><i>Merge a branch into current</i></td></tr>
-            <tr><td><b>git rebase [branch]</b></td><td><i>Reapply commits onto another branch</i></td></tr>
-            <tr><td><b>git cherry-pick [commit]</b></td><td><i>Apply a specific commit</i></td></tr>
-            <tr><td><b>git revert [commit]</b></td><td><i>Undo a commit safely</i></td></tr>
-            <tr><td><b>git stash</b></td><td><i>Temporarily save changes</i></td></tr>
-            <tr><td><b>git stash apply</b></td><td><i>Apply a stash</i></td></tr>
-            <tr><td><b>git stash pop</b></td><td><i>Apply and remove stash</i></td></tr>
-            <tr><td><b>git pull --rebase</b></td><td><i>Pull remote changes with rebase</i></td></tr>
-            <tr><td><b>git rebase --abort</b></td><td><i>Cancel an ongoing rebase</i></td></tr>
-            <tr><td><b>git rebase --continue</b></td><td><i>Continue an interrupted rebase</i></td></tr>
-            <tr><td><b>git reset [commit]</b></td><td><i>Reset to a specific commit</i></td></tr>
-            <tr><td><b>git merge --no-ff [branch]</b></td><td><i>Non fast-forward merge</i></td></tr>
-            <tr><td><b>git pull --no-commit</b></td><td><i>Pull without auto commit</i></td></tr>
-            <tr><td><b>git push --force-with-lease</b></td><td><i>Safe force push</i></td></tr>
-            <tr><td><b>git push --force</b></td><td><i>Force push</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 14 -->
-    <div class="section">
-        <h2>14. Git Merge Strategies (Handling Merge Conflicts)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git merge [branch]</b></td><td><i>Merge a branch</i></td></tr>
-            <tr><td><b>git merge --no-ff [branch]</b></td><td><i>Non fast-forward merge</i></td></tr>
-            <tr><td><b>git merge --squash [branch]</b></td><td><i>Squash merge commits</i></td></tr>
-            <tr><td><b>git merge --strategy=recursive [branch]</b></td><td><i>Default recursive strategy</i></td></tr>
-            <tr><td><b>git merge --strategy=ours [branch]</b></td><td><i>Keep current branch changes</i></td></tr>
-            <tr><td><b>git merge --strategy=theirs [branch]</b></td><td><i>Keep incoming branch changes</i></td></tr>
-            <tr><td><b>git merge --abort</b></td><td><i>Abort merge</i></td></tr>
-            <tr><td><b>git merge --continue</b></td><td><i>Continue merge after conflict resolution</i></td></tr>
-            <tr><td><b>git mergetool</b></td><td><i>Launch visual merge tool</i></td></tr>
-            <tr><td><b>git diff --name-only --diff-filter=U</b></td><td><i>List files with conflicts</i></td></tr>
-            <tr><td><b>git status</b></td><td><i>Show conflict status</i></td></tr>
-            <tr><td><b>git add [file]</b></td><td><i>Stage resolved files</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 15 -->
-    <div class="section">
-        <h2>15. Git Bisect (Finding Buggy Commit)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git bisect start</b></td><td><i>Start bisecting commits</i></td></tr>
-            <tr><td><b>git bisect bad [commit]</b></td><td><i>Mark a commit as bad</i></td></tr>
-            <tr><td><b>git bisect good [commit]</b></td><td><i>Mark a commit as good</i></td></tr>
-            <tr><td><b>git bisect reset</b></td><td><i>Reset bisect process</i></td></tr>
-            <tr><td><b>git bisect log</b></td><td><i>Show bisect log</i></td></tr>
-            <tr><td><b>git bisect visualize</b></td><td><i>Visualize bisect process</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 16 -->
-    <div class="section">
-        <h2>16. Git Hooks for Automation</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>pre-commit hooks</b></td><td><i>Run before a commit</i></td></tr>
-            <tr><td><b>post-commit hooks</b></td><td><i>Run after a commit</i></td></tr>
-            <tr><td><b>pre-push hooks</b></td><td><i>Run before push</i></td></tr>
-            <tr><td><b>post-merge hooks</b></td><td><i>Run after merge</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 17 -->
-    <div class="section">
-        <h2>17. Git Clean and Prune</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git clean -f</b></td><td><i>Remove untracked files</i></td></tr>
-            <tr><td><b>git clean -fd</b></td><td><i>Remove untracked files and directories</i></td></tr>
-            <tr><td><b>git clean -n</b></td><td><i>Preview files that would be removed</i></td></tr>
-            <tr><td><b>git prune</b></td><td><i>Remove stale references</i></td></tr>
-            <tr><td><b>git prune --dry-run</b></td><td><i>Preview prune operation</i></td></tr>
-            <tr><td><b>git prune --expire [time]</b></td><td><i>Expire old references</i></td></tr>
-            <tr><td><b>git prune --aggressive</b></td><td><i>Aggressive prune of references</i></td></tr>
-            <tr><td><b>git gc</b></td><td><i>Perform garbage collection</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 18 -->
-    <div class="section">
-        <h2>18. Git Archive (Repository Snapshot)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git archive [branch] --format=zip -o file.zip</b></td><td><i>Create zip archive of branch</i></td></tr>
-            <tr><td><b>git archive [branch] --format=tar -o file.tar</b></td><td><i>Create tar archive of branch</i></td></tr>
-            <tr><td><b>git archive --format=tar [branch] | gzip > file.tar.gz</b></td><td><i>Create gzipped tar archive</i></td></tr>
-            <tr><td><b>git archive --format=zip HEAD -o latest.zip</b></td><td><i>Archive current HEAD as zip</i></td></tr>
-            <tr><td><b>git archive --format=tar HEAD | gzip > latest.tar.gz</b></td><td><i>Archive current HEAD as tar.gz</i></td></tr>
-            <tr><td><b>git archive --format=zip --prefix=folder/ HEAD -o latest.zip</b></td><td><i>Archive HEAD with folder prefix</i></td></tr>
-            <tr><td><b>git archive --format=tar --prefix=folder/ HEAD | gzip > latest.tar.gz</b></td><td><i>Tar archive with prefix</i></td></tr>
-            <tr><td><b>git archive --format=zip [commit] -o file.zip</b></td><td><i>Archive a specific commit</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 19 -->
-    <div class="section">
-        <h2>19. Git Blame and Annotate</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git blame [file]</b></td><td><i>Show line-by-line author info</i></td></tr>
-            <tr><td><b>git annotate [file]</b></td><td><i>Alias for git blame</i></td></tr>
-            <tr><td><b>git blame -L start,end [file]</b></td><td><i>Blame specific line range</i></td></tr>
-            <tr><td><b>git blame -w [file]</b></td><td><i>Ignore whitespace changes</i></td></tr>
-            <tr><td><b>git blame --reverse [file]</b></td><td><i>Reverse order blame</i></td></tr>
-            <tr><td><b>git blame --show-name [file]</b></td><td><i>Show filename</i></td></tr>
-            <tr><td><b>git blame --show-email [file]</b></td><td><i>Show author email</i></td></tr>
-            <tr><td><b>git blame --show-number [file]</b></td><td><i>Show line number</i></td></tr>
-            <tr><td><b>git blame --show-date [file]</b></td><td><i>Show date of changes</i></td></tr>
-            <tr><td><b>git blame --show-summary [file]</b></td><td><i>Show summary of changes</i></td></tr>
-            <tr><td><b>git blame --show-stats [file]</b></td><td><i>Show statistics for changes</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 20 -->
-    <div class="section">
-        <h2>20. Git Reflog (Tracking HEAD Changes)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git reflog</b></td><td><i>Show HEAD history</i></td></tr>
-            <tr><td><b>git reflog show [branch]</b></td><td><i>Show branch reflog</i></td></tr>
-            <tr><td><b>git reflog show --date=short [branch]</b></td><td><i>Show reflog with short dates</i></td></tr>
-            <tr><td><b>git reflog show --all</b></td><td><i>Show reflog of all refs</i></td></tr>
-            <tr><td><b>git reflog delete [ref]</b></td><td><i>Delete a reflog entry</i></td></tr>
-            <tr><td><b>git reflog expire --expire=now</b></td><td><i>Expire old reflog entries</i></td></tr>
-        </table>
-    </div>
+<div class="topbar">
+  <div class="topbar-logo">
+    <span>GIT</span><span>_MASTER</span><span>_</span><span style="font-size:1rem;">Complete</span>
+  </div>
+  <div class="search-wrap">
+    <input type="text" id="searchBox" placeholder="🔍 Search any command... (git, rebase, submodule, etc)">
+  </div>
 </div>
 
-<h2>Devops For GitHub</h2>
-
-<div class="container">
-    <!-- 1 -->
-    <div class="section">
-        <h2>1. Git for Continuous Integration / Continuous Deployment (CI/CD)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git fetch --all</b></td><td><i>Fetch all remote branches</i></td></tr>
-            <tr><td><b>git merge origin/main</b></td><td><i>Merge latest main branch changes</i></td></tr>
-            <tr><td><b>git push --force-with-lease</b></td><td><i>Safe force push</i></td></tr>
-            <tr><td><b>git rebase origin/main</b></td><td><i>Reapply commits on latest base</i></td></tr>
-            <tr><td><b>git tag [version_name]</b></td><td><i>Create release tag</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 2 -->
-    <div class="section">
-        <h2>2. Git for Infrastructure as Code (IaC)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git clone [iac_repo_url]</b></td><td><i>Clone IaC repository</i></td></tr>
-            <tr><td><b>git checkout [branch_name]</b></td><td><i>Switch branch</i></td></tr>
-            <tr><td><b>git pull origin [branch_name]</b></td><td><i>Update infrastructure code</i></td></tr>
-            <tr><td><b>git submodule update --init</b></td><td><i>Initialize submodules</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 3 -->
-    <div class="section">
-        <h2>3. Git Hooks for DevOps Automation</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>pre-commit hooks</b></td><td><i>Run before commit</i></td></tr>
-            <tr><td><b>post-commit hooks</b></td><td><i>Run after commit</i></td></tr>
-            <tr><td><b>pre-push hooks</b></td><td><i>Run before push</i></td></tr>
-            <tr><td><b>post-merge hooks</b></td><td><i>Run after merge</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 4 -->
-    <div class="section">
-        <h2>4. Git for Feature Flag Management</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git branch feature/[feature-name]</b></td><td><i>Create feature branch</i></td></tr>
-            <tr><td><b>git checkout feature/[feature-name]</b></td><td><i>Switch feature branch</i></td></tr>
-            <tr><td><b>git merge feature/[feature-name]</b></td><td><i>Merge feature branch</i></td></tr>
-            <tr><td><b>git push origin feature/[feature-name]</b></td><td><i>Push branch for review</i></td></tr>
-            <tr><td><b>git tag [feature-name]-release</b></td><td><i>Tag feature release</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 5 -->
-    <div class="section">
-        <h2>5. Git for Multi-Environment Deployment</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git checkout [environment_branch]</b></td><td><i>Switch environment branch</i></td></tr>
-            <tr><td><b>git merge --no-ff [environment_branch]</b></td><td><i>Controlled merge for environment</i></td></tr>
-            <tr><td><b>git push origin [environment_branch]</b></td><td><i>Push environment branch</i></td></tr>
-            <tr><td><b>git tag [environment]-[version]</b></td><td><i>Tag environment version</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 6 -->
-    <div class="section">
-        <h2>6. Git and Deployment Automation</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git push</b></td><td><i>Trigger deployment pipeline</i></td></tr>
-            <tr><td><b>git pull</b></td><td><i>Update deployed application</i></td></tr>
-            <tr><td><b>git tag [version]</b></td><td><i>Tag release version</i></td></tr>
-            <tr><td><b>git merge [branch]</b></td><td><i>Merge to trigger deployment</i></td></tr>
-            <tr><td><b>git reset --hard [commit_hash]</b></td><td><i>Rollback deployment</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 7 -->
-    <div class="section">
-        <h2>7. GitOps Workflow</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git clone [repo_url]</b></td><td><i>Clone GitOps repository</i></td></tr>
-            <tr><td><b>git checkout [branch]</b></td><td><i>Switch environment branch</i></td></tr>
-            <tr><td><b>git pull</b></td><td><i>Sync latest configuration</i></td></tr>
-            <tr><td><b>git commit -m "message"</b></td><td><i>Commit changes</i></td></tr>
-            <tr><td><b>git push origin [branch]</b></td><td><i>Trigger automated deployment</i></td></tr>
-            <tr><td><b>git tag [version]</b></td><td><i>Tag version for control & rollback</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 8 -->
-    <div class="section">
-        <h2>8. Advantages of Git for CI/CD Pipelines</h2>
-        <table>
-            <tr><th>Command/Concept</th><th>Description</th></tr>
-            <tr><td><b>git push --tags</b></td><td><i>Manage version releases</i></td></tr>
-            <tr><td><b>git fetch --tags</b></td><td><i>Sync release tags</i></td></tr>
-            <tr><td><b>git log --oneline --graph</b></td><td><i>Visualize history</i></td></tr>
-            <tr><td><b>git diff [commit1] [commit2]</b></td><td><i>Compare versions</i></td></tr>
-            <tr><td><b>Pull Requests</b></td><td><i>Enable code review & collaboration</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 9 -->
-    <div class="section">
-        <h2>9. Git and Docker Integration</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git clone [repo_url]</b></td><td><i>Clone Docker project</i></td></tr>
-            <tr><td><b>git checkout [branch]</b></td><td><i>Switch build branch</i></td></tr>
-            <tr><td><b>git tag [version]</b></td><td><i>Trigger image version build</i></td></tr>
-            <tr><td><b>git merge [branch]</b></td><td><i>Merge to trigger build pipeline</i></td></tr>
-            <tr><td><b>git reset --hard [commit_hash]</b></td><td><i>Rollback Docker deployment</i></td></tr>
-            <tr><td><b>git push origin [branch]</b></td><td><i>Trigger image build</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 10 -->
-    <div class="section">
-        <h2>10. Git and Secrets Management</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git rm --cached [file]</b></td><td><i>Remove sensitive file from index</i></td></tr>
-            <tr><td><b>git commit --amend</b></td><td><i>Fix last commit</i></td></tr>
-            <tr><td><b>git rebase -i [commit_hash]</b></td><td><i>Rewrite history securely</i></td></tr>
-            <tr><td><b>git-secrets</b></td><td><i>Prevent secret commits</i></td></tr>
-            <tr><td><b>git-crypt</b></td><td><i>Encrypt sensitive files</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 11 -->
-    <div class="section">
-        <h2>11. Git Rebase and Interactive Rebase</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git rebase [branch]</b></td><td><i>Reapply commits onto new base branch</i></td></tr>
-            <tr><td><b>git rebase -i [commit_hash]</b></td><td><i>Start interactive rebase session</i></td></tr>
-            <tr><td><b>git rebase --continue</b></td><td><i>Continue after resolving conflicts</i></td></tr>
-            <tr><td><b>git rebase --abort</b></td><td><i>Cancel rebase and restore branch</i></td></tr>
-            <tr><td><b>git rebase --skip</b></td><td><i>Skip current commit during rebase</i></td></tr>
-            <tr><td><b>git rebase --onto [new_base] [old_base]</b></td><td><i>Advanced rebase control</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 12 -->
-    <div class="section">
-        <h2>12. Git Merge Conflict Resolution</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git merge --no-ff [branch]</b></td><td><i>Merge without fast-forward</i></td></tr>
-            <tr><td><b>git merge --abort</b></td><td><i>Abort current merge</i></td></tr>
-            <tr><td><b>git mergetool</b></td><td><i>Launch merge conflict tool</i></td></tr>
-            <tr><td><b>git diff --name-only --diff-filter=U</b></td><td><i>Show conflict files</i></td></tr>
-            <tr><td><b>git status</b></td><td><i>Check merge conflict status</i></td></tr>
-            <tr><td><b>git add [file]</b></td><td><i>Mark conflict as resolved</i></td></tr>
-            <tr><td><b>git merge --squash [branch]</b></td><td><i>Merge and squash commits</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 13 -->
-    <div class="section">
-        <h2>13. Git Commit Signing (GPG)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git config --global user.signingkey [key_id]</b></td><td><i>Set GPG key</i></td></tr>
-            <tr><td><b>git config --global commit.gpgsign true</b></td><td><i>Enable commit signing</i></td></tr>
-            <tr><td><b>git commit --gpg-sign</b></td><td><i>Sign a commit</i></td></tr>
-            <tr><td><b>git tag -s [tag_name]</b></td><td><i>Create signed tag</i></td></tr>
-            <tr><td><b>git verify-commit [commit_hash]</b></td><td><i>Verify commit signature</i></td></tr>
-            <tr><td><b>git verify-tag [tag_name]</b></td><td><i>Verify tag signature</i></td></tr>
-            <tr><td><b>git log --show-signature</b></td><td><i>Show commit signature info</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 14 -->
-    <div class="section">
-        <h2>14. Git for Continuous Delivery</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git push --tags</b></td><td><i>Push release tags</i></td></tr>
-            <tr><td><b>git push origin [branch]</b></td><td><i>Push branch updates</i></td></tr>
-            <tr><td><b>git merge --no-ff [branch]</b></td><td><i>Controlled release merge</i></td></tr>
-            <tr><td><b>git branch -m [old] [new]</b></td><td><i>Rename branch</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 15 -->
-    <div class="section">
-        <h2>15. Git for Rollbacks</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git revert [commit]</b></td><td><i>Undo commit safely</i></td></tr>
-            <tr><td><b>git reset --hard [commit]</b></td><td><i>Reset branch to specific commit</i></td></tr>
-            <tr><td><b>git checkout [commit]</b></td><td><i>View previous version</i></td></tr>
-            <tr><td><b>git reflog</b></td><td><i>View HEAD history</i></td></tr>
-            <tr><td><b>git log --oneline</b></td><td><i>Compact commit list</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 16 -->
-    <div class="section">
-        <h2>16. Git Submodules and Subtrees</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git submodule add [repo] [path]</b></td><td><i>Add submodule</i></td></tr>
-            <tr><td><b>git submodule update --init --recursive</b></td><td><i>Initialize & update submodules</i></td></tr>
-            <tr><td><b>git submodule update --remote</b></td><td><i>Update submodule from remote</i></td></tr>
-            <tr><td><b>git submodule status</b></td><td><i>Check submodule state</i></td></tr>
-            <tr><td><b>git submodule foreach [command]</b></td><td><i>Run command in all submodules</i></td></tr>
-            <tr><td><b>git submodule sync</b></td><td><i>Sync configuration</i></td></tr>
-            <tr><td><b>git submodule deinit [path]</b></td><td><i>Remove submodule</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 17 -->
-    <div class="section">
-        <h2>17. Git for Team Collaboration & Code Review</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git fetch</b></td><td><i>Download remote changes</i></td></tr>
-            <tr><td><b>git pull origin [branch]</b></td><td><i>Fetch and merge</i></td></tr>
-            <tr><td><b>git push origin [branch]</b></td><td><i>Share commits</i></td></tr>
-            <tr><td><b>git remote -v</b></td><td><i>Show remote URLs</i></td></tr>
-            <tr><td><b>git diff [branch]</b></td><td><i>Compare branches</i></td></tr>
-            <tr><td><b>git cherry-pick [commit]</b></td><td><i>Apply specific commit</i></td></tr>
-            <tr><td><b>git rebase [branch]</b></td><td><i>Reapply commits</i></td></tr>
-            <tr><td><b>git revert [commit]</b></td><td><i>Undo commit safely</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 18 -->
-    <div class="section">
-        <h2>18. Git and Containerization (Docker/Kubernetes)</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git clone [repo]</b></td><td><i>Clone container project</i></td></tr>
-            <tr><td><b>git checkout [branch]</b></td><td><i>Switch environment branch</i></td></tr>
-            <tr><td><b>git pull origin [branch]</b></td><td><i>Sync deployment config</i></td></tr>
-            <tr><td><b>git tag [version]</b></td><td><i>Version container builds</i></td></tr>
-            <tr><td><b>git submodule add [repo] [path]</b></td><td><i>Manage dependencies</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 19 -->
-    <div class="section">
-        <h2>19. Git for Build & Deployment Pipelines</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git push origin [branch]</b></td><td><i>Trigger pipeline</i></td></tr>
-            <tr><td><b>git tag [build-number]</b></td><td><i>Mark build version</i></td></tr>
-            <tr><td><b>git log --oneline</b></td><td><i>View commit summary</i></td></tr>
-            <tr><td><b>git push --force-with-lease</b></td><td><i>Safe force push</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 20 -->
-    <div class="section">
-        <h2>20. Git for Documentation & Versioning</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>git add [file]</b></td><td><i>Stage documentation</i></td></tr>
-            <tr><td><b>git commit -m "update docs"</b></td><td><i>Commit changes</i></td></tr>
-            <tr><td><b>git diff</b></td><td><i>Check modifications</i></td></tr>
-            <tr><td><b>git reflog</b></td><td><i>Track HEAD changes</i></td></tr>
-            <tr><td><b>git log --oneline</b></td><td><i>Compact history view</i></td></tr>
-        </table>
-    </div>
+<div class="sidebar">
+  <a href="#basics" class="nav-link">📘 Basics</a>
+  <a href="#branching" class="nav-link">🌿 Branching</a>
+  <a href="#remote" class="nav-link">🌐 Remote</a>
+  <a href="#staging" class="nav-link">📌 Staging</a>
+  <a href="#diff-log" class="nav-link">🔍 Diff & Log</a>
+  <a href="#undo" class="nav-link">⏪ Undo/Reset</a>
+  <a href="#stash" class="nav-link">📦 Stash</a>
+  <a href="#tags" class="nav-link">🏷️ Tags</a>
+  <a href="#submodules" class="nav-link">🔗 Submodules</a>
+  <a href="#worktree" class="nav-link">🌳 Worktree</a>
+  <a href="#rebase" class="nav-link">🔄 Rebase</a>
+  <a href="#hooks" class="nav-link">🪝 Hooks</a>
+  <a href="#lfs" class="nav-link">💾 LFS</a>
+  <a href="#reflog" class="nav-link">📜 Reflog</a>
+  <a href="#advanced" class="nav-link">⚡ Advanced</a>
+  <a href="#devops-cicd" class="nav-link">🚀 DevOps</a>
+  <a href="#troubleshoot" class="nav-link">🩺 Troubleshoot</a>
+  <a href="#config" class="nav-link">⚙️ Global Config</a>
+  <a href="#security" class="nav-link">🔐 Security</a>
 </div>
+
+<div class="main">
+  <h1>🔥 The COMPLETE Git & DevOps Command Bible</h1>
+  <div class="subhead">Every command a master needs — submodules, hooks, reflog, worktree, LFS, bisect, and real-world CI/CD patterns</div>
+
+  <!-- 1. BASICS (ULTRA DETAILED) -->
+  <div class="section" id="basics">
+    <div class="section-header"><h2>📘 1. Fundamental Git Commands (Daily Driver)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git init</td><td>Initialize empty repository. Use --bare for remote central repo, --initial-branch=main to set default branch</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git clone --depth 1 &lt;url&gt;</td><td>Shallow clone (faster CI/CD). Saves bandwidth, only latest commit. Add --single-branch to clone only default branch</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git status -sb</td><td>Short branch status with upstream tracking. Shows ahead/behind counts. Perfect for daily standups</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git add -A</td><td>Stage all changes including deletions. Safer than 'git add .' in subdirectories. Use -p for interactive staging</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git commit --amend -m "new msg"</td><td>Edit last commit message. Add --no-edit to add staged changes without changing message. Use --author to fix author info</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git commit -am "msg"</td><td>Stage tracked files + commit in one command. Won't add untracked files. Great for quick fixes on known files</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git mv old new</td><td>Move/rename file while preserving history. Better than manual mv + add/rm</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git rm --cached file</td><td>Stop tracking file but keep locally (add to .gitignore after). Perfect for removing accidentally committed secrets</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- BRANCHING (DETAILED) -->
+  <div class="section" id="branching">
+    <div class="section-header"><h2>🌿 Branching & Merging (GitHub Flow, GitFlow)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git branch -vv</td><td>Show tracking branches with ahead/behind counts. Essential before pull/push to avoid conflicts</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git push origin --delete feature/login</td><td>Delete remote branch after merge (clean up). Use -d for local deletion</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git merge --squash feature</td><td>Squash all feature commits into one before merging. Keeps main branch history clean</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git merge --no-ff feature</td><td>Force merge commit even if fast-forward possible. Preserves feature branch context</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git branch -m old-name new-name</td><td>Rename branch locally. Then git push origin -u new-name and delete old remote</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git branch --sort=-committerdate</td><td>List branches sorted by most recent commit. Shows active branches first</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git branch --merged | grep -v "\*" | xargs git branch -d</td><td>Delete all merged branches at once. Cleanup after release</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- REMOTE & COLLABORATION (DETAILED) -->
+  <div class="section" id="remote">
+    <div class="section-header"><h2>🌐 Remote & Collaboration (Team Workflows)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git remote prune origin</td><td>Remove stale remote tracking branches. Run after teams delete remote branches</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git push --force-with-lease</td><td>Safe force push (checks remote hasn't changed). Never use --force on shared branches</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git fetch --all --prune</td><td>Fetch all remotes and clean stale refs. Sync team changes without merging</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git pull --rebase --autostash</td><td>Rebase instead of merge, auto-stash dirty working directory. Clean linear history</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git remote set-url origin new-url</td><td>Change remote URL (repo moved or switched from HTTPS to SSH)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git push -u origin HEAD</td><td>Push current branch and set upstream. One command to start tracking a new remote branch</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global pull.rebase true</td><td>Set rebase as default for git pull. Prevents merge clutter globally</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- UNDO & RESET MASTERY (DETAILED) -->
+  <div class="section" id="undo">
+    <div class="section-header"><h2>⏪ Undo, Reset & Recovery Mastery</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git restore --source=HEAD~2 file.txt</td><td>Restore file from 2 commits ago. Better than checkout for file recovery</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git revert -m 1 &lt;merge-commit&gt;</td><td>Revert a merge commit (specify parent line). Safe for public branches</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git reset --soft HEAD~1</td><td>Undo commit, keep changes staged. Perfect for fixing last commit before push</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git reset --mixed HEAD~1</td><td>Undo commit + unstage. Default reset behavior</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git reset --hard ORIG_HEAD</td><td>Undo a destructive reset or merge. ORIG_HEAD saved before dangerous operations</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git checkout HEAD~3 -- file.txt</td><td>Restore file from 3 commits ago (older syntax, still works)</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- STASH (DETAILED) -->
+  <div class="section" id="stash">
+    <div class="section-header"><h2>📦 Stash (Context Switching Like a Pro)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git stash -u</td><td>Stash including untracked files. Use -a to include ignored files too</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git stash push -m "WIP auth" -- src/auth/</td><td>Stash specific directory with message. Perfect for partial work</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git stash show -p stash@{0}</td><td>View diff of stashed changes before applying</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git stash branch new-branch stash@{1}</td><td>Create branch from stash. Recover work that drifted from base</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git stash drop $(git stash list | grep "WIP" | head -1 | cut -d: -f1)</td><td>Drop first stash matching pattern. Cleanup old WIPs</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TAGS & RELEASES (DETAILED) -->
+  <div class="section" id="tags">
+    <div class="section-header"><h2>🏷️ Tagging & Release Engineering</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git tag -a v2.0 &lt;commit&gt; -m "release notes"</td><td>Annotated tag with message (recommended vs lightweight). Use for releases</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git push origin --tags --force</td><td>Overwrite remote tags (⚠️ use only when necessary). Better to delete+recreate</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git tag -l "v1.*"</td><td>List tags matching pattern. Useful for finding specific releases</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git describe --tags --abbrev=0</td><td>Get latest tag (for versioning in CI/CD builds)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git push origin :refs/tags/v1.0</td><td>Delete remote tag properly (then delete local: git tag -d v1.0)</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DIFF & LOG (DETAILED) -->
+  <div class="section" id="diff-log">
+    <div class="section-header"><h2>🔍 Diff & Log Inspection (Debugging)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git log --since="2 weeks ago" --oneline</td><td>Filter log by date. Also --until, --author, --grep for flexible search</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git diff HEAD~3..HEAD --stat</td><td>Summary of changes in last 3 commits. Add --name-only for just file list</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'</td><td>Custom pretty log with colors. Perfect for daily review</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git diff branch1..branch2 -- file.txt</td><td>Compare specific file between branches</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git log -S "function_name" --source</td><td>Search commits where function_name was added/removed (pickaxe)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git blame -L 10,20 file.txt</td><td>See who changed lines 10-20. Add -C to detect moved code</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SUBMODULES (DETAILED) -->
+  <div class="section" id="submodules">
+    <div class="section-header"><h2>🔗 Submodules (Microservices & Shared Libs)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git submodule add -b main &lt;url&gt; libs/shared</td><td>Add submodule tracking specific branch. Prevents detached HEAD</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git submodule update --init --recursive --remote</td><td>Update all submodules to latest commit on tracked branch</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git submodule status --recursive</td><td>Show commit hashes of all submodules. Debug version mismatches</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git submodule foreach 'git checkout main && git pull'</td><td>Run command in each submodule. Batch updates</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git submodule deinit -f -- libs/shared</td><td>Remove submodule completely (also delete .git/modules and stage deletion)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global submodule.recurse true</td><td>Automatically recurse into submodules for commands like git pull, git diff</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WORKTREE (DETAILED) -->
+  <div class="section" id="worktree">
+    <div class="section-header"><h2>🌳 Git Worktree (Parallel Development)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git worktree add -b hotfix ../project-hotfix main</td><td>Create new worktree with new branch. Hotfix without stashing</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git worktree list --porcelain</td><td>Machine-readable worktree list (for scripting)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git worktree remove ../project-hotfix --force</td><td>Force remove worktree even if dirty. Use with git worktree prune after</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git worktree add --detach ../temp-branch HEAD~3</td><td>Create worktree at detached state (inspect old commit without branch)</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- HOOKS (DETAILED) -->
+  <div class="section" id="hooks">
+    <div class="section-header"><h2>🪝 Git Hooks (Automation & Quality Gates)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Hook Path / Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>.git/hooks/pre-commit</td><td>Run linters, formatters, secrets scan before commit. Return non-zero to abort</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>.git/hooks/commit-msg</td><td>Validate commit message format (Conventional Commits, Jira ticket ID)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>.git/hooks/pre-push</td><td>Run tests before push. Stops breaking the build</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>.git/hooks/pre-receive (server-side)</td><td>Central hook to enforce branch policies, block force-pushes on main</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global core.hooksPath ~/.git-hooks</td><td>Share hooks across all repositories. Version control your hooks</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git hooks --list (Git 2.36+)</td><td>List available hooks in current Git version</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- REFLOG (DETAILED) -->
+  <div class="section" id="reflog">
+    <div class="section-header"><h2>📜 Reflog – Ultimate Recovery Tool</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git reflog --date=local</td><td>Show reflog with local timestamps. Find work from specific date</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git reset --hard HEAD@{2.minutes.ago}</td><td>Restore state from 2 minutes ago. Natural language access</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git reflog expire --expire=30.days --all</td><td>Keep reflog for 30 days (default). Reduce .git size</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git show HEAD@{2025-12-01 09:00:00}</td><td>View commit from specific datetime. Great for audits</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git reflog show --all</td><td>Show reflog for all refs (branches, stash, etc.)</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- LFS (DETAILED) -->
+  <div class="section" id="lfs">
+    <div class="section-header"><h2>💾 Git LFS (Large File Storage for ML, Games, Assets)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git lfs track "*.psd" --lockable</td><td>Track PSD files with file locking. Prevent concurrent edits</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git lfs migrate import --include="*.zip" --everything</td><td>Migrate ALL branches and tags to LFS. Rewrites history</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git lfs ls-files --all --long</td><td>List all LFS files with sizes. Find large assets to clean</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git lfs prune --verify-remote</td><td>Delete old LFS files, check if remote still has them</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git lfs fetch --all --recent</td><td>Download all LFS files (not just current checkout)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git lfs status</td><td>Show which LFS files are modified locally</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ADVANCED POWER TOOLS -->
+  <div class="section" id="advanced">
+    <div class="section-header"><h2>⚡ Advanced Power Tools (History Rewriting, Bisect, Grep)</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git cherry-pick A..B --no-commit</td><td>Pick range of commits but don't auto-commit. Review before committing</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git filter-repo --path secrets.txt --invert-paths</td><td>Modern alternative to filter-branch (faster, safer). Remove sensitive file</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git bisect start --term-old=v1.0 --term-new=v2.0</td><td>Custom terms for bisect. Test between two versions</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git grep -n "TODO" $(git rev-list --all) -- '*.js'</td><td>Search all commits for pattern in JS files</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git shortlog -sn --no-merges --all</td><td>View contributor stats across ALL branches</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git archive --format=zip --output=deploy.zip main -- . ':!.github'</td><td>Export snapshot excluding CI folders. Perfect for deployment</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git rev-list --count main..feature</td><td>Count commits in feature branch not yet in main</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git fsck --lost-found</td><td>Recover dangling commits. Find work after force push</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- DEVOPS & CI/CD (PRODUCTION PATTERNS) -->
+  <div class="section" id="devops-cicd">
+    <div class="section-header"><h2>🚀 DevOps Patterns & Production CI/CD Integration</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command / Pattern</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git push --follow-tags</td><td>Push commits + annotated tags. CI triggers only on tags (GitHub Actions)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git describe --tags --abbrev=0</td><td>Get latest tag. Use in Makefile: VERSION=$(git describe --tags)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git rev-parse --short HEAD</td><td>Short commit hash. Build metadata: docker tag app:$(git rev-parse --short HEAD)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git clean -xfd</td><td>Remove ignored & untracked. CI cleanup before build</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git diff --name-only origin/main...HEAD</td><td>List changed files in PR. Run relevant tests only</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git log -1 --pretty=%B</td><td>Get last commit message. Extract release notes in CD pipeline</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git fetch --depth=1 origin pull/$PR_ID/head:pr-$PR_ID</td><td>Fetch PR for testing. CI testing of pull requests before merge</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git ls-tree -r main --name-only | xargs wc -l</td><td>Count lines of code in repository. DevOps metrics</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- TROUBLESHOOTING & MAINTENANCE -->
+  <div class="section" id="troubleshoot">
+    <div class="section-header"><h2>🩺 Troubleshooting & Repository Maintenance</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git fsck --full --strict</td><td>Full repository verification. Find corruption early</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git gc --aggressive --prune=now</td><td>Aggressive garbage collection. Shrink repo after history rewrite</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git maintenance start</td><td>Enable automatic background maintenance (Git 2.31+)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git repack -ad --depth=250 --window=250</td><td>Optimize pack files. Speeds up fetch/clone for large repos</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git verify-commit HEAD</td><td>Check GPG signature. Verify commit authenticity</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git bugreport --format=zip</td><td>Generate bug report (Git 2.31+). Collects system info for debugging</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>GIT_TRACE=1 git pull</td><td>Debug git operations. Trace what Git does internally</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- CONFIG & ALIASES (PRODUCTIVITY) -->
+  <div class="section" id="config">
+    <div class="section-header"><h2>⚙️ Global Config & Time-Saving Aliases</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command / Alias</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"</td><td>Pretty log alias. Run 'git lg' for beautiful history</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global alias.unstage 'reset HEAD --'</td><td>Unstage alias. Run 'git unstage file.txt'</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global alias.last 'log -1 HEAD'</td><td>Show last commit details. Run 'git last' after commit to review</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global alias.tree 'log --graph --pretty=oneline --abbrev-commit --all'</td><td>Tree view of all branches. Visualize full structure</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global alias.undo 'reset --soft HEAD^'</td><td>Undo last commit but keep changes. Safer alternative</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global core.excludesfile ~/.gitignore_global</td><td>Global gitignore (OS-specific: .DS_Store, Thumbs.db)</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global init.defaultBranch main</td><td>Set default branch name to 'main' for all new repos</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- SECURITY & SIGNING -->
+  <div class="section" id="security">
+    <div class="section-header"><h2>🔐 Security & Commit Signing</h2></div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
+      <tbody>
+        <tr><td>git commit -S -m "signed commit"</td><td>GPG-sign a commit. Verify with git log --show-signature</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global user.signingkey &lt;KEY_ID&gt;</td><td>Set default signing key. Use with commit.gpgSign true</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git tag -s v1.0 -m "signed tag"</td><td>Create signed tag. Verified releases for supply chain security</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git verify-commit &lt;commit&gt;</td><td>Verify commit signature. CI job to check GPG signatures</td><td><button class="copy-btn">Copy</button></td></tr>
+        <tr><td>git config --global gpg.format ssh</td><td>Use SSH keys instead of GPG (Git 2.34+). Simpler setup</td><td><button class="copy-btn">Copy</button></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll('.copy-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      let cmd = this.closest('tr').cells[0].innerText.trim();
+      navigator.clipboard.writeText(cmd);
+      this.textContent = '✓ Copied!';
+      setTimeout(() => this.textContent = 'Copy', 1800);
+    });
+  });
+
+  const searchBox = document.getElementById('searchBox');
+  if (searchBox) {
+    searchBox.addEventListener('keyup', () => {
+      const term = searchBox.value.toLowerCase();
+      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
+        row.style.display = row.innerText.toLowerCase().includes(term) ? '' : 'none';
+      });
+      document.querySelectorAll('.section').forEach(section => {
+        let hasVisible = [...section.querySelectorAll('tbody tr')].some(r => r.style.display !== 'none');
+        section.style.display = hasVisible || term === '' ? '' : 'none';
+      });
+    });
+  }
+</script>
+</body>
+</html>

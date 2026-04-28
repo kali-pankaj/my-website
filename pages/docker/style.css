@@ -1,178 +1,270 @@
+/* ======================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
 body {
-        font-family: Arial, Helvetica, sans-serif;
-        background-color: #f4f6f9;
-        margin: 0;
-        padding: 20px;
-    }
+    font-family: 'Inter', system-ui, -apple-system, 'Segoe UI', 'Fira Code', monospace;
+    background: #eef2f7;
+    color: #142830;
+    line-height: 1.5;
+}
 
-    /* ===== STUDY NOTES INTRO SECTION ===== */
+/* ========= SIDEBAR + LAYOUT ========= */
+.dashboard-wrapper {
+    display: flex;
+    min-height: 100vh;
+}
 
-    .intro{
-    max-width:1400px;
-    margin:auto;
-    margin-bottom:50px;
-    padding: 25px;
-    background:#ffffff;
-    border-radius:10px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.07);
-    line-height:1.9;
-    font-size:19px;
-    color:#333;
-    }
+/* Modern Sidebar */
+.sidebar {
+    width: 280px;
+    background: linear-gradient(165deg, #0b2b38 0%, #0a1f2a 100%);
+    backdrop-filter: blur(2px);
+    color: #e7f2f9;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    overflow-y: auto;
+    z-index: 200;
+    transition: all 0.2s;
+    box-shadow: 4px 0 20px rgba(0,0,0,0.08);
+    padding: 2rem 0 2rem 0;
+}
 
-    /* main section headings */
+.sidebar-brand {
+    padding: 0 1.5rem 1.8rem 1.8rem;
+    border-bottom: 1px solid #2a586b;
+    margin-bottom: 1.5rem;
+}
+.sidebar-brand h2 {
+    font-size: 1.8rem;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    background: linear-gradient(135deg, #7fd1e0, #f3b28c);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+}
+.sidebar-brand p {
+    font-size: 0.7rem;
+    opacity: 0.7;
+    margin-top: 0.3rem;
+}
 
-    .intro h4{
-    font-size:28px;
-    margin-top:35px;
-    margin-bottom:15px;
-    font-weight:700;
-    color:#111;
+.nav-section {
+    margin: 1.2rem 0 0.5rem 1.5rem;
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-weight: 600;
+    color: #77b5c7;
+}
+.sidebar a {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 1.8rem;
+    color: #cde3ed;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    transition: all 0.2s;
+    border-left: 3px solid transparent;
+}
+.sidebar a:hover, .sidebar a.active {
+    background: #1e4e5e;
+    color: white;
+    border-left-color: #5bc0be;
+    padding-left: 1.6rem;
+}
 
-    
-    border-left:7px solid #0db7ed;
-    padding-left:14px;
-    
+/* MAIN CONTENT */
+.main-content {
+    margin-left: 280px;
+    flex: 1;
+    padding: 2rem 2rem 3rem 2rem;
+    max-width: calc(100% - 280px);
+}
 
-    }
+/* Top search bar */
+.top-actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+    background: white;
+    padding: 0.8rem 1.5rem;
+    border-radius: 60px;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.02);
+    border: 1px solid #dfecf2;
+}
+.search-global {
+    flex: 1;
+    max-width: 380px;
+    display: flex;
+    align-items: center;
+    background: #f8fafd;
+    border-radius: 48px;
+    padding: 0.4rem 1rem;
+    border: 1px solid #d4e2ec;
+}
+.search-global input {
+    border: none;
+    background: transparent;
+    width: 100%;
+    padding: 8px 8px 8px 0;
+    font-size: 0.9rem;
+    outline: none;
+}
+.note-badge {
+    background: #eef3fc;
+    padding: 5px 14px;
+    border-radius: 60px;
+    font-size: 0.75rem;
+    font-weight: 500;
+}
 
-    /* sub headings */
+/* STUDY NOTE CARDS (visual knowledge) */
+.study-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 2rem 0 2rem;
+}
+.note-card {
+    background: white;
+    border-radius: 28px;
+    flex: 1 1 280px;
+    transition: transform 0.2s, box-shadow 0.2s;
+    border: 1px solid #e2ecf0;
+    overflow: hidden;
+    box-shadow: 0 5px 12px rgba(0,0,0,0.02);
+}
+.note-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 18px 30px -12px rgba(0,0,0,0.12);
+    border-color: #c2dfee;
+}
+.card-header {
+    background: #f8fdfe;
+    padding: 1rem 1.2rem;
+    font-weight: 700;
+    font-size: 1.2rem;
+    border-bottom: 2px solid #e7f0f5;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+.card-body {
+    padding: 1.2rem;
+    font-size: 0.85rem;
+    color: #2c4b5c;
+}
+.card-body code {
+    background: #ecf3f8;
+    padding: 2px 6px;
+    border-radius: 12px;
+    font-size: 0.75rem;
+}
 
-    .intro h5{
-    font-size:18px;
-    margin-top:12px;
-    margin-bottom:8px;
-    color:#0d6efd;
-    }
+/* Tables style */
+.cmd-block {
+    background: white;
+    border-radius: 28px;
+    margin-bottom: 2rem;
+    border: 1px solid #e2ecf2;
+    overflow-x: auto;
+}
+.cmd-block h2 {
+    padding: 1.2rem 1.5rem 0.2rem 1.5rem;
+    font-size: 1.5rem;
+    color: #155f73;
+}
+.cmd-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.85rem;
+}
+.cmd-table th {
+    text-align: left;
+    padding: 1rem 1rem;
+    background: #f9fcfd;
+    color: #166d84;
+}
+.cmd-table td {
+    padding: 0.8rem 1rem;
+    border-bottom: 1px solid #eff4f9;
+    vertical-align: top;
+}
+.cmd-table td:first-child {
+    font-family: 'Fira Code', monospace;
+    color: #bc4e30;
+    font-weight: 500;
+}
+.copy-btn {
+    background: #ecf3f8;
+    border: none;
+    border-radius: 24px;
+    padding: 4px 12px;
+    cursor: pointer;
+    font-size: 0.7rem;
+    font-weight: 600;
+}
+.copy-btn:hover {
+    background: #2c7da0;
+    color: white;
+}
 
-    /* paragraph spacing */
-
-    .intro p{
-    margin-bottom:18px;
-    color:#050505;
-    }
-
-    /* list styling */
-
-    .intro ul{
-    margin-left:28px;
-    margin-top:10px;
-    }
-
-    .intro li{
-    margin-bottom:12px;
-    font-size: x-large;
-    }
-
-    /* highlight important words */
-
-    .intro strong{
-    color:#0d6efd;
-    font-weight:600;
-    }
-
-    /* code blocks */
-
-    .intro pre{
-    background:#31535e;
-    color:#09ff00;
-    padding:20px;
-    border-radius:10px;
-    margin-top:12px;
-    margin-bottom:25px;
-    overflow-x:auto;
-    font-size:22px;
-    }
-
-    /* code font */
-
-    .intro code{
-    font-family:"Courier New", monospace;
-    }
-
-    /* inline code */
-
-    .intro p code,
-    .intro li code{
-    background:#eef2f7;
-    padding:3px 7px;
-    border-radius:5px;
-    }
-
-    /* section divider */
-
-    .intro h4:not(:first-child){
-    margin-top:45px;
-    }
-
-    /* mobile responsive */
-
-    @media(max-width:768px){
-
-        .intro{
-            padding:28px;
-            font-size:16px;
-        }
-
-        .intro h4{
-            font-size:23px;
-        }
-    }
-
- /* ===== STUDY NOTES Container SECTION ===== */
-    .container {
-        max-width: 1400px;
-        margin: auto;
-        background: #ffffff;
-        padding: 25px;
-        border-radius: 10px;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-    }
-
-    h2 {
-        background-color: #0db7ed;
-        color: white;
-        padding: 10px 15px;
-        border-radius: 6px;
-        margin-top: 30px;
-    }
-
-    table {
-        width: 100%;
-        border-collapse: collapse;
-        margin-top: 10px;
-        margin-bottom: 25px;
-        background-color: #ffffff;
-        font-size: x-large;
-    }
-
-    th {
-        background-color: #222;
-        color: #ffffff;
-        padding: 10px;
-        text-align: left;
-    }
-
-    td {
-        padding: 10px;
-        border: 1px solid #ddd;
-    }
-
-    tr:nth-child(even) {
-        background-color: #f2f2f2;
-    }
-
-    tr:hover {
-        background-color: #e6f7ff;
-        transition: 0.3s;
-    }
-
-    strong {
-        color: #0d6efd;
-    }
-
-    @media screen and (max-width: 768px) {
-        table, th, td {
-            font-size: 12px;
-        }
-    }
+.dockerfile-showcase {
+    background: #ffffffdb;
+    backdrop-filter: blur(2px);
+    border-radius: 28px;
+    padding: 1.8rem;
+    margin-top: 1rem;
+}
+.flex-dockerfiles {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+}
+.dockerfile-card {
+    flex: 1 1 260px;
+    background: #fefefe;
+    border-radius: 20px;
+    border: 1px solid #dee9f0;
+}
+pre {
+    background: #0f212e;
+    color: #cde9f5;
+    padding: 1rem;
+    border-radius: 18px;
+    overflow-x: auto;
+    font-size: 0.75rem;
+}
+footer {
+    text-align: center;
+    margin-top: 2.5rem;
+    opacity: 0.7;
+}
+@media (max-width: 780px) {
+    .sidebar { width: 80px; }
+    .sidebar a span:not(.icon) { display: none; }
+    .sidebar-brand h2 { font-size: 1rem; }
+    .main-content { margin-left: 80px; max-width: calc(100% - 80px); }
+}
+.icon-em {
+    font-size: 1.2rem;
+}
+.pro-tip {
+    background: #e4f3f5;
+    border-left: 5px solid #2c7da0;
+    padding: 0.8rem 1rem;
+    border-radius: 20px;
+    margin: 1rem 0;
+}

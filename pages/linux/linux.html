@@ -1,419 +1,535 @@
 <!DOCTYPE html>
-<html>
+<html lang="en" data-theme="dark">
 <head>
-    <title>Linux 0 to Hero</title>
-
-    <style>
-
-/* ============================= */
-/* GLOBAL SETTINGS */
-/* ============================= */
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: "Segoe UI", Roboto, Arial, sans-serif;
-    background: #f3f6fb;
-    color: #1e293b;
-    line-height: 1.7;
-}
-
-/* ============================= */
-/* MAIN TITLE */
-/* ============================= */
-
-h1, body > h2:first-of-type {
-    text-align: center;
-    background: #0f172a;
-    color: white;
-    padding: 18px;
-    letter-spacing: 1px;
-}
-
-/* ============================= */
-/* CONTAINER */
-/* ============================= */
-
-.container {
-    max-width: 1250px;
-    margin: 30px auto;
-    padding: 20px;
-}
-
-/* ============================= */
-/* SECTION CARD */
-/* ============================= */
-
-.section {
-    background: #ffffff;
-    padding: 25px;
-    margin-bottom: 40px;
-    border-radius: 10px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
-}
-
-/* Section Heading */
-.section h2 {
-    background: #0ea5e9;
-    color: white;
-    padding: 12px 16px;
-    border-radius: 6px;
-    margin-bottom: 20px;
-    font-size: 25px;
-}
-
-/* ============================= */
-/* TABLE STYLE */
-/* ============================= */
-
-table {
-    width: 100%;
-    border-collapse: collapse;
-    font-size: 20px;
-    background: white;
-}
-
-/* Sticky Header */
-th {
-    background: #1e293b;
-    color: white;
-    padding: 12px;
-    text-align: left;
-    position: sticky;
-    top: 0;
-    z-index: 2;
-}
-
-/* Table Cells */
-td {
-    padding: 12px;
-    border-bottom: 1px solid #e2e8f0;
-}
-
-/* Zebra Style */
-tr:nth-child(even) {
-    background: #f8fafc;
-}
-
-/* Hover Effect */
-tr:hover {
-    background: #e0f2fe;
-    transition: 0.2s ease;
-}
-
-/* ============================= */
-/* COMMAND STYLE */
-/* ============================= */
-
-b {
-    background: #f9fcff;
-    padding: 3px 8px;
-    border-radius: 5px;
-    font-family: Consolas, monospace;
-    font-size: 20px;
-}
-
-i {
-    font-style: normal;
-    color: #233246;
-}
-
-/* ============================= */
-/* RESPONSIVE */
-/* ============================= */
-
-@media (max-width: 768px) {
-
-    .container {
-        padding: 10px;
-    }
-
-    .section {
-        padding: 15px;
-    }
-
-    table {
-        font-size: 13px;
-    }
-
-    th, td {
-        padding: 8px;
-    }
-
-}
-
-</style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linux 0 to Hero — DevOps Cheat Sheet</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Syne:wght@400;600;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<h2>Linux 0 to Hero</h2>
-
-<div class="container">
-
-    <!-- 1 -->
-    <div class="section">
-        <h2>1. Manage File & Directory</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>ls</b></td><td><i>List all files/folders in current directory</i></td></tr>
-            <tr><td><b>cd</b></td><td><i>Change directory</i></td></tr>
-            <tr><td><b>pwd</b></td><td><i>Print current directory path</i></td></tr>
-            <tr><td><b>mkdir</b></td><td><i>Create a directory</i></td></tr>
-            <tr><td><b>touch</b></td><td><i>Create a file</i></td></tr>
-            <tr><td><b>rm</b></td><td><i>Remove file</i></td></tr>
-            <tr><td><b>rmdir</b></td><td><i>Remove directory</i></td></tr>
-            <tr><td><b>cp</b></td><td><i>Copy file</i></td></tr>
-            <tr><td><b>mv</b></td><td><i>Rename or move file</i></td></tr>
-            <tr><td><b>cat</b></td><td><i>View file contents</i></td></tr>
-            <tr><td><b>more</b></td><td><i>View file page by page</i></td></tr>
-            <tr><td><b>less</b></td><td><i>Advanced file viewer</i></td></tr>
-            <tr><td><b>head</b></td><td><i>Show first 10 lines</i></td></tr>
-            <tr><td><b>tail</b></td><td><i>Show last 10 lines</i></td></tr>
-            <tr><td><b>tac</b></td><td><i>Display content in reverse order</i></td></tr>
-            <tr><td><b>vi / vim</b></td><td><i>Powerful text editor (used in servers & DevOps)</i></td></tr>
-            <tr><td><b>nano</b></td><td><i>Simple editor for beginners</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 2 -->
-    <div class="section">
-        <h2>2. Input / Output Redirection</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>set -o noclobber</b></td><td><i>Prevent overwriting files</i></td></tr>
-            <tr><td><b>set +o noclobber</b></td><td><i>Allow overwriting files</i></td></tr>
-            <tr><td><b>ls > file.txt</b></td><td><i>Overwrite output to file</i></td></tr>
-            <tr><td><b>ls >> file.txt</b></td><td><i>Append output to file</i></td></tr>
-            <tr><td><b>ls > output.txt 2>&1</b></td><td><i>Redirect output & error to one file</i></td></tr>
-            <tr><td><b>ls >/dev/null 2>&1</b></td><td><i>Silent execution (no output)</i></td></tr>
-            <tr><td><b>> file.txt</b></td><td><i>Clear file contents</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 3 -->
-    <div class="section">
-        <h2>3. Text Filters & Processing</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>wc</b></td><td><i>Count lines, words, characters</i></td></tr>
-            <tr><td><b>grep</b></td><td><i>Search pattern in files</i></td></tr>
-            <tr><td><b>cut</b></td><td><i>Extract specific columns</i></td></tr>
-            <tr><td><b>awk</b></td><td><i>Advanced text processing</i></td></tr>
-            <tr><td><b>sed</b></td><td><i>Stream editor (find & replace)</i></td></tr>
-            <tr><td><b>sort</b></td><td><i>Sort lines</i></td></tr>
-            <tr><td><b>uniq</b></td><td><i>Remove duplicate lines</i></td></tr>
-            <tr><td><b>find</b></td><td><i>Search files in directories</i></td></tr>
-            <tr><td><b>locate</b></td><td><i>Search using database</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 4 -->
-    <div class="section">
-        <h2>4. File Compression & Archiving</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>gzip</b></td><td><i>Compress files quickly (.gz format)</i></td></tr>
-            <tr><td><b>bzip2</b></td><td><i>Better compression ratio but slower than gzip</i></td></tr>
-            <tr><td><b>tar</b></td><td><i>Archive multiple files into a single file (.tar)</i></td></tr>
-            <tr><td><b>zip</b></td><td><i>Compress files into .zip format</i></td></tr>
-            <tr><td><b>unzip</b></td><td><i>Extract .zip compressed files</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 5 -->
-    <div class="section">
-        <h2>5. Networking</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>ping</b></td><td><i>Check connectivity with a host</i></td></tr>
-            <tr><td><b>dig</b></td><td><i>Query DNS information for a domain</i></td></tr>
-            <tr><td><b>wget</b></td><td><i>Download files from the internet</i></td></tr>
-            <tr><td><b>curl</b></td><td><i>Transfer data from or to a server (API testing)</i></td></tr>
-            <tr><td><b>ssh</b></td><td><i>Securely connect to a remote server</i></td></tr>
-            <tr><td><b>ss</b></td><td><i>Display network connections and socket statistics</i></td></tr>
-            <tr><td><b>netstat</b></td><td><i>Show active connections (older command)</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 6 -->
-    <div class="section">
-        <h2>6. Shell Operators & Symbols</h2>
-        <table>
-            <tr><th>Symbol</th><th>Description</th></tr>
-            <tr><td><b>;</b></td><td><i>Execute multiple commands sequentially</i></td></tr>
-            <tr><td><b>&</b></td><td><i>Run command in background</i></td></tr>
-            <tr><td><b>?</b></td><td><i>Stores exit status of last command ($?)</i></td></tr>
-            <tr><td><b>&&</b></td><td><i>Execute next command only if previous succeeds</i></td></tr>
-            <tr><td><b>||</b></td><td><i>Execute next command only if previous fails</i></td></tr>
-            <tr><td><b>#</b></td><td><i>Comment line in shell script</i></td></tr>
-            <tr><td><b>\</b></td><td><i>Escape special characters</i></td></tr>
-            <tr><td><b>' '</b></td><td><i>Single quotes: treat everything literally</i></td></tr>
-            <tr><td><b>" "</b></td><td><i>Double quotes: allow variables ($) expansion</i></td></tr>
-            <tr><td><b>|</b></td><td><i>Pipe output of one command to another</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 7 -->
-    <div class="section">
-        <h2>7. Permissions & Security</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>chmod</b></td><td><i>Change file or directory permissions</i></td></tr>
-            <tr><td><b>chown</b></td><td><i>Change file or directory ownership</i></td></tr>
-            <tr><td><b>chgrp</b></td><td><i>Change group ownership</i></td></tr>
-            <tr><td><b>umask</b></td><td><i>Set default permissions for new files</i></td></tr>
-            <tr><td><b>setfacl</b></td><td><i>Set Access Control List (ACL)</i></td></tr>
-            <tr><td><b>getfacl</b></td><td><i>Get Access Control List (ACL)</i></td></tr>
-            <tr><td><b>sudo</b></td><td><i>Execute command as superuser (root)</i></td></tr>
-            <tr><td><b>passwd</b></td><td><i>Change user password</i></td></tr>
-            <tr><td><b>gpasswd</b></td><td><i>Manage group passwords and membership</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 8 -->
-    <div class="section">
-        <h2>8. User & Group Management</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>whoami</b></td><td><i>Display current logged-in user</i></td></tr>
-            <tr><td><b>id</b></td><td><i>Show user identity (UID, GID, groups)</i></td></tr>
-            <tr><td><b>who</b></td><td><i>Show currently logged-in users</i></td></tr>
-            <tr><td><b>useradd</b></td><td><i>Create a new user</i></td></tr>
-            <tr><td><b>usermod</b></td><td><i>Modify existing user</i></td></tr>
-            <tr><td><b>userdel</b></td><td><i>Delete a user</i></td></tr>
-            <tr><td><b>groupadd</b></td><td><i>Create a new group</i></td></tr>
-            <tr><td><b>groupmod</b></td><td><i>Modify a group</i></td></tr>
-            <tr><td><b>groupdel</b></td><td><i>Delete a group</i></td></tr>
-            <tr><td><b>chage -l username</b></td><td><i>Check password expiry details</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 9 -->
-    <div class="section">
-        <h2>9. Package Management</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>apt</b></td><td><i>Package manager for Debian-based systems</i></td></tr>
-            <tr><td><b>apt update</b></td><td><i>Update package index</i></td></tr>
-            <tr><td><b>apt upgrade</b></td><td><i>Upgrade installed packages</i></td></tr>
-            <tr><td><b>apt install</b></td><td><i>Install a package</i></td></tr>
-            <tr><td><b>apt remove</b></td><td><i>Remove a package</i></td></tr>
-            <tr><td><b>apt autoremove</b></td><td><i>Remove unused dependencies</i></td></tr>
-            <tr><td><b>yum</b></td><td><i>Package manager for RPM-based systems</i></td></tr>
-            <tr><td><b>dnf</b></td><td><i>Modern replacement for yum</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 10 -->
-    <div class="section">
-        <h2>10. System Service & Daemon Management</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>systemctl</b></td><td><i>Control system services</i></td></tr>
-            <tr><td><b>systemctl start service</b></td><td><i>Start a service</i></td></tr>
-            <tr><td><b>systemctl stop service</b></td><td><i>Stop a service</i></td></tr>
-            <tr><td><b>systemctl restart service</b></td><td><i>Restart a service</i></td></tr>
-            <tr><td><b>systemctl status service</b></td><td><i>Check service status</i></td></tr>
-            <tr><td><b>systemctl enable service</b></td><td><i>Enable service at boot</i></td></tr>
-            <tr><td><b>service</b></td><td><i>Legacy service management command</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 11 -->
-    <div class="section">
-        <h2>11. Scheduling Tasks</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>crontab -e</b></td><td><i>Edit user cron jobs</i></td></tr>
-            <tr><td><b>crontab -l</b></td><td><i>List cron jobs</i></td></tr>
-            <tr><td><b>crontab -r</b></td><td><i>Remove cron jobs</i></td></tr>
-            <tr><td><b>cron</b></td><td><i>Cron daemon to execute scheduled commands</i></td></tr>
-            <tr><td><b>at</b></td><td><i>Schedule a one-time task</i></td></tr>
-            <tr><td><b>atq</b></td><td><i>List scheduled at jobs</i></td></tr>
-            <tr><td><b>atrm</b></td><td><i>Remove scheduled at job</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 12 -->
-    <div class="section">
-        <h2>12. Advanced File Security</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>ls -l</b></td><td><i>Display file permissions</i></td></tr>
-            <tr><td><b>chmod 755</b></td><td><i>Set read, write, execute permissions</i></td></tr>
-            <tr><td><b>chattr</b></td><td><i>Change file attributes (e.g., immutable)</i></td></tr>
-            <tr><td><b>lsattr</b></td><td><i>List file attributes</i></td></tr>
-            <tr><td><b>semanage</b></td><td><i>Manage SELinux policies</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 13 -->
-    <div class="section">
-        <h2>13. System Backup & Restore</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>tar</b></td><td><i>Create and extract archive backups (.tar, .tar.gz)</i></td></tr>
-            <tr><td><b>rsync</b></td><td><i>Efficient file synchronization and incremental backup</i></td></tr>
-            <tr><td><b>dd</b></td><td><i>Low-level disk cloning and full disk backup</i></td></tr>
-            <tr><td><b>scp</b></td><td><i>Securely copy backup files between systems</i></td></tr>
-            <tr><td><b>restore</b></td><td><i>Restore files from backup archives</i></td></tr>
-            <tr><td><b>dump</b></td><td><i>Create filesystem-level backups</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 14 -->
-    <div class="section">
-        <h2>14. System Diagnostics & Troubleshooting</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>top</b></td><td><i>Display real-time running processes</i></td></tr>
-            <tr><td><b>htop</b></td><td><i>Interactive process monitoring tool</i></td></tr>
-            <tr><td><b>free</b></td><td><i>Show memory usage</i></td></tr>
-            <tr><td><b>df</b></td><td><i>Display disk space usage</i></td></tr>
-            <tr><td><b>du</b></td><td><i>Estimate file and directory space usage</i></td></tr>
-            <tr><td><b>dmesg</b></td><td><i>View kernel and boot messages</i></td></tr>
-            <tr><td><b>uptime</b></td><td><i>Show system running time and load</i></td></tr>
-            <tr><td><b>journalctl</b></td><td><i>View systemd logs</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 15 -->
-    <div class="section">
-        <h2>15. Networking & Remote Management</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>ifconfig</b></td><td><i>Configure network interfaces (legacy)</i></td></tr>
-            <tr><td><b>ip</b></td><td><i>Modern network configuration and routing tool</i></td></tr>
-            <tr><td><b>netstat</b></td><td><i>Display network statistics (legacy)</i></td></tr>
-            <tr><td><b>nmap</b></td><td><i>Network scanning and discovery tool</i></td></tr>
-            <tr><td><b>scp</b></td><td><i>Secure remote file transfer</i></td></tr>
-            <tr><td><b>ssh-keygen</b></td><td><i>Generate SSH public/private keys</i></td></tr>
-            <tr><td><b>ss</b></td><td><i>Display socket and connection statistics</i></td></tr>
-        </table>
-    </div>
-
-    <!-- 16 -->
-    <div class="section">
-        <h2>16. System Shutdown & Reboot</h2>
-        <table>
-            <tr><th>Command</th><th>Description</th></tr>
-            <tr><td><b>shutdown</b></td><td><i>Shut down the system safely</i></td></tr>
-            <tr><td><b>shutdown -r</b></td><td><i>Reboot the system</i></td></tr>
-            <tr><td><b>reboot</b></td><td><i>Restart the system immediately</i></td></tr>
-            <tr><td><b>poweroff</b></td><td><i>Power off the system</i></td></tr>
-            <tr><td><b>init 0</b></td><td><i>Shutdown using init system</i></td></tr>
-            <tr><td><b>init 6</b></td><td><i>Reboot using init system</i></td></tr>
-            <tr><td><b>systemctl reboot</b></td><td><i>Reboot using systemd</i></td></tr>
-            <tr><td><b>systemctl poweroff</b></td><td><i>Power off using systemd</i></td></tr>
-        </table>
-    </div>
-
+<!-- TOPBAR -->
+<div class="topbar">
+  <div class="topbar-logo">$ linux<span>/devops</span> <span style="color:var(--accent)">█</span></div>
+  <div class="search-wrap">
+    <input type="text" id="search" placeholder="Search commands, options..." autocomplete="off">
+    <span class="search-count" id="search-count"></span>
+  </div>
+  <button class="theme-btn" onclick="toggleTheme()" id="theme-btn" title="Toggle theme">☀</button>
 </div>
 
+<!-- SIDEBAR -->
+<nav class="sidebar">
+  <div class="sidebar-label">Topics</div>
+  <a href="#commands" class="nav-link"><span class="dot"></span>Essential Commands</a>
+  <a href="#advance" class="nav-link"><span class="dot"></span>Advanced Commands</a>
+  <a href="#special" class="nav-link"><span class="dot"></span>Special Characters</a>
+  <a href="#filesystem" class="nav-link"><span class="dot"></span>File System & Permissions</a>
+  <a href="#users" class="nav-link"><span class="dot"></span>User & Group Management</a>
+  <a href="#process" class="nav-link"><span class="dot"></span>Process Management</a>
+  <a href="#services" class="nav-link"><span class="dot"></span>Boot & Services</a>
+  <a href="#storage" class="nav-link"><span class="dot"></span>Storage Management</a>
+  <a href="#network" class="nav-link"><span class="dot"></span>Networking</a>
+  <a href="#security" class="nav-link"><span class="dot"></span>Security</a>
+  <a href="#logs" class="nav-link"><span class="dot"></span>Logs & Monitoring</a>
+  <a href="#software" class="nav-link"><span class="dot"></span>Software Management</a>
+  <a href="#scripting" class="nav-link"><span class="dot"></span>Scripting Basics</a>
+  <a href="#containers" class="nav-link"><span class="dot"></span>Containers</a>
+</nav>
+
+<!-- MAIN -->
+<main class="main">
+
+  <!-- 1. ESSENTIAL COMMANDS -->
+  <section class="section" id="commands">
+    <div class="section-header">
+      <div class="section-icon">📁</div>
+      <h2>Essential Linux Commands</h2>
+      <span class="section-count">17 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>ls</td><td>List all files and folders in current directory</td><td><button class="copy-btn" onclick="copyCmd(this,'ls')">copy</button></td></tr>
+        <tr><td>ls -la</td><td>List with hidden files and detailed permissions</td><td><button class="copy-btn" onclick="copyCmd(this,'ls -la')">copy</button></td></tr>
+        <tr><td>cd</td><td>Change directory — e.g. <code>cd /var/log</code></td><td><button class="copy-btn" onclick="copyCmd(this,'cd')">copy</button></td></tr>
+        <tr><td>pwd</td><td>Print current working directory path</td><td><button class="copy-btn" onclick="copyCmd(this,'pwd')">copy</button></td></tr>
+        <tr><td>mkdir</td><td>Create a directory — use <code>mkdir -p a/b/c</code> for nested</td><td><button class="copy-btn" onclick="copyCmd(this,'mkdir')">copy</button></td></tr>
+        <tr><td>touch</td><td>Create empty file or update timestamp</td><td><button class="copy-btn" onclick="copyCmd(this,'touch')">copy</button></td></tr>
+        <tr><td>rm</td><td>Remove file — use <code>rm -rf</code> to remove dirs recursively</td><td><button class="copy-btn" onclick="copyCmd(this,'rm')">copy</button></td></tr>
+        <tr><td>rmdir</td><td>Remove empty directory</td><td><button class="copy-btn" onclick="copyCmd(this,'rmdir')">copy</button></td></tr>
+        <tr><td>cp</td><td>Copy file or directory — <code>cp -r</code> for recursive</td><td><button class="copy-btn" onclick="copyCmd(this,'cp')">copy</button></td></tr>
+        <tr><td>mv</td><td>Rename or move file/directory</td><td><button class="copy-btn" onclick="copyCmd(this,'mv')">copy</button></td></tr>
+        <tr><td>cat</td><td>View file contents, or concatenate multiple files</td><td><button class="copy-btn" onclick="copyCmd(this,'cat')">copy</button></td></tr>
+        <tr><td>more</td><td>View file page by page (forward only)</td><td><button class="copy-btn" onclick="copyCmd(this,'more')">copy</button></td></tr>
+        <tr><td>less</td><td>Advanced file viewer — scroll up/down freely</td><td><button class="copy-btn" onclick="copyCmd(this,'less')">copy</button></td></tr>
+        <tr><td>head</td><td>Show first 10 lines — use <code>head -n 20</code> for custom</td><td><button class="copy-btn" onclick="copyCmd(this,'head')">copy</button></td></tr>
+        <tr><td>tail</td><td>Show last 10 lines — <code>tail -f</code> for live log follow</td><td><button class="copy-btn" onclick="copyCmd(this,'tail -f')">copy</button></td></tr>
+        <tr><td>tac</td><td>Display file content in reverse line order</td><td><button class="copy-btn" onclick="copyCmd(this,'tac')">copy</button></td></tr>
+        <tr><td>vi / vim</td><td>Powerful modal text editor — standard on all servers</td><td><button class="copy-btn" onclick="copyCmd(this,'vim')">copy</button></td></tr>
+        <tr><td>nano</td><td>Beginner-friendly terminal text editor</td><td><button class="copy-btn" onclick="copyCmd(this,'nano')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 2. ADVANCED COMMANDS -->
+  <section class="section" id="advance">
+    <div class="section-header">
+      <div class="section-icon">⚡</div>
+      <h2>Advanced Commands</h2>
+      <span class="section-count">16 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>grep</td><td>Search text using patterns — <code>grep -r "text" /path</code></td><td><button class="copy-btn" onclick="copyCmd(this,'grep')">copy</button></td></tr>
+        <tr><td>grep -E</td><td>Extended regex search in files</td><td><button class="copy-btn" onclick="copyCmd(this,'grep -E')">copy</button></td></tr>
+        <tr><td>sed</td><td>Stream editor for find and replace — <code>sed 's/old/new/g'</code></td><td><button class="copy-btn" onclick="copyCmd(this,'sed')">copy</button></td></tr>
+        <tr><td>awk</td><td>Pattern scanning and text processing language</td><td><button class="copy-btn" onclick="copyCmd(this,'awk')">copy</button></td></tr>
+        <tr><td>sort</td><td>Sort lines alphabetically or numerically</td><td><button class="copy-btn" onclick="copyCmd(this,'sort')">copy</button></td></tr>
+        <tr><td>uniq</td><td>Remove or count duplicate adjacent lines</td><td><button class="copy-btn" onclick="copyCmd(this,'uniq')">copy</button></td></tr>
+        <tr><td>cut</td><td>Extract columns from text — <code>cut -d: -f1 /etc/passwd</code></td><td><button class="copy-btn" onclick="copyCmd(this,'cut')">copy</button></td></tr>
+        <tr><td>wc</td><td>Count lines, words, or bytes — <code>wc -l file</code></td><td><button class="copy-btn" onclick="copyCmd(this,'wc -l')">copy</button></td></tr>
+        <tr><td>find</td><td>Find files by name, size, date — <code>find / -name "*.log"</code></td><td><button class="copy-btn" onclick="copyCmd(this,'find')">copy</button></td></tr>
+        <tr><td>xargs</td><td>Build and execute commands from standard input</td><td><button class="copy-btn" onclick="copyCmd(this,'xargs')">copy</button></td></tr>
+        <tr><td>tee</td><td>Read stdin and write to both stdout and file</td><td><button class="copy-btn" onclick="copyCmd(this,'tee')">copy</button></td></tr>
+        <tr><td>diff</td><td>Compare two files line by line</td><td><button class="copy-btn" onclick="copyCmd(this,'diff')">copy</button></td></tr>
+        <tr><td>tar</td><td>Archive files — <code>tar -czf out.tar.gz dir/</code></td><td><button class="copy-btn" onclick="copyCmd(this,'tar -czf')">copy</button></td></tr>
+        <tr><td>zip / unzip</td><td>Compress and extract ZIP archives</td><td><button class="copy-btn" onclick="copyCmd(this,'zip')">copy</button></td></tr>
+        <tr><td>curl</td><td>Transfer data from URLs — supports HTTP, FTP, SFTP</td><td><button class="copy-btn" onclick="copyCmd(this,'curl')">copy</button></td></tr>
+        <tr><td>wget</td><td>Download files from the internet non-interactively</td><td><button class="copy-btn" onclick="copyCmd(this,'wget')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 3. SPECIAL CHARACTERS -->
+  <section class="section" id="special">
+    <div class="section-header">
+      <div class="section-icon">✦</div>
+      <h2>Special Character Uses</h2>
+      <span class="section-count">14 chars</span>
+    </div>
+    <div class="special-grid">
+      <div class="special-card"><div class="special-char">|</div><div class="special-desc"><strong>Pipe</strong>Pass output of one command to another</div></div>
+      <div class="special-card"><div class="special-char">&gt;</div><div class="special-desc"><strong>Redirect output</strong>Overwrite file with command output</div></div>
+      <div class="special-card"><div class="special-char">&gt;&gt;</div><div class="special-desc"><strong>Append output</strong>Append command output to a file</div></div>
+      <div class="special-card"><div class="special-char">&lt;</div><div class="special-desc"><strong>Redirect input</strong>Use file as input for a command</div></div>
+      <div class="special-card"><div class="special-char">*</div><div class="special-desc"><strong>Wildcard</strong>Match any number of characters in filename</div></div>
+      <div class="special-card"><div class="special-char">?</div><div class="special-desc"><strong>Single wildcard</strong>Match exactly one character</div></div>
+      <div class="special-card"><div class="special-char">&amp;&amp;</div><div class="special-desc"><strong>AND operator</strong>Run next command only if previous succeeded</div></div>
+      <div class="special-card"><div class="special-char">||</div><div class="special-desc"><strong>OR operator</strong>Run next command only if previous failed</div></div>
+      <div class="special-card"><div class="special-char">&amp;</div><div class="special-desc"><strong>Background</strong>Run command in background process</div></div>
+      <div class="special-card"><div class="special-char">;</div><div class="special-desc"><strong>Separator</strong>Run multiple commands sequentially</div></div>
+      <div class="special-card"><div class="special-char">~</div><div class="special-desc"><strong>Home dir</strong>Shortcut for current user's home directory</div></div>
+      <div class="special-card"><div class="special-char">$</div><div class="special-desc"><strong>Variable</strong>Access shell variable — <code>$HOME</code>, <code>$PATH</code></div></div>
+      <div class="special-card"><div class="special-char">#</div><div class="special-desc"><strong>Comment</strong>Anything after # is ignored in scripts</div></div>
+      <div class="special-card"><div class="special-char">`cmd`</div><div class="special-desc"><strong>Command sub.</strong>Execute command inline — prefer <code>$(cmd)</code></div></div>
+    </div>
+  </section>
+
+  <!-- 4. FILE SYSTEM & PERMISSIONS -->
+  <section class="section" id="filesystem">
+    <div class="section-header">
+      <div class="section-icon">🔒</div>
+      <h2>File System &amp; Permissions</h2>
+      <span class="section-count">14 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>chmod 755</td><td>Set rwxr-xr-x permissions on file or directory</td><td><button class="copy-btn" onclick="copyCmd(this,'chmod 755')">copy</button></td></tr>
+        <tr><td>chmod +x</td><td>Add execute permission for all users</td><td><button class="copy-btn" onclick="copyCmd(this,'chmod +x')">copy</button></td></tr>
+        <tr><td>chown</td><td>Change file owner — <code>chown user:group file</code></td><td><button class="copy-btn" onclick="copyCmd(this,'chown')">copy</button></td></tr>
+        <tr><td>chgrp</td><td>Change group ownership of a file</td><td><button class="copy-btn" onclick="copyCmd(this,'chgrp')">copy</button></td></tr>
+        <tr><td>ls -l</td><td>Long listing showing permissions, owner, size, date</td><td><button class="copy-btn" onclick="copyCmd(this,'ls -l')">copy</button></td></tr>
+        <tr><td>umask</td><td>Set default permissions mask for new files</td><td><button class="copy-btn" onclick="copyCmd(this,'umask')">copy</button></td></tr>
+        <tr><td>ln -s</td><td>Create symbolic (soft) link to file or directory</td><td><button class="copy-btn" onclick="copyCmd(this,'ln -s')">copy</button></td></tr>
+        <tr><td>df -h</td><td>Show disk space usage in human-readable format</td><td><button class="copy-btn" onclick="copyCmd(this,'df -h')">copy</button></td></tr>
+        <tr><td>du -sh</td><td>Show directory size summary — <code>du -sh *</code> per item</td><td><button class="copy-btn" onclick="copyCmd(this,'du -sh')">copy</button></td></tr>
+        <tr><td>mount</td><td>Mount a filesystem to a directory</td><td><button class="copy-btn" onclick="copyCmd(this,'mount')">copy</button></td></tr>
+        <tr><td>umount</td><td>Unmount a mounted filesystem</td><td><button class="copy-btn" onclick="copyCmd(this,'umount')">copy</button></td></tr>
+        <tr><td>lsblk</td><td>List block devices (disks, partitions, USB)</td><td><button class="copy-btn" onclick="copyCmd(this,'lsblk')">copy</button></td></tr>
+        <tr><td>stat</td><td>Display detailed file metadata and timestamps</td><td><button class="copy-btn" onclick="copyCmd(this,'stat')">copy</button></td></tr>
+        <tr><td>file</td><td>Identify file type without relying on extension</td><td><button class="copy-btn" onclick="copyCmd(this,'file')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 5. USERS & GROUPS -->
+  <section class="section" id="users">
+    <div class="section-header">
+      <div class="section-icon">👤</div>
+      <h2>User &amp; Group Management</h2>
+      <span class="section-count">12 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>useradd</td><td>Create new user — use <code>-m</code> to create home directory</td><td><button class="copy-btn" onclick="copyCmd(this,'useradd -m')">copy</button></td></tr>
+        <tr><td>usermod</td><td>Modify user settings — <code>usermod -aG sudo user</code></td><td><button class="copy-btn" onclick="copyCmd(this,'usermod')">copy</button></td></tr>
+        <tr><td>userdel</td><td>Delete a user — use <code>-r</code> to remove home dir too</td><td><button class="copy-btn" onclick="copyCmd(this,'userdel -r')">copy</button></td></tr>
+        <tr><td>passwd</td><td>Set or change user password</td><td><button class="copy-btn" onclick="copyCmd(this,'passwd')">copy</button></td></tr>
+        <tr><td>groupadd</td><td>Create a new group</td><td><button class="copy-btn" onclick="copyCmd(this,'groupadd')">copy</button></td></tr>
+        <tr><td>groupdel</td><td>Delete an existing group</td><td><button class="copy-btn" onclick="copyCmd(this,'groupdel')">copy</button></td></tr>
+        <tr><td>id</td><td>Show UID, GID, and group memberships of a user</td><td><button class="copy-btn" onclick="copyCmd(this,'id')">copy</button></td></tr>
+        <tr><td>whoami</td><td>Print current logged-in username</td><td><button class="copy-btn" onclick="copyCmd(this,'whoami')">copy</button></td></tr>
+        <tr><td>who</td><td>Show all currently logged-in users</td><td><button class="copy-btn" onclick="copyCmd(this,'who')">copy</button></td></tr>
+        <tr><td>su</td><td>Switch user — <code>su - username</code> for full environment</td><td><button class="copy-btn" onclick="copyCmd(this,'su -')">copy</button></td></tr>
+        <tr><td>sudo</td><td>Execute command with superuser privileges</td><td><button class="copy-btn" onclick="copyCmd(this,'sudo')">copy</button></td></tr>
+        <tr><td>visudo</td><td>Safely edit the sudoers configuration file</td><td><button class="copy-btn" onclick="copyCmd(this,'visudo')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 6. PROCESS MANAGEMENT -->
+  <section class="section" id="process">
+    <div class="section-header">
+      <div class="section-icon">⚙</div>
+      <h2>Process Management</h2>
+      <span class="section-count">13 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>ps aux</td><td>List all running processes with full details</td><td><button class="copy-btn" onclick="copyCmd(this,'ps aux')">copy</button></td></tr>
+        <tr><td>top</td><td>Interactive real-time process and CPU monitor</td><td><button class="copy-btn" onclick="copyCmd(this,'top')">copy</button></td></tr>
+        <tr><td>htop</td><td>Enhanced interactive process viewer (install first)</td><td><button class="copy-btn" onclick="copyCmd(this,'htop')">copy</button></td></tr>
+        <tr><td>kill</td><td>Terminate process by PID — <code>kill -9 PID</code> to force</td><td><button class="copy-btn" onclick="copyCmd(this,'kill -9')">copy</button></td></tr>
+        <tr><td>killall</td><td>Kill all processes by name — <code>killall nginx</code></td><td><button class="copy-btn" onclick="copyCmd(this,'killall')">copy</button></td></tr>
+        <tr><td>pkill</td><td>Kill processes matching a pattern</td><td><button class="copy-btn" onclick="copyCmd(this,'pkill')">copy</button></td></tr>
+        <tr><td>pgrep</td><td>Find process IDs matching name or pattern</td><td><button class="copy-btn" onclick="copyCmd(this,'pgrep')">copy</button></td></tr>
+        <tr><td>nice / renice</td><td>Set/change process priority (-20 highest, 19 lowest)</td><td><button class="copy-btn" onclick="copyCmd(this,'nice -n 10')">copy</button></td></tr>
+        <tr><td>bg / fg</td><td>Resume stopped job in background or foreground</td><td><button class="copy-btn" onclick="copyCmd(this,'bg')">copy</button></td></tr>
+        <tr><td>jobs</td><td>List background and stopped jobs in shell</td><td><button class="copy-btn" onclick="copyCmd(this,'jobs')">copy</button></td></tr>
+        <tr><td>nohup</td><td>Run command immune to terminal hangup</td><td><button class="copy-btn" onclick="copyCmd(this,'nohup')">copy</button></td></tr>
+        <tr><td>screen</td><td>Terminal multiplexer — persist sessions on disconnect</td><td><button class="copy-btn" onclick="copyCmd(this,'screen')">copy</button></td></tr>
+        <tr><td>tmux</td><td>Modern terminal multiplexer with pane splitting</td><td><button class="copy-btn" onclick="copyCmd(this,'tmux')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 7. BOOT & SERVICES -->
+  <section class="section" id="services">
+    <div class="section-header">
+      <div class="section-icon">🚀</div>
+      <h2>Boot Process &amp; Services (systemd)</h2>
+      <span class="section-count">11 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>systemctl start</td><td>Start a systemd service — <code>systemctl start nginx</code></td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl start')">copy</button></td></tr>
+        <tr><td>systemctl stop</td><td>Stop a running systemd service</td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl stop')">copy</button></td></tr>
+        <tr><td>systemctl restart</td><td>Stop then start a service</td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl restart')">copy</button></td></tr>
+        <tr><td>systemctl reload</td><td>Reload service config without full restart</td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl reload')">copy</button></td></tr>
+        <tr><td>systemctl enable</td><td>Enable service to start on boot</td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl enable')">copy</button></td></tr>
+        <tr><td>systemctl disable</td><td>Prevent service from starting on boot</td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl disable')">copy</button></td></tr>
+        <tr><td>systemctl status</td><td>Show current status and recent logs of service</td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl status')">copy</button></td></tr>
+        <tr><td>systemctl list-units</td><td>List all active systemd units</td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl list-units')">copy</button></td></tr>
+        <tr><td>journalctl -u</td><td>View logs for specific service — add <code>-f</code> to follow</td><td><button class="copy-btn" onclick="copyCmd(this,'journalctl -u')">copy</button></td></tr>
+        <tr><td>journalctl -b</td><td>Show logs from current boot session</td><td><button class="copy-btn" onclick="copyCmd(this,'journalctl -b')">copy</button></td></tr>
+        <tr><td>systemctl daemon-reload</td><td>Reload systemd manager configuration</td><td><button class="copy-btn" onclick="copyCmd(this,'systemctl daemon-reload')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 8. STORAGE -->
+  <section class="section" id="storage">
+    <div class="section-header">
+      <div class="section-icon">💾</div>
+      <h2>Storage Management</h2>
+      <span class="section-count">10 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>fdisk -l</td><td>List all disk partitions on the system</td><td><button class="copy-btn" onclick="copyCmd(this,'fdisk -l')">copy</button></td></tr>
+        <tr><td>fdisk /dev/sda</td><td>Interactive partition editor for a disk</td><td><button class="copy-btn" onclick="copyCmd(this,'fdisk /dev/sda')">copy</button></td></tr>
+        <tr><td>mkfs.ext4</td><td>Format partition with ext4 filesystem</td><td><button class="copy-btn" onclick="copyCmd(this,'mkfs.ext4')">copy</button></td></tr>
+        <tr><td>blkid</td><td>Show UUID and filesystem type of all block devices</td><td><button class="copy-btn" onclick="copyCmd(this,'blkid')">copy</button></td></tr>
+        <tr><td>df -Th</td><td>Disk usage with filesystem type and human sizes</td><td><button class="copy-btn" onclick="copyCmd(this,'df -Th')">copy</button></td></tr>
+        <tr><td>du -sh *</td><td>Show size of each item in current directory</td><td><button class="copy-btn" onclick="copyCmd(this,'du -sh *')">copy</button></td></tr>
+        <tr><td>lvdisplay</td><td>Display LVM logical volume information</td><td><button class="copy-btn" onclick="copyCmd(this,'lvdisplay')">copy</button></td></tr>
+        <tr><td>pvdisplay</td><td>Display LVM physical volume information</td><td><button class="copy-btn" onclick="copyCmd(this,'pvdisplay')">copy</button></td></tr>
+        <tr><td>vgdisplay</td><td>Display LVM volume group information</td><td><button class="copy-btn" onclick="copyCmd(this,'vgdisplay')">copy</button></td></tr>
+        <tr><td>rsync -avz</td><td>Sync files efficiently with compression and progress</td><td><button class="copy-btn" onclick="copyCmd(this,'rsync -avz')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 9. NETWORKING -->
+  <section class="section" id="network">
+    <div class="section-header">
+      <div class="section-icon">🌐</div>
+      <h2>Networking</h2>
+      <span class="section-count">14 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>ip addr</td><td>Show all network interfaces and IP addresses</td><td><button class="copy-btn" onclick="copyCmd(this,'ip addr')">copy</button></td></tr>
+        <tr><td>ip route</td><td>Display and manage network routing table</td><td><button class="copy-btn" onclick="copyCmd(this,'ip route')">copy</button></td></tr>
+        <tr><td>ping</td><td>Test network connectivity to host</td><td><button class="copy-btn" onclick="copyCmd(this,'ping')">copy</button></td></tr>
+        <tr><td>traceroute</td><td>Trace packet route to destination host</td><td><button class="copy-btn" onclick="copyCmd(this,'traceroute')">copy</button></td></tr>
+        <tr><td>netstat -tulnp</td><td>Show all listening ports with associated processes</td><td><button class="copy-btn" onclick="copyCmd(this,'netstat -tulnp')">copy</button></td></tr>
+        <tr><td>ss -tulnp</td><td>Modern replacement for netstat (faster)</td><td><button class="copy-btn" onclick="copyCmd(this,'ss -tulnp')">copy</button></td></tr>
+        <tr><td>nmap</td><td>Network port scanner and host discovery</td><td><button class="copy-btn" onclick="copyCmd(this,'nmap')">copy</button></td></tr>
+        <tr><td>dig</td><td>DNS lookup — <code>dig google.com A</code></td><td><button class="copy-btn" onclick="copyCmd(this,'dig')">copy</button></td></tr>
+        <tr><td>nslookup</td><td>Query DNS servers for hostname resolution</td><td><button class="copy-btn" onclick="copyCmd(this,'nslookup')">copy</button></td></tr>
+        <tr><td>ssh</td><td>Secure remote shell — <code>ssh user@host -p 22</code></td><td><button class="copy-btn" onclick="copyCmd(this,'ssh')">copy</button></td></tr>
+        <tr><td>scp</td><td>Securely copy files over SSH connection</td><td><button class="copy-btn" onclick="copyCmd(this,'scp')">copy</button></td></tr>
+        <tr><td>wget / curl</td><td>Download files or test HTTP endpoints</td><td><button class="copy-btn" onclick="copyCmd(this,'curl -I')">copy</button></td></tr>
+        <tr><td>iptables -L</td><td>List current firewall rules</td><td><button class="copy-btn" onclick="copyCmd(this,'iptables -L')">copy</button></td></tr>
+        <tr><td>ufw</td><td>Uncomplicated Firewall — <code>ufw allow 80/tcp</code></td><td><button class="copy-btn" onclick="copyCmd(this,'ufw allow')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 10. SECURITY -->
+  <section class="section" id="security">
+    <div class="section-header">
+      <div class="section-icon">🛡</div>
+      <h2>Security</h2>
+      <span class="section-count">11 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>ssh-keygen</td><td>Generate SSH key pair — RSA or ED25519</td><td><button class="copy-btn" onclick="copyCmd(this,'ssh-keygen -t ed25519')">copy</button></td></tr>
+        <tr><td>ssh-copy-id</td><td>Copy public key to remote server for passwordless SSH</td><td><button class="copy-btn" onclick="copyCmd(this,'ssh-copy-id')">copy</button></td></tr>
+        <tr><td>gpg</td><td>GNU Privacy Guard — encrypt, decrypt, sign files</td><td><button class="copy-btn" onclick="copyCmd(this,'gpg')">copy</button></td></tr>
+        <tr><td>openssl</td><td>TLS/SSL toolkit — generate certs and keys</td><td><button class="copy-btn" onclick="copyCmd(this,'openssl')">copy</button></td></tr>
+        <tr><td>fail2ban</td><td>Auto-ban IPs with too many failed login attempts</td><td><button class="copy-btn" onclick="copyCmd(this,'fail2ban-client status')">copy</button></td></tr>
+        <tr><td>auditd</td><td>Linux audit daemon for tracking system events</td><td><button class="copy-btn" onclick="copyCmd(this,'auditctl -l')">copy</button></td></tr>
+        <tr><td>chattr +i</td><td>Make file immutable — even root can't modify it</td><td><button class="copy-btn" onclick="copyCmd(this,'chattr +i')">copy</button></td></tr>
+        <tr><td>lsattr</td><td>List extended file attributes set by chattr</td><td><button class="copy-btn" onclick="copyCmd(this,'lsattr')">copy</button></td></tr>
+        <tr><td>last</td><td>Show login history for all users</td><td><button class="copy-btn" onclick="copyCmd(this,'last')">copy</button></td></tr>
+        <tr><td>lastb</td><td>Show failed login attempts</td><td><button class="copy-btn" onclick="copyCmd(this,'lastb')">copy</button></td></tr>
+        <tr><td>semanage / getenforce</td><td>Manage and check SELinux policies and mode</td><td><button class="copy-btn" onclick="copyCmd(this,'getenforce')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 11. LOGS -->
+  <section class="section" id="logs">
+    <div class="section-header">
+      <div class="section-icon">📋</div>
+      <h2>Logs &amp; Monitoring</h2>
+      <span class="section-count">11 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>tail -f /var/log/syslog</td><td>Follow system log in real time</td><td><button class="copy-btn" onclick="copyCmd(this,'tail -f /var/log/syslog')">copy</button></td></tr>
+        <tr><td>journalctl -f</td><td>Follow systemd journal in real time</td><td><button class="copy-btn" onclick="copyCmd(this,'journalctl -f')">copy</button></td></tr>
+        <tr><td>journalctl --since</td><td>Filter logs by date — <code>--since "1 hour ago"</code></td><td><button class="copy-btn" onclick="copyCmd(this,'journalctl --since "1 hour ago"')">copy</button></td></tr>
+        <tr><td>dmesg</td><td>Display kernel ring buffer messages (hardware events)</td><td><button class="copy-btn" onclick="copyCmd(this,'dmesg | tail -20')">copy</button></td></tr>
+        <tr><td>free -h</td><td>Show RAM usage in human-readable format</td><td><button class="copy-btn" onclick="copyCmd(this,'free -h')">copy</button></td></tr>
+        <tr><td>vmstat</td><td>Virtual memory, CPU, I/O statistics snapshot</td><td><button class="copy-btn" onclick="copyCmd(this,'vmstat 1')">copy</button></td></tr>
+        <tr><td>iostat</td><td>CPU and I/O statistics for disks</td><td><button class="copy-btn" onclick="copyCmd(this,'iostat -xz 1')">copy</button></td></tr>
+        <tr><td>sar</td><td>Collect and report system activity statistics</td><td><button class="copy-btn" onclick="copyCmd(this,'sar -u 1 5')">copy</button></td></tr>
+        <tr><td>uptime</td><td>Show system uptime and load averages</td><td><button class="copy-btn" onclick="copyCmd(this,'uptime')">copy</button></td></tr>
+        <tr><td>lscpu</td><td>Display CPU architecture and core information</td><td><button class="copy-btn" onclick="copyCmd(this,'lscpu')">copy</button></td></tr>
+        <tr><td>lshw</td><td>Detailed hardware configuration report</td><td><button class="copy-btn" onclick="copyCmd(this,'lshw -short')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 12. SOFTWARE -->
+  <section class="section" id="software">
+    <div class="section-header">
+      <div class="section-icon">📦</div>
+      <h2>Software Management</h2>
+      <span class="section-count">12 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>apt update</td><td>Update package index from repositories</td><td><button class="copy-btn" onclick="copyCmd(this,'apt update')">copy</button></td></tr>
+        <tr><td>apt upgrade</td><td>Upgrade all installed packages</td><td><button class="copy-btn" onclick="copyCmd(this,'apt upgrade -y')">copy</button></td></tr>
+        <tr><td>apt install</td><td>Install a package — <code>apt install nginx -y</code></td><td><button class="copy-btn" onclick="copyCmd(this,'apt install')">copy</button></td></tr>
+        <tr><td>apt remove</td><td>Remove installed package (keep config files)</td><td><button class="copy-btn" onclick="copyCmd(this,'apt remove')">copy</button></td></tr>
+        <tr><td>apt purge</td><td>Remove package and all its configuration files</td><td><button class="copy-btn" onclick="copyCmd(this,'apt purge')">copy</button></td></tr>
+        <tr><td>apt search</td><td>Search for packages by name or description</td><td><button class="copy-btn" onclick="copyCmd(this,'apt search')">copy</button></td></tr>
+        <tr><td>dpkg -l</td><td>List all installed Debian packages</td><td><button class="copy-btn" onclick="copyCmd(this,'dpkg -l')">copy</button></td></tr>
+        <tr><td>yum install</td><td>Install package on RHEL/CentOS systems</td><td><button class="copy-btn" onclick="copyCmd(this,'yum install -y')">copy</button></td></tr>
+        <tr><td>dnf install</td><td>Modern package manager for Fedora/RHEL 8+</td><td><button class="copy-btn" onclick="copyCmd(this,'dnf install -y')">copy</button></td></tr>
+        <tr><td>rpm -qa</td><td>List all installed RPM packages</td><td><button class="copy-btn" onclick="copyCmd(this,'rpm -qa')">copy</button></td></tr>
+        <tr><td>snap install</td><td>Install snapped application packages</td><td><button class="copy-btn" onclick="copyCmd(this,'snap install')">copy</button></td></tr>
+        <tr><td>which / whereis</td><td>Find location of a command or binary</td><td><button class="copy-btn" onclick="copyCmd(this,'which')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 13. SCRIPTING -->
+  <section class="section" id="scripting">
+    <div class="section-header">
+      <div class="section-icon">📝</div>
+      <h2>Scripting Basics (Bash)</h2>
+      <span class="section-count">12 concepts</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Syntax</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>#!/bin/bash</td><td>Shebang line — declare script interpreter</td><td><button class="copy-btn" onclick="copyCmd(this,'#!/bin/bash')">copy</button></td></tr>
+        <tr><td>VAR="value"</td><td>Assign variable — no spaces around = sign</td><td><button class="copy-btn" onclick="copyCmd(this,'VAR=&quot;value&quot;')">copy</button></td></tr>
+        <tr><td>echo $VAR</td><td>Print variable value to stdout</td><td><button class="copy-btn" onclick="copyCmd(this,'echo $VAR')">copy</button></td></tr>
+        <tr><td>read VAR</td><td>Read user input into a variable</td><td><button class="copy-btn" onclick="copyCmd(this,'read -p &quot;Enter: &quot; VAR')">copy</button></td></tr>
+        <tr><td>if [ cond ]; then</td><td>Conditional block — close with <code>fi</code></td><td><button class="copy-btn" onclick="copyCmd(this,'if [ -f file ]; then\n  echo exists\nfi')">copy</button></td></tr>
+        <tr><td>for i in list; do</td><td>Loop over list items — close with <code>done</code></td><td><button class="copy-btn" onclick="copyCmd(this,'for i in 1 2 3; do echo $i; done')">copy</button></td></tr>
+        <tr><td>while [ cond ]; do</td><td>Loop while condition is true</td><td><button class="copy-btn" onclick="copyCmd(this,'while true; do sleep 1; done')">copy</button></td></tr>
+        <tr><td>function name()</td><td>Define reusable function in script</td><td><button class="copy-btn" onclick="copyCmd(this,'function greet() { echo Hello $1; }')">copy</button></td></tr>
+        <tr><td>$1 $2 $@</td><td>Positional args — <code>$@</code> is all arguments</td><td><button class="copy-btn" onclick="copyCmd(this,'echo $1 $2')">copy</button></td></tr>
+        <tr><td>$(command)</td><td>Command substitution — capture command output</td><td><button class="copy-btn" onclick="copyCmd(this,'DATE=$(date +%Y-%m-%d)')">copy</button></td></tr>
+        <tr><td>exit 0</td><td>Exit script with status code (0 = success)</td><td><button class="copy-btn" onclick="copyCmd(this,'exit 0')">copy</button></td></tr>
+        <tr><td>set -e / set -x</td><td>Exit on error / Print each command before running</td><td><button class="copy-btn" onclick="copyCmd(this,'set -euxo pipefail')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- 14. CONTAINERS -->
+  <section class="section" id="containers">
+    <div class="section-header">
+      <div class="section-icon">🐳</div>
+      <h2>Containers (Docker)</h2>
+      <span class="section-count">16 commands</span>
+    </div>
+    <table class="cmd-table">
+      <thead><tr><th>Command</th><th>Description</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>docker ps</td><td>List running containers — add <code>-a</code> for all</td><td><button class="copy-btn" onclick="copyCmd(this,'docker ps -a')">copy</button></td></tr>
+        <tr><td>docker images</td><td>List all locally stored Docker images</td><td><button class="copy-btn" onclick="copyCmd(this,'docker images')">copy</button></td></tr>
+        <tr><td>docker pull</td><td>Download image from Docker Hub — <code>docker pull nginx</code></td><td><button class="copy-btn" onclick="copyCmd(this,'docker pull nginx')">copy</button></td></tr>
+        <tr><td>docker run</td><td>Create and start container from image</td><td><button class="copy-btn" onclick="copyCmd(this,'docker run -d -p 80:80 nginx')">copy</button></td></tr>
+        <tr><td>docker run -it</td><td>Start container with interactive terminal</td><td><button class="copy-btn" onclick="copyCmd(this,'docker run -it ubuntu bash')">copy</button></td></tr>
+        <tr><td>docker exec -it</td><td>Execute command inside running container</td><td><button class="copy-btn" onclick="copyCmd(this,'docker exec -it container bash')">copy</button></td></tr>
+        <tr><td>docker stop</td><td>Gracefully stop a running container</td><td><button class="copy-btn" onclick="copyCmd(this,'docker stop container')">copy</button></td></tr>
+        <tr><td>docker rm</td><td>Remove stopped container</td><td><button class="copy-btn" onclick="copyCmd(this,'docker rm container')">copy</button></td></tr>
+        <tr><td>docker rmi</td><td>Remove a Docker image from local storage</td><td><button class="copy-btn" onclick="copyCmd(this,'docker rmi image')">copy</button></td></tr>
+        <tr><td>docker build</td><td>Build image from Dockerfile — <code>-t name:tag .</code></td><td><button class="copy-btn" onclick="copyCmd(this,'docker build -t myapp:1.0 .')">copy</button></td></tr>
+        <tr><td>docker logs</td><td>View container logs — add <code>-f</code> to follow</td><td><button class="copy-btn" onclick="copyCmd(this,'docker logs -f container')">copy</button></td></tr>
+        <tr><td>docker inspect</td><td>Detailed JSON info about container or image</td><td><button class="copy-btn" onclick="copyCmd(this,'docker inspect container')">copy</button></td></tr>
+        <tr><td>docker-compose up</td><td>Start multi-container app from compose file</td><td><button class="copy-btn" onclick="copyCmd(this,'docker-compose up -d')">copy</button></td></tr>
+        <tr><td>docker-compose down</td><td>Stop and remove compose app containers</td><td><button class="copy-btn" onclick="copyCmd(this,'docker-compose down')">copy</button></td></tr>
+        <tr><td>docker network ls</td><td>List all Docker networks</td><td><button class="copy-btn" onclick="copyCmd(this,'docker network ls')">copy</button></td></tr>
+        <tr><td>docker volume ls</td><td>List all Docker volumes</td><td><button class="copy-btn" onclick="copyCmd(this,'docker volume ls')">copy</button></td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <div class="no-results" id="no-results">
+    <div class="nr-icon">⌕</div>
+    <div>No commands found for "<span id="nr-query"></span>"</div>
+  </div>
+
+</main>
+
+<script>
+  function toggleTheme() {
+    const html = document.documentElement;
+    const isDark = html.getAttribute('data-theme') === 'dark';
+    html.setAttribute('data-theme', isDark ? 'light' : 'dark');
+    document.getElementById('theme-btn').textContent = isDark ? '☾' : '☀';
+  }
+
+  function copyCmd(btn, cmd) {
+    navigator.clipboard.writeText(cmd).then(() => {
+      btn.textContent = 'done!';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'copy'; btn.classList.remove('copied'); }, 1400);
+    });
+  }
+
+  const searchInput = document.getElementById('search');
+  const searchCount = document.getElementById('search-count');
+  const noResults = document.getElementById('no-results');
+  const nrQuery = document.getElementById('nr-query');
+
+  function removeHighlights() {
+    document.querySelectorAll('mark').forEach(m => {
+      m.outerHTML = m.innerHTML;
+    });
+  }
+
+  function highlight(node, text) {
+    if (node.nodeType === 3) {
+      const idx = node.nodeValue.toLowerCase().indexOf(text.toLowerCase());
+      if (idx === -1) return false;
+      const span = document.createElement('span');
+      span.innerHTML = node.nodeValue.substring(0, idx) +
+        '<mark>' + node.nodeValue.substring(idx, idx + text.length) + '</mark>' +
+        node.nodeValue.substring(idx + text.length);
+      node.parentNode.replaceChild(span, node);
+      return true;
+    }
+    return false;
+  }
+
+  searchInput.addEventListener('input', function() {
+    const q = this.value.trim().toLowerCase();
+    removeHighlights();
+    const sections = document.querySelectorAll('.section');
+    let totalMatches = 0;
+
+    if (!q) {
+      document.querySelectorAll('tr.hidden-row').forEach(r => r.classList.remove('hidden-row'));
+      document.querySelectorAll('.special-card').forEach(c => c.style.display = '');
+      sections.forEach(s => s.style.display = '');
+      noResults.style.display = 'none';
+      searchCount.textContent = '';
+      return;
+    }
+
+    sections.forEach(section => {
+      let sectionHits = 0;
+      const rows = section.querySelectorAll('tbody tr');
+      rows.forEach(row => {
+        const text = row.textContent.toLowerCase();
+        if (text.includes(q)) {
+          row.classList.remove('hidden-row');
+          sectionHits++;
+          totalMatches++;
+          row.querySelectorAll('td:first-child, td:nth-child(2)').forEach(td => {
+            Array.from(td.childNodes).forEach(n => highlight(n, q));
+          });
+        } else {
+          row.classList.add('hidden-row');
+        }
+      });
+
+      const cards = section.querySelectorAll('.special-card');
+      cards.forEach(card => {
+        if (card.textContent.toLowerCase().includes(q)) {
+          card.style.display = '';
+          sectionHits++;
+          totalMatches++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      section.style.display = sectionHits > 0 ? '' : 'none';
+    });
+
+    searchCount.textContent = totalMatches > 0 ? totalMatches + ' found' : '';
+    noResults.style.display = totalMatches === 0 ? 'block' : 'none';
+    nrQuery.textContent = this.value;
+  });
+
+  // Active sidebar link on scroll
+  const navLinks = document.querySelectorAll('.nav-link');
+  const sectionEls = document.querySelectorAll('.section');
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(l => l.classList.remove('active'));
+        const active = document.querySelector(`.nav-link[href="#${entry.target.id}"]`);
+        if (active) active.classList.add('active');
+      }
+    });
+  }, { rootMargin: '-20% 0px -70% 0px' });
+  sectionEls.forEach(s => observer.observe(s));
+</script>
 </body>
 </html>

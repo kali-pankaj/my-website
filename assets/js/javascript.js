@@ -200,7 +200,8 @@ document.addEventListener("DOMContentLoaded", () => {
         { name: "Helm", link: "/pages/helm/helm.html", img: "/pages/helm/helm.jpg" },
         { name: "Argo CD", link: "/pages/argo-cd/argo.html", img: "/pages/argocd/argo.jpg" },
         { name: "Python", link: "/pages/python/python.html", img: "/pages/python/python.jpg" },
-        { name: "DataDog", link: "/pages/data-dog/data-dog.html", img: "/pages/datadog/data_dog.jpg" }
+        { name: "DataDog", link: "/pages/data-dog/data-dog.html", img: "/pages/datadog/data_dog.jpg" },
+        { name: "Prometheus", link: "/pages/prometheus/prometheus.html", img: "/pages/prometheus/prometheus.jpg" }
         
     ];
 

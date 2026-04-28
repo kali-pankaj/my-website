@@ -1,716 +1,291 @@
-<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>🐳 Docker Mastery Hub · DevOps Containerization | Interactive Study Notes</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-
-<!--Docker Intriduction -->
-<div class="intro">
-    <h4>What is Docker </h4>
-    <ul><li>Docker is an open-source platform that allows developers to automate the deployment,
-    scaling, and management of applications inside lightweight, portable containers. A
-    container is an isolated, self-contained environment that includes everything an
-    application needs to run: code, libraries, dependencies, and system tools.</li></ul>
-
-    <h4>1. Containers</h4>
-    <ul>
-        <li><strong>What are Containers: </strong>Containers are a way to package an application and its
-        dependencies in a consistent environment, regardless of the host system. They ensure
-        that an application works the same way in any environment (development, staging,
-        production) because the environment is containerized.</li>
-        <li><strong>Isolation and Portability: </strong>Containers are isolated from the host system, but share the
-        same OS kernel, making them lightweight compared to traditional virtual machines
-        (VMs). This isolation means they won’t interfere with other applications running on
-        the same system. Containers can run on any system that has Docker installed, making
-        them highly portable.</li>
-    </ul>
-
-    <h4>2. Dockerfile</h4>
-    <ul>
-        <li>
-            A Dockerfile is a script that contains a series of instructions on how to build a
-            Docker image. It specifies things like:
-            <ul>
-                <li>Which base image to use</li>
-                <li>How to copy your application code into the image</li>
-                <li>How to install dependencies</li>
-                <li>What commands to run when the container starts</li>
-            </ul>
-        </li>
-        <h5>Example Dockerfile:</h5>
-        <pre><code>
-    FROM node:14
-    WORKDIR /app
-    COPY . .
-    RUN npm install
-    EXPOSE 3000
-    CMD ["npm", "start"]
-        </code></pre>
-    </ul>
-
-    <h4>3. Images</h4>
-    <ul>
-        <li><strong>What is Images: </strong>A Docker image is a read-only template that contains the code,
-        runtime, libraries, environment variables, and configuration files needed to run an
-        application. Images are used to create containers. Docker images can be built from a
-        Dockerfile, which contains a set of instructions on how to assemble the image.</li>
-        <li><strong>Base Image an Custom Image: </strong>You can start with a base image (like Ubuntu,
-        Alpine Linux, or Node.js) and then layer your application on top. Docker Hub is a
-        central repository where you can find pre-built images for various programming
-        languages and services.</li>
-    </ul>
-
-    <h4>4. Docker Engine</h4>
-    <ul>
-        <li><strong>What is Docker Engine: </strong>Docker Engine is the core component that runs containers.
-        It is a client-server application with three major components:</li>
-        <ul>
-            <li><strong>Docker Daemon (dockerd): </strong>The background service that manages containers,
-            ages, networks, and storage volumes.</li>
-            <p><u>Note: </u> dockerd is not being used now a days as it’s obsolete. Now we are using
-            ontainerd</p>
-            <li><strong>Docker CLI (docker): </strong>The command-line interface that allows users to
-            with the Docker Daemon.</li>
-            <li><strong>REST API: </strong> Allows external programs to interact with Docker and manage
-            containers.</li>
-        </ul>
-    </ul>
-
-    <h4>5. Docker Compose </h4>
-    <ul>
-        <li>Docker Compose is a tool for defining and running multi-container Docker
-        applications. With a simple YAML file (docker-compose.yml), you can configure
-        services (e.g., web servers, databases) and their relationships, networks, and volumes.</li>
-        <h5>Example docker-compose.yml:</h5>
-        <pre><code>
-    yaml
-    version: '3'
-    services:
-    web:
-    image: nginx
-    ports:
-    - "8080:80"
-    db:
-    image: mysql
-    environment:
-    MYSQL_ROOT_PASSWORD: example
-        </code></pre>
-    </ul>
-    
-    <h4>6. Docker Registry: </h4>
-    <ul>
-        <li>A Docker registry is where Docker images are stored. Docker Hub is the most popular
-        public registry, but organizations can also use private registries. Registries allow you
-        to push and pull images to and from remote repositories.</li>
-    </ul>
-    
-    <h4>7. Networking</h4>
-    <ul>
-        <li>
-        Network Isolation Docker containers are isolated by default, and you can control
-        how they communicate with each other and with the outside world. Docker networks
-        enable this isolation and define how containers can communicate.</li>
-        <h3>Default Network Types: </h3>
-        <li><strong>Bridge: </strong>Default network for standalone containers.</li>
-        <li><strong>Host: </strong>The container shares the host's networking stack.</li>
-        <li><strong>Overlay: </strong>Used for multi-host networking in Swarm mode (Docker's
-        orchestration tool).</li>
-        <li><strong>None: </strong>No network interface for the container.</li>
-    </ul>
-
-    <h4>8. Volumes</h4>
-    <ul>
-        <li>Volumes are used for persistent storage in Docker containers. By default, all data in a
-        container is ephemeral (i.e., lost when the container is removed), but volumes allow
-        you to persist data across container restarts or even container removals. Volumes can
-        also be shared between containers.</li>
-    </ul>
-   
-    <h4>9. Docker Swarm and Kubernetes </h4>
-    <ul>
-        <li>Docker Swarm is Docker's native orchestration tool for managing clusters of Docker
-        hosts (or nodes). It allows you to deploy, manage, and scale applications across a
-        cluster of machines.</li>
-        <li>Kubernetes is a more powerful container orchestration platform used to automate
-        deployment, scaling, and operations of application containers. Kubernetes can be used
-        with Docker (although Docker is being replaced as the default container runtime in
-        some environments).
-        </li>
-    </ul>
-    
-    <h4>10. Benefits of Docker </h4>
-    <ul>
-        <li><strong>Portability:</strong>Containers run the same regardless of the host system.</li>
-        <li><strong>Efficiency: </strong>Containers are lightweight and start up quickly.</li>
-        <li><strong>Isolation: </strong>Applications and services run in isolated environments, reducing dependency conflicts.</li>
-        <li><strong>Version Control: </strong>Docker images are versioned, so you can easily roll back to previous versions.</li>
-        <li><strong>CI/CD Integration: </strong>Docker integrates well with continuous integration and deployment pipelines.</li>
-    </ul>
-    
-    <h4>11. Common Docker Commands</h4>
-    <ul>
-        <li><strong>docker build: </strong>Builds a Docker image from a Dockerfile.</li>
-        <li><strong>docker run: </strong>Runs a container from an image.</li>
-        <li><strong>docker ps: </strong>Lists running containers.</li>
-        <li><strong>docker stop: </strong>Stops a running container.</li>
-        <li><strong>docker rm: </strong>Removes a stopped container.</li>
-        <li><strong>docker pull: </strong>Pulls an image from a registry.</li>
-        <li><strong>docker push: </strong>Pushes an image to a registry.</li>
-    </ul>
-    
-    <h4>12. Use Cases for Docker</h4>
-    <ul>
-        <li><strong>Microservices: </strong>Docker is often used in microservice architectures, where each service runs in its own container.</li>
-        <li><strong>DevOps & CI/CD: </strong>Docker containers can be easily integrated into CI/CD pipelines
-        to provide consistent environments for testing and production.</li>
-        <li><strong>Cloud Deployment: </strong>Docker is widely used in cloud environments for application
-        deployment and scaling.</li>
-        <li><strong>Environment Consistency: </strong>Docker helps ensure that the environment for
-        development, testing, and production are consistent.</li>
-    </ul>
-    
-    <h4>Conclusion</h4>
-    <ul><li>Docker simplifies the process of developing, shipping, and running applications by using
-    containers, making it easier to manage dependencies, scale applications, and maintain
-    consistent environments across different stages of the software lifecycle.
-    </li></ul>
-
-</div>
-
-
-<!--Docker Commands -->
-<div class="container">
-
-    <div>
-        <h2>Docker Basic Commands</h2>
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Command</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><strong>sudo apt install docker.io</strong></td>
-                <td>Install Docker on Ubuntu Linux system.</td>
-            </tr>
-            <tr>
-                <td><strong>docker --version</strong></td>
-                <td>Check installed Docker version.</td>
-            </tr>
-            <tr>
-                <td><strong>docker info</strong></td>
-                <td>Display detailed system-wide Docker information.</td>
-            </tr>
-            <tr>
-                <td><strong>docker help</strong></td>
-                <td>Show help menu for Docker commands.</td>
-            </tr>
-            <tr>
-                <td><strong>docker login</strong></td>
-                <td>Login to Docker Hub registry.</td>
-            </tr>
-            <tr>
-                <td><strong>docker ps</strong></td>
-                <td>Show running containers.</td>
-            </tr>
-            <tr>
-                <td><strong>docker ps -a</strong></td>
-                <td>Show all containers (running and stopped).</td>
-            </tr>
-            <tr>
-                <td><strong>docker build -t image_name .</strong></td>
-                <td>Build a Docker image from Dockerfile.</td>
-            </tr>
-            <tr>
-                <td><strong>docker pull image_name</strong></td>
-                <td>Download image from Docker Hub.</td>
-            </tr>
-            <tr>
-                <td><strong>docker push image_name:tag</strong></td>
-                <td>Upload image to Docker Hub.</td>
-            </tr>
-        </table>
-
-        <h2>Docker Image Commands</h2>
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Command</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><strong>docker images</strong></td>
-                <td>List all Docker images available locally.</td>
-            </tr>
-            <tr>
-                <td><strong>docker rmi image_name</strong></td>
-                <td>Remove a Docker image.</td>
-            </tr>
-            <tr>
-                <td><strong>docker save image_name -o file.tar</strong></td>
-                <td>Save image to tar file.</td>
-            </tr>
-            <tr>
-                <td><strong>docker load -i file.tar</strong></td>
-                <td>Load image from tar file.</td>
-            </tr>
-            <tr>
-                <td><strong>docker search image_name</strong></td>
-                <td>Search image in Docker Hub.</td>
-            </tr>
-            <tr>
-                <td><strong>docker image prune</strong></td>
-                <td>Remove unused Docker images.</td>
-            </tr>
-        </table>
-
-        <h2>Docker Container Commands</h2>
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Command</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><strong>docker run image_name</strong></td>
-                <td>Create and start a new container.</td>
-            </tr>
-            <tr>
-                <td><strong>docker run -d --name container_name -p 8080:8080 image_name</strong></td>
-                <td>Run container in detached mode with port mapping.</td>
-            </tr>
-            <tr>
-                <td><strong>docker stop container_name</strong></td>
-                <td>Stop a running container.</td>
-            </tr>
-            <tr>
-                <td><strong>docker start container_name</strong></td>
-                <td>Start a stopped container.</td>
-            </tr>
-            <tr>
-                <td><strong>docker rm container_name</strong></td>
-                <td>Remove a container.</td>
-            </tr>
-            <tr>
-                <td><strong>docker logs container_name</strong></td>
-                <td>View container logs/output.</td>
-            </tr>
-            <tr>
-                <td><strong>docker exec -it container_name /bin/bash</strong></td>
-                <td>Access container terminal interactively.</td>
-            </tr>
-        </table>
-
-        <h2>Docker Volume Commands</h2>
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Command</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><strong>docker volume ls</strong></td>
-                <td>List all Docker volumes.</td>
-            </tr>
-            <tr>
-                <td><strong>docker volume create volume_name</strong></td>
-                <td>Create a new Docker volume.</td>
-            </tr>
-            <tr>
-                <td><strong>docker run -v volume_name:/data image_name</strong></td>
-                <td>Attach volume to container.</td>
-            </tr>
-            <tr>
-                <td><strong>docker volume inspect volume_name</strong></td>
-                <td>Show detailed volume information.</td>
-            </tr>
-            <tr>
-                <td><strong>docker volume rm volume_name</strong></td>
-                <td>Remove a Docker volume.</td>
-            </tr>
-            <tr>
-                <td><strong>docker volume prune</strong></td>
-                <td>Remove unused volumes.</td>
-            </tr>
-        </table>
-
-        <h2>Docker Networking Commands</h2>
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Command</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><strong>docker network ls</strong></td>
-                <td>List all available Docker networks.</td>
-            </tr>
-            <tr>
-                <td><strong>docker network create network_name</strong></td>
-                <td>Create a new custom Docker network.</td>
-            </tr>
-            <tr>
-                <td><strong>docker network connect network_name container_name</strong></td>
-                <td>Connect a container to a specific network.</td>
-            </tr>
-            <tr>
-                <td><strong>docker network inspect network_name</strong></td>
-                <td>Display detailed information about a network.</td>
-            </tr>
-            <tr>
-                <td><strong>docker network rm network_name</strong></td>
-                <td>Remove a Docker network.</td>
-            </tr>
-            <tr>
-                <td><strong>docker network disconnect network_name container_name</strong></td>
-                <td>Disconnect a container from a network.</td>
-            </tr>
-        </table>
-
-        <h2>Docker Compose Commands</h2>
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Command</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><strong>docker compose up -d</strong></td>
-                <td>Start services in detached mode using docker-compose.yml.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose down</strong></td>
-                <td>Stop and remove containers, networks, and volumes created by Compose.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose ps</strong></td>
-                <td>List running services.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose logs</strong></td>
-                <td>View output logs from services.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose build</strong></td>
-                <td>Build or rebuild services.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose stop</strong></td>
-                <td>Stop running services without removing them.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose restart</strong></td>
-                <td>Restart services.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose exec service_name bash</strong></td>
-                <td>Execute command inside a running service container.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose pull</strong></td>
-                <td>Pull latest images for services.</td>
-            </tr>
-            <tr>
-                <td><strong>docker compose up --scale service=3</strong></td>
-                <td>Scale a service to multiple container instances.</td>
-            </tr>
-        </table>
-
-        <h2>Docker Cleanup Commands</h2>
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Command</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><strong>docker system prune -a</strong></td>
-                <td>Remove all unused containers, networks, images, and cache.</td>
-            </tr>
-            <tr>
-                <td><strong>docker image prune -a</strong></td>
-                <td>Remove unused images (including dangling images).</td>
-            </tr>
-            <tr>
-                <td><strong>docker container prune</strong></td>
-                <td>Remove all stopped containers.</td>
-            </tr>
-            <tr>
-                <td><strong>docker volume prune</strong></td>
-                <td>Remove unused volumes.</td>
-            </tr>
-        </table>
-
-        <h2>Docker Security Commands</h2>
-        <table border="1" cellpadding="8">
-            <tr>
-                <th>Command</th>
-                <th>Description</th>
-            </tr>
-            <tr>
-                <td><strong>docker scan image_name</strong></td>
-                <td>Scan Docker image for vulnerabilities.</td>
-            </tr>
-            <tr>
-                <td><strong>docker history image_name</strong></td>
-                <td>Show image layer history.</td>
-            </tr>
-            <tr>
-                <td><strong>docker inspect container_name</strong></td>
-                <td>Display detailed container configuration.</td>
-            </tr>
-            <tr>
-                <td><strong>docker run --read-only image_name</strong></td>
-                <td>Run container with read-only file system for security.</td>
-            </tr>
-        </table>
-
+<div class="dashboard-wrapper">
+    <!-- SIDEBAR enriched with study navigation -->
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2>🐳 Docker<span style="font-size:1rem;">_Hub</span></h2>
+            <p>mastery · notes · commands</p>
+        </div>
+        <div class="nav-section">📚 CORE CONCEPTS</div>
+        <a href="#intro" class="nav-link"><span class="icon-em">📦</span> <span>What is Docker</span></a>
+        <a href="#containers-section" class="nav-link"><span class="icon-em">📦</span> <span>Containers</span></a>
+        <a href="#dockerfile-notes" class="nav-link"><span class="icon-em">📄</span> <span>Dockerfile</span></a>
+        <a href="#images-volumes" class="nav-link"><span class="icon-em">🏞️</span> <span>Images & Volumes</span></a>
+        <a href="#networking" class="nav-link"><span class="icon-em">🌐</span> <span>Networking</span></a>
+        <a href="#compose" class="nav-link"><span class="icon-em">⚙️</span> <span>Compose</span></a>
+        <div class="nav-section">⚡ COMMANDS REF</div>
+        <a href="#basic-cmd" class="nav-link"><span>🐚</span> <span>Basic Commands</span></a>
+        <a href="#container-cmd" class="nav-link"><span>📦</span> <span>Container lifecycle</span></a>
+        <a href="#clean-cmd" class="nav-link"><span>🧹</span> <span>Cleanup & Security</span></a>
+        <a href="#dockerfiles-show" class="nav-link"><span>🏗️</span> <span>Multi-stage</span></a>
+        <div class="nav-section">📘 STUDY NOTES</div>
+        <a href="#study-notes" class="nav-link"><span>🧠</span> <span>Pro Tips & Notes</span></a>
     </div>
-    
-    <div>
-        <h2>Dockerfile base and basic version </h2>
-        <table>
-            <tr>
-                <td>
-                <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    FROM base-image
 
-    WORKDIR /app
-
-    COPY files
-
-    RUN install dependencies
-
-    EXPOSE port
-
-    CMD start-command
-
-
-                </code></pre>
-                </td>
-
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    FROM node:20
-
-    WORKDIR /app
-
-    COPY package*.json ./
-
-    RUN npm install
-
-    COPY . .
-
-    EXPOSE 3000
-
-    CMD ["node", "server.js"]
-                    </code></pre>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    FROM eclipse-temurin:17-jre-alpine
-
-    WORKDIR /app
-
-    COPY target/app.jar app.jar
-
-    ENTRYPOINT ["java", "-jar", "app.jar"]
-
-
-                </code></pre>
-                </td>
-
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    FROM python:3.12-alpine
-
-    WORKDIR /app
-
-    COPY requirements.txt .
-
-    RUN pip install --no-cache-dir -r requirements.txt
-
-    COPY . .
-
-    CMD ["python", "run.py"]
-                    </code></pre>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    FROM nginx:alpine
-
-    COPY . /usr/share/nginx/html
-
-    EXPOSE 80
-
-    CMD ["nginx", "-g", "daemon off;"]
-
-                </code></pre>
-                </td>
-
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    FROM mysql:8
-
-    ENV MYSQL_ROOT_PASSWORD=rootpass
-
-    ENV MYSQL_DATABASE=mydb
-
-    EXPOSE 3306
-
-                    </code></pre>
-                </td>
-            </tr>
-
-        </table>
-         <h2>Dockerfile multi Stage </h2>
-        <table>
-            <tr>
-                <td>
-                <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    # Stage 1 - Build
-    FROM maven:3.9.6-eclipse-temurin-17 AS builder
-
-    WORKDIR /build
-
-    COPY pom.xml .
-
-    COPY src ./src
-
-    RUN mvn clean package -DskipTests
-
-    # Stage 2 - Runtime
-    FROM eclipse-temurin:17-jre-alpine
-
-    WORKDIR /app
-
-    COPY --from=builder /build/target/*.jar app.jar
-
-    ENTRYPOINT ["java", "-jar", "app.jar"]
-
-                </code></pre>
-                </td>
-
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    # Build Stage
-    FROM python:3.12-alpine AS builder
-
-    WORKDIR /install
-
-    COPY requirements.txt .
-
-    RUN pip install --no-cache-dir --prefix=/install -r requirements.txt
-
-    # Runtime Stage
-    FROM python:3.12-alpine
-
-    WORKDIR /app
-
-    COPY --from=builder /install /usr/local
-
-    COPY . .
-
-    CMD ["python", "run.py"]
-
-                    </code></pre>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    # Stage 1: Build
-    FROM node:20-alpine AS builder
-
-    WORKDIR /app
-
-    COPY package*.json ./
-
-    RUN npm install
-
-    COPY . .
-
-    RUN npm run build
-
-    # Stage 2: Production
-    FROM node:20-alpine
-
-    WORKDIR /app
-
-    COPY --from=builder /app/dist ./dist
-
-    COPY package*.json ./
-
-    RUN npm install --only=production
-
-    CMD ["node", "dist/server.js"]
-
-                </code></pre>
-                </td>
-
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    # Stage 1: Build React App
-    FROM node:20-alpine AS builder
-
-    WORKDIR /app
-
-    COPY package*.json ./
-
-    RUN npm install
-
-    COPY . .
-
-    RUN npm run build
-
-    # Stage 2: Serve with Nginx
-    FROM nginx:alpine
-
-    COPY --from=builder /app/build /usr/share/nginx/html
-
-    EXPOSE 80
-
-    CMD ["nginx", "-g", "daemon off;"]
-
-                    </code></pre>
-                </td>
-            </tr>
-
-            <tr>
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    # Stage 1: Build
-    FROM golang:1.22-alpine AS builder
-
-    WORKDIR /app
-
-    COPY go.mod go.sum ./
-
-    RUN go mod download
-
-    COPY . .
-
-    RUN go build -o app
-
-    # Stage 2: Minimal Runtime
-    FROM alpine:latest
-
-    WORKDIR /app
-
-    COPY --from=builder /app/app .
-
-    CMD ["./app"]
-
-                </code></pre>
-                </td>
-
-                <td>
-                    <pre><p><strong>File Name: </strong>dockerfile</p><code>
-    More Comming soon
-
-                    </code></pre>
-                </td>
-            </tr>
-
-        </table>
+    <div class="main-content">
+        <div class="top-actions">
+            <div class="search-global">
+                <span>🔍</span>
+                <input type="text" id="globalSearch" placeholder="Search commands, concepts, Dockerfile...">
+            </div>
+            <div class="note-badge">📖 Interactive Study Mode — click any command to copy</div>
+        </div>
+
+        <!-- ========== STUDY NOTE CARDS SECTION (pro-level notes) ========== -->
+        <div class="study-grid" id="study-notes">
+            <div class="note-card">
+                <div class="card-header">🧠 Best Practice Notes</div>
+                <div class="card-body">
+                    <p><strong>🔹 Layering & caching:</strong> Order Dockerfile from less frequently changed → more frequently changed (dependencies first).<br>
+                    <strong>🔹 .dockerignore:</strong> Exclude node_modules, .git, secrets to keep images slim.<br>
+                    <strong>🔹 Use specific tags:</strong> Avoid `latest` in production; pin versions like `node:20-alpine`.</p>
+                </div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">⚡ Performance Insight</div>
+                <div class="card-body">
+                    <p>✔️ Multi-stage builds reduce final image size by 70%+<br>
+                    ✔️ Alpine-based images (5-10MB) vs slim variants<br>
+                    ✔️ `docker system prune -a` — keep CI/CD clean<br>
+                    ✔️ Use `--link` only on legacy, prefer user-defined networks.</p>
+                </div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">🐳 Docker Swarm vs K8s</div>
+                <div class="card-body">
+                    <p><strong>Swarm:</strong> simpler, Docker-native, easier for small clusters.<br>
+                    <strong>K8s:</strong> industry standard, auto-healing, rolling updates, complex.<br>
+                    💡 Use Compose for dev, then translate to K8s manifests.</p>
+                </div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">🔐 Security Checklist</div>
+                <div class="card-body">
+                    <p>✔️ Run containers as non-root.<br>
+                    ✔️ `--read-only` root filesystem + tmpfs for writeable areas.<br>
+                    ✔️ Regularly `docker scan` / `docker scout`.  <br>
+                    ✔️ Use secrets manager instead of ENV for passwords.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- INTRO (with ids for navigation) -->
+        <div class="cmd-block" id="intro">
+            <h2>📘 Docker Deep Dive · DevOps Foundations</h2>
+            <div style="padding:0 1.5rem 1rem 1.5rem;">
+                <ul><li><strong>What is Docker:</strong> Open platform for developing, shipping, and running apps inside lightweight containers.</li>
+                <li><strong>Containers vs VMs:</strong> Containers share host OS kernel -> faster, smaller.</li>
+                <li><strong>Key components:</strong> Docker Engine, containerd, Docker CLI, Docker Hub.</li>
+                <li><strong>Dockerfiles</strong> define immutable images; <strong>Images</strong> are templates; <strong>Containers</strong> are running instances.</li>
+                <li><strong>Volumes</strong> persist data; <strong>Networks</strong> isolate/interconnect containers.</li>
+                <li><strong>Docker Compose</strong> orchestrates multi-container apps with YAML.</li></ul>
+                <div class="pro-tip">💡 Pro tip: Use `docker init` to generate Dockerfile + compose assets rapidly (experimental).</div>
+            </div>
+        </div>
+
+        <!-- CONTAINERS SECTION -->
+        <div id="containers-section" class="cmd-block">
+            <h2>📦 Containers & Isolation</h2>
+            <div style="padding:0 1.5rem 1rem 1.5rem;">
+                <p>✔️ Lightweight, portable, share OS kernel.<br>✔️ Namespaces (PID, NET, MNT) + cgroups provide resource isolation.<br>✔️ Container = running instance of an image.</p>
+            </div>
+        </div>
+
+        <!-- COMMAND BLOCKS (all original commands upgraded) -->
+        <div class="cmd-block" id="basic-cmd">
+            <h2>🐚 Docker Basic Commands</h2>
+            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
+            <tbody><tr><td>sudo apt install docker.io</td><td>Install Docker on Ubuntu</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker --version</td><td>Show Docker version</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker info</td><td>System-wide info</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker login</td><td>Login to Docker Hub</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker build -t myapp .</td><td>Build image from Dockerfile</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker pull nginx:alpine</td><td>Pull image from registry</td><td><button class="copy-btn">Copy</button></td></tr>
+            </tbody></table>
+        </div>
+
+        <div class="cmd-block" id="container-cmd">
+            <h2>📌 Container Lifecycle (run · stop · exec)</h2>
+            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
+            <tbody><tr><td>docker run -d --name web -p 80:80 nginx</td><td>Detached + port forward</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker ps -a</td><td>List all containers</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker stop web</td><td>Stop container gracefully</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker logs -f web</td><td>Follow logs</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker exec -it web /bin/sh</td><td>Interactive shell</td><td><button class="copy-btn">Copy</button></td></tr>
+            </tbody></table>
+        </div>
+
+        <!-- Images & Volumes -->
+        <div class="cmd-block" id="images-volumes">
+            <h2>🏞️ Images & Volumes Management</h2>
+            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
+            <tbody><tr><td>docker images</td><td>List local images</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker rmi alpine:latest</td><td>Remove image</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker volume create data_vol</td><td>Create named volume</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker run -v data_vol:/app/data alpine</td><td>Mount volume</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker volume prune</td><td>Remove unused volumes</td><td><button class="copy-btn">Copy</button></td></tr>
+            </tbody></table>
+        </div>
+
+        <div class="cmd-block" id="networking">
+            <h2>🌐 Docker Networking</h2>
+            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
+            <tbody><tr><td>docker network ls</td><td>List networks</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker network create app-net</td><td>Create custom bridge</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker network connect app-net container1</td><td>Attach container</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker network inspect app-net</td><td>Inspect network</td><td><button class="copy-btn">Copy</button></td></tr>
+            </tbody></table>
+        </div>
+
+        <div class="cmd-block" id="compose">
+            <h2>⚙️ Docker Compose · Multi-service</h2>
+            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
+            <tbody><tr><td>docker compose up -d</td><td>Start services in bg</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker compose down -v</td><td>Stop and remove volumes</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker compose logs --tail=50</td><td>View recent logs</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker compose exec db bash</td><td>Run command inside service</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker compose up --scale worker=3</td><td>Scale replicas</td><td><button class="copy-btn">Copy</button></td></tr>
+            </tbody></table>
+        </div>
+
+        <div class="cmd-block" id="clean-cmd">
+            <h2>🧹 Cleanup & Security</h2>
+            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
+            <tbody><tr><td>docker system prune -a --volumes</td><td>Complete cleanup</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker scan nginx</td><td>Vulnerability scan</td><td><button class="copy-btn">Copy</button></td></tr>
+            <tr><td>docker run --read-only --tmpfs /tmp alpine</td><td>Read-only security</td><td><button class="copy-btn">Copy</button></td></tr>
+            </tbody></table>
+        </div>
+
+        <!-- DOCKERFILE MULTI-STAGE SHOWCASE (enhanced) -->
+        <div class="dockerfile-showcase" id="dockerfiles-show">
+            <h2>🏗️ Multi-Stage Dockerfile Blueprints (production ready)</h2>
+            <div class="flex-dockerfiles">
+                <div class="dockerfile-card"><div class="card-header" style="background:#eef6fa;">🐳 Node + React</div><pre><code>FROM node:20 AS builder
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci
+COPY . .
+RUN npm run build
+
+FROM nginx:alpine
+COPY --from=builder /app/dist /usr/share/nginx/html
+EXPOSE 80</code></pre></div>
+                <div class="dockerfile-card"><div class="card-header" style="background:#eef6fa;">☕ Spring Boot</div><pre><code>FROM maven:3.9 AS build
+WORKDIR /build
+COPY pom.xml .
+COPY src ./src
+RUN mvn package
+
+FROM eclipse-temurin:17-jre-alpine
+COPY --from=build /build/target/*.jar app.jar
+ENTRYPOINT ["java","-jar","app.jar"]</code></pre></div>
+                <div class="dockerfile-card"><div class="card-header" style="background:#eef6fa;">🐍 Python (uvicorn)</div><pre><code>FROM python:3.12-slim AS builder
+COPY requirements.txt .
+RUN pip install --user -r requirements.txt
+
+FROM python:3.12-alpine
+WORKDIR /app
+COPY --from=builder /root/.local /root/.local
+COPY . .
+CMD ["uvicorn", "main:app", "--host","0.0.0.0"]</code></pre></div>
+                <div class="dockerfile-card"><div class="card-header" style="background:#eef6fa;">🏎️ Go scratch</div><pre><code>FROM golang:1.22 AS build
+WORKDIR /src
+COPY go.mod go.sum ./
+RUN go mod download
+COPY . .
+RUN CGO_ENABLED=0 go build -o app
+
+FROM scratch
+COPY --from=build /src/app /app
+ENTRYPOINT ["/app"]</code></pre></div>
+            </div>
+            <div class="pro-tip" style="margin-top:1rem;">✨ Study note: multi-stage drastically reduces image size, no build tools in production runtime.</div>
+        </div>
+        <footer>🐳 Docker Study Hub — Click any [Copy] button | Use search to filter commands & concepts instantly</footer>
     </div>
 </div>
 
+<script>
+    // COPY BUTTONS (full copy functionality)
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            const row = this.closest('tr');
+            if (row) {
+                let commandText = row.querySelector('td:first-child')?.innerText.trim() || '';
+                navigator.clipboard.writeText(commandText).then(() => {
+                    this.innerText = '✓ Done';
+                    setTimeout(() => this.innerText = 'Copy', 1400);
+                }).catch(() => alert('Copy manually: ' + commandText));
+            } else {
+                alert("Error: command missing");
+            }
+        });
+    });
+
+    // GLOBAL SEARCH (filters all tables + study cards + intro content)
+    const searchField = document.getElementById('globalSearch');
+    function filterAll(term) {
+        term = term.toLowerCase().trim();
+        // tables rows
+        const allRows = document.querySelectorAll('.cmd-table tbody tr');
+        allRows.forEach(row => {
+            const text = row.innerText.toLowerCase();
+            row.style.display = text.includes(term) ? '' : 'none';
+        });
+        // study note cards
+        const studyCards = document.querySelectorAll('.note-card');
+        studyCards.forEach(card => {
+            const cardText = card.innerText.toLowerCase();
+            card.style.display = cardText.includes(term) ? '' : 'none';
+        });
+        // intro blocks, dockerfile cards
+        const dockerCards = document.querySelectorAll('.dockerfile-card');
+        dockerCards.forEach(card => {
+            const txt = card.innerText.toLowerCase();
+            card.style.display = txt.includes(term) ? '' : 'none';
+        });
+        const allIntroDivs = document.querySelectorAll('#intro, #containers-section, .pro-tip, .cmd-block:not(.cmd-block table)');
+        if (term !== "") {
+            document.querySelectorAll('.cmd-block, .dockerfile-showcase, .study-grid').forEach(block => {
+                let hasVisible = false;
+                if (block.querySelectorAll('.cmd-table tbody tr:not([style*="display: none"])').length > 0) hasVisible = true;
+                if (block.querySelectorAll('.dockerfile-card:not([style*="display: none"])').length > 0) hasVisible = true;
+                if (block.querySelectorAll('.note-card:not([style*="display: none"])').length > 0) hasVisible = true;
+                if (block.innerText.toLowerCase().includes(term) && block !== document.querySelector('.cmd-block')) hasVisible = true;
+                block.style.display = hasVisible ? '' : 'none';
+            });
+        } else {
+            document.querySelectorAll('.cmd-block, .dockerfile-showcase, .study-grid').forEach(block => block.style.display = '');
+            dockerCards.forEach(c => c.style.display = '');
+            studyCards.forEach(c => c.style.display = '');
+            allRows.forEach(r => r.style.display = '');
+        }
+    }
+
+    searchField.addEventListener('keyup', () => filterAll(searchField.value));
+    
+    // Sidebar smooth anchor scroll with offset for fixed header
+    document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                const offset = 70;
+                const y = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({top: y, behavior: 'smooth'});
+            }
+        });
+    });
+</script>
 </body>
+</html>

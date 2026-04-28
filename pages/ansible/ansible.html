@@ -1,600 +1,410 @@
-<link rel="stylesheet" href="style.css">
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    <title>📡 Ansible Mastery Hub · DevOps Automation Study Guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
 <body>
-
-  <h1 style="text-align: center;">Ansible complete guide</h1>
-
-  <div>
-
-    <div class="section">
-      <h2>Introduction to Ansible</h2>
-      <p>
-        Ansible is an open-source automation tool used for configuration management,
-        application deployment, and infrastructure automation.
-      </p>
+<div class="dashboard-wrapper">
+    <div class="sidebar">
+        <div class="sidebar-brand">
+            <h2>⚡ Ansible<span style="font-size:1rem;">_Hub</span></h2>
+            <p>automation · playbooks · mastery</p>
+        </div>
+        <div class="nav-section">📚 CORE STUDY</div>
+        <a href="#intro" class="nav-link"><span class="icon-em">📖</span> <span>Intro & Setup</span></a>
+        <a href="#playbooks" class="nav-link"><span class="icon-em">📜</span> <span>Playbook Examples</span></a>
+        <a href="#advanced" class="nav-link"><span class="icon-em">⚙️</span> <span>Variables & Handlers</span></a>
+        <a href="#loops-conditions" class="nav-link"><span class="icon-em">🔄</span> <span>Loops & Conditions</span></a>
+        <div class="nav-section">🧠 PRO NOTES</div>
+        <a href="#study-notes" class="nav-link"><span>📘</span> <span>Best Practices</span></a>
+        <a href="#commands-ref" class="nav-link"><span>🐚</span> <span>Commands & Tags</span></a>
+        <div class="nav-section">🔗 RESOURCES</div>
+        <a href="#resources" class="nav-link"><span>🌐</span> <span>Docs & Galaxy</span></a>
     </div>
 
-    <div class="section">
-      <h2>Ansible Setup & Commands</h2>
-      <ul>
-        <li><code>sudo apt update && sudo apt install ansible -y</code> – Install Ansible.</li>
-        <li><code>ansible --version</code> – Check installed version.</li>
-        <li><code>ansible all -m ping -i inventory.ini</code> – Test connectivity.</li>
-        <li><code>ansible-playbook playbook.yml -i inventory.ini</code> – Run playbook.</li>
-        <li><code>ansible-galaxy install role_name</code> – Install role from Galaxy.</li>
-      </ul>
+    <div class="main-content">
+        <div class="top-actions">
+            <div class="search-global">
+                <span>🔍</span>
+                <input type="text" id="globalSearch" placeholder="Search playbooks, commands, concepts (e.g., 'cron', 'firewall', 'loop')">
+            </div>
+            <div class="note-badge">📘 Study Mode — Click Copy to grab any code</div>
+        </div>
 
-      <h2>Useful Full Commands</h2>
-      <ul>
-        <li><code>ansible-playbook --syntax-check playbook.yml</code></li>
-        <li><code>ansible localhost -m ping</code></li>
-        <li><code>ansible all -m ping</code></li>
-        <li><code>ansible 192.168.1.10 -m ping</code></li>
-        <li><code>ansible all -m copy -a "src=/path/file dest=/tmp/file"</code></li>
-        <li><code>ansible all -m service -a "name=nginx state=reloaded"</code></li>
-        <li><code>ansible all -m shell -a "/tmp/script.sh"</code></li>
-        <li><code>ansible all -m command -a "free -h"</code></li>
-        <li><code>ansible all -m apt -a "name=vim state=present" -b</code></li>
-      </ul>
+        <!-- STUDY NOTE CARDS (pro study notes) -->
+        <div class="study-grid" id="study-notes">
+            <div class="note-card">
+                <div class="card-header">🧠 Idempotency Principle</div>
+                <div class="card-body">Ansible ensures idempotency: running a playbook multiple times yields same result. Use <code>state: present/absent</code> effectively. Always test with <code>--check</code> mode.</div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">⚡ Jinja2 & Variables</div>
+                <div class="card-body">Leverage <code>{{ ansible_os_family }}</code>, <code>ansible_facts</code>. Use <code>vars_files</code> or <code>group_vars</code> for secrets. Avoid hardcoding paths.</div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">🔐 Security First</div>
+                <div class="card-body">Use <code>ansible-vault</code> to encrypt sensitive vars. Run playbooks with <code>--become</code> carefully. Limit <code>hosts</code> in production.</div>
+            </div>
+            <div class="note-card">
+                <div class="card-header">📦 Roles Structure</div>
+                <div class="card-body">Roles = reusable units (tasks, handlers, defaults). Use <code>ansible-galaxy init role_name</code> to scaffold. Follow best-practice directory layout.</div>
+            </div>
+        </div>
+
+        <!-- INTRODUCTION SECTION -->
+        <div class="section" id="intro">
+            <h2>📡 Introduction to Ansible</h2>
+            <p>Ansible is an open-source automation tool for configuration management, application deployment, and infrastructure as code. It's agentless, uses SSH, and YAML-based playbooks.</p>
+            <div class="pro-tip">✨ Pro tip: Always start with <code>ansible all -m ping -i inventory.ini</code> to test connectivity before running playbooks.</div>
+        </div>
+
+        <!-- COMMANDS & SETUP -->
+        <div class="section" id="commands-ref">
+            <h2>🐚 Essential Ansible Commands</h2>
+            <ul>
+                <li><code>sudo apt update && sudo apt install ansible -y</code> – Install Ansible on Ubuntu/Debian.</li>
+                <li><code>ansible --version</code> – Verify installation and config paths.</li>
+                <li><code>ansible all -m ping -i inventory.ini</code> – Test connectivity to all hosts.</li>
+                <li><code>ansible-playbook playbook.yml --syntax-check</code> – Validate playbook before execution.</li>
+                <li><code>ansible localhost -m setup | less</code> – Gather facts about the system (great for debugging).</li>
+                <li><code>ansible-doc -l</code> – List all available modules.</li>
+                <li><code>ansible-galaxy install geerlingguy.nginx</code> – Install community role.</li>
+            </ul>
+            <button class="copy-btn" data-copyall="basic">📋 Copy commands list</button>
+        </div>
+
+        <!-- FIRST PLAYBOOK -->
+        <div class="section" id="playbooks">
+            <h2>📝 First Playbook & Basic Tasks</h2>
+            <pre><code>---
+- name: First Basic Playbook
+  hosts: localhost
+  tasks:
+    - name: Test connectivity
+      ping:</code></pre>
+            <button class="copy-btn" data-copy="ping-playbook">Copy playbook</button>
+            <p><strong>Run:</strong> <code>ansible-playbook firstplaybook.yml</code></p>
+
+            <h2 style="margin-top:1rem;">➕ Multiple Tasks in One Playbook</h2>
+            <pre><code>---
+- name: Multiple Tasks Playbook
+  hosts: localhost
+  tasks:
+    - name: Test connectivity
+      ping:
+    - name: Display system info
+      command: uname -a</code></pre>
+            <button class="copy-btn" data-copy="multi-task">Copy playbook</button>
+        </div>
+
+        <!-- APP INSTALLATION & REMOTE CONFIG -->
+        <div class="section">
+            <h2>📦 Install & Manage Services (Apache/Nginx)</h2>
+            <pre><code>---
+- name: Install and Start Apache
+  hosts: all
+  become: yes
+  tasks:
+    - name: Install Apache (Ubuntu)
+      apt:
+        name: apache2
+        state: present
+    - name: Start Apache service
+      service:
+        name: apache2
+        state: started
+        enabled: yes</code></pre>
+            <button class="copy-btn" data-copy="install-apache">Copy playbook</button>
+        </div>
+
+        <!-- FILE COPY & BACKUP -->
+        <div class="section">
+            <h2>📂 Copy Files & Backup Management</h2>
+            <pre><code>---
+- name: Copy file to remote with backup
+  hosts: all
+  become: yes
+  tasks:
+    - name: Copy file with backup
+      copy:
+        src: /home/user/file.txt
+        dest: /tmp/file_backup.txt
+        backup: yes
+        owner: root
+        mode: '0644'</code></pre>
+            <button class="copy-btn" data-copy="copy-backup">Copy playbook</button>
+        </div>
+
+        <!-- DIRECTORY, FILE, PERMISSION -->
+        <div class="section">
+            <h2>📁 Manage Directories, Files & Permissions</h2>
+            <pre><code>---
+- name: Create & Remove directory and file
+  hosts: localhost
+  become: yes
+  tasks:
+    - name: Create directory
+      file:
+        path: /home/ansible_test
+        state: directory
+        mode: '0755'
+    - name: Create empty file
+      file:
+        path: /home/ansible_test/test.txt
+        state: touch
+    - name: Remove directory
+      file:
+        path: /home/ansible_test
+        state: absent</code></pre>
+            <button class="copy-btn" data-copy="file-dir">Copy playbook</button>
+        </div>
+
+        <!-- CRON & ENV VARS -->
+        <div class="section" id="advanced">
+            <h2>⏰ Cron Jobs & Environment Variables</h2>
+            <pre><code>---
+- name: Add cron job and env variable
+  hosts: all
+  become: yes
+  tasks:
+    - name: Add daily backup cron
+      cron:
+        name: "Daily backup"
+        minute: "0"
+        hour: "2"
+        job: "/usr/local/bin/backup.sh"
+    - name: Set env var in bashrc
+      lineinfile:
+        path: /home/user/.bashrc
+        line: 'export APP_ENV="production"'
+        create: yes</code></pre>
+            <button class="copy-btn" data-copy="cron-vars">Copy playbook</button>
+        </div>
+
+        <!-- USER MANAGEMENT & PASSWORD -->
+        <div class="section">
+            <h2>👥 User & Group Management (with hashed password)</h2>
+            <pre><code>---
+- name: Create group, user and set password
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create group
+      group:
+        name: devops
+        state: present
+    - name: Create user
+      user:
+        name: ansible_user
+        group: devops
+        shell: /bin/bash
+        password: "{{ 'SecurePass123' | password_hash('sha512') }}"</code></pre>
+            <button class="copy-btn" data-copy="user-group">Copy playbook</button>
+        </div>
+
+        <!-- FIREWALL & TAGS -->
+        <div class="section">
+            <h2>🔥 Firewall Management & Tags</h2>
+            <pre><code>---
+- name: Configure firewall (firewalld)
+  hosts: all
+  become: yes
+  tasks:
+    - name: Allow HTTP
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+        immediate: yes
+      tags: [ 'web' ]
+    - name: Allow HTTPS
+      firewalld:
+        service: https
+        permanent: yes
+        state: enabled
+        immediate: yes
+      tags: [ 'web' ]</code></pre>
+            <button class="copy-btn" data-copy="firewall">Copy playbook</button>
+            <p><strong>Tag usage:</strong> <code>ansible-playbook firewall.yml --tags "web"</code></p>
+        </div>
+
+        <!-- VARIABLES & HANDLERS -->
+        <div class="section" id="loops-conditions">
+            <h2>📌 Variables, Handlers & Conditionals</h2>
+            <pre><code>---
+- name: Variables & Handlers Example
+  hosts: all
+  become: yes
+  vars:
+    web_pkg: nginx
+  tasks:
+    - name: Install web server
+      apt:
+        name: "{{ web_pkg }}"
+        state: present
+      notify: restart_webserver
+    - name: Conditional install based on OS
+      debug:
+        msg: "Running on Debian family"
+      when: ansible_os_family == "Debian"
+
+  handlers:
+    - name: restart_webserver
+      service:
+        name: "{{ web_pkg }}"
+        state: restarted</code></pre>
+            <button class="copy-btn" data-copy="vars-handlers">Copy playbook</button>
+        </div>
+
+        <!-- LOOPS: CREATE USERS & PACKAGES -->
+        <div class="section">
+            <h2>🔄 Loops: Create Multiple Users & Install Packages</h2>
+            <pre><code>---
+- name: Loops with users and packages
+  hosts: all
+  become: yes
+  tasks:
+    - name: Create multiple users
+      user:
+        name: "{{ item }}"
+        state: present
+        shell: /bin/bash
+      loop:
+        - john
+        - jane
+        - devops
+    - name: Install packages list
+      apt:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - git
+        - curl
+        - htop
+      when: ansible_os_family == "Debian"</code></pre>
+            <button class="copy-btn" data-copy="loop-users">Copy playbook</button>
+        </div>
+
+        <!-- DOWNLOAD FILE & PROCESS MGMT -->
+        <div class="section">
+            <h2>📥 Download Files & Process Management</h2>
+            <pre><code>---
+- name: Download artifact and manage nginx service
+  hosts: all
+  become: yes
+  tasks:
+    - name: Download file from internet
+      get_url:
+        url: "https://example.com/app.zip"
+        dest: "/tmp/app.zip"
+        mode: '0644'
+    - name: Ensure nginx is running
+      service:
+        name: nginx
+        state: started
+        enabled: yes</code></pre>
+            <button class="copy-btn" data-copy="download-process">Copy playbook</button>
+        </div>
+
+        <!-- RESOURCES SECTION -->
+        <div class="section" id="resources">
+            <h2>📚 Official Resources & Community</h2>
+            <ul>
+                <li><a href="https://docs.ansible.com/" target="_blank">📘 Ansible Documentation</a></li>
+                <li><a href="https://galaxy.ansible.com/" target="_blank">🌌 Ansible Galaxy (Roles)</a></li>
+                <li><a href="https://github.com/ansible/ansible" target="_blank">🐙 GitHub - Ansible</a></li>
+                <li><a href="https://stackoverflow.com/questions/tagged/ansible" target="_blank">💬 Stack Overflow (Ansible)</a></li>
+                <li><a href="https://www.redhat.com/en/technologies/management/ansible" target="_blank">🔴 Red Hat Ansible Automation</a></li>
+            </ul>
+            <div class="pro-tip">⭐ Study recommendation: build a small lab with Vagrant + Ansible to practice roles, conditionals, and handlers.</div>
+        </div>
+        <footer>⚡ Ansible Mastery Hub — Search any keyword, click copy, become automation expert.</footer>
     </div>
+</div>
 
+<script>
+    // COPY FUNCTIONALITY for each code block and extra selectors
+    document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', function(e) {
+            let codeToCopy = "";
+            // Special handling if it has data-copy attribute (adjacent pre code)
+            if (this.hasAttribute('data-copy')) {
+                let parentDiv = this.closest('.section');
+                let preElem = parentDiv ? parentDiv.querySelector('pre') : null;
+                if (preElem) codeToCopy = preElem.innerText;
+                else codeToCopy = "Playbook content unavailable";
+            } else if (this.hasAttribute('data-copyall')) {
+                // copy all command list items
+                let cmdSection = document.getElementById('commands-ref');
+                if (cmdSection) {
+                    let listItems = cmdSection.querySelectorAll('ul li');
+                    let commandsText = Array.from(listItems).map(li => li.innerText).join('\n');
+                    codeToCopy = commandsText;
+                }
+            } else {
+                let preElem = this.closest('.section')?.querySelector('pre');
+                if (preElem) codeToCopy = preElem.innerText;
+                else codeToCopy = "Content ready";
+            }
+            if (codeToCopy) {
+                navigator.clipboard.writeText(codeToCopy).then(() => {
+                    this.innerText = '✓ Copied!';
+                    setTimeout(() => { this.innerText = this.hasAttribute('data-copyall') ? '📋 Copy commands list' : (this.hasAttribute('data-copy') ? 'Copy playbook' : 'Copy'); }, 1500);
+                }).catch(() => alert('Could not copy, but you can select manually'));
+            } else {
+                alert('No code block found to copy');
+            }
+        });
+    });
 
-    <div class="section">
-      <h2>First Playbook Syntax</h2>
-      <p><strong>File:</strong> firstplaybook.yml</p>
-
-      <pre><code>
-      ---
-      - name: First Basic Playbook
-        hosts: localhost
-
-        tasks:
-          - name: Test connectivity
-            ping:
-      </code></pre>
-      <p><strong>Run:</strong> <code>ansible-playbook firstplaybook.yml</code></p>
-    </div>
-
+    // GLOBAL SEARCH [filters sections, study cards, etc]
+    const searchInput = document.getElementById('globalSearch');
+    function performSearch() {
+        let term = searchInput.value.toLowerCase().trim();
+        const allSections = document.querySelectorAll('.section');
+        const noteCards = document.querySelectorAll('.note-card');
+        
+        allSections.forEach(section => {
+            const text = section.innerText.toLowerCase();
+            if (term === "") {
+                section.style.display = "";
+            } else {
+                section.style.display = text.includes(term) ? "" : "none";
+            }
+        });
+        noteCards.forEach(card => {
+            const text = card.innerText.toLowerCase();
+            if (term === "") {
+                card.style.display = "";
+            } else {
+                card.style.display = text.includes(term) ? "" : "none";
+            }
+        });
+        if (term !== "") {
+            const introBlock = document.getElementById('intro');
+            if (introBlock && !introBlock.innerText.toLowerCase().includes(term)) introBlock.style.display = "none";
+        } else {
+            document.querySelectorAll('.section, .note-card').forEach(el => el.style.display = "");
+        }
+    }
+    searchInput.addEventListener('keyup', performSearch);
     
-    <div class="section">
-      <h2>Add Multiple Tasks in One Playbook</h2>
-      <p><strong>File:</strong> multiple_tasks_playbook.yml</p>
-
-      <pre><code>
-      ---
-      - name: Multiple Tasks Playbook
-        hosts: localhost
-
-        tasks:
-          - name: Test connectivity
-            ping:
-
-          - name: Display system info
-            command: uname -a
-      </code></pre>
-      <p><strong>Run:</strong> <code>ansible-playbook multiple_tasks_playbook.yml</code></p>
-    </div>
-
-    
-    <div class="section">
-      <h2>App Installation</h2>
-      <p><strong>File:</strong> install_apache.yml</p>
-
-      <pre><code>
-      ---
-      - name: Install and Start Apache
-        hosts: localhost
-        become: yes
-
-        tasks:
-          - name: Install Apache
-            apt:
-              name: apache2
-              state: present
-
-          - name: Start Apache
-            service:
-              name: apache2
-              state: started
-              enabled: yes
-      </code></pre>
-      <p><strong>Run:</strong> <code>ansible-playbook install_apache.yml</code></p>
-    </div>
-
-
-    <div class="section">
-      <h2>Remote Server Configuration</h2>
-      <p><strong>File:</strong> remote_server_config.yml</p>
-
-      <pre><code>---
-      - name: Configure Remote Server
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Install Nginx
-            apt:
-              name: nginx
-              state: present
-
-          - name: Start Nginx
-            service:
-              name: nginx
-              state: started
-              enabled: yes
-      </code></pre>
-      <p><strong>Run:</strong> <code>ansible-playbook remote_server_config.yml</code></p>
-    </div>
-
-
-    <div class="section">
-      <h2>Copy File to Remote Server</h2>
-      <p><strong>File:</strong> copy_file_remote.yml</p>
-
-      <pre><code>---
-      - name: Copy file to remote server
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Copy file
-            copy:
-              src: /home/pankaj/Desktop/file.txt
-              dest: /tmp/file.txt
-              owner: pankaj
-              group: pankaj
-              mode: '0644'
-      </code></pre>
-      <p><strong>Run:</strong> <code>ansible-playbook copy_file_remote.yml</code></p>
-    </div>
-
-
-    <div class="section">
-      <h2>Taking Backup of Files</h2>
-      <p><strong>File:</strong> backup_file.yml</p>
-
-      <pre><code>---
-      - name: Backup a file
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Backup file
-            copy:
-              src: /home/pankaj/Desktop/file.txt
-              dest: /home/pankaj/backup/file_backup.txt
-              backup: yes
-              owner: pankaj
-              group: pankaj
-              mode: '0644'
-      </code></pre>
-      <p><strong>Run:</strong> <code>ansible-playbook backup_file.yml</code></p>
-    </div>
-
-
-    <div class="section">
-      <h2>Create Directory, File, Set Permission & Remove (absent)</h2>
-      <p><strong>file:</strong> create_directory.yml</p>
-
-      <pre><code>---
-      - name: Manage directory and file
-        hosts: localhost
-        become: yes
-
-        tasks:
-          - name: Create directory
-            file:
-              path: /home/pankaj/ansible_test_dir
-              state: directory
-              owner: pankaj
-              group: pankaj
-              mode: '0755'
-
-          - name: Create empty file
-            file:
-              path: /home/pankaj/ansible_test_dir/test.txt
-              state: touch
-              owner: pankaj
-              group: pankaj
-              mode: '0644'
-
-          - name: Remove directory
-            file:
-              path: /home/pankaj/ansible_test_dir
-              state: absent
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook create_directory.yml</p>
-    </div>
-
-
-    <div class="section">
-      <h2>Run Scripts on Remote Servers</h2>
-      <p><strong>file:</strong> run_script_remote.yml</p>
-
-      <pre><code>---
-      - name: Run script on remote server
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Execute script
-            shell: /home/pankaj/scripts/myscript.sh
-            args:
-              executable: /bin/bash
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook run_script_remote.yml</p>
-    </div>
-
-
-    <div class="section">
-      <h2>Adding Cron Jobs on Remote Servers</h2>
-      <p><strong>file:</strong> add_cron_job.yml</p>
-
-      <pre><code>---
-      - name: Add cron job
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Add cron job
-            cron:
-              name: "My Cron Job"
-              minute: "0"
-              hour: "2"
-              user: pankaj
-              job: "/home/pankaj/scripts/myscript.sh"
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook add_cron_job.yml</p>
-    </div>
-
-
-    <div class="section">
-      <h2>Set Environment Variables</h2>
-      <p><strong>file:</strong> set_env_vars.yml</p>
-
-      <pre><code>---
-      - name: Set environment variable
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Add variable in bashrc
-            lineinfile:
-              path: /home/pankaj/.bashrc
-              line: 'export MY_VAR="my_value"'
-              create: yes
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook set_env_vars.yml</p>
-    </div>
-
-
-    <div class="section">
-      <h2>User Management (Add User & Group)</h2>
-      <p><strong>file:</strong> user_management.yml</p>
-
-      <pre><code>---
-      - name: Manage users and groups
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Create group
-            group:
-              name: mygroup
-              state: present
-
-          - name: Create user
-            user:
-              name: myuser
-              group: mygroup
-              comment: "My Ansible User Account"
-              shell: /bin/bash
-              home: /home/myuser
-              state: present
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook user_management.yml</p>
-    </div>
-
-
-    <div class="section">
-      <h2>User Password Management</h2>
-      <p><strong>file:</strong> set_user_password.yml</p>
-
-      <pre><code>---
-      - name: Set user password
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Update user password
-            user:
-              name: myuser
-              update_password: always
-              password: "{{ 'mypassword' | password_hash('sha512') }}"
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook set_user_password.yml</p>
-    </div>
-
-
-    <div class="section">
-      <h2>Process Management</h2>
-      <p><strong>file:</strong> manage_processes.yml</p>
-
-      <pre><code>---
-      - name: Ensure nginx is running
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Start nginx service
-            service:
-              name: nginx
-              state: started
-              enabled: yes
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook manage_processes.yml</p>
-      </div>
-
-
-    <div class="section">
-      <h2>Download Files From Internet</h2>
-      <p><strong>file:</strong> download_files.yml</p>
-
-      <pre><code>---
-      - name: Download file
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Download file
-            get_url:
-              url: "https://example.com/file.zip"
-              dest: "/home/pankaj/downloads/file.zip"
-              mode: '0644'
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook download_files.yml</p>
-    </div>
-
-
-    <div class="section">
-      <h2>Firewall Management</h2>
-      <p><strong>file:</strong> manage_firewall.yml</p>
-
-      <pre><code>---
-      - name: Manage firewall rules
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Allow HTTP
-            firewalld:
-              service: http
-              permanent: yes
-              state: enabled
-              immediate: yes
-
-          - name: Allow HTTPS
-            firewalld:
-              service: https
-              permanent: yes
-              state: enabled
-              immediate: yes
-      </code></pre>
-      <p><strong>Run:</strong> ansible-playbook manage_firewall.yml</p>
-    </div>
-
-
-    <div class="section">
-      <h2>Tags in Ansible</h2>
-      <p><strong>File:</strong> ansible_tags.yml</p>
-
-      <pre><code>---
-      - name: Example Playbook with Tags
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Install Apache
-            apt:
-              name: apache2
-              state: present
-            tags:
-              - install
-
-          - name: Start Apache
-            service:
-              name: apache2
-              state: started
-              enabled: yes
-            tags:
-              - start
-    </code></pre>
-    <p><strong>Run Commands:</strong></p>
-    <pre><code>
-    ansible-playbook ansible_tags.yml --tags "install"
-    ansible-playbook ansible_tags.yml --list-tags
-    ansible-playbook ansible_tags.yml --skip-tags "start"
-    </code></pre>
-  </div>
-
-
-  <div class="section">
-    <h2>Variables in Ansible</h2>
-    <p><strong>File:</strong> ansible_variables.yml</p>
-
-    <pre><code>---
-    - name: Example Playbook with Variables
-      hosts: all
-      become: yes
-
-      vars:
-        packages:
-          - nginx
-          - mysql-server
-          - vim
-
-        web_service: nginx
-
-      tasks:
-        - name: Install Packages
-          apt:
-            name: "{{ packages }}"
-            state: present
-          tags:
-            - install
-
-        - name: Start Web Service
-          service:
-            name: "{{ web_service }}"
-            state: started
-            enabled: yes
-          tags:
-            - start
-    </code></pre>
-    <p><strong>Run Command:</strong> ansible-playbook ansible_variables.yml</p>
-  </div>
-
-
-  <div class="section">
-    <h2>Handlers in Ansible</h2>
-    <p><strong>File:</strong> firewall.yml</p>
-
-    <pre><code>---
-    - name: Firewall Changes
-      hosts: all
-      become: yes
-
-      tasks:
-        - name: Enable HTTP Service in Firewalld
-          firewalld:
-            port: 80/tcp
-            permanent: true
-            state: enabled
-          notify:
-            - Reload firewalld
-
-      handlers:
-        - name: Reload firewalld
-          service:
-            name: firewalld
-            state: reloaded
-      </code></pre>
-      <p><strong>Run Command:</strong> ansible-playbook firewall.yml</p>
-    </div>
-
-      
-    <div class="section">
-      <h2>Condition in Ansible</h2>
-      <p><strong>File:</strong> condition.yml</p>
-
-      <pre><code>
-      ---
-      - name: Install Web Server Based on OS
-        hosts: all
-        become: true
-
-        tasks:
-          - name: Install httpd on RedHat
-            yum:
-              name: httpd
-              state: present
-            when: ansible_os_family == "RedHat"
-
-          - name: Install apache2 on Debian/Ubuntu
-            apt:
-              name: apache2
-              state: present
-            when: ansible_os_family == "Debian"
-      </code></pre>
-      <p><strong>Run Command:</strong> ansible-playbook conditation.yml</p>
-    </div>
-
-
-    <div>
-      <h2>User Create Using Loops</h2>
-      <p><strong>File:</strong> create_user.yml</p>
-
-      <pre><code>
-      ---
-      - name: Create multiple users using loop
-        hosts: all
-        become: yes
-
-        tasks:
-          - name: Create users
-            user:
-              name: "{{ item }}"
-              comment: "User created by Ansible"
-              shell: /bin/bash
-              state: present
-            loop:
-              - raju
-              - ram
-              - sam
-              - lucky
-              - pankaj
-      </code></pre>
-      <p><strong>Run Command:</strong> ansible-playbook create_user.yml</p>
-    </div>
-
-
-    <div>
-      <h2>Package Install Using Loop</h2>
-      <p><strong>File:</strong> package_install.yml</p>
-
-      <pre><code>
-      ---
-      - name: Install packages using loop
-        hosts: all
-        become: yes
-
-        vars:
-          packages:
-            - nginx
-            - httpd
-            - firewalld
-            - vim
-
-        tasks:
-          - name: Install packages on Debian
-            apt:
-              name: "{{ item }}"
-              state: present
-            loop: "{{ packages }}"
-            when: ansible_os_family == "Debian"
-            tags:
-              - install
-
-          - name: Install packages on RedHat
-            yum:
-              name: "{{ item }}"
-              state: present
-            loop: "{{ packages }}"
-            when: ansible_os_family == "RedHat"
-            tags:
-              - install
-        </code></pre>
-        <p><strong>Run Command:</strong> ansible-playbook package_install.yml</p>
-      </div>
-
-
-      <div>
-        <h2>Ansible Roles Coming Soon 🚀</h2>
-      </div>
-
-
-      <div class="section">
-        <h2>Resources</h2>
-        <ul>
-          <li><a href="https://docs.ansible.com/">Ansible Documentation</a></li>
-          <li><a href="https://github.com/ansible/ansible">Ansible Modules</a></li>
-          <li><a href="https://galaxy.ansible.com/">Ansible Galaxy</a></li>
-          <li><a href="https://www.ansible.com/community">Ansible Community</a></li>
-          <li><a href="https://stackoverflow.com/questions/tagged/ansible">Stack Overflow (Ansible)</a></li>
-          <li><a href="https://www.redhat.com/en/technologies/management/ansible">Red Hat Ansible</a></li>
-        </ul>
-      </div>
-
-  </div>
-
+    // sidebar smooth anchor
+    document.querySelectorAll('.sidebar .nav-link').forEach(link => {
+        link.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+            if (target) {
+                const offset = 70;
+                const y = target.getBoundingClientRect().top + window.scrollY - offset;
+                window.scrollTo({ top: y, behavior: 'smooth' });
+            }
+        });
+    });
+</script>
 </body>
+</html>

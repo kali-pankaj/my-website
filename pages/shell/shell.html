@@ -1,561 +1,223 @@
-<link rel="stylesheet" href="style.css">
-<div class="container">
-
-    <div class="section">
-        <h2>1. Basic script & Syntax shell scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    echo "Hello, World!"
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>2. Comments in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-
-    # This is a single-line comment
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>3. Variables in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    name="ram"
-    age=30
-    echo "Hello, $name! You are $age years old."
-
-    HOSTNAME=$(hostname)
-    echo "The hostname of this machine is: $HOSTNAME"
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>4. Constant variables in shell scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    readonly college="ABC College"
-    echo "Welcome to $college!"
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>5. Arrays in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    myarray=("apple" "banana" "cherry" 1 20 5.5)
-
-    echo "First fruit: ${myarray[0]}"
-    echo "Second fruit: ${myarray[1]}"
-    echo "Third fruit: ${myarray[2]}"
-    echo "All elements: ${myarray[@]}"
-
-    echo "Number of elements: ${\#myarray[*]}" # remove space from string
-    echo "Value of index 3-3: ${myarray[*]:3:3}"
-
-    # Updating our array:
-    myarray+=("new" "orange" 75000)
-    echo "Updated array: ${myarray[@]}"
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>6. Array key-value pairs in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    declare -A myarray
-    myarray=([name]="ram" [age]=30 [city]="delhi")
-
-    echo "Name: ${myarray[name]}"
-    echo "Age: ${myarray[age]}"
-    echo "City: ${myarray[city]}"
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>7. String Operations in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    myvars="hey bro how are you ? "
-
-    myvarLength=${\#myvars}  # remove space from string
-    echo "Length of the string: $myvarLength"
-
-    echo "uppercase: ${myvars^^}"
-    echo "lowercase: ${myvars,,}"
-    echo "capitalize first letter: ${myvars^}"
-    echo "capitalize first letter of each word: ${myvars^}"
-
-    # To Replace a string:
-    newvar=${myvars/how/where}
-    echo "After replacement: $newvar"
-
-    # To slice a string:
-    echo "after slicing: ${myvars:4:3}"
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>8. User Interaction in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    echo "What is your name?"
-    name="pankaj oraon"
-    echo "Hello, $name"
-
-    read -p "Enter your name: " name
-    echo "Hello, $name"
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>9. Arithmetic Operations in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    a=10
-    b=5
-
-    let sum=$a+$b
-    echo "Sum: $sum"
-
-    let substr=$a-$b
-    echo "Subtraction: $substr"
-
-    let mult=$a*$b
-    echo "Multiplication: $mult"
-
-    let div=$a/$b
-    echo "Division: $div"
-
-    let mod=$a%$b
-    echo "Modulus: $mod"
-        </code></pre>
-    </div>
-
-    <div class="section">
-        <h2>10. Conditional Statements in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    read -p "Enter a marks: " marks
-    if [ "$marks" -ge 90 ]; then
-        echo "Grade: A"
-    elif [ "$marks" -ge 80 ]; then
-        echo "Grade: B"
-    elif [ "$marks" -ge 70 ]; then
-        echo "Grade: C"
-    else
-        echo "Grade: F"
-    fi
-        </code></pre>
-    </div>
-
-    <div class="section">
-    <h2>11. Multiple Conditions in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    read -p "Enter a marks: " marks
-    if [ "$marks" -ge 90 ] && [ "$marks" -le 100 ]; then
-        echo "Grade: A"
-    elif [ "$marks" -ge 80 ] && [ "$marks" -lt 90 ]; then
-        echo "Grade: B"
-    elif [ "$marks" -ge 70 ] && [ "$marks" -lt 80 ]; then
-        echo "Grade: C"
-    else
-        echo "Grade: F"
-    fi
-        </code></pre>
-    </div>
-
-
-    <div class="section">
-    <h2>12. case statement in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    echo "Provide an option: "
-    echo "a. For print date"
-    echo "b. For print calendar"
-    echo "c. For print hostname"
-
-    read -p "Enter your choice: " choice
-    case "$choice" in
-        "a")
-            echo "Today's date: $(date)"
-            ;;
-        "b")
-            echo "Current month's calendar: "
-            cal
-            ;;
-        "c")
-            echo "Hostname: $(hostname)"
-            ;;
-        *)
-            echo "Invalid option!"
-            ;;
-    esac
-
-
-    # second type
-    case "$choice" in
-        a)
-            echo "Today's date:"
-            date
-            echo "end of a"
-            ;;
-    esac
-
-
-    # Example of case statement with multiple conditions:
-
-    #!/bin/bash
-    read -p "Enter a day of the week: " day
-    case "$day" in
-        "Monday")
-            echo "It's the start of the week!"
-            ;;
-        "Tuesday")
-            echo "It's Tuesday!"
-            ;;
-        "Wednesday")
-            echo "It's Wednesday!"
-            ;;
-        "Thursday")
-            echo "It's Thursday!"
-            ;;
-        "Friday")
-            echo "It's Friday!"
-            ;;
-        "Saturday" | "Sunday")
-            echo "It's the weekend!"
-            ;;
-        *)
-            echo "Invalid day!"
-            ;;
-    esac
-    </code></pre>
-    </div>
-
-
-    <div class="section">
-    <h2>13. Logical Operators in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-
-    # And operator (&&)
-    read -p "What is your age? " age
-    if [ "$age" -ge 18 ] && [ "$age" -lt 100 ]; then
-        echo "You are an adult."
-    else
-        echo "You are not an adult."
-    fi
-
-
-    # Or operator (||)
-
-    read -p "What is your country? " country
-    read -p "What is your age? " age
-    if [ "$country" = "INDIA" ] || [ "$age" -ge 18 ]; then
-        echo "You are eligible for voting."
-    else
-        echo "You are not eligible."
-    fi
-    </code></pre>
-    </div>
-
-
-    <div class="section">
-    <h2>14. Multiple Conditions in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    read -p "Enter a marks: " marks
-    if [ "$marks" -ge 90 ] && [ "$marks" -le 100 ]; then
-        echo "Grade: A"
-    elif [ "$marks" -ge 80 ] && [ "$marks" -lt 90 ]; then
-        echo "Grade: B"
-    elif [ "$marks" -ge 70 ] && [ "$marks" -lt 80 ]; then
-        echo "Grade: C"
-    else
-        echo "Grade: F"
-    fi
-    </code></pre>
-    </div>
-
-
-    <div class="section">
-    <h2>15. Loops in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-
-    # For loop
-    for i in {1..10}; do
-        echo "Iteration: $i"
-    done
-
-    for name in "pankaj" "pradeep" "Charlie"; do
-        echo "Hello, $name!"
-    done
-
-    # While loop
-    count=1
-    while [ "$count" -le 5 ]; do
-        echo "Count: $count"
-        ((count++))
-    done
-
-    # Until loop
-    counter=10
-    until [ "$counter" -eq 5 ]; do
-        echo "Counter: $counter"
-        ((counter--))
-    done
-
-    # Infinite loop
-    while true; do
-        echo "This will run forever. Press Ctrl+C to stop."
-        sleep 1
-    done
-
-
-    # Infinite loop use for a specific condition
-    while true; do
-        read -p "Enter a number (or 'exit' to quit): " input
-        if [ "$input" = "exit" ]; then
-            echo "Exiting the loop."
-            break
-        elif [[ "$input" =~ ^[0-9]+$ ]]; then
-            echo "You entered the number: $input"
-        else
-            echo "Invalid input. Please enter a number or 'exit'."
-        fi
-    done
-    </code></pre>
-    </div>
-
-    <div class="section">
-    <h2>16. Iterate values from a file</h2>
-        <pre><code>
-    #!/bin/bash
-    file="/home/pankaj/names.txt"
-    for name in $(cat "$file"); do
-        echo "Hello, $name!"
-    done
-    </code></pre>
-    </div>
-
-    <div class="section">
-    <h2>17. Array in loops</h2>
-        <pre><code>
-    #!/bin/bash
-    myarray=("apple" "banana" "cherry" 1 20 5.5)
-    length=${\#myarray[*]}  ########## remove space from string
-    for (( i=0; i<$length; i++ )); do
-        echo "Element $i: ${myarray[i]}"
-    done
-    </code></pre>
-    </div>
-
-    <div class="section">
-    <h2>18. To read file using while loop</h2>
-        <pre><code>
-    #!/bin/bash
-    while read myvar; do
-        echo "Line: $myvar"
-    done < "/home/pankaj/names.txt"
-
-    # To read content from a csv file
-    while IFS=, read -r name age city; do
-        echo "Name: $name, Age: $age, City: $city"
-    done < "/home/pankaj/data.csv"
-
-    # other csv type
-    #!/bin/bash
-    cat text.csv | awk 'NR!=1{print}' | while IFS=, read -r name age city; do
-        echo "Name: $name"
-        echo "Age: $age"
-        echo "City: $city"
-    done
-    </code></pre>
-    </div>
-
-    <div class="section">
-    <h2>19. Functions in Shell Scripting</h2>
-        <pre><code>
-    #!/bin/bash
-    function greet {
-        echo "Hello, $1!"
-    }
-    greet "pankaj"
-
-    # Function with multiple parameters
-    function add {
-        sum=$(($1 + $2))
-        echo "Sum: $sum"
-    }
-    add 10 20
-    </code></pre>
-    </div>
-
-    <div class="section">
-    <h2>20. Function Arguments test</h2>
-        <pre><code>
-    #!/bin/bash
-    function test {
-        echo "Number of arguments: $#"
-        echo "All arguments: $@"
-        echo "First argument: $1"
-        echo "Second argument: $2"
-    }
-    test "pankaj" 30
-
-    # Argument passing
-    #!/bin/bash
-    function greet {
-        echo "Hello, $1!"
-        echo "Hello, $2!"
-    }
-    name="pankaj"
-    greet "$name" "pradeep"
-    </code></pre>
-    </div>
-
-    <div class="container">
-    <h2>21. Shifting Arguments</h2>
-        <pre><code>
-    #!/bin/bash
-    function shift_function {
-        echo "creating user"
-        echo "username is $1"
-        echo "Description is $2"
-    }
-    shift_function "pankaj" "this is a user"
-    </code></pre>
-    </div>
-
-    <div class="container">
-    <h2>22. Other useful concepts (break, continue)</h2>
-        <pre><code>
-# break example
-    #!/bin/bash
-    for i in {1..10}; do
-        if [ $i -eq 5 ]; then
-            echo "Breaking the loop at iteration $i"
-            break
-        fi
-        echo "Iteration: $i"
-    done
-
-# continue example
-    #!/bin/bash
-    for i in {1..10}; do
-        if [ $i -eq 5 ]; then
-            echo "Skipping iteration $i"
-            continue
-        fi
-        echo "Iteration: $i"
-    done
-
-# sleep exit example
-    #!/bin/bash
-    if [ $# -eq 0 ]; then
-        echo "No arguments provided. Exiting."
-        exit 1
-    fi
-    echo "first argument: $1"
-    echo "second argument: $2"
-
-# exit status example
-    #!/bin/bash
-    read -p "which site do you want to open? " site
-    ping -c 2 "$site"
-    sleep 2
-    if [ $? -eq 0 ]; then
-        echo "The site is reachable."
-    else
-        echo "The site is not reachable."
-    fi
-
-# Basename example
-    #!/bin/bash
-    workdir="/home/pankaj/Desktop/script.sh"
-    output=$(basename "$workdir")
-    echo "The basename of the file is: $output"
-
-# Dirname example
-    #!/bin/bash
-    work="/home/pankaj/Desktop/script.sh"
-    output=$(dirname "$work")
-    echo "The dirname of the file is: $output"
-
-# Real path example
-    #!/bin/bash
-    filepath="/home/pankaj/Desktop/script.sh"
-    realpath_output=$(realpath "$filepath")
-    echo "The real path of the file is: $realpath_output"
-
-# file exist or not check example
-    #!/bin/bash
-    read -p "Enter a file path: " filepath
-    if [ -f "$filepath" ]; then
-        echo "The file exists."
-    else
-        echo "The file does not exist."
-    fi
-
-# Bash variables example
-    #!/bin/bash
-    NO=$(($RANDOM % 10 + 1))
-    echo "Random number between 1 and 10: $NO"
-
-# Root user check example
-    #!/bin/bash
-    read -p "Enter your username: " username
-    ID=$(id -u)
-    if [ "$ID" -ne 0 ]; then
-        echo "You are not running as root."
-        exit 1
-    else
-        echo "You are running as root."
-    fi
-
-# Redirecting output to a file example
-    #!/bin/bash
-    echo "This is a message that will be written to a file." > output.txt
-    echo "This is another message that will be appended to the file." >> output.txt
-    ping -c 2 google.com > ping_output.txt
-
-# what is /dev/null example
-    #!/bin/bash
-    echo "This message will be discarded." > /dev/null
-    ping -c 2 google.com > /dev/null
-
-# print name of the script example
-    #!/bin/bash
-    echo "this is print name script ${0}"
-
-# Log messages example
-    #!/bin/bash
-    logger "this is a log from ${0}"
-
-# Debugging script example
-    #!/bin/bash
-    set -x
-    set -e
-
-# run script in background example
-    #!/bin/bash
-    for i in {1..5}; do
-        echo "Background task iteration: $i"
-        sleep 1
-    done &
-    echo "This message is printed while the background task is running."
-    nohup ./script.sh &
-
-# crontab examples
-    # * * * * * bash /home/pankaj/Desktop/script.sh
-    # * * * * * bash /home/pankaj/Desktop/script.sh && ./current_file.sh
-    # * * * * * bash /home/pankaj/Desktop/script.sh >> /home/pankaj/Desktop/script.log 2>&1
-
-    </code></pre>
-    </div>
-
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Shell scripting handbook | Bash reference guide</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app-wrapper">
+    <!-- sidebar navigation -->
+    <aside class="sidebar" id="sidebar">
+        <div class="sidebar-header">
+            <h2>🐚 Bash<br>Reference</h2>
+            <p>essential scripting snippets</p>
+        </div>
+        <ul class="nav-links" id="navList">
+            <!-- dynamically filled from sections -->
+        </ul>
+    </aside>
+
+    <main class="main-content">
+        <div class="hero">
+            <h1>📜 shell scripting handbook</h1>
+            <p>syntax • variables • loops • functions • advanced tips — practical examples ready to use</p>
+        </div>
+        <div id="sections-container">
+            <!-- content will be injected -->
+        </div>
+        <footer>
+            ⚡ interactive bash reference — click any sidebar topic to jump &nbsp;|&nbsp; mobile friendly sidebar
+        </footer>
+    </main>
 </div>
+<button class="sidebar-toggle" id="menuToggleBtn">☰ Menu</button>
+
+<script>
+    // Complete dataset with all original topics + bonus advanced concepts
+    const sectionsData = [
+        { id: "basic-script", title: "1. Basic script & syntax", code: "#!/bin/bash\necho \"Hello, World!\"" },
+        { id: "comments", title: "2. Comments", code: "#!/bin/bash\n# This is a single-line comment\n# Best practice: document your logic" },
+        { id: "variables", title: "3. Variables", code: "#!/bin/bash\nname=\"ram\"\nage=30\necho \"Hello, $name! You are $age years old.\"\nHOSTNAME=$(hostname)\necho \"Hostname: $HOSTNAME\"" },
+        { id: "constants", title: "4. Constant variables", code: "#!/bin/bash\nreadonly college=\"ABC College\"\necho \"Welcome to $college!\"\n# college=\"Other\" -> error" },
+        { id: "arrays", title: "5. Arrays (indexed)", code: "#!/bin/bash\nmyarray=(\"apple\" \"banana\" \"cherry\" 1 20 5.5)\necho \"First: ${myarray[0]}\"\necho \"All: ${myarray[@]}\"\necho \"Length: ${#myarray[@]}\"\nmyarray+=(\"new\" \"orange\")\necho \"Updated: ${myarray[@]}\"" },
+        { id: "assoc-arrays", title: "6. Key-value arrays", code: "#!/bin/bash\ndeclare -A myarray\nmyarray=([name]=\"ram\" [age]=30 [city]=\"delhi\")\necho \"Name: ${myarray[name]}\"\necho \"Age: ${myarray[age]}\"" },
+        { id: "string-ops", title: "7. String operations", code: "#!/bin/bash\nmyvars=\"hey bro how are you ?\"\necho \"Length: ${#myvars}\"\necho \"Uppercase: ${myvars^^}\"\necho \"Lowercase: ${myvars,,}\"\necho \"Replace: ${myvars/how/where}\"\necho \"Slice (4:3): ${myvars:4:3}\"" },
+        { id: "user-input", title: "8. User interaction", code: "#!/bin/bash\nread -p \"Enter your name: \" name\necho \"Hello, $name\"\n# silent read for password: read -s -p \"Password: \" pass" },
+        { id: "arithmetic", title: "9. Arithmetic ops", code: "#!/bin/bash\na=10; b=5\nlet sum=$a+$b\necho \"Sum: $sum\"\necho \"Multiply: $((a*b))\"\necho \"Division: $((a/b))\"\necho \"Mod: $((a%b))\"" },
+        { id: "if-else", title: "10. if-elif-else", code: "#!/bin/bash\nread -p \"Enter marks: \" marks\nif [ \"$marks\" -ge 90 ]; then\n    echo \"Grade: A\"\nelif [ \"$marks\" -ge 80 ]; then\n    echo \"Grade: B\"\nelse\n    echo \"Grade: F\"\nfi" },
+        { id: "multiple-conditions", title: "11. Multiple conditions (&&, ||)", code: "#!/bin/bash\nread -p \"Enter marks: \" marks\nif [ \"$marks\" -ge 90 ] && [ \"$marks\" -le 100 ]; then\n    echo \"Excellent\"\nelif [ \"$marks\" -ge 70 ] && [ \"$marks\" -lt 90 ]; then\n    echo \"Good\"\nelse\n    echo \"Needs improvement\"\nfi" },
+        { id: "case-stmt", title: "12. case statement", code: "#!/bin/bash\necho \"a) date  b) calendar  c) hostname\"\nread -p \"Choice: \" choice\ncase $choice in\n    a) date ;;\n    b) cal ;;\n    c) hostname ;;\n    *) echo \"Invalid\";;\nesac" },
+        { id: "logical-ops", title: "13. Logical operators", code: "#!/bin/bash\nage=20\nif [ \"$age\" -ge 18 ] && [ \"$age\" -lt 100 ]; then\n    echo \"Adult\"\nfi\ncountry=\"INDIA\"\nif [ \"$country\" = \"INDIA\" ] || [ \"$age\" -ge 18 ]; then\n    echo \"Eligible\"\nfi" },
+        { id: "for-loop", title: "14. Loops (for/while/until)", code: "#!/bin/bash\nfor i in {1..5}; do echo \"Iter $i\"; done\ncount=1\nwhile [ $count -le 3 ]; do echo \"while: $count\"; ((count++)); done\ncounter=5\nuntil [ $counter -eq 0 ]; do echo \"until: $counter\"; ((counter--)); done" },
+        { id: "file-iterate", title: "15. Read from file", code: "#!/bin/bash\n# iterate lines from file\nwhile read line; do\n    echo \"Line: $line\"\ndone < \"/etc/hostname\"\n# csv parsing\nwhile IFS=, read -r name age; do\n    echo \"Name: $name, Age: $age\"\ndone < \"data.csv\"" },
+        { id: "array-loop", title: "16. Array in loops", code: "#!/bin/bash\nfruits=(\"apple\" \"banana\" \"mango\")\nfor (( i=0; i<${#fruits[@]}; i++ )); do\n    echo \"Element $i: ${fruits[i]}\"\ndone" },
+        { id: "functions", title: "17. Functions & arguments", code: "#!/bin/bash\ngreet() {\n    echo \"Hello, $1\"\n}\ngreet \"pankaj\"\nadd() { echo $(( $1 + $2 )); }\nsum=$(add 10 20)\necho \"Sum: $sum\"" },
+        { id: "shift-args", title: "18. Shifting arguments", code: "#!/bin/bash\nprocess_args() {\n    echo \"First arg: $1\"\n    shift\n    echo \"After shift: $1\"\n}\nprocess_args \"one\" \"two\"" },
+        { id: "break-continue", title: "19. break / continue", code: "#!/bin/bash\nfor i in {1..5}; do\n    if [ $i -eq 3 ]; then continue; fi\n    if [ $i -eq 4 ]; then break; fi\n    echo \"Value: $i\"\ndone" },
+        { id: "exit-status", title: "20. Exit status & /dev/null", code: "#!/bin/bash\nping -c 1 google.com &> /dev/null\nif [ $? -eq 0 ]; then\n    echo \"Reachable\"\nelse\n    echo \"Unreachable\"\nfi" },
+        { id: "file-tests", title: "21. File checks (-f, -d, -x)", code: "#!/bin/bash\nread -p \"File path: \" file\nif [ -f \"$file\" ]; then\n    echo \"Regular file exists\"\nelif [ -d \"$file\" ]; then\n    echo \"Directory exists\"\nelse\n    echo \"Not found\"\nfi\n# also: -r readable, -w writable, -x executable" },
+        { id: "heredoc", title: "22. Here Document (multiline)", code: "#!/bin/bash\ncat << EOF\nHello, this is a multiline text.\nYou can use variables like $HOME\nEOF\n# redirect to file:\ncat > output.txt << 'END'\nThis is literal text (no expansion).\nEND" },
+        { id: "select-loop", title: "23. Select menu (interactive)", code: "#!/bin/bash\necho \"Pick an option:\"\nselect opt in \"Date\" \"Calendar\" \"Quit\"; do\n    case $opt in\n        \"Date\") date ;;\n        \"Calendar\") cal ;;\n        \"Quit\") break ;;\n        *) echo \"Invalid\";;\n    esac\ndone" },
+        { id: "getopts", title: "24. Command line flags (getopts)", code: "#!/bin/bash\nwhile getopts \"u:a:\" flag; do\n    case $flag in\n        u) username=\"$OPTARG\" ;;\n        a) age=\"$OPTARG\" ;;\n        *) echo \"Usage: $0 -u name -a age\"; exit 1 ;;\n    esac\ndone\necho \"User: $username, Age: $age\"" },
+        { id: "trap-signals", title: "25. Signal trapping (cleanup)", code: "#!/bin/bash\ncleanup() { echo \"Interrupt received, cleaning up...\"; exit 0; }\ntrap cleanup SIGINT SIGTERM\necho \"Running. Press Ctrl+C to trap.\"\nwhile true; do sleep 1; done" },
+        { id: "background-jobs", title: "26. Background & nohup", code: "#!/bin/bash\nsleep 10 &\necho \"Background job with PID $!\"\nwait\necho \"Done\"\n# nohup ./longtask.sh &> output.log &" },
+        { id: "cron-logger", title: "27. Logging / crontab basics", code: "#!/bin/bash\nlogger \"Script executed from ${0}\"\n# crontab examples:\n# * * * * * /home/user/backup.sh >> /var/log/backup.log 2>&1\n# @daily /path/to/script" },
+        { id: "random-debug", title: "28. Random, debug, basename", code: "#!/bin/bash\necho \"Random: $((RANDOM % 100))\"\nset -x  # enable debug\nMYVAR=\"test\"\nset +x\necho \"Script name: $(basename $0)\"\necho \"Directory: $(dirname $0)\"" },
+        { id: "root-check", title: "29. Root user check", code: "#!/bin/bash\nif [ $(id -u) -ne 0 ]; then\n    echo \"Please run as root\" >&2\n    exit 1\nelse\n    echo \"Root access confirmed\"\nfi" },
+        { id: "infinite-loop", title: "30. Bonus: Infinite loop & break", code: "#!/bin/bash\nwhile true; do\n    read -p \"Enter number (exit to quit): \" input\n    if [[ \"$input\" == \"exit\" ]]; then\n        echo \"Bye!\"\n        break\n    fi\n    echo \"You typed: $input\"\ndone" },
+        { id: "array-slicing", title: "31. Bonus: Array slicing & patterns", code: "#!/bin/bash\narr=(zero one two three four)\necho \"Slice 1-3: ${arr[@]:1:3}\"\n# replace pattern\necho \"Replace: ${arr[@]/two/TWO}\"" }
+    ];
+
+    const container = document.getElementById('sections-container');
+    const navList = document.getElementById('navList');
+
+    // Build all content cards
+    function buildContent() {
+        container.innerHTML = '';
+        sectionsData.forEach(section => {
+            const card = document.createElement('div');
+            card.className = 'section-card';
+            card.id = section.id;
+            
+            const headerEl = document.createElement('h2');
+            headerEl.textContent = section.title;
+            
+            const wrapper = document.createElement('div');
+            wrapper.className = 'pre-wrapper';
+            
+            const preEl = document.createElement('pre');
+            const codeEl = document.createElement('code');
+            codeEl.textContent = section.code;
+            preEl.appendChild(codeEl);
+            wrapper.appendChild(preEl);
+            
+            card.appendChild(headerEl);
+            card.appendChild(wrapper);
+            container.appendChild(card);
+        });
+    }
+
+    // Build sidebar navigation
+    function buildSidebar() {
+        navList.innerHTML = '';
+        sectionsData.forEach((section, idx) => {
+            const li = document.createElement('li');
+            const a = document.createElement('a');
+            a.textContent = section.title;
+            a.setAttribute('data-id', section.id);
+            
+            a.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetElement = document.getElementById(section.id);
+                if (targetElement) {
+                    targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                    // Update active state
+                    document.querySelectorAll('.nav-links a').forEach(link => {
+                        link.classList.remove('active');
+                    });
+                    a.classList.add('active');
+                    // Close sidebar on mobile after click
+                    if (window.innerWidth <= 780) {
+                        document.getElementById('sidebar').classList.remove('open');
+                    }
+                }
+            });
+            
+            li.appendChild(a);
+            navList.appendChild(li);
+        });
+    }
+
+    // Highlight active link based on scroll position
+    function setActiveOnScroll() {
+        const sections = sectionsData.map(s => document.getElementById(s.id)).filter(Boolean);
+        const navLinks = document.querySelectorAll('.nav-links a');
+        
+        if (!sections.length) return;
+        
+        let currentActiveId = '';
+        // Find which section is currently in view
+        for (let i = 0; i < sections.length; i++) {
+            const rect = sections[i].getBoundingClientRect();
+            if (rect.top <= 200 && rect.bottom >= 100) {
+                currentActiveId = sectionsData[i].id;
+                break;
+            }
+        }
+        
+        // If none found, check the first section that is above viewport
+        if (!currentActiveId) {
+            for (let i = 0; i < sections.length; i++) {
+                const rect = sections[i].getBoundingClientRect();
+                if (rect.top <= 250) {
+                    currentActiveId = sectionsData[i].id;
+                    break;
+                }
+            }
+        }
+        
+        navLinks.forEach((link, idx) => {
+            const linkId = sectionsData[idx]?.id;
+            if (linkId === currentActiveId) {
+                link.classList.add('active');
+            } else {
+                link.classList.remove('active');
+            }
+        });
+    }
+
+    // Initialize everything
+    function init() {
+        buildContent();
+        buildSidebar();
+        
+        // Set up scroll listener
+        window.addEventListener('scroll', setActiveOnScroll);
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 780) {
+                document.getElementById('sidebar').classList.remove('open');
+            }
+        });
+        
+        // Initial active highlight
+        setTimeout(setActiveOnScroll, 100);
+        
+        // Mobile sidebar toggle
+        const toggleBtn = document.getElementById('menuToggleBtn');
+        const sidebar = document.getElementById('sidebar');
+        
+        if (toggleBtn) {
+            toggleBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                sidebar.classList.toggle('open');
+            });
+        }
+        
+        // Close sidebar when clicking outside on mobile
+        document.addEventListener('click', (e) => {
+            if (window.innerWidth <= 780 && sidebar.classList.contains('open')) {
+                if (!sidebar.contains(e.target) && !toggleBtn.contains(e.target)) {
+                    sidebar.classList.remove('open');
+                }
+            }
+        });
+        
+        // Handle anchor hash links from URL
+        if (window.location.hash) {
+            const targetId = window.location.hash.substring(1);
+            const targetSection = document.getElementById(targetId);
+            if (targetSection) {
+                setTimeout(() => {
+                    targetSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }, 150);
+            }
+        }
+    }
+    
+    // Start the app
+    init();
+</script>
+</body>
+</html>

@@ -1,36 +1,6 @@
 #!/bin/bash
 set -e
 
-echo "============================================"
-echo "Minikube Run and Coustom Image Deployment"
-echo "============================================"
-
-# set script write or not 
-set -e
-
-if [ -x "/usr/local/bin/minikube" ]; then
-    echo "Minikube already installed"
-else
-    echo "Installing Minikube..."
-    curl -LO https://github.com/kubernetes/minikube/releases/latest/download/minikube-linux-amd64
-    sudo install minikube-linux-amd64 /usr/local/bin/minikube
-    rm -rf minikube-linux-amd64
-fi
-
-# Check minikube version 
-minikube version
-
-echo "============================================="
-echo "Minikube service status "
-echo "============================================="
-
-if minikube status | grep -q "Running"; then
-    echo "Minikube are running "
-else
-    minikube start --cpus=2 --memory=4096
-    echo "Minkkube Start and Running Know..."
-fi
-
 echo "Cluster information Check"
 kubectl get nodes
 
