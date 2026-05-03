@@ -13,9 +13,9 @@ document.addEventListener("DOMContentLoaded", () => {
             <ul class="nav-links">
                 <li><a href="/index.html">Home</a></li>
                 <li><a href="pages/devopsForm/form.html">Enrollment</a></li>
-                <li><a href="#">About</a></li>
+                <li><a href="https://www.linkedin.com/in/pankaj-oraon-a9a44a331?utm_source=share_via&utm_content=profile&utm_medium=member_android">Linkedin</a></li>
                 <li><a href="pages/resume/form_resume.html">Resume-Template</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="https://www.instagram.com/pankajpankaj7657?igsh=MTY3eGN4azlrM2xwcQ==">Instagram</a></li>
                 <li><a href="/pages/login/login.html">Sign In</a></li>
             </ul>
         </nav>
