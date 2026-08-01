@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Datadog — Study Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0a0b0d;
+    --panel:#151619;
+    --panel-alt:#1b1d22;
+    --border:#2a2c33;
+    --border-soft:#202228;
+    --text:#e6e7ea;
+    --text-dim:#93959e;
+    --text-faint:#5c5e66;
+    --violet:#8952E0;
+    --violet-deep:#632CA6;
+    --pink:#E24CA6;
+    --blue:#6E9FFF;
+    --green:#73BF69;
+    --amber:#F4B740;
+    --red:#F2495C;
+    --font-display:'Space Grotesk', sans-serif;
+    --font-body:'IBM Plex Sans', sans-serif;
+    --font-mono:'IBM Plex Mono', monospace;
+  }
+
+  *{box-sizing:border-box; margin:0; padding:0;}
+
+  body{
+    background:
+      radial-gradient(ellipse at top left, rgba(137,82,224,0.12), transparent 45%),
+      var(--bg);
+    color:var(--text);
+    font-family:var(--font-body);
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+
+  a{color:var(--blue); text-decoration:none;}
+  a:hover{text-decoration:underline;}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--violet); outline-offset:2px;}
+
+  code, .mono{font-family:var(--font-mono);}
+
+  .wrap{max-width:1180px; margin:0 auto; padding:0 24px 80px;}
+
+  /* ---------- Top bar ---------- */
+  .topbar{border-bottom:1px solid var(--border-soft); background:rgba(255,255,255,0.015);}
+  .topbar-inner{
+    max-width:1180px; margin:0 auto; padding:12px 24px;
+    display:flex; align-items:center; gap:10px;
+    font-family:var(--font-mono); font-size:12.5px; color:var(--text-faint);
+  }
+  .topbar .dot{width:7px; height:7px; border-radius:50%; background:var(--green); box-shadow:0 0 6px var(--green);}
+  .topbar .sep{color:var(--border);}
+
+  /* ---------- Hero ---------- */
+  .hero{padding:56px 0 40px; display:grid; grid-template-columns:1.1fr 1fr; gap:40px; align-items:center;}
+  .hero-logo{display:flex; align-items:center; gap:10px; margin-bottom:22px;}
+  .hero-logo svg{width:30px; height:30px;}
+  .hero-logo span{font-family:var(--font-mono); font-size:13px; letter-spacing:.14em; color:var(--text-dim); text-transform:uppercase;}
+
+  .hero h1{
+    font-family:var(--font-display); font-weight:700;
+    font-size:clamp(38px, 5vw, 58px); line-height:1.02; letter-spacing:-0.02em;
+    background:linear-gradient(100deg, #fff 30%, var(--violet) 85%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero p.lede{margin-top:18px; font-size:17px; color:var(--text-dim); max-width:46ch;}
+
+  .hero-actions{margin-top:28px; display:flex; gap:12px; flex-wrap:wrap;}
+  .btn{
+    font-family:var(--font-mono); font-size:13px; padding:11px 18px;
+    border-radius:3px; border:1px solid var(--border); color:var(--text);
+    display:inline-flex; align-items:center; gap:8px; transition:border-color .15s, background .15s;
+  }
+  .btn:hover{border-color:var(--violet); text-decoration:none; background:rgba(137,82,224,0.08);}
+  .btn.primary{background:linear-gradient(100deg, var(--violet-deep), var(--pink)); color:#0f0714; border:none; font-weight:600;}
+  .btn.primary:hover{filter:brightness(1.1);}
+
+  .panel{background:var(--panel); border:1px solid var(--border); border-radius:4px; overflow:hidden;}
+  .panel-head{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:9px 14px; border-bottom:1px solid var(--border-soft);
+    font-family:var(--font-mono); font-size:12px; color:var(--text-dim);
+  }
+  .panel-head .title{color:var(--text); font-weight:500;}
+  .panel-head .controls{display:flex; gap:10px; color:var(--text-faint);}
+  .panel-body{padding:14px;}
+
+  .live-panel .stat-row{display:flex; gap:22px; padding:0 14px 10px; font-family:var(--font-mono);}
+  .live-panel .stat b{display:block; font-size:22px; color:var(--violet);}
+  .live-panel .stat span{font-size:11px; color:var(--text-faint); text-transform:uppercase; letter-spacing:.06em;}
+
+  /* ---------- Section shell ---------- */
+  section{margin-top:64px;}
+  .section-eyebrow{
+    font-family:var(--font-mono); font-size:12px; color:var(--violet);
+    text-transform:uppercase; letter-spacing:.14em; margin-bottom:8px;
+  }
+  h2{font-family:var(--font-display); font-size:28px; font-weight:700; letter-spacing:-0.01em;}
+  .section-intro{color:var(--text-dim); max-width:70ch; margin-top:10px; font-size:15px;}
+
+  .grid{display:grid; gap:14px; margin-top:26px;}
+  .grid.cols-3{grid-template-columns:repeat(3, 1fr);}
+  .grid.cols-2{grid-template-columns:repeat(2, 1fr);}
+
+  .card{background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:18px; transition:border-color .15s, transform .15s;}
+  .card:hover{border-color:var(--border-soft); transform:translateY(-2px);}
+  .card .idx{font-family:var(--font-mono); font-size:11px; color:var(--text-faint);}
+  .card h3{font-family:var(--font-display); font-size:16px; margin-top:8px; color:var(--text);}
+  .card p{font-size:13.5px; color:var(--text-dim); margin-top:8px;}
+  .card .swatch{width:9px; height:9px; border-radius:2px; display:inline-block; margin-right:8px;}
+
+  /* ---------- Architecture diagram ---------- */
+  .arch{padding:30px 20px;}
+  .arch-row{display:flex; align-items:center; justify-content:space-between; gap:10px;}
+  .arch-node{
+    flex:1; text-align:center; padding:16px 10px; border:1px solid var(--border);
+    border-radius:4px; background:var(--panel-alt); font-family:var(--font-mono); font-size:12.5px;
+  }
+  .arch-node .n-label{color:var(--text-faint); font-size:10px; text-transform:uppercase; letter-spacing:.08em; display:block; margin-bottom:6px;}
+  .arch-node.highlight{border-color:var(--violet); background:rgba(137,82,224,0.08); color:var(--violet);}
+  .arch-arrow{flex:0 0 auto; color:var(--text-faint); font-size:18px; padding:0 4px;}
+  .arch-sub{margin-top:10px; text-align:center; font-family:var(--font-mono); font-size:11px; color:var(--text-faint);}
+
+  /* ---------- Chips ---------- */
+  .chip-row{display:flex; flex-wrap:wrap; gap:10px; margin-top:22px;}
+  .chip{
+    font-family:var(--font-mono); font-size:12.5px; padding:8px 14px;
+    border:1px solid var(--border); border-radius:20px; color:var(--text-dim); background:var(--panel);
+  }
+
+  /* ---------- Pricing-style tier note (kept minimal, factual, no invented numbers) ---------- */
+  .plan-row{margin-top:24px; display:grid; gap:10px;}
+  .plan-item{
+    display:grid; grid-template-columns:1fr 1.4fr; gap:16px; align-items:center;
+    background:var(--panel); border:1px solid var(--border); border-radius:4px; padding:14px 16px;
+  }
+  .plan-item code{color:var(--amber); font-size:13px;}
+  .plan-item .desc{color:var(--text-dim); font-size:13px;}
+
+  /* ---------- Install tabs ---------- */
+  .tabs{display:flex; gap:2px; margin-top:24px; border-bottom:1px solid var(--border-soft); flex-wrap:wrap;}
+  .tab-btn{
+    font-family:var(--font-mono); font-size:12.5px; padding:10px 16px; color:var(--text-faint);
+    background:none; border:none; border-bottom:2px solid transparent; cursor:pointer;
+  }
+  .tab-btn.active{color:var(--violet); border-bottom-color:var(--violet);}
+  .tab-panel{display:none; background:var(--panel); border:1px solid var(--border); border-top:none; padding:20px;}
+  .tab-panel.active{display:block;}
+  .code-block{
+    font-family:var(--font-mono); font-size:13px; background:var(--panel-alt);
+    border:1px solid var(--border-soft); border-radius:4px; padding:14px 16px;
+    overflow-x:auto; color:var(--green); white-space:pre;
+  }
+  .code-block .cmt{color:var(--text-faint);}
+  .tab-panel p{color:var(--text-dim); font-size:13.5px; margin-top:12px;}
+
+  /* ---------- Comparison table ---------- */
+  table{width:100%; border-collapse:collapse; margin-top:24px; font-size:13.5px;}
+  th, td{text-align:left; padding:12px 14px; border-bottom:1px solid var(--border-soft);}
+  th{font-family:var(--font-mono); font-size:11.5px; text-transform:uppercase; letter-spacing:.06em; color:var(--text-faint); font-weight:500;}
+  td{color:var(--text-dim);}
+  tr td:first-child{color:var(--text); font-weight:500; font-family:var(--font-mono); font-size:13px;}
+  tbody tr:hover{background:rgba(255,255,255,0.02);}
+
+  /* ---------- Resources ---------- */
+  .resources{margin-top:64px; padding:32px; background:var(--panel); border:1px solid var(--border); border-radius:6px;}
+  .resources h2{margin-bottom:6px;}
+  .res-grid{display:grid; grid-template-columns:repeat(2, 1fr); gap:12px; margin-top:22px;}
+  .res-link{
+    display:flex; align-items:center; justify-content:space-between; gap:12px;
+    padding:16px 18px; border:1px solid var(--border); border-radius:4px; background:var(--panel-alt);
+    transition:border-color .15s, background .15s;
+  }
+  .res-link:hover{border-color:var(--violet); background:rgba(137,82,224,0.07); text-decoration:none;}
+  .res-link .r-title{color:var(--text); font-weight:500; font-size:14.5px;}
+  .res-link .r-url{display:block; font-family:var(--font-mono); font-size:11.5px; color:var(--text-faint); margin-top:3px;}
+  .res-link .r-go{color:var(--text-faint); font-family:var(--font-mono);}
+  .res-link:hover .r-go{color:var(--violet);}
+
+  .note{margin-top:20px; font-size:12.5px; color:var(--text-faint); font-family:var(--font-mono); border-left:2px solid var(--border); padding-left:12px;}
+
+  footer{margin-top:60px; padding-top:24px; border-top:1px solid var(--border-soft); color:var(--text-faint); font-size:12.5px; font-family:var(--font-mono); display:flex; justify-content:space-between; flex-wrap:wrap; gap:10px;}
+
+  @media (max-width: 860px){
+    .hero{grid-template-columns:1fr;}
+    .grid.cols-3, .grid.cols-2{grid-template-columns:1fr;}
+    .res-grid{grid-template-columns:1fr;}
+    .arch-row{flex-direction:column;}
+    .arch-arrow{transform:rotate(90deg);}
+    .plan-item{grid-template-columns:1fr;}
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    * {animation:none !important; transition:none !important;}
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="dot"></span>
+    <span>datadog / study-guide</span>
+    <span class="sep">·</span>
+    <span>unofficial reference, links to official sources below</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-logo">
+        <svg viewBox="0 0 24 24" fill="none">
+          <circle cx="12" cy="12" r="4.2" fill="url(#d)"/>
+          <path d="M12 2v3.4M12 18.6V22M2 12h3.4M18.6 12H22M5.1 5.1l2.4 2.4M16.5 16.5l2.4 2.4M5.1 18.9l2.4-2.4M16.5 7.5l2.4-2.4"
+                stroke="url(#d)" stroke-width="1.6" stroke-linecap="round"/>
+          <defs>
+            <linearGradient id="d" x1="0" y1="0" x2="24" y2="24">
+              <stop offset="0" stop-color="#632CA6"/>
+              <stop offset="1" stop-color="#E24CA6"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Study Panel · 03</span>
+      </div>
+      <h1>Datadog, monitoring as a managed platform.</h1>
+      <p class="lede">A SaaS observability platform: install one Agent, and metrics, logs, traces, and security signals all land in the same place — no infrastructure to run yourself.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="https://www.datadoghq.com/free-datadog-trial/" target="_blank" rel="noopener">↗ Start free trial</a>
+        <a class="btn" href="https://www.datadoghq.com/" target="_blank" rel="noopener">Official site ↗</a>
+        <a class="btn" href="https://docs.datadoghq.com/" target="_blank" rel="noopener">Documentation ↗</a>
+      </div>
+    </div>
+
+    <div class="panel live-panel">
+      <div class="panel-head">
+        <span class="title">system.cpu.user — demo panel</span>
+        <span class="controls">
+          <span>⟳ live</span>
+          <span>⤢</span>
+        </span>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b id="statNow">—</b><span>current</span></div>
+        <div class="stat"><b id="statAvg" style="color:var(--blue)">—</b><span>avg</span></div>
+        <div class="stat"><b id="statPeak" style="color:var(--amber)">—</b><span>peak</span></div>
+      </div>
+      <div class="panel-body" style="padding-top:0;">
+        <canvas id="spark" width="520" height="160" style="width:100%; height:160px; display:block;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT IS DATADOG -->
+  <section>
+    <div class="section-eyebrow">01 — Overview</div>
+    <h2>What Datadog actually is</h2>
+    <p class="section-intro">
+      Datadog is a fully managed monitoring and security platform, founded in 2010, that unifies infrastructure
+      metrics, application traces, logs, and real-user data under one product with 1,000+ built-in integrations.
+      Unlike Prometheus or Grafana, you don't self-host any of it — a lightweight Agent runs on your hosts and
+      pushes data to Datadog's cloud, where you build dashboards, monitors, and alerts through the web app.
+    </p>
+
+    <div class="grid cols-3">
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--violet)"></span>Agent</h3>
+        <p>Open-source software installed on each host that collects and forwards metrics, logs, and traces to Datadog.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--pink)"></span>Integrations</h3>
+        <p>Pre-built connectors — over a thousand — that plug the Agent into things like Postgres, Kubernetes, or AWS.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--blue)"></span>Tags</h3>
+        <p>Key:value labels attached to hosts and metrics, used to slice, filter, and group everything in the UI.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--green)"></span>Monitors</h3>
+        <p>Datadog's term for alert rules — they evaluate metrics, logs, or checks and notify when thresholds trip.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--amber)"></span>APM / Traces</h3>
+        <p>Distributed tracing that follows a request across services, correlated with logs and infrastructure metrics.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--red)"></span>Dashboards</h3>
+        <p>Drag-and-drop widgets over any metric, log, or trace data — built in the Datadog web app, not self-hosted.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section>
+    <div class="section-eyebrow">02 — Architecture</div>
+    <h2>How the pieces fit together</h2>
+    <p class="section-intro">
+      Unlike a pull-based system, the Datadog Agent pushes data outward on its own schedule. Everything downstream —
+      storage, querying, dashboards, alert evaluation — runs on Datadog's infrastructure, not yours.
+    </p>
+
+    <div class="panel arch" style="margin-top:24px;">
+      <div class="arch-row">
+        <div class="arch-node">
+          <span class="n-label">Your hosts</span>
+          Datadog Agent (+ integrations)
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node highlight">
+          <span class="n-label">Datadog SaaS</span>
+          Ingest · store · evaluate
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <span class="n-label">Web app</span>
+          Dashboards · monitors · APM
+        </div>
+      </div>
+      <div class="arch-sub">Requires a Datadog account and API key — there's no self-hosted backend to run</div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM -->
+  <section>
+    <div class="section-eyebrow">03 — Ecosystem</div>
+    <h2>Product surface area</h2>
+    <p class="section-intro">Datadog bundles a wide set of monitoring products under one Agent and one billing account.</p>
+    <div class="chip-row">
+      <span class="chip">Infrastructure Monitoring</span>
+      <span class="chip">APM & Distributed Tracing</span>
+      <span class="chip">Log Management</span>
+      <span class="chip">Real User Monitoring</span>
+      <span class="chip">Synthetic Monitoring</span>
+      <span class="chip">Network Monitoring</span>
+      <span class="chip">Container Monitoring</span>
+      <span class="chip">Serverless Monitoring</span>
+      <span class="chip">Cloud Security</span>
+      <span class="chip">CI Visibility</span>
+      <span class="chip">Database Monitoring</span>
+      <span class="chip">Error Tracking</span>
+    </div>
+  </section>
+
+  <!-- HOW MONITORS WORK -->
+  <section>
+    <div class="section-eyebrow">04 — Alerting</div>
+    <h2>How a monitor is put together</h2>
+    <p class="section-intro">A monitor is Datadog's alert primitive — the shape stays the same across metric, log, and APM monitors.</p>
+    <div class="plan-row">
+      <div class="plan-item">
+        <code>Type</code>
+        <span class="desc">What's being evaluated — metric, log, APM trace, process, or a synthetic check.</span>
+      </div>
+      <div class="plan-item">
+        <code>Query</code>
+        <span class="desc">The metric/log query and aggregation, scoped by tags, e.g. host or service.</span>
+      </div>
+      <div class="plan-item">
+        <code>Threshold</code>
+        <span class="desc">Warning and alert levels, plus how long a breach must persist before it fires.</span>
+      </div>
+      <div class="plan-item">
+        <code>Notification</code>
+        <span class="desc">Where it goes — Slack, PagerDuty, email, webhook — using @-mention syntax in the message.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section>
+    <div class="section-eyebrow">05 — Getting started</div>
+    <h2>Installing the Datadog Agent</h2>
+    <p class="section-intro">Every path needs a Datadog account and an API key first — grab one from the official signup page linked below.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="linux">Linux</button>
+      <button class="tab-btn" data-tab="docker">Docker</button>
+      <button class="tab-btn" data-tab="mac">macOS</button>
+      <button class="tab-btn" data-tab="windows">Windows</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-linux">
+      <div class="code-block"><span class="cmt"># one-line install script, prompts for your API key</span>
+DD_API_KEY=&lt;YOUR_API_KEY&gt; DD_SITE="datadoghq.com" \
+  bash -c "$(curl -L https://install.datadoghq.com/scripts/install_script_agent7.sh)"</div>
+      <p>DEB/RPM packages are also available directly if you'd rather manage the install yourself.</p>
+    </div>
+
+    <div class="tab-panel" id="tab-docker">
+      <div class="code-block"><span class="cmt"># runs the Agent as a container, mounting the host's proc & sockets</span>
+docker run -d --name datadog-agent \
+  -e DD_API_KEY=&lt;YOUR_API_KEY&gt; \
+  -e DD_SITE="datadoghq.com" \
+  -v /var/run/docker.sock:/var/run/docker.sock:ro \
+  -v /proc/:/host/proc/:ro \
+  -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
+  gcr.io/datadoghq/agent:7</div>
+      <p>A Helm chart is the recommended path for Kubernetes rather than a raw Docker run.</p>
+    </div>
+
+    <div class="tab-panel" id="tab-mac">
+      <div class="code-block"><span class="cmt"># via the official install script (Homebrew is not the primary path)</span>
+DD_API_KEY=&lt;YOUR_API_KEY&gt; DD_SITE="datadoghq.com" \
+  bash -c "$(curl -L https://install.datadoghq.com/scripts/install_mac_os.sh)"</div>
+      <p>The Agent Manager GUI is available locally afterward for checking status and configuration.</p>
+    </div>
+
+    <div class="tab-panel" id="tab-windows">
+      <div class="code-block"><span class="cmt"># download the MSI installer from the official docs, then run it and:</span>
+1. Open datadog-agent-7-latest.amd64.msi
+2. Accept the license agreement
+3. Enter your Datadog API key when prompted</div>
+      <p>Runs under a dedicated <code>ddagentuser</code> account created during setup.</p>
+    </div>
+
+    <p class="note">→ The Agent itself is open source — source at github.com/DataDog/datadog-agent — but it only reports into the hosted Datadog platform.</p>
+  </section>
+
+  <!-- COMPARISON -->
+  <section>
+    <div class="section-eyebrow">06 — Context</div>
+    <h2>Where it sits among similar tools</h2>
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Primary focus</th><th>Hosting model</th><th>License / pricing model</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Datadog</td><td>Unified metrics, logs, traces & security</td><td>Fully managed SaaS</td><td>Proprietary, usage-based subscription</td></tr>
+        <tr><td>Grafana</td><td>Visualization over many data sources</td><td>Self-hosted or Grafana Cloud</td><td>Open source (AGPLv3) + Cloud/Enterprise</td></tr>
+        <tr><td>Prometheus</td><td>Metrics collection, storage & alerting</td><td>Self-hosted</td><td>Open source (Apache 2.0)</td></tr>
+        <tr><td>New Relic</td><td>Full-stack observability platform</td><td>Fully managed SaaS</td><td>Proprietary, usage-based subscription</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- RESOURCES -->
+  <div class="resources">
+    <div class="section-eyebrow">07 — Resources</div>
+    <h2>Official links</h2>
+    <p class="section-intro">Straight from Datadog — no mirrors, no third-party rehosts.</p>
+
+    <div class="res-grid">
+      <a class="res-link" href="https://www.datadoghq.com/" target="_blank" rel="noopener">
+        <div><span class="r-title">Official website</span><span class="r-url">datadoghq.com</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://www.datadoghq.com/free-datadog-trial/" target="_blank" rel="noopener">
+        <div><span class="r-title">Start a free trial</span><span class="r-url">datadoghq.com/free-datadog-trial</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://docs.datadoghq.com/agent/" target="_blank" rel="noopener">
+        <div><span class="r-title">Agent installation docs</span><span class="r-url">docs.datadoghq.com/agent</span></div>
+        <span class="r-go">↓</span>
+      </a>
+      <a class="res-link" href="https://docs.datadoghq.com/" target="_blank" rel="noopener">
+        <div><span class="r-title">Full documentation</span><span class="r-url">docs.datadoghq.com</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://github.com/DataDog/datadog-agent" target="_blank" rel="noopener">
+        <div><span class="r-title">Agent source code (GitHub)</span><span class="r-url">github.com/DataDog/datadog-agent</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://docs.datadoghq.com/getting_started/agent/" target="_blank" rel="noopener">
+        <div><span class="r-title">Official "getting started" guide</span><span class="r-url">docs.datadoghq.com/getting_started/agent</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://www.datadoghq.com/pricing/" target="_blank" rel="noopener">
+        <div><span class="r-title">Pricing</span><span class="r-url">datadoghq.com/pricing</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://www.datadoghq.com/product/" target="_blank" rel="noopener">
+        <div><span class="r-title">Full product catalog</span><span class="r-url">datadoghq.com/product</span></div>
+        <span class="r-go">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span>Study panel — built for reference, not affiliated with Datadog, Inc.</span>
+    <span>All links point to datadoghq.com or github.com.</span>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Decorative demo sparkline
+  const canvas = document.getElementById('spark');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let data = Array.from({length:60}, ()=> 40 + Math.random()*30);
+
+  function step(){
+    data.shift();
+    const last = data[data.length-1];
+    const next = Math.max(5, Math.min(95, last + (Math.random()-0.5)*17));
+    data.push(next);
+
+    ctx.clearRect(0,0,W,H);
+
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    for(let i=1;i<4;i++){
+      const y = (H/4)*i;
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+    }
+
+    const stepX = W/(data.length-1);
+
+    ctx.beginPath();
+    data.forEach((v,i)=>{
+      const x = i*stepX;
+      const y = H - (v/100)*H;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    });
+    const grad = ctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'rgba(137,82,224,0.32)');
+    grad.addColorStop(1,'rgba(226,76,166,0)');
+    ctx.save();
+    ctx.lineTo(W,H); ctx.lineTo(0,H); ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+    ctx.restore();
+
+    ctx.beginPath();
+    data.forEach((v,i)=>{
+      const x = i*stepX;
+      const y = H - (v/100)*H;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    });
+    const lineGrad = ctx.createLinearGradient(0,0,W,0);
+    lineGrad.addColorStop(0,'#8952E0');
+    lineGrad.addColorStop(1,'#E24CA6');
+    ctx.strokeStyle = lineGrad;
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    const now = data[data.length-1];
+    const avg = data.reduce((a,b)=>a+b,0)/data.length;
+    const peak = Math.max(...data);
+    document.getElementById('statNow').textContent = now.toFixed(1);
+    document.getElementById('statAvg').textContent = avg.toFixed(1);
+    document.getElementById('statPeak').textContent = peak.toFixed(1);
+  }
+
+  step();
+  setInterval(step, 1200);
+</script>
+
+</body>
+</html>

@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prometheus — Study Panel</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">    
+</head>
+<body>
+
+<div class="topbar">
+  <div class="topbar-inner">
+    <span class="dot"></span>
+    <span>prometheus / study-guide</span>
+    <span class="sep">·</span>
+    <span>unofficial reference, links to official sources below</span>
+  </div>
+</div>
+
+<div class="wrap">
+
+  <!-- HERO -->
+  <div class="hero">
+    <div>
+      <div class="hero-logo">
+        <svg viewBox="0 0 24 24" fill="none">
+          <path d="M12 2c4 3 6 6.5 6 10a6 6 0 0 1-12 0c0-1.6.6-3 1.6-4.3-.1 1 .2 1.9.9 2.5C9 8 9.6 4.7 12 2z"
+                fill="url(#f)" stroke="url(#f)" stroke-width="0.5"/>
+          <defs>
+            <linearGradient id="f" x1="0" y1="0" x2="24" y2="24">
+              <stop offset="0" stop-color="#C4401E"/>
+              <stop offset="1" stop-color="#F4A93D"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>Study Panel · 02</span>
+      </div>
+      <h1>Prometheus, the metrics engine underneath it all.</h1>
+      <p class="lede">An open-source monitoring system built around a pull-based model, a multi-dimensional data model, and PromQL — the query language that makes both possible.</p>
+      <div class="hero-actions">
+        <a class="btn primary" href="https://prometheus.io/download/" target="_blank" rel="noopener">↓ Download Prometheus</a>
+        <a class="btn" href="https://prometheus.io/" target="_blank" rel="noopener">Official site ↗</a>
+        <a class="btn" href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener">Documentation ↗</a>
+      </div>
+    </div>
+
+    <div class="panel live-panel">
+      <div class="panel-head">
+        <span class="title">up{job="node"} — demo panel</span>
+        <span class="controls">
+          <span>⟳ 15s scrape</span>
+          <span>⤢</span>
+        </span>
+      </div>
+      <div class="stat-row">
+        <div class="stat"><b id="statNow">—</b><span>current</span></div>
+        <div class="stat"><b id="statAvg" style="color:var(--blue)">—</b><span>avg</span></div>
+        <div class="stat"><b id="statPeak" style="color:var(--amber)">—</b><span>peak</span></div>
+      </div>
+      <div class="panel-body" style="padding-top:0;">
+        <canvas id="spark" width="520" height="160" style="width:100%; height:160px; display:block;"></canvas>
+      </div>
+    </div>
+  </div>
+
+  <!-- WHAT IS PROMETHEUS -->
+  <section>
+    <div class="section-eyebrow">01 — Overview</div>
+    <h2>What Prometheus actually is</h2>
+    <p class="section-intro">
+      Prometheus is a monitoring system and time-series database, originally built at SoundCloud and released
+      in 2012. Instead of waiting for applications to push metrics to it, it pulls (scrapes) them on a schedule
+      from HTTP endpoints exposed by the services being monitored. It's now a graduated project of the Cloud
+      Native Computing Foundation and the de facto metrics standard in the Kubernetes ecosystem. It doesn't
+      render dashboards itself — that's usually where Grafana comes in.
+    </p>
+
+    <div class="grid cols-3">
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--flame)"></span>Scraping</h3>
+        <p>Prometheus pulls metrics over HTTP from targets at a configured interval, typically every 15–60s.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--blue)"></span>Time series</h3>
+        <p>Each metric is identified by a name plus a set of key/value labels — that's what makes it queryable by dimension.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--green)"></span>Exporters</h3>
+        <p>Small processes that translate a system's native stats (Postgres, Nginx, hardware) into Prometheus format.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--amber)"></span>PromQL</h3>
+        <p>The query language used to select, aggregate, and do math over time series — both ad hoc and in rules.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:var(--red)"></span>Alertmanager</h3>
+        <p>A separate component that receives firing alerts and handles grouping, silencing, and routing them.</p>
+      </div>
+      <div class="card">
+        <span class="idx">CONCEPT</span>
+        <h3><span class="swatch" style="background:#9C7BFF"></span>Service discovery</h3>
+        <p>Automatic detection of scrape targets from Kubernetes, Consul, EC2, and other dynamic environments.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ARCHITECTURE -->
+  <section>
+    <div class="section-eyebrow">02 — Architecture</div>
+    <h2>How the pieces fit together</h2>
+    <p class="section-intro">
+      Prometheus scrapes targets directly, stores results in its own local time-series database, evaluates rules
+      against that data, and hands off anything alert-worthy to Alertmanager. Grafana or the built-in expression
+      browser sit on top to visualize it.
+    </p>
+
+    <div class="panel arch" style="margin-top:24px;">
+      <div class="arch-row">
+        <div class="arch-node">
+          <span class="n-label">Targets</span>
+          App /exporters /node
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node highlight">
+          <span class="n-label">Prometheus server</span>
+          Scrape · store · evaluate
+        </div>
+        <div class="arch-arrow">→</div>
+        <div class="arch-node">
+          <span class="n-label">Alertmanager</span>
+          Group · route · notify
+        </div>
+      </div>
+      <div class="arch-sub">Prometheus server also feeds Grafana and the built-in expression browser directly for queries</div>
+    </div>
+  </section>
+
+  <!-- ECOSYSTEM / EXPORTERS -->
+  <section>
+    <div class="section-eyebrow">03 — Ecosystem</div>
+    <h2>Commonly used exporters</h2>
+    <p class="section-intro">If something doesn't speak Prometheus natively, there's usually an exporter that translates for it.</p>
+    <div class="chip-row">
+      <span class="chip">node_exporter</span>
+      <span class="chip">cAdvisor</span>
+      <span class="chip">kube-state-metrics</span>
+      <span class="chip">blackbox_exporter</span>
+      <span class="chip">mysqld_exporter</span>
+      <span class="chip">postgres_exporter</span>
+      <span class="chip">nginx_exporter</span>
+      <span class="chip">redis_exporter</span>
+      <span class="chip">snmp_exporter</span>
+      <span class="chip">JMX exporter</span>
+      <span class="chip">windows_exporter</span>
+      <span class="chip">process-exporter</span>
+    </div>
+  </section>
+
+  <!-- PROMQL -->
+  <section>
+    <div class="section-eyebrow">04 — Query language</div>
+    <h2>PromQL, a quick taste</h2>
+    <p class="section-intro">A few representative queries — enough to recognize the shape of PromQL, not a full reference.</p>
+    <div class="promql-list">
+      <div class="promql-row">
+        <code>up == 0</code>
+        <span class="desc">Every target that Prometheus currently considers down.</span>
+      </div>
+      <div class="promql-row">
+        <code>rate(http_requests_total[5m])</code>
+        <span class="desc">Per-second average request rate over the last 5 minutes.</span>
+      </div>
+      <div class="promql-row">
+        <code>sum by (job) (rate(http_requests_total[5m]))</code>
+        <span class="desc">The same rate, aggregated per job label.</span>
+      </div>
+      <div class="promql-row">
+        <code>histogram_quantile(0.95, rate(request_duration_bucket[5m]))</code>
+        <span class="desc">95th-percentile latency computed from a histogram metric.</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section>
+    <div class="section-eyebrow">05 — Getting started</div>
+    <h2>Installing Prometheus</h2>
+    <p class="section-intro">Pick a path. Binaries and checksums always come from the official download page linked below.</p>
+
+    <div class="tabs" role="tablist">
+      <button class="tab-btn active" data-tab="docker">Docker</button>
+      <button class="tab-btn" data-tab="linux">Linux</button>
+      <button class="tab-btn" data-tab="mac">macOS</button>
+      <button class="tab-btn" data-tab="windows">Windows</button>
+    </div>
+
+    <div class="tab-panel active" id="tab-docker">
+      <div class="code-block"><span class="cmt"># runs Prometheus with the sample config, exposed on port 9090</span>
+docker run -p 9090:9090 prom/prometheus</div>
+      <p>For anything beyond a quick test, mount a named volume and your own <code>prometheus.yml</code>.</p>
+    </div>
+
+    <div class="tab-panel" id="tab-linux">
+      <div class="code-block"><span class="cmt"># download + extract the precompiled binary from the official page</span>
+wget https://github.com/prometheus/prometheus/releases/download/v&lt;version&gt;/prometheus-&lt;version&gt;.linux-amd64.tar.gz
+tar xvf prometheus-&lt;version&gt;.linux-amd64.tar.gz
+cd prometheus-&lt;version&gt;.linux-amd64
+./prometheus --config.file=prometheus.yml</div>
+      <p>Distro packages exist too, but the official docs recommend the precompiled binary for the latest release.</p>
+    </div>
+
+    <div class="tab-panel" id="tab-mac">
+      <div class="code-block"><span class="cmt"># via Homebrew</span>
+brew update
+brew install prometheus
+brew services start prometheus</div>
+      <p>Homebrew installs the same binary you'd get from the download page, just with service management built in.</p>
+    </div>
+
+    <div class="tab-panel" id="tab-windows">
+      <div class="code-block"><span class="cmt"># download the .zip for windows-amd64 from the official page, then:</span>
+cd prometheus-<span class="cmt">&lt;version&gt;</span>.windows-amd64
+.\prometheus.exe --config.file=prometheus.yml</div>
+      <p>No installer — it's a single executable plus a config file, same as on Linux and macOS.</p>
+    </div>
+
+    <p class="note">→ After starting, Prometheus's own expression browser is at <code>http://localhost:9090</code>.</p>
+  </section>
+
+  <!-- COMPARISON -->
+  <section>
+    <div class="section-eyebrow">06 — Context</div>
+    <h2>Where it sits among similar tools</h2>
+    <table>
+      <thead>
+        <tr><th>Tool</th><th>Primary focus</th><th>Collection model</th><th>License model</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Prometheus</td><td>Metrics collection, storage & alerting</td><td>Pull (scrape)</td><td>Open source (Apache 2.0)</td></tr>
+        <tr><td>Grafana</td><td>Visualization over Prometheus and others</td><td>Reads via query, doesn't collect</td><td>Open source (AGPLv3) + Cloud/Enterprise</td></tr>
+        <tr><td>InfluxDB</td><td>General-purpose time-series database</td><td>Push (write API)</td><td>Open source (MIT) + Cloud</td></tr>
+        <tr><td>Datadog</td><td>Fully managed monitoring platform</td><td>Push (agent-based)</td><td>Proprietary, SaaS-only</td></tr>
+      </tbody>
+    </table>
+  </section>
+
+  <!-- RESOURCES -->
+  <div class="resources">
+    <div class="section-eyebrow">07 — Resources</div>
+    <h2>Official links</h2>
+    <p class="section-intro">Straight from the Prometheus project — no mirrors, no third-party rehosts.</p>
+
+    <div class="res-grid">
+      <a class="res-link" href="https://prometheus.io/" target="_blank" rel="noopener">
+        <div><span class="r-title">Official website</span><span class="r-url">prometheus.io</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://prometheus.io/download/" target="_blank" rel="noopener">
+        <div><span class="r-title">Download Prometheus (all OS + Docker)</span><span class="r-url">prometheus.io/download</span></div>
+        <span class="r-go">↓</span>
+      </a>
+      <a class="res-link" href="https://prometheus.io/docs/introduction/overview/" target="_blank" rel="noopener">
+        <div><span class="r-title">Official documentation</span><span class="r-url">prometheus.io/docs</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://github.com/prometheus/prometheus" target="_blank" rel="noopener">
+        <div><span class="r-title">Source code (GitHub)</span><span class="r-url">github.com/prometheus/prometheus</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://prometheus.io/docs/introduction/first_steps/" target="_blank" rel="noopener">
+        <div><span class="r-title">Official "first steps" guide</span><span class="r-url">prometheus.io/docs/introduction/first_steps</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://prometheus.io/community/" target="_blank" rel="noopener">
+        <div><span class="r-title">Community & mailing lists</span><span class="r-url">prometheus.io/community</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://prometheus.io/docs/prometheus/latest/querying/basics/" target="_blank" rel="noopener">
+        <div><span class="r-title">PromQL reference</span><span class="r-url">prometheus.io/docs/prometheus/latest/querying/basics</span></div>
+        <span class="r-go">↗</span>
+      </a>
+      <a class="res-link" href="https://prometheus.io/docs/instrumenting/exporters/" target="_blank" rel="noopener">
+        <div><span class="r-title">Exporters & integrations directory</span><span class="r-url">prometheus.io/docs/instrumenting/exporters</span></div>
+        <span class="r-go">↗</span>
+      </a>
+    </div>
+  </div>
+
+  <footer>
+    <span>Study panel — built for reference, not affiliated with the Prometheus project.</span>
+    <span>All links point to prometheus.io or github.com.</span>
+  </footer>
+
+</div>
+
+<script>
+  document.querySelectorAll('.tab-btn').forEach(btn=>{
+    btn.addEventListener('click', ()=>{
+      document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-'+btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Decorative demo sparkline representing scrape-interval-shaped data
+  const canvas = document.getElementById('spark');
+  const ctx = canvas.getContext('2d');
+  const W = canvas.width, H = canvas.height;
+  let data = Array.from({length:60}, ()=> 40 + Math.random()*30);
+
+  function step(){
+    data.shift();
+    const last = data[data.length-1];
+    const next = Math.max(5, Math.min(95, last + (Math.random()-0.5)*16));
+    data.push(next);
+
+    ctx.clearRect(0,0,W,H);
+
+    ctx.strokeStyle = 'rgba(255,255,255,0.05)';
+    ctx.lineWidth = 1;
+    for(let i=1;i<4;i++){
+      const y = (H/4)*i;
+      ctx.beginPath(); ctx.moveTo(0,y); ctx.lineTo(W,y); ctx.stroke();
+    }
+
+    const stepX = W/(data.length-1);
+
+    // stepped line to evoke scrape samples rather than a smooth curve
+    ctx.beginPath();
+    data.forEach((v,i)=>{
+      const x = i*stepX;
+      const y = H - (v/100)*H;
+      if(i===0){ ctx.moveTo(x,y); }
+      else{
+        const px = (i-1)*stepX;
+        ctx.lineTo(x,ctx.currentY===undefined?y:y);
+        ctx.lineTo(x,y);
+      }
+    });
+    const grad = ctx.createLinearGradient(0,0,0,H);
+    grad.addColorStop(0,'rgba(230,82,44,0.32)');
+    grad.addColorStop(1,'rgba(230,82,44,0)');
+    ctx.save();
+    ctx.lineTo(W,H); ctx.lineTo(0,H); ctx.closePath();
+    ctx.fillStyle = grad; ctx.fill();
+    ctx.restore();
+
+    ctx.beginPath();
+    data.forEach((v,i)=>{
+      const x = i*stepX;
+      const y = H - (v/100)*H;
+      if(i===0) ctx.moveTo(x,y); else ctx.lineTo(x,y);
+    });
+    ctx.strokeStyle = '#E6522C';
+    ctx.lineWidth = 2;
+    ctx.stroke();
+
+    // sample dots to reinforce "scrape point" feel
+    ctx.fillStyle = '#F4A93D';
+    data.forEach((v,i)=>{
+      if(i % 6 !== 0) return;
+      const x = i*stepX;
+      const y = H - (v/100)*H;
+      ctx.beginPath(); ctx.arc(x,y,2,0,Math.PI*2); ctx.fill();
+    });
+
+    const now = data[data.length-1];
+    const avg = data.reduce((a,b)=>a+b,0)/data.length;
+    const peak = Math.max(...data);
+    document.getElementById('statNow').textContent = now.toFixed(1);
+    document.getElementById('statAvg').textContent = avg.toFixed(1);
+    document.getElementById('statPeak').textContent = peak.toFixed(1);
+  }
+
+  step();
+  setInterval(step, 1500);
+</script>
+
+</body>
+</html>
