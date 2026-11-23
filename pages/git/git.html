@@ -1,348 +1,188 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🔥 COMPLETE Git Mastery · DevOps Bible (No stone left unturned)</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Git &amp; GitHub – Complete Syllabus</title>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#f4f6f3;--sf:#fff;--tx:#14201b;--mu:#5b6b63;--ln:#d9e0db;--g:#1f9d62;--o:#e8452c;--v:#6b4eea;--am:#b86e00;--amb:#fff1d6;--cb:#eef2ef;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px);color-scheme:light}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0e1512;--sf:#16201b;--tx:#e8efea;--mu:#93a69b;--ln:#2a3a32;--g:#3ddc97;--o:#ff6a4d;--v:#9a85ff;--am:#ffc65c;--amb:#33280f;--cb:#0b110e;color-scheme:dark}}
+:root[data-theme="dark"]{--bg:#0e1512;--sf:#16201b;--tx:#e8efea;--mu:#93a69b;--ln:#2a3a32;--g:#3ddc97;--o:#ff6a4d;--v:#9a85ff;--am:#ffc65c;--amb:#33280f;--cb:#0b110e;color-scheme:dark}
+*{box-sizing:border-box}html{scroll-behavior:smooth;scroll-padding-top:90px}
+body{margin:0;background:var(--bg);color:var(--tx);font:16px/1.6 "Bricolage Grotesque",system-ui,sans-serif}
+.m{font-family:"JetBrains Mono",ui-monospace,monospace}
+a{color:inherit}
+header.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:20;background:var(--bg);border-bottom:1px solid var(--ln);display:flex;gap:12px;align-items:center;padding:10px 18px}
+.top b{font-weight:800;font-size:18px;white-space:nowrap}.top b i{color:var(--o);font-style:normal}
+#bar{flex:1;height:8px;background:var(--ln);border-radius:9px;overflow:hidden;min-width:60px}
+#bar span{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--g),var(--v));transition:width .4s}
+#pct{font-size:13px;min-width:44px;text-align:right}
+button{font:inherit;color:inherit;cursor:pointer}
+.ic{border:1px solid var(--ln);background:var(--sf);border-radius:8px;padding:4px 10px}
+:focus-visible{outline:3px solid var(--v);outline-offset:2px}
+.hero{max-width:1000px;margin:0 auto;padding:48px 20px 20px}
+.hero h1{font-size:clamp(34px,6vw,64px);line-height:1.02;margin:0 0 12px;font-weight:800;letter-spacing:-.02em}
+.hero p{color:var(--mu);max-width:60ch;margin:0 0 26px}
+.flow{display:flex;flex-wrap:wrap;align-items:stretch;gap:0;margin:8px 0 6px}
+.st{flex:1 1 150px;background:var(--sf);border:1.5px solid var(--ln);border-radius:12px;padding:12px 14px;position:relative}
+.st small{color:var(--mu);display:block}.st code{display:block;margin-top:6px;color:var(--g);font-size:13px}
+.ar{align-self:center;width:34px;height:3px;background:var(--ln);position:relative;overflow:hidden}
+.ar:after{content:"";position:absolute;inset:0;width:12px;background:var(--o);animation:mv 2.4s infinite}
+@keyframes mv{from{transform:translateX(-14px)}to{transform:translateX(36px)}}
+@media(prefers-reduced-motion:reduce){.ar:after{animation:none}html{scroll-behavior:auto}}
+@media(max-width:620px){.ar{width:3px;height:16px;margin-left:24px}.ar:after{display:none}}
+.tools{max-width:1000px;margin:18px auto 0;padding:0 20px;display:flex;gap:10px;flex-wrap:wrap}
+#q{flex:1 1 220px;padding:10px 14px;border:1.5px solid var(--ln);border-radius:10px;background:var(--sf);color:var(--tx);font:inherit}
+.legend{max-width:1000px;margin:10px auto 0;padding:0 20px;color:var(--mu);font-size:14px}
+.tg{display:inline-block;border-radius:6px;padding:0 8px;font-size:13px;background:var(--amb);color:var(--am);border:1px solid var(--am)}
+main{max-width:1000px;margin:0 auto;padding:20px}
+.rail{position:relative;padding-left:46px}
+.rail:before{content:"";position:absolute;left:15px;top:0;bottom:0;width:3px;background:linear-gradient(var(--g),var(--v),var(--o));border-radius:3px;opacity:.55}
+.c{position:relative;margin:0 0 16px;background:var(--sf);border:1px solid var(--ln);border-radius:14px}
+.c:before{content:"";position:absolute;left:-39px;top:20px;width:18px;height:18px;border-radius:50%;background:var(--bg);border:4px solid var(--g);transition:.3s}
+.c.done:before{background:var(--g)}
+.c.done .hd .n{text-decoration:line-through;opacity:.6}
+.hd{display:flex;width:100%;align-items:center;gap:12px;background:none;border:0;padding:16px 18px;text-align:left}
+.sha{font-size:12px;color:var(--o);width:56px;flex:none}
+.hd .n{flex:1;font-weight:700;font-size:19px}
+.hd .ch{transition:transform .25s;color:var(--mu)}
+.c.open .ch{transform:rotate(90deg)}
+.bd{display:none;padding:0 18px 18px}.c.open .bd{display:block}
+.bd h4{margin:14px 0 8px;font-size:14px;color:var(--mu);font-weight:600}
+.ch2{display:flex;flex-wrap:wrap;gap:7px}
+.ch2 span{background:var(--cb);border:1px solid var(--ln);border-radius:7px;padding:2px 10px;font-size:14.5px}
+.ch2 span.ad{background:var(--amb);border-color:var(--am);color:var(--am)}
+.cm{display:block;width:100%;text-align:left;margin:0 0 6px;padding:7px 12px;background:var(--cb);border:1px solid var(--ln);border-left:3px solid var(--g);border-radius:8px;font-size:13px;white-space:pre-wrap;word-break:break-word;color:var(--tx)}
+.cm:hover{border-left-color:var(--o)}.cm:before{content:"$ ";color:var(--mu)}
+.dn{margin-top:14px;display:flex;align-items:center;gap:8px;color:var(--mu);font-size:14px}
+input[type=checkbox]{width:20px;height:20px;accent-color:var(--g)}
+h2.s{font-size:30px;margin:44px 0 14px;font-weight:800;letter-spacing:-.01em}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:14px}
+.k{background:var(--sf);border:1px solid var(--ln);border-radius:14px;padding:16px}
+.k h3{margin:0 0 6px;font-size:17px}.k p{margin:0;color:var(--mu);font-size:15px}
+.k.pj{border-top:4px solid var(--v)}.k.pj.add{border-top-color:var(--am)}
+.k.wk{border-top:4px solid var(--g)}.k.wk a{color:var(--v);font-size:13px;margin-right:8px}
+.ck{display:flex;gap:10px;align-items:flex-start;padding:10px 14px;background:var(--sf);border:1px solid var(--ln);border-radius:10px;margin-bottom:8px;cursor:pointer}
+.ck.on{border-color:var(--g)}.ck.on span{text-decoration:line-through;opacity:.65}
+.tip{margin-top:26px;padding:18px;border-radius:14px;background:var(--cb);border:1.5px dashed var(--o)}
+#toast{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translate(-50%,30px);background:var(--tx);color:var(--bg);padding:8px 16px;border-radius:9px;opacity:0;transition:.25s;pointer-events:none;z-index:30}
+#toast.on{opacity:1;transform:translate(-50%,0)}
+footer{text-align:center;color:var(--mu);padding:30px 20px 50px;font-size:14px}
+</style>
 </head>
 <body>
+<header class="top"><b><i>git</i> &amp; GitHub</b><div id="bar" role="progressbar" aria-label="Progress"><span></span></div><span id="pct" class="m">0%</span><button class="ic" id="th" aria-label="Toggle theme">◐</button></header>
 
-<div class="topbar">
-  <div class="topbar-logo">
-    <span>GIT</span><span>_MASTER</span><span>_</span><span style="font-size:1rem;">Complete</span>
-  </div>
-  <div class="search-wrap">
-    <input type="text" id="searchBox" placeholder="🔍 Search any command... (git, rebase, submodule, etc)">
-  </div>
+<section class="hero">
+<h1>Git &amp; GitHub – Complete Syllabus</h1>
+<p>Beginner to Advanced · DevOps-focused learning roadmap. Tick off each commit as you learn it. Items marked <span class="tg">+ added</span> go beyond the original syllabus.</p>
+<div class="flow m" aria-label="Git areas">
+<div class="st"><small>Working directory</small><code>edit files</code></div><div class="ar"></div>
+<div class="st"><small>Staging area</small><code>git add</code></div><div class="ar"></div>
+<div class="st"><small>Local repository</small><code>git commit</code></div><div class="ar"></div>
+<div class="st"><small>Remote (GitHub)</small><code>git push</code></div>
 </div>
+</section>
 
-<div class="sidebar">
-  <a href="#basics" class="nav-link">📘 Basics</a>
-  <a href="#branching" class="nav-link">🌿 Branching</a>
-  <a href="#remote" class="nav-link">🌐 Remote</a>
-  <a href="#staging" class="nav-link">📌 Staging</a>
-  <a href="#diff-log" class="nav-link">🔍 Diff & Log</a>
-  <a href="#undo" class="nav-link">⏪ Undo/Reset</a>
-  <a href="#stash" class="nav-link">📦 Stash</a>
-  <a href="#tags" class="nav-link">🏷️ Tags</a>
-  <a href="#submodules" class="nav-link">🔗 Submodules</a>
-  <a href="#worktree" class="nav-link">🌳 Worktree</a>
-  <a href="#rebase" class="nav-link">🔄 Rebase</a>
-  <a href="#hooks" class="nav-link">🪝 Hooks</a>
-  <a href="#lfs" class="nav-link">💾 LFS</a>
-  <a href="#reflog" class="nav-link">📜 Reflog</a>
-  <a href="#advanced" class="nav-link">⚡ Advanced</a>
-  <a href="#devops-cicd" class="nav-link">🚀 DevOps</a>
-  <a href="#troubleshoot" class="nav-link">🩺 Troubleshoot</a>
-  <a href="#config" class="nav-link">⚙️ Global Config</a>
-  <a href="#security" class="nav-link">🔐 Security</a>
-</div>
+<div class="tools"><input id="q" type="search" placeholder="Search topics, commands, tools…" aria-label="Search"><button class="ic" id="ea">Expand all</button><button class="ic" id="ca">Collapse all</button></div>
+<div class="legend">Click any command to copy it. <span class="tg">+ added</span> = extra topics.</div>
 
-<div class="main">
-  <h1>🔥 The COMPLETE Git & DevOps Command Bible</h1>
-  <div class="subhead">Every command a master needs — submodules, hooks, reflog, worktree, LFS, bisect, and real-world CI/CD patterns</div>
+<main>
+<div class="rail" id="topics"></div>
 
-  <!-- 1. BASICS (ULTRA DETAILED) -->
-  <div class="section" id="basics">
-    <div class="section-header"><h2>📘 1. Fundamental Git Commands (Daily Driver)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git init</td><td>Initialize empty repository. Use --bare for remote central repo, --initial-branch=main to set default branch</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git clone --depth 1 &lt;url&gt;</td><td>Shallow clone (faster CI/CD). Saves bandwidth, only latest commit. Add --single-branch to clone only default branch</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git status -sb</td><td>Short branch status with upstream tracking. Shows ahead/behind counts. Perfect for daily standups</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git add -A</td><td>Stage all changes including deletions. Safer than 'git add .' in subdirectories. Use -p for interactive staging</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git commit --amend -m "new msg"</td><td>Edit last commit message. Add --no-edit to add staged changes without changing message. Use --author to fix author info</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git commit -am "msg"</td><td>Stage tracked files + commit in one command. Won't add untracked files. Great for quick fixes on known files</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git mv old new</td><td>Move/rename file while preserving history. Better than manual mv + add/rm</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git rm --cached file</td><td>Stop tracking file but keep locally (add to .gitignore after). Perfect for removing accidentally committed secrets</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
+<h2 class="s" id="projects">Practical projects</h2>
+<div class="grid" id="pj"></div>
 
-  <!-- BRANCHING (DETAILED) -->
-  <div class="section" id="branching">
-    <div class="section-header"><h2>🌿 Branching & Merging (GitHub Flow, GitFlow)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git branch -vv</td><td>Show tracking branches with ahead/behind counts. Essential before pull/push to avoid conflicts</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git push origin --delete feature/login</td><td>Delete remote branch after merge (clean up). Use -d for local deletion</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git merge --squash feature</td><td>Squash all feature commits into one before merging. Keeps main branch history clean</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git merge --no-ff feature</td><td>Force merge commit even if fast-forward possible. Preserves feature branch context</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git branch -m old-name new-name</td><td>Rename branch locally. Then git push origin -u new-name and delete old remote</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git branch --sort=-committerdate</td><td>List branches sorted by most recent commit. Shows active branches first</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git branch --merged | grep -v "\*" | xargs git branch -d</td><td>Delete all merged branches at once. Cleanup after release</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
+<h2 class="s" id="plan">6-week learning plan</h2>
+<div class="grid" id="wk"></div>
 
-  <!-- REMOTE & COLLABORATION (DETAILED) -->
-  <div class="section" id="remote">
-    <div class="section-header"><h2>🌐 Remote & Collaboration (Team Workflows)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git remote prune origin</td><td>Remove stale remote tracking branches. Run after teams delete remote branches</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git push --force-with-lease</td><td>Safe force push (checks remote hasn't changed). Never use --force on shared branches</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git fetch --all --prune</td><td>Fetch all remotes and clean stale refs. Sync team changes without merging</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git pull --rebase --autostash</td><td>Rebase instead of merge, auto-stash dirty working directory. Clean linear history</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git remote set-url origin new-url</td><td>Change remote URL (repo moved or switched from HTTPS to SSH)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git push -u origin HEAD</td><td>Push current branch and set upstream. One command to start tracking a new remote branch</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global pull.rebase true</td><td>Set rebase as default for git pull. Prevents merge clutter globally</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
+<h2 class="s" id="check">Job-ready checklist</h2>
+<div id="ck"></div>
 
-  <!-- UNDO & RESET MASTERY (DETAILED) -->
-  <div class="section" id="undo">
-    <div class="section-header"><h2>⏪ Undo, Reset & Recovery Mastery</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git restore --source=HEAD~2 file.txt</td><td>Restore file from 2 commits ago. Better than checkout for file recovery</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git revert -m 1 &lt;merge-commit&gt;</td><td>Revert a merge commit (specify parent line). Safe for public branches</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git reset --soft HEAD~1</td><td>Undo commit, keep changes staged. Perfect for fixing last commit before push</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git reset --mixed HEAD~1</td><td>Undo commit + unstage. Default reset behavior</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git reset --hard ORIG_HEAD</td><td>Undo a destructive reset or merge. ORIG_HEAD saved before dangerous operations</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git checkout HEAD~3 -- file.txt</td><td>Restore file from 3 commits ago (older syntax, still works)</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- STASH (DETAILED) -->
-  <div class="section" id="stash">
-    <div class="section-header"><h2>📦 Stash (Context Switching Like a Pro)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git stash -u</td><td>Stash including untracked files. Use -a to include ignored files too</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git stash push -m "WIP auth" -- src/auth/</td><td>Stash specific directory with message. Perfect for partial work</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git stash show -p stash@{0}</td><td>View diff of stashed changes before applying</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git stash branch new-branch stash@{1}</td><td>Create branch from stash. Recover work that drifted from base</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git stash drop $(git stash list | grep "WIP" | head -1 | cut -d: -f1)</td><td>Drop first stash matching pattern. Cleanup old WIPs</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- TAGS & RELEASES (DETAILED) -->
-  <div class="section" id="tags">
-    <div class="section-header"><h2>🏷️ Tagging & Release Engineering</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git tag -a v2.0 &lt;commit&gt; -m "release notes"</td><td>Annotated tag with message (recommended vs lightweight). Use for releases</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git push origin --tags --force</td><td>Overwrite remote tags (⚠️ use only when necessary). Better to delete+recreate</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git tag -l "v1.*"</td><td>List tags matching pattern. Useful for finding specific releases</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git describe --tags --abbrev=0</td><td>Get latest tag (for versioning in CI/CD builds)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git push origin :refs/tags/v1.0</td><td>Delete remote tag properly (then delete local: git tag -d v1.0)</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- DIFF & LOG (DETAILED) -->
-  <div class="section" id="diff-log">
-    <div class="section-header"><h2>🔍 Diff & Log Inspection (Debugging)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git log --since="2 weeks ago" --oneline</td><td>Filter log by date. Also --until, --author, --grep for flexible search</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git diff HEAD~3..HEAD --stat</td><td>Summary of changes in last 3 commits. Add --name-only for just file list</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'</td><td>Custom pretty log with colors. Perfect for daily review</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git diff branch1..branch2 -- file.txt</td><td>Compare specific file between branches</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git log -S "function_name" --source</td><td>Search commits where function_name was added/removed (pickaxe)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git blame -L 10,20 file.txt</td><td>See who changed lines 10-20. Add -C to detect moved code</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- SUBMODULES (DETAILED) -->
-  <div class="section" id="submodules">
-    <div class="section-header"><h2>🔗 Submodules (Microservices & Shared Libs)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git submodule add -b main &lt;url&gt; libs/shared</td><td>Add submodule tracking specific branch. Prevents detached HEAD</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git submodule update --init --recursive --remote</td><td>Update all submodules to latest commit on tracked branch</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git submodule status --recursive</td><td>Show commit hashes of all submodules. Debug version mismatches</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git submodule foreach 'git checkout main && git pull'</td><td>Run command in each submodule. Batch updates</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git submodule deinit -f -- libs/shared</td><td>Remove submodule completely (also delete .git/modules and stage deletion)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global submodule.recurse true</td><td>Automatically recurse into submodules for commands like git pull, git diff</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- WORKTREE (DETAILED) -->
-  <div class="section" id="worktree">
-    <div class="section-header"><h2>🌳 Git Worktree (Parallel Development)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git worktree add -b hotfix ../project-hotfix main</td><td>Create new worktree with new branch. Hotfix without stashing</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git worktree list --porcelain</td><td>Machine-readable worktree list (for scripting)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git worktree remove ../project-hotfix --force</td><td>Force remove worktree even if dirty. Use with git worktree prune after</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git worktree add --detach ../temp-branch HEAD~3</td><td>Create worktree at detached state (inspect old commit without branch)</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- HOOKS (DETAILED) -->
-  <div class="section" id="hooks">
-    <div class="section-header"><h2>🪝 Git Hooks (Automation & Quality Gates)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Hook Path / Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>.git/hooks/pre-commit</td><td>Run linters, formatters, secrets scan before commit. Return non-zero to abort</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>.git/hooks/commit-msg</td><td>Validate commit message format (Conventional Commits, Jira ticket ID)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>.git/hooks/pre-push</td><td>Run tests before push. Stops breaking the build</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>.git/hooks/pre-receive (server-side)</td><td>Central hook to enforce branch policies, block force-pushes on main</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global core.hooksPath ~/.git-hooks</td><td>Share hooks across all repositories. Version control your hooks</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git hooks --list (Git 2.36+)</td><td>List available hooks in current Git version</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- REFLOG (DETAILED) -->
-  <div class="section" id="reflog">
-    <div class="section-header"><h2>📜 Reflog – Ultimate Recovery Tool</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git reflog --date=local</td><td>Show reflog with local timestamps. Find work from specific date</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git reset --hard HEAD@{2.minutes.ago}</td><td>Restore state from 2 minutes ago. Natural language access</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git reflog expire --expire=30.days --all</td><td>Keep reflog for 30 days (default). Reduce .git size</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git show HEAD@{2025-12-01 09:00:00}</td><td>View commit from specific datetime. Great for audits</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git reflog show --all</td><td>Show reflog for all refs (branches, stash, etc.)</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- LFS (DETAILED) -->
-  <div class="section" id="lfs">
-    <div class="section-header"><h2>💾 Git LFS (Large File Storage for ML, Games, Assets)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git lfs track "*.psd" --lockable</td><td>Track PSD files with file locking. Prevent concurrent edits</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git lfs migrate import --include="*.zip" --everything</td><td>Migrate ALL branches and tags to LFS. Rewrites history</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git lfs ls-files --all --long</td><td>List all LFS files with sizes. Find large assets to clean</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git lfs prune --verify-remote</td><td>Delete old LFS files, check if remote still has them</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git lfs fetch --all --recent</td><td>Download all LFS files (not just current checkout)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git lfs status</td><td>Show which LFS files are modified locally</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- ADVANCED POWER TOOLS -->
-  <div class="section" id="advanced">
-    <div class="section-header"><h2>⚡ Advanced Power Tools (History Rewriting, Bisect, Grep)</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git cherry-pick A..B --no-commit</td><td>Pick range of commits but don't auto-commit. Review before committing</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git filter-repo --path secrets.txt --invert-paths</td><td>Modern alternative to filter-branch (faster, safer). Remove sensitive file</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git bisect start --term-old=v1.0 --term-new=v2.0</td><td>Custom terms for bisect. Test between two versions</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git grep -n "TODO" $(git rev-list --all) -- '*.js'</td><td>Search all commits for pattern in JS files</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git shortlog -sn --no-merges --all</td><td>View contributor stats across ALL branches</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git archive --format=zip --output=deploy.zip main -- . ':!.github'</td><td>Export snapshot excluding CI folders. Perfect for deployment</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git rev-list --count main..feature</td><td>Count commits in feature branch not yet in main</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git fsck --lost-found</td><td>Recover dangling commits. Find work after force push</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- DEVOPS & CI/CD (PRODUCTION PATTERNS) -->
-  <div class="section" id="devops-cicd">
-    <div class="section-header"><h2>🚀 DevOps Patterns & Production CI/CD Integration</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command / Pattern</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git push --follow-tags</td><td>Push commits + annotated tags. CI triggers only on tags (GitHub Actions)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git describe --tags --abbrev=0</td><td>Get latest tag. Use in Makefile: VERSION=$(git describe --tags)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git rev-parse --short HEAD</td><td>Short commit hash. Build metadata: docker tag app:$(git rev-parse --short HEAD)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git clean -xfd</td><td>Remove ignored & untracked. CI cleanup before build</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git diff --name-only origin/main...HEAD</td><td>List changed files in PR. Run relevant tests only</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git log -1 --pretty=%B</td><td>Get last commit message. Extract release notes in CD pipeline</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git fetch --depth=1 origin pull/$PR_ID/head:pr-$PR_ID</td><td>Fetch PR for testing. CI testing of pull requests before merge</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git ls-tree -r main --name-only | xargs wc -l</td><td>Count lines of code in repository. DevOps metrics</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- TROUBLESHOOTING & MAINTENANCE -->
-  <div class="section" id="troubleshoot">
-    <div class="section-header"><h2>🩺 Troubleshooting & Repository Maintenance</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git fsck --full --strict</td><td>Full repository verification. Find corruption early</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git gc --aggressive --prune=now</td><td>Aggressive garbage collection. Shrink repo after history rewrite</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git maintenance start</td><td>Enable automatic background maintenance (Git 2.31+)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git repack -ad --depth=250 --window=250</td><td>Optimize pack files. Speeds up fetch/clone for large repos</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git verify-commit HEAD</td><td>Check GPG signature. Verify commit authenticity</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git bugreport --format=zip</td><td>Generate bug report (Git 2.31+). Collects system info for debugging</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>GIT_TRACE=1 git pull</td><td>Debug git operations. Trace what Git does internally</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- CONFIG & ALIASES (PRODUCTIVITY) -->
-  <div class="section" id="config">
-    <div class="section-header"><h2>⚙️ Global Config & Time-Saving Aliases</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command / Alias</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit"</td><td>Pretty log alias. Run 'git lg' for beautiful history</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global alias.unstage 'reset HEAD --'</td><td>Unstage alias. Run 'git unstage file.txt'</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global alias.last 'log -1 HEAD'</td><td>Show last commit details. Run 'git last' after commit to review</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global alias.tree 'log --graph --pretty=oneline --abbrev-commit --all'</td><td>Tree view of all branches. Visualize full structure</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global alias.undo 'reset --soft HEAD^'</td><td>Undo last commit but keep changes. Safer alternative</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global core.excludesfile ~/.gitignore_global</td><td>Global gitignore (OS-specific: .DS_Store, Thumbs.db)</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global init.defaultBranch main</td><td>Set default branch name to 'main' for all new repos</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-
-  <!-- SECURITY & SIGNING -->
-  <div class="section" id="security">
-    <div class="section-header"><h2>🔐 Security & Commit Signing</h2></div>
-    <table class="cmd-table">
-      <thead><tr><th>Command</th><th>Description & Real-world Usage</th><th>Copy</th></tr></thead>
-      <tbody>
-        <tr><td>git commit -S -m "signed commit"</td><td>GPG-sign a commit. Verify with git log --show-signature</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global user.signingkey &lt;KEY_ID&gt;</td><td>Set default signing key. Use with commit.gpgSign true</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git tag -s v1.0 -m "signed tag"</td><td>Create signed tag. Verified releases for supply chain security</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git verify-commit &lt;commit&gt;</td><td>Verify commit signature. CI job to check GPG signatures</td><td><button class="copy-btn">Copy</button></td></tr>
-        <tr><td>git config --global gpg.format ssh</td><td>Use SSH keys instead of GPG (Git 2.34+). Simpler setup</td><td><button class="copy-btn">Copy</button></td></tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+<div class="tip"><b>Practice tip:</b> Use a Linux terminal and make small commits every day. Build the projects yourself instead of only memorizing commands.</div>
+</main>
+<footer>Git &amp; GitHub – Complete Syllabus · Beginner to Advanced · DevOps-focused</footer>
+<div id="toast" role="status"></div>
 
 <script>
-  document.querySelectorAll('.copy-btn').forEach(btn => {
-    btn.addEventListener('click', function() {
-      let cmd = this.closest('tr').cells[0].innerText.trim();
-      navigator.clipboard.writeText(cmd);
-      this.textContent = '✓ Copied!';
-      setTimeout(() => this.textContent = 'Copy', 1800);
-    });
-  });
-
-  const searchBox = document.getElementById('searchBox');
-  if (searchBox) {
-    searchBox.addEventListener('keyup', () => {
-      const term = searchBox.value.toLowerCase();
-      document.querySelectorAll('.cmd-table tbody tr').forEach(row => {
-        row.style.display = row.innerText.toLowerCase().includes(term) ? '' : 'none';
-      });
-      document.querySelectorAll('.section').forEach(section => {
-        let hasVisible = [...section.querySelectorAll('tbody tr')].some(r => r.style.display !== 'none');
-        section.style.display = hasVisible || term === '' ? '' : 'none';
-      });
-    });
-  }
+const T=[
+["Git Fundamentals",["What is version control","Why Git is used","Git vs GitHub","Distributed version control","Installing Git on Linux, Windows and macOS","Configuring username and email","Understanding the working directory, staging area and repository"],
+["git --version","git config --global user.name 'Your Name'","git config --global user.email 'you@example.com'","git config --list --show-origin"],
+["Config levels: system, global, local","Default branch name (init.defaultBranch main)","Aliases for long commands","GitHub vs GitLab vs Bitbucket"]],
+["Essential Git Commands",["git init","clone","status","add","commit","log","diff","show","rm","mv","restore","clean","Commit messages","Inspecting changes before committing"],
+["git init","git clone https://github.com/user/repo.git","git status -sb","git add -p","git commit -m 'feat: add login page'","git log --oneline --graph --all","git diff --staged","git show HEAD","git restore --staged file.txt","git clean -n"],
+["Conventional Commits (feat, fix, docs)","git blame and git grep","git commit --amend","git mv vs plain rename"]],
+["Repository Concepts",["Repository structure",".git directory","Tracked and untracked files","Staging and committing",".gitignore","README.md","Licensing basics","Viewing commit history","Comparing versions"],
+["ls .git","git ls-files","echo 'node_modules/' >> .gitignore","git diff v1.0 v2.0","git log -p -- file.txt"],
+[".gitattributes and line endings","Global gitignore file","Choosing a license: MIT, Apache-2.0, GPL","Empty folders with .gitkeep"]],
+["Branching",["Creating, listing, switching, renaming and deleting branches","Branch naming conventions","Merging branches","Resolving merge conflicts","Understanding HEAD and detached HEAD"],
+["git switch -c feature/login","git branch -a","git branch -m old-name new-name","git branch -d feature/login","git merge feature/login","git switch --detach HEAD~2"],
+["Naming prefixes: feature/, bugfix/, hotfix/","Conflict markers explained","git merge --abort","git mergetool"]],
+["Remote Repositories",["git remote","fetch","pull","push","Tracking branches","Upstream branches","origin","Handling rejected pushes","Keeping local and remote branches synchronized"],
+["git remote -v","git remote add origin git@github.com:user/repo.git","git fetch --all --prune","git pull --rebase","git push -u origin main","git branch -vv"],
+["git push --force-with-lease","git remote set-url","Pruning stale remote branches","Multiple remotes (origin and upstream)"]],
+["GitHub Fundamentals",["Creating repositories","Public vs private repositories","README files","Issues","Discussions","Releases","Tags","Milestones","Repository settings","Basic project documentation"],
+["gh repo create my-app --public","gh issue create","git tag -a v1.0.0 -m 'First release'","git push origin --tags","gh release create v1.0.0"],
+["Issue and pull request templates","Labels and GitHub Projects","GitHub Pages","CODEOWNERS, CONTRIBUTING.md, SECURITY.md","Semantic versioning (MAJOR.MINOR.PATCH)","GitHub CLI (gh)"]],
+["Authentication and Security",["HTTPS authentication with Personal Access Tokens","SSH key generation and setup","Testing SSH access","Credential management","Secret handling","Avoiding passwords or tokens in source code"],
+["ssh-keygen -t ed25519 -C 'you@example.com'","eval \"$(ssh-agent -s)\"","ssh-add ~/.ssh/id_ed25519","ssh -T git@github.com","git config --global credential.helper cache"],
+["Fine-grained tokens and expiry","Two-factor authentication","Signed commits (GPG or SSH)","Secret scanning and push protection","gitleaks / pre-commit secret checks","Leaked a secret? Revoke first, then clean history","~/.ssh/config for multiple accounts"]],
+["Advanced Git Commands",["git stash","cherry-pick","rebase","reset","revert","reflog","bisect","tag","archive","worktree","Safe recovery methods","Difference between reset and revert"],
+["git stash push -u -m 'wip'","git stash pop","git cherry-pick abc1234","git reset --soft HEAD~1","git revert HEAD","git reflog","git bisect start","git archive -o app.zip HEAD","git worktree add ../hotfix hotfix"],
+["reset --soft vs --mixed vs --hard","git restore --source=HEAD~1 file","Submodules","Sparse checkout","Git LFS for large files"]],
+["Merge and Rebase",["Fast-forward and three-way merges","Merge conflicts","Interactive rebase","Squashing commits","Rebasing feature branches","When not to rewrite shared history"],
+["git merge --no-ff feature","git rebase main","git rebase -i HEAD~3","git rebase --abort","git commit --fixup abc1234"],
+["Golden rule: never rebase shared branches","Squash merge on GitHub","autosquash with fixup commits","git rerere (reuse conflict fixes)"]],
+["Team Collaboration and Workflows",["Forks and pull requests","Code reviews","Review comments","Protected branches","Required checks","Git Flow","GitHub Flow","Trunk-based development"],
+["git remote add upstream https://github.com/org/repo.git","git fetch upstream","gh pr create --fill","gh pr checkout 42"],
+["Draft pull requests","Branch rulesets","CODEOWNERS review rules","Merge methods: merge, squash, rebase","Feature flags for trunk-based work","Keeping PRs small"]],
+["GitHub Actions – CI/CD Basics",["Workflow YAML","Events and triggers","Jobs and steps","Runners","Actions","Environment variables","Secrets","Artifacts","Caching","Running automated tests or builds on push and pull request"],
+["# .github/workflows/ci.yml\nname: CI\non: [push, pull_request]\njobs:\n  test:\n    runs-on: ubuntu-latest\n    steps:\n      - uses: actions/checkout@v4\n      - run: npm ci && npm test"],
+["Matrix builds","Reusable workflows","Environments and approvals","OIDC login to cloud (no stored keys)","Dependabot for actions","Pin third-party actions to a commit SHA"]],
+["Git Hooks",["Client-side and server-side hooks","pre-commit and commit-msg hooks","Formatting and validation checks","Using hooks responsibly in team projects"],
+["ls .git/hooks","chmod +x .git/hooks/pre-commit","git config core.hooksPath .githooks","git commit --no-verify"],
+["pre-commit framework","Husky and commitlint","Hooks are not cloned: share via hooksPath","CI as the backstop for skipped hooks"]],
+["Troubleshooting",["Undoing changes safely","Recovering deleted commits","Resolving conflicts","Fixing wrong remote URLs","Handling authentication errors","Rejected pushes","Accidental commits","Recovering with reflog"],
+["git restore file.txt","git reset --hard ORIG_HEAD","git reflog && git branch rescue abc1234","git remote set-url origin git@github.com:user/repo.git","git pull --rebase && git push"],
+["Permission denied (publickey)","File over 100 MB rejected","Remove a committed file with git filter-repo","CRLF vs LF line endings","git fsck for lost objects"]],
+["Git in DevOps",["Using Git repositories with Jenkins, Docker, Ansible, Terraform, Kubernetes and AWS workflows","Store application code and infrastructure definitions in version control","Trigger automated build, test and deployment pipelines"],
+["docker build -t app:$(git rev-parse --short HEAD) .","terraform plan","ansible-playbook site.yml --check","kubectl apply -f k8s/"],
+["GitOps with Argo CD or Flux","Webhooks that trigger Jenkins","Jenkinsfile stored in the repo","Tag images with commit SHA","Ignore .terraform and use remote state","Branch-to-environment mapping","Secrets via Vault or AWS Secrets Manager"]]
+];
+const P=[["Project 1 – Personal Repository","Create a GitHub repository, add a README, .gitignore, meaningful commits, branches and tags."],["Project 2 – Team Collaboration","Simulate a team using branches, pull requests, code reviews and merge-conflict resolution."],["Project 3 – GitHub Actions CI","Create a workflow that runs tests or validates files whenever code is pushed or a pull request is opened."],["Project 4 – Jenkins + GitHub + Docker","Connect a GitHub repository to Jenkins and build a Docker image automatically after a code change."],["Project 5 – Hooks + Conventional Commits (added)","Add pre-commit and commit-msg hooks with a shared hooksPath, then enforce the same checks in CI.",1]];
+const W=[["Week 1","Git basics, setup and essential commands.",[1,2,3]],["Week 2","Branching, merging and conflict resolution.",[4,9]],["Week 3","GitHub, remotes, SSH and collaboration.",[5,6,7,10]],["Week 4","Advanced commands, rebase, reset, revert and recovery.",[8,9,13]],["Week 5","GitHub Actions and Git hooks.",[11,12]],["Week 6","Complete the practical projects and integrate Git with Jenkins and Docker.",[14]]];
+const C=["Create and manage repositories independently.","Use branches and resolve merge conflicts.","Push, pull and fetch from remote repositories.","Work with pull requests and code reviews.","Configure SSH authentication securely.","Recover from common Git mistakes.","Write a basic GitHub Actions workflow.","Connect a Git repository to a Jenkins pipeline."];
+let S={};try{S=JSON.parse(localStorage.getItem("gitsyl")||"{}")}catch(e){}
+const save=()=>{try{localStorage.setItem("gitsyl",JSON.stringify(S))}catch(e){}};
+const $=s=>document.querySelector(s),el=(t,c,h)=>{const e=document.createElement(t);if(c)e.className=c;if(h!=null)e.textContent=h;return e};
+const hash=i=>{let h=(i+1)*2654435761>>>0;return h.toString(16).slice(0,7).padStart(7,"a")};
+function toast(m){const t=$("#toast");t.textContent=m;t.classList.add("on");clearTimeout(toast.i);toast.i=setTimeout(()=>t.classList.remove("on"),1400)}
+const root=$("#topics");
+T.forEach((t,i)=>{
+ const c=el("section","c");c.id="t"+(i+1);
+ const h=el("button","hd");h.setAttribute("aria-expanded","false");
+ h.append(el("span","sha m",hash(i)),el("span","n",(i+1)+". "+t[0]),el("span","ch","▶"));
+ const b=el("div","bd");
+ b.append(el("h4",0,"What you will learn"));const a=el("div","ch2");t[1].forEach(x=>a.append(el("span",0,x)));b.append(a);
+ b.append(el("h4",0,"Commands to practice"));t[2].forEach(x=>{const m=el("button","cm m",x);m.onclick=()=>{try{navigator.clipboard.writeText(x)}catch(e){}toast("Copied")};b.append(m)});
+ b.append(el("h4",0,"Added: extra topics"));const d=el("div","ch2");t[3].forEach(x=>d.append(el("span","ad m",x)));b.append(d);
+ const dn=el("label","dn");const cb=el("input");cb.type="checkbox";cb.checked=!!S["t"+i];
+ cb.onchange=()=>{S["t"+i]=cb.checked;c.classList.toggle("done",cb.checked);save();prog()};
+ dn.append(cb,el("span",0,"Mark as learned"));b.append(dn);
+ c.classList.toggle("done",cb.checked);
+ h.onclick=()=>{const o=c.classList.toggle("open");h.setAttribute("aria-expanded",o)};
+ c.append(h,b);c._s=(t[0]+t[1].join(" ")+t[2].join(" ")+t[3].join(" ")).toLowerCase();root.append(c)});
+P.forEach(p=>{const k=el("div","k pj"+(p[2]?" add":""));k.append(el("h3",0,p[0]),el("p",0,p[1]));$("#pj").append(k)});
+W.forEach(w=>{const k=el("div","k wk");k.append(el("h3",0,w[0]),el("p",0,w[1]));const l=el("p");l.style.marginTop="8px";w[2].forEach(n=>{const a=el("a","m","topic "+n);a.href="#t"+n;a.onclick=()=>{$("#t"+n).classList.add("open")};l.append(a)});k.append(l);$("#wk").append(k)});
+C.forEach((x,i)=>{const r=el("label","ck"+(S["c"+i]?" on":""));const cb=el("input");cb.type="checkbox";cb.checked=!!S["c"+i];cb.onchange=()=>{S["c"+i]=cb.checked;r.classList.toggle("on",cb.checked);save();prog()};r.append(cb,el("span",0,x));$("#ck").append(r)});
+function prog(){const n=T.length+C.length;let d=0;T.forEach((_,i)=>S["t"+i]&&d++);C.forEach((_,i)=>S["c"+i]&&d++);const p=Math.round(d/n*100);$("#bar span").style.width=p+"%";$("#pct").textContent=p+"%";$("#bar").setAttribute("aria-valuenow",p)}
+prog();
+$("#q").oninput=e=>{const v=e.target.value.toLowerCase().trim();root.querySelectorAll(".c").forEach(c=>{const m=!v||c._s.includes(v);c.style.display=m?"":"none";if(v&&m)c.classList.add("open")})};
+$("#ea").onclick=()=>root.querySelectorAll(".c").forEach(c=>c.classList.add("open"));
+$("#ca").onclick=()=>root.querySelectorAll(".c").forEach(c=>c.classList.remove("open"));
+$("#th").onclick=()=>{const r=document.documentElement,d=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
+root.firstChild.classList.add("open");
 </script>
 </body>
 </html>

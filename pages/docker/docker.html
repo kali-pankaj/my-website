@@ -1,291 +1,398 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
-    <title>🐳 Docker Mastery Hub · DevOps Containerization | Interactive Study Notes</title>
-    <link rel="stylesheet" href="style.css">
+<html lang="en"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Docker Complete Notes – Beginner to Advanced</title>
 </head>
+<link rel="stylesheet" href="style.css">
 <body>
-<div class="dashboard-wrapper">
-    <!-- SIDEBAR enriched with study navigation -->
-    <div class="sidebar">
-        <div class="sidebar-brand">
-            <h2>🐳 Docker<span style="font-size:1rem;">_Hub</span></h2>
-            <p>mastery · notes · commands</p>
-        </div>
-        <div class="nav-section">📚 CORE CONCEPTS</div>
-        <a href="#intro" class="nav-link"><span class="icon-em">📦</span> <span>What is Docker</span></a>
-        <a href="#containers-section" class="nav-link"><span class="icon-em">📦</span> <span>Containers</span></a>
-        <a href="#dockerfile-notes" class="nav-link"><span class="icon-em">📄</span> <span>Dockerfile</span></a>
-        <a href="#images-volumes" class="nav-link"><span class="icon-em">🏞️</span> <span>Images & Volumes</span></a>
-        <a href="#networking" class="nav-link"><span class="icon-em">🌐</span> <span>Networking</span></a>
-        <a href="#compose" class="nav-link"><span class="icon-em">⚙️</span> <span>Compose</span></a>
-        <div class="nav-section">⚡ COMMANDS REF</div>
-        <a href="#basic-cmd" class="nav-link"><span>🐚</span> <span>Basic Commands</span></a>
-        <a href="#container-cmd" class="nav-link"><span>📦</span> <span>Container lifecycle</span></a>
-        <a href="#clean-cmd" class="nav-link"><span>🧹</span> <span>Cleanup & Security</span></a>
-        <a href="#dockerfiles-show" class="nav-link"><span>🏗️</span> <span>Multi-stage</span></a>
-        <div class="nav-section">📘 STUDY NOTES</div>
-        <a href="#study-notes" class="nav-link"><span>🧠</span> <span>Pro Tips & Notes</span></a>
-    </div>
+<header><h1>🐳 Docker Complete Notes</h1><input id="q" placeholder="Search topic…"><button class="b" id="th">🌓</button></header>
+<div class="wrap"><nav id="nav"></nav><main id="main">
 
-    <div class="main-content">
-        <div class="top-actions">
-            <div class="search-global">
-                <span>🔍</span>
-                <input type="text" id="globalSearch" placeholder="Search commands, concepts, Dockerfile...">
-            </div>
-            <div class="note-badge">📖 Interactive Study Mode — click any command to copy</div>
-        </div>
+<section id="m1"><h2>1. Docker Fundamentals</h2>
+<h3>What is Docker and containerization?</h3>
+<p>Docker packages an application with its libraries, runtime and config into a <b>container</b> that runs the same everywhere (laptop, server, cloud). Containers share the host Linux kernel and use <b>namespaces</b> (isolation) and <b>cgroups</b> (resource limits).</p>
+<h3>Virtual Machine vs Container</h3>
+<div class="tw"><table><tr><th>Point</th><th>Virtual Machine</th><th>Container</th></tr>
+<tr><td>OS</td><td>Full guest OS each</td><td>Shares host kernel</td></tr>
+<tr><td>Size</td><td>GBs</td><td>MBs</td></tr>
+<tr><td>Startup</td><td>Minutes</td><td>Seconds</td></tr>
+<tr><td>Isolation</td><td>Strong (hypervisor)</td><td>Process-level</td></tr></table></div>
+<h3>Architecture: Client, Daemon, Engine</h3>
+<ul><li><b>Docker Client</b> (<code>docker</code> CLI) sends commands via REST API.</li><li><b>Docker Daemon</b> (<code>dockerd</code>) builds, runs and manages objects.</li><li><b>Docker Engine</b> = daemon + API + CLI (uses containerd and runc underneath).</li></ul>
+<h3>Images, Containers, Registries</h3>
+<ul><li><b>Image</b>: read-only template (like a class).</li><li><b>Container</b>: running instance of an image (like an object).</li><li><b>Registry</b>: image storage, e.g. Docker Hub, GHCR, AWS ECR.</li></ul>
+<h3>Install on Ubuntu</h3>
+<pre><code>sudo apt update && sudo apt install -y ca-certificates curl
+curl -fsSL https://get.docker.com | sudo sh      # quick install
+sudo usermod -aG docker $USER && newgrp docker   # run without sudo
+sudo systemctl enable --now docker
+docker run hello-world                           # test</code></pre>
+<div class="tip">Docker Hub = default public registry at hub.docker.com. Official images (nginx, mysql, ubuntu) are trusted and maintained.</div></section>
 
-        <!-- ========== STUDY NOTE CARDS SECTION (pro-level notes) ========== -->
-        <div class="study-grid" id="study-notes">
-            <div class="note-card">
-                <div class="card-header">🧠 Best Practice Notes</div>
-                <div class="card-body">
-                    <p><strong>🔹 Layering & caching:</strong> Order Dockerfile from less frequently changed → more frequently changed (dependencies first).<br>
-                    <strong>🔹 .dockerignore:</strong> Exclude node_modules, .git, secrets to keep images slim.<br>
-                    <strong>🔹 Use specific tags:</strong> Avoid `latest` in production; pin versions like `node:20-alpine`.</p>
-                </div>
-            </div>
-            <div class="note-card">
-                <div class="card-header">⚡ Performance Insight</div>
-                <div class="card-body">
-                    <p>✔️ Multi-stage builds reduce final image size by 70%+<br>
-                    ✔️ Alpine-based images (5-10MB) vs slim variants<br>
-                    ✔️ `docker system prune -a` — keep CI/CD clean<br>
-                    ✔️ Use `--link` only on legacy, prefer user-defined networks.</p>
-                </div>
-            </div>
-            <div class="note-card">
-                <div class="card-header">🐳 Docker Swarm vs K8s</div>
-                <div class="card-body">
-                    <p><strong>Swarm:</strong> simpler, Docker-native, easier for small clusters.<br>
-                    <strong>K8s:</strong> industry standard, auto-healing, rolling updates, complex.<br>
-                    💡 Use Compose for dev, then translate to K8s manifests.</p>
-                </div>
-            </div>
-            <div class="note-card">
-                <div class="card-header">🔐 Security Checklist</div>
-                <div class="card-body">
-                    <p>✔️ Run containers as non-root.<br>
-                    ✔️ `--read-only` root filesystem + tmpfs for writeable areas.<br>
-                    ✔️ Regularly `docker scan` / `docker scout`.  <br>
-                    ✔️ Use secrets manager instead of ENV for passwords.</p>
-                </div>
-            </div>
-        </div>
+<section id="m2"><h2>2. Docker Basic Commands</h2>
+<pre><code>docker --version            # client version
+docker info                 # system-wide info (storage driver, containers, cgroup)
+docker pull nginx:latest    # download image
+docker images               # list images
+docker run -d --name web -p 8080:80 nginx   # create + start
+docker ps                   # running containers
+docker ps -a                # all containers (incl. stopped)
+docker stop web / start web / restart web
+docker exec -it web bash    # shell inside container
+docker logs -f web          # follow logs
+docker stats                # live CPU/RAM/network
+docker inspect web          # full JSON details
+docker rm -f web            # remove container (-f forces)
+docker rmi nginx            # remove image</code></pre>
+<div class="tip">Use <code>docker inspect -f '{{.NetworkSettings.IPAddress}}' web</code> to extract one field.</div></section>
 
-        <!-- INTRO (with ids for navigation) -->
-        <div class="cmd-block" id="intro">
-            <h2>📘 Docker Deep Dive · DevOps Foundations</h2>
-            <div style="padding:0 1.5rem 1rem 1.5rem;">
-                <ul><li><strong>What is Docker:</strong> Open platform for developing, shipping, and running apps inside lightweight containers.</li>
-                <li><strong>Containers vs VMs:</strong> Containers share host OS kernel -> faster, smaller.</li>
-                <li><strong>Key components:</strong> Docker Engine, containerd, Docker CLI, Docker Hub.</li>
-                <li><strong>Dockerfiles</strong> define immutable images; <strong>Images</strong> are templates; <strong>Containers</strong> are running instances.</li>
-                <li><strong>Volumes</strong> persist data; <strong>Networks</strong> isolate/interconnect containers.</li>
-                <li><strong>Docker Compose</strong> orchestrates multi-container apps with YAML.</li></ul>
-                <div class="pro-tip">💡 Pro tip: Use `docker init` to generate Dockerfile + compose assets rapidly (experimental).</div>
-            </div>
-        </div>
+<section id="m3"><h2>3. Docker Images</h2>
+<h3>Layers and architecture</h3>
+<p>An image is a stack of read-only layers; each Dockerfile instruction creates one. Layers are shared between images and cached, saving disk and time. A container adds one thin writable layer on top (copy-on-write).</p>
+<h3>Naming, tagging, versioning</h3>
+<pre><code>registry/namespace/repo:tag
+docker.io/myuser/myapp:1.2.0
+docker tag myapp:latest myuser/myapp:1.2.0   # add a tag
+# avoid relying on :latest in production, pin versions (nginx:1.27-alpine)</code></pre>
+<h3>Build, pull, push</h3>
+<pre><code>docker build -t myapp:1.0 .
+docker pull ubuntu:24.04
+docker login && docker push myuser/myapp:1.0</code></pre>
+<h3>History and inspect</h3>
+<pre><code>docker history myapp:1.0       # layers and sizes
+docker image inspect myapp:1.0 # metadata, env, cmd, layers</code></pre>
+<h3>Build cache, optimization, cleanup</h3>
+<ul><li>Put rarely-changing steps (install deps) before frequently-changing ones (copy source).</li><li>Use small bases (alpine, slim), multi-stage builds, combine RUN commands.</li></ul>
+<pre><code>docker image prune -a      # remove unused images
+docker builder prune       # clear build cache
+docker system prune -a --volumes   # clean everything unused (careful!)
+docker system df           # disk usage</code></pre></section>
 
-        <!-- CONTAINERS SECTION -->
-        <div id="containers-section" class="cmd-block">
-            <h2>📦 Containers & Isolation</h2>
-            <div style="padding:0 1.5rem 1rem 1.5rem;">
-                <p>✔️ Lightweight, portable, share OS kernel.<br>✔️ Namespaces (PID, NET, MNT) + cgroups provide resource isolation.<br>✔️ Container = running instance of an image.</p>
-            </div>
-        </div>
-
-        <!-- COMMAND BLOCKS (all original commands upgraded) -->
-        <div class="cmd-block" id="basic-cmd">
-            <h2>🐚 Docker Basic Commands</h2>
-            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
-            <tbody><tr><td>sudo apt install docker.io</td><td>Install Docker on Ubuntu</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker --version</td><td>Show Docker version</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker info</td><td>System-wide info</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker login</td><td>Login to Docker Hub</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker build -t myapp .</td><td>Build image from Dockerfile</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker pull nginx:alpine</td><td>Pull image from registry</td><td><button class="copy-btn">Copy</button></td></tr>
-            </tbody></table>
-        </div>
-
-        <div class="cmd-block" id="container-cmd">
-            <h2>📌 Container Lifecycle (run · stop · exec)</h2>
-            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
-            <tbody><tr><td>docker run -d --name web -p 80:80 nginx</td><td>Detached + port forward</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker ps -a</td><td>List all containers</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker stop web</td><td>Stop container gracefully</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker logs -f web</td><td>Follow logs</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker exec -it web /bin/sh</td><td>Interactive shell</td><td><button class="copy-btn">Copy</button></td></tr>
-            </tbody></table>
-        </div>
-
-        <!-- Images & Volumes -->
-        <div class="cmd-block" id="images-volumes">
-            <h2>🏞️ Images & Volumes Management</h2>
-            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
-            <tbody><tr><td>docker images</td><td>List local images</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker rmi alpine:latest</td><td>Remove image</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker volume create data_vol</td><td>Create named volume</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker run -v data_vol:/app/data alpine</td><td>Mount volume</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker volume prune</td><td>Remove unused volumes</td><td><button class="copy-btn">Copy</button></td></tr>
-            </tbody></table>
-        </div>
-
-        <div class="cmd-block" id="networking">
-            <h2>🌐 Docker Networking</h2>
-            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
-            <tbody><tr><td>docker network ls</td><td>List networks</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker network create app-net</td><td>Create custom bridge</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker network connect app-net container1</td><td>Attach container</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker network inspect app-net</td><td>Inspect network</td><td><button class="copy-btn">Copy</button></td></tr>
-            </tbody></table>
-        </div>
-
-        <div class="cmd-block" id="compose">
-            <h2>⚙️ Docker Compose · Multi-service</h2>
-            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
-            <tbody><tr><td>docker compose up -d</td><td>Start services in bg</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker compose down -v</td><td>Stop and remove volumes</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker compose logs --tail=50</td><td>View recent logs</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker compose exec db bash</td><td>Run command inside service</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker compose up --scale worker=3</td><td>Scale replicas</td><td><button class="copy-btn">Copy</button></td></tr>
-            </tbody></table>
-        </div>
-
-        <div class="cmd-block" id="clean-cmd">
-            <h2>🧹 Cleanup & Security</h2>
-            <table class="cmd-table"><thead><tr><th>Command</th><th>Description</th><th>Copy</th></tr></thead>
-            <tbody><tr><td>docker system prune -a --volumes</td><td>Complete cleanup</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker scan nginx</td><td>Vulnerability scan</td><td><button class="copy-btn">Copy</button></td></tr>
-            <tr><td>docker run --read-only --tmpfs /tmp alpine</td><td>Read-only security</td><td><button class="copy-btn">Copy</button></td></tr>
-            </tbody></table>
-        </div>
-
-        <!-- DOCKERFILE MULTI-STAGE SHOWCASE (enhanced) -->
-        <div class="dockerfile-showcase" id="dockerfiles-show">
-            <h2>🏗️ Multi-Stage Dockerfile Blueprints (production ready)</h2>
-            <div class="flex-dockerfiles">
-                <div class="dockerfile-card"><div class="card-header" style="background:#eef6fa;">🐳 Node + React</div><pre><code>FROM node:20 AS builder
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci
-COPY . .
-RUN npm run build
-
-FROM nginx:alpine
-COPY --from=builder /app/dist /usr/share/nginx/html
-EXPOSE 80</code></pre></div>
-                <div class="dockerfile-card"><div class="card-header" style="background:#eef6fa;">☕ Spring Boot</div><pre><code>FROM maven:3.9 AS build
-WORKDIR /build
-COPY pom.xml .
-COPY src ./src
-RUN mvn package
-
-FROM eclipse-temurin:17-jre-alpine
-COPY --from=build /build/target/*.jar app.jar
-ENTRYPOINT ["java","-jar","app.jar"]</code></pre></div>
-                <div class="dockerfile-card"><div class="card-header" style="background:#eef6fa;">🐍 Python (uvicorn)</div><pre><code>FROM python:3.12-slim AS builder
-COPY requirements.txt .
-RUN pip install --user -r requirements.txt
-
-FROM python:3.12-alpine
-WORKDIR /app
-COPY --from=builder /root/.local /root/.local
-COPY . .
-CMD ["uvicorn", "main:app", "--host","0.0.0.0"]</code></pre></div>
-                <div class="dockerfile-card"><div class="card-header" style="background:#eef6fa;">🏎️ Go scratch</div><pre><code>FROM golang:1.22 AS build
+<section id="m4"><h2>4. Dockerfile</h2>
+<h3>Structure and instructions</h3>
+<pre><code># Dockerfile for a Node.js app
+FROM node:20-alpine            # base image
+ARG APP_VER=1.0                # build-time variable
+ENV NODE_ENV=production        # runtime variable
+WORKDIR /app                   # working dir (created if missing)
+COPY package*.json ./          # copy deps first (cache friendly)
+RUN npm ci --omit=dev          # run at build time
+COPY . .                       # copy source (ADD also extracts tar/URLs)
+EXPOSE 3000                    # documents the port
+VOLUME /app/data               # mount point for data
+USER node                      # run as non-root
+HEALTHCHECK --interval=30s CMD wget -qO- http://localhost:3000/health || exit 1
+ENTRYPOINT ["node"]
+CMD ["server.js"]</code></pre>
+<h3>.dockerignore</h3>
+<pre><code>node_modules
+.git
+*.log
+.env</code></pre>
+<h3>CMD vs ENTRYPOINT</h3>
+<ul><li><b>ENTRYPOINT</b>: fixed executable, hard to override (needs <code>--entrypoint</code>).</li><li><b>CMD</b>: default arguments, easily replaced by <code>docker run image args</code>.</li><li>Together: <code>docker run myapp other.js</code> runs <code>node other.js</code>.</li></ul>
+<h3>ARG vs ENV</h3>
+<ul><li><b>ARG</b>: only during build (<code>--build-arg APP_VER=2.0</code>), gone at runtime.</li><li><b>ENV</b>: persists in image and running container (<code>-e</code> overrides).</li></ul>
+<h3>Multi-stage builds</h3>
+<pre><code>FROM golang:1.22 AS build
 WORKDIR /src
-COPY go.mod go.sum ./
-RUN go mod download
 COPY . .
 RUN CGO_ENABLED=0 go build -o app
 
-FROM scratch
-COPY --from=build /src/app /app
-ENTRYPOINT ["/app"]</code></pre></div>
-            </div>
-            <div class="pro-tip" style="margin-top:1rem;">✨ Study note: multi-stage drastically reduces image size, no build tools in production runtime.</div>
-        </div>
-        <footer>🐳 Docker Study Hub — Click any [Copy] button | Use search to filter commands & concepts instantly</footer>
-    </div>
-</div>
+FROM alpine:3.20
+COPY --from=build /src/app /usr/local/bin/app
+USER 1000
+CMD ["app"]          # final image ~10 MB, no compiler</code></pre>
+<div class="tip">Best practices: one process per container, pin versions, non-root user, minimal base, no secrets in layers, order instructions by change frequency.</div></section>
 
+<section id="m5"><h2>5. Container Management</h2>
+<h3>Lifecycle</h3>
+<p><code>created → running → paused → stopped (exited) → removed</code>. Commands: create, start, pause, unpause, stop, kill, rm.</p>
+<h3>Foreground, detached, interactive, ports, env, names</h3>
+<pre><code>docker run nginx                         # foreground, attached to terminal
+docker run -d --name web nginx           # detached (background)
+docker run -it ubuntu bash               # interactive TTY
+docker run -d -p 8080:80 nginx           # host 8080 -> container 80
+docker run -d -P nginx                   # publish all EXPOSEd to random ports
+docker run -e MYSQL_ROOT_PASSWORD=pass --name db -d mysql:8</code></pre>
+<h3>Resource limits and restart policies</h3>
+<pre><code>docker run -d --memory=512m --cpus=1.5 --name app myapp
+docker update --memory=1g app
+docker run -d --restart=unless-stopped nginx
+# policies: no | on-failure[:N] | always | unless-stopped</code></pre>
+<h3>Logs and troubleshooting</h3>
+<pre><code>docker logs --tail 50 -f -t web
+docker inspect web | grep -i -A3 State
+docker exec -it web sh
+docker cp web:/etc/nginx/nginx.conf .
+docker top web ; docker diff web</code></pre>
+<div class="tip">Container exits immediately? Check <code>docker logs</code> and exit code (<code>docker inspect -f '{{.State.ExitCode}}'</code>). 137 = killed/OOM, 1 = app error.</div></section>
+
+<section id="m6"><h2>6. Storage and Volumes</h2>
+<h3>Container filesystem and writable layer</h3>
+<p>Data written inside a container lives in its writable layer and is <b>lost when the container is removed</b>. Use volumes or bind mounts for persistent data.</p>
+<h3>Named, anonymous, bind, tmpfs</h3>
+<pre><code>docker volume create dbdata
+docker run -d -v dbdata:/var/lib/mysql mysql:8          # named volume
+docker run -d -v /var/lib/mysql mysql:8                 # anonymous volume
+docker run -d -v $(pwd)/site:/usr/share/nginx/html:ro -p 80:80 nginx   # bind mount
+docker run -d --tmpfs /tmp:rw,size=64m myapp            # RAM-only, not persisted
+docker run --mount type=volume,src=dbdata,dst=/data alpine   # modern syntax</code></pre>
+<div class="tp"></div>
+<table><tr><th>Type</th><th>Managed by</th><th>Use case</th></tr>
+<tr><td>Named volume</td><td>Docker</td><td>Databases, production data</td></tr>
+<tr><td>Bind mount</td><td>Host path</td><td>Dev, config files</td></tr>
+<tr><td>tmpfs</td><td>RAM</td><td>Temp or sensitive data</td></tr></table>
+<h3>Inspection and management</h3>
+<pre><code>docker volume ls ; docker volume inspect dbdata
+docker volume rm dbdata ; docker volume prune</code></pre>
+<h3>Backup and restore</h3>
+<pre><code># backup
+docker run --rm -v dbdata:/data -v $(pwd):/backup alpine tar czf /backup/dbdata.tgz -C /data .
+# restore into a new volume
+docker volume create dbdata2
+docker run --rm -v dbdata2:/data -v $(pwd):/backup alpine tar xzf /backup/dbdata.tgz -C /data</code></pre></section>
+
+<section id="m7"><h2>7. Docker Networking</h2>
+<h3>Fundamentals and network drivers</h3>
+<ul><li><b>bridge</b> (default): private network on the host, NAT to outside; containers reach each other by IP.</li><li><b>host</b>: shares host network stack, no isolation, no port mapping needed.</li><li><b>none</b>: no networking (loopback only).</li><li><b>overlay</b>: multi-host networking for Swarm.</li><li><b>macvlan</b>: gives the container its own MAC/IP on the physical LAN.</li></ul>
+<pre><code>docker network ls
+docker run -d --network host nginx
+docker run --network none alpine ip a
+docker network create -d macvlan --subnet=192.168.1.0/24 --gateway=192.168.1.1 -o parent=eth0 lan
+docker network create -d overlay --attachable ovnet   # needs Swarm</code></pre>
+<h3>Custom bridge, DNS, container-to-container</h3>
+<p>On a <b>user-defined bridge</b>, containers resolve each other by <b>name</b> (built-in DNS). The default bridge does not.</p>
+<pre><code>docker network create appnet
+docker run -d --name db --network appnet -e MYSQL_ROOT_PASSWORD=pw mysql:8
+docker run -it --rm --network appnet alpine ping db     # works by name
+docker network connect appnet web ; docker network disconnect appnet web
+docker network inspect appnet</code></pre>
+<h3>Port publishing and troubleshooting</h3>
+<pre><code>docker run -p 127.0.0.1:8080:80 nginx   # bind to localhost only
+docker port web
+ss -tulpn | grep 8080                   # is the port in use?
+docker exec web curl -s db:3306         # test connectivity
+sudo iptables -t nat -L -n              # inspect NAT rules</code></pre>
+<div class="tip">Cannot reach container? Check: right port mapping, app listening on 0.0.0.0 (not 127.0.0.1), same network, firewall (ufw) rules.</div></section>
+
+<section id="m8"><h2>8. Docker Compose</h2>
+<p>Compose defines and runs multi-container apps from one YAML file (<code>compose.yaml</code>). It is built into Docker as <code>docker compose</code> (plugin; install with <code>sudo apt install docker-compose-plugin</code>). YAML basics: indentation with spaces (no tabs), <code>key: value</code>, lists with <code>-</code>.</p>
+<pre><code>services:
+  db:
+    image: mysql:8
+    environment:
+      MYSQL_ROOT_PASSWORD: rootpw
+      MYSQL_DATABASE: wp
+    volumes: [dbdata:/var/lib/mysql]
+    networks: [back]
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      retries: 5
+  wordpress:
+    image: wordpress:latest
+    ports: ["8080:80"]
+    environment:
+      WORDPRESS_DB_HOST: db
+      WORDPRESS_DB_USER: root
+      WORDPRESS_DB_PASSWORD: rootpw
+      WORDPRESS_DB_NAME: wp
+    depends_on:
+      db: {condition: service_healthy}   # waits until db is healthy
+    networks: [back]
+volumes:
+  dbdata:
+networks:
+  back:</code></pre>
+<h3>Commands</h3>
+<pre><code>docker compose up -d          # create and start
+docker compose ps ; docker compose logs -f wordpress
+docker compose exec db bash
+docker compose build ; docker compose pull
+docker compose config         # validate and view merged file
+docker compose down -v        # stop, remove (and volumes with -v)</code></pre>
+<div class="tip">Troubleshooting: run <code>docker compose config</code> for YAML errors, <code>logs</code> for crashes, check service names used as hostnames, use <code>.env</code> file for variables (<code>${DB_PASS}</code>). Note: <code>depends_on</code> alone only controls start order, not readiness, so pair it with a health check.</div></section>
+
+<section id="m9"><h2>9. Docker Hub and Registries</h2>
+<pre><code>docker login                         # account login (use access tokens)
+docker logout
+docker tag myapp:1.0 myuser/myapp:1.0
+docker push myuser/myapp:1.0
+docker pull myuser/myapp:1.0
+# Private registry (self-hosted)
+docker run -d -p 5000:5000 --name registry registry:2
+docker tag myapp localhost:5000/myapp:1.0
+docker push localhost:5000/myapp:1.0</code></pre>
+<ul><li><b>Repositories</b>: public (free, anyone can pull) or private (login required).</li><li><b>Version management</b>: use semantic tags (1.0.0, 1.0, latest) and immutable tags like git SHA (<code>myapp:a1b2c3d</code>).</li><li>Other registries: GitHub Container Registry, AWS ECR, Harbor, GitLab Registry. Non-HTTPS registries need <code>insecure-registries</code> in <code>/etc/docker/daemon.json</code>.</li></ul></section>
+
+<section id="m10"><h2>10. Docker Security</h2>
+<h3>Root vs non-root</h3>
+<pre><code>RUN adduser -D appuser
+USER appuser
+docker run --user 1000:1000 myapp</code></pre>
+<h3>Capabilities, privileged, read-only, secrets</h3>
+<pre><code>docker run --cap-drop ALL --cap-add NET_BIND_SERVICE nginx
+docker run --privileged ...             # AVOID: nearly full host access
+docker run --read-only --tmpfs /tmp myapp
+docker run --security-opt no-new-privileges myapp
+# Secrets (Swarm / Compose): file mounted at /run/secrets/db_pass
+printf 'S3cret' | docker secret create db_pass -</code></pre>
+<h3>Docker socket security</h3>
+<p>Mounting <code>/var/run/docker.sock</code> into a container gives it root-equivalent control of the host. Avoid it, or use a socket proxy; never expose the TCP daemon port 2375 without TLS.</p>
+<h3>Vulnerability scanning</h3>
+<pre><code>docker scout cves myapp:1.0      # Docker Scout
+trivy image myapp:1.0            # Trivy (open source)</code></pre>
+<h3>Resource restrictions, Seccomp, AppArmor</h3>
+<pre><code>docker run --memory=256m --cpus=0.5 --pids-limit=100 myapp
+docker run --security-opt seccomp=profile.json myapp   # restrict syscalls
+docker run --security-opt apparmor=docker-default myapp</code></pre>
+<div class="tip">Best practices: trusted minimal images, pin versions, scan in CI, non-root, read-only FS, drop capabilities, no secrets in ENV or image layers, keep Docker and host patched.</div></section>
+
+<section id="m11"><h2>11. Advanced Docker</h2>
+<h3>BuildKit, buildx, cache</h3>
+<pre><code>DOCKER_BUILDKIT=1 docker build -t app .
+docker buildx create --use
+docker buildx build --platform linux/amd64,linux/arm64 -t myuser/app:1 --push .
+# cache mount speeds up package installs
+RUN --mount=type=cache,target=/root/.cache/pip pip install -r requirements.txt</code></pre>
+<h3>Health checks and resource management</h3>
+<pre><code>docker run -d --health-cmd="curl -f http://localhost || exit 1" --health-interval=30s nginx
+docker ps      # shows (healthy) / (unhealthy)</code></pre>
+<h3>Docker Swarm: services, replicas, cluster</h3>
+<pre><code>docker swarm init --advertise-addr 192.168.1.10
+docker swarm join --token SWMTKN-xxx 192.168.1.10:2377   # on workers
+docker node ls
+docker service create --name web --replicas 3 -p 80:80 nginx:1.26
+docker service ls ; docker service ps web
+docker service scale web=5</code></pre>
+<h3>Rolling updates and rollback</h3>
+<pre><code>docker service update --image nginx:1.27 --update-parallelism 1 --update-delay 10s web
+docker service rollback web</code></pre>
+<h3>Events, plugins, advanced troubleshooting</h3>
+<pre><code>docker events --filter type=container
+docker plugin ls ; docker plugin install grafana/loki-docker-driver
+journalctl -u docker -e              # daemon logs
+docker system df ; docker stats --no-stream
+sudo dockerd --debug                 # debug mode</code></pre></section>
+
+<section id="m12"><h2>12. Monitoring and Logging</h2>
+<h3>Built-in tools</h3>
+<pre><code>docker logs -f --since 10m web
+docker stats ; docker events</code></pre>
+<h3>Logging drivers</h3>
+<pre><code># /etc/docker/daemon.json  (restart docker after)
+{ "log-driver": "json-file", "log-opts": {"max-size": "10m", "max-file": "3"} }
+docker run --log-driver syslog --log-opt syslog-address=udp://10.0.0.5:514 nginx</code></pre>
+<h3>cAdvisor + Prometheus + Grafana</h3>
+<pre><code>services:
+  cadvisor:
+    image: gcr.io/cadvisor/cadvisor
+    volumes: ["/:/rootfs:ro","/var/run:/var/run:ro","/sys:/sys:ro","/var/lib/docker/:/var/lib/docker:ro"]
+    ports: ["8081:8080"]
+  prometheus:
+    image: prom/prometheus
+    volumes: ["./prometheus.yml:/etc/prometheus/prometheus.yml"]
+    ports: ["9090:9090"]
+  grafana:
+    image: grafana/grafana
+    ports: ["3000:3000"]
+
+# prometheus.yml
+scrape_configs:
+  - job_name: cadvisor
+    static_configs: [{targets: ["cadvisor:8080"]}]</code></pre>
+<p>In Grafana add Prometheus (<code>http://prometheus:9090</code>) as data source, import dashboard ID <b>193</b> or <b>14282</b> for container metrics, and set alert rules (e.g. CPU above 80% for 5 minutes).</p></section>
+
+<section id="m13"><h2>13. Docker with DevOps Tools</h2>
+<h3>Git and GitHub</h3>
+<pre><code>git clone https://github.com/user/app.git && cd app
+docker build -t app . ; git push   # GitHub Actions can build and push images</code></pre>
+<h3>Jenkins and CI/CD</h3>
+<pre><code>pipeline {
+  agent any
+  stages {
+    stage('Checkout'){ steps { git 'https://github.com/user/app.git' } }
+    stage('Build'){ steps { sh 'docker build -t myuser/app:${BUILD_NUMBER} .' } }
+    stage('Push'){ steps { withCredentials([usernamePassword(credentialsId:'dh',usernameVariable:'U',passwordVariable:'P')]){
+        sh 'echo $P | docker login -u $U --password-stdin && docker push myuser/app:${BUILD_NUMBER}' } } }
+    stage('Deploy'){ steps { sh 'docker compose up -d' } }
+  }
+}</code></pre>
+<h3>Ansible and Terraform</h3>
+<pre><code># Ansible
+- hosts: web
+  tasks:
+    - community.docker.docker_container:
+        name: web
+        image: nginx
+        ports: ["80:80"]
+# Terraform (kreuzwerker/docker provider)
+resource "docker_image" "nginx" { name = "nginx:latest" }
+resource "docker_container" "web" {
+  name  = "web"
+  image = docker_image.nginx.image_id
+  ports { internal = 80  external = 8080 }
+}</code></pre>
+<h3>Docker on AWS EC2</h3>
+<pre><code>sudo apt update && sudo apt install -y docker.io    # on Ubuntu EC2
+sudo usermod -aG docker ubuntu
+# open port 80/8080 in the Security Group, then
+docker run -d -p 80:80 nginx</code></pre>
+<h3>Kubernetes</h3>
+<p>Docker builds images; Kubernetes orchestrates them at scale (self-healing, autoscaling, rolling updates).</p>
+<pre><code>kubectl create deployment web --image=myuser/app:1.0 --replicas=3
+kubectl expose deployment web --port=80 --type=NodePort</code></pre>
+<h3>Nginx (reverse proxy) and Prometheus/Grafana</h3>
+<pre><code># nginx.conf: proxy to the app container
+server { listen 80; location / { proxy_pass http://app:3000; } }
+docker run -d -p 80:80 -v $(pwd)/nginx.conf:/etc/nginx/conf.d/default.conf:ro --network appnet nginx</code></pre>
+<p>Prometheus and Grafana: see Module 12; apps expose <code>/metrics</code> and Prometheus scrapes them.</p></section>
+
+<section id="projects"><h2>Practical Projects</h2>
+<h3>Project 1: Nginx Web Server (Beginner)</h3>
+<pre><code>mkdir site && echo '&lt;h1&gt;Hello Docker!&lt;/h1&gt;' > site/index.html
+docker run -d --name web -p 8080:80 -v $(pwd)/site:/usr/share/nginx/html:ro nginx
+curl localhost:8080</code></pre>
+<h3>Project 2: WordPress + MySQL (Intermediate)</h3>
+<p>Use the Compose file in Module 8, run <code>docker compose up -d</code>, open <code>localhost:8080</code>, then run <code>docker compose down</code> and up again to prove the volume keeps your data.</p>
+<h3>Project 3: Jenkins + Docker CI/CD (Advanced)</h3>
+<pre><code>docker run -d --name jenkins -p 8080:8080 -v jenkins_home:/var/jenkins_home -v /var/run/docker.sock:/var/run/docker.sock jenkins/jenkins:lts</code></pre>
+<p>Create a pipeline using the Jenkinsfile in Module 13: checkout, build, push to registry, deploy. (Socket mount is for the lab only.)</p>
+<h3>Project 4: Docker Monitoring (Advanced)</h3>
+<p>Run the cAdvisor, Prometheus and Grafana stack from Module 12, generate load with <code>docker run --rm busybox sh -c "while :; do :; done"</code> and watch CPU rise in Grafana.</p></section>
+
+<section id="plan"><h2>Suggested 8-Week Study Plan</h2>
+<ul><li><b>Week 1–2:</b> Modules 1–5 (fundamentals, commands, images, Dockerfile, containers)</li><li><b>Week 3–4:</b> Modules 6–9 (storage, networking, Compose, registries)</li><li><b>Week 5–6:</b> Modules 10–12 (security, advanced Docker, monitoring and logging)</li><li><b>Week 7–8:</b> Module 13 and all four projects</li></ul>
+<div class="tip">Practise daily in a Linux lab. Spend extra time on Dockerfile, networking, volumes, Compose, troubleshooting and CI/CD rather than memorizing commands.</div></section>
+</main></div>
 <script>
-    // COPY BUTTONS (full copy functionality)
-    document.querySelectorAll('.copy-btn').forEach(btn => {
-        btn.addEventListener('click', function(e) {
-            const row = this.closest('tr');
-            if (row) {
-                let commandText = row.querySelector('td:first-child')?.innerText.trim() || '';
-                navigator.clipboard.writeText(commandText).then(() => {
-                    this.innerText = '✓ Done';
-                    setTimeout(() => this.innerText = 'Copy', 1400);
-                }).catch(() => alert('Copy manually: ' + commandText));
-            } else {
-                alert("Error: command missing");
-            }
-        });
-    });
-
-    // GLOBAL SEARCH (filters all tables + study cards + intro content)
-    const searchField = document.getElementById('globalSearch');
-    function filterAll(term) {
-        term = term.toLowerCase().trim();
-        // tables rows
-        const allRows = document.querySelectorAll('.cmd-table tbody tr');
-        allRows.forEach(row => {
-            const text = row.innerText.toLowerCase();
-            row.style.display = text.includes(term) ? '' : 'none';
-        });
-        // study note cards
-        const studyCards = document.querySelectorAll('.note-card');
-        studyCards.forEach(card => {
-            const cardText = card.innerText.toLowerCase();
-            card.style.display = cardText.includes(term) ? '' : 'none';
-        });
-        // intro blocks, dockerfile cards
-        const dockerCards = document.querySelectorAll('.dockerfile-card');
-        dockerCards.forEach(card => {
-            const txt = card.innerText.toLowerCase();
-            card.style.display = txt.includes(term) ? '' : 'none';
-        });
-        const allIntroDivs = document.querySelectorAll('#intro, #containers-section, .pro-tip, .cmd-block:not(.cmd-block table)');
-        if (term !== "") {
-            document.querySelectorAll('.cmd-block, .dockerfile-showcase, .study-grid').forEach(block => {
-                let hasVisible = false;
-                if (block.querySelectorAll('.cmd-table tbody tr:not([style*="display: none"])').length > 0) hasVisible = true;
-                if (block.querySelectorAll('.dockerfile-card:not([style*="display: none"])').length > 0) hasVisible = true;
-                if (block.querySelectorAll('.note-card:not([style*="display: none"])').length > 0) hasVisible = true;
-                if (block.innerText.toLowerCase().includes(term) && block !== document.querySelector('.cmd-block')) hasVisible = true;
-                block.style.display = hasVisible ? '' : 'none';
-            });
-        } else {
-            document.querySelectorAll('.cmd-block, .dockerfile-showcase, .study-grid').forEach(block => block.style.display = '');
-            dockerCards.forEach(c => c.style.display = '');
-            studyCards.forEach(c => c.style.display = '');
-            allRows.forEach(r => r.style.display = '');
-        }
-    }
-
-    searchField.addEventListener('keyup', () => filterAll(searchField.value));
-    
-    // Sidebar smooth anchor scroll with offset for fixed header
-    document.querySelectorAll('.sidebar .nav-link').forEach(link => {
-        link.addEventListener('click', function(e) {
-            e.preventDefault();
-            const targetId = this.getAttribute('href').substring(1);
-            const target = document.getElementById(targetId);
-            if (target) {
-                const offset = 70;
-                const y = target.getBoundingClientRect().top + window.scrollY - offset;
-                window.scrollTo({top: y, behavior: 'smooth'});
-            }
-        });
-    });
-</script>
-</body>
-</html>
+const nav=document.getElementById('nav'),secs=[...document.querySelectorAll('section')];
+let done={};try{done=JSON.parse(localStorage.getItem('dk')||'{}')}catch(e){}
+function save(){try{localStorage.setItem('dk',JSON.stringify(done))}catch(e){}}
+secs.forEach(s=>{
+ const a=document.createElement('a');a.href='#'+s.id;a.textContent=s.querySelector('h2').textContent;a.dataset.id=s.id;
+ if(done[s.id])a.classList.add('done');nav.appendChild(a);
+ const m=document.createElement('div');m.className='mk';
+ m.innerHTML='<label><input type="checkbox"> Mark as completed</label>';
+ const c=m.querySelector('input');c.checked=!!done[s.id];
+ c.onchange=()=>{done[s.id]=c.checked;a.classList.toggle('done',c.checked);save()};
+ s.appendChild(m);
+});
+document.querySelectorAll('pre').forEach(p=>{
+ const b=document.createElement('button');b.className='cp';b.textContent='Copy';
+ b.onclick=()=>{const t=p.querySelector('code').innerText;
+  (navigator.clipboard?navigator.clipboard.writeText(t):Promise.reject()).then(()=>{b.textContent='Copied!'},()=>{b.textContent='Select+copy'});
+  setTimeout(()=>b.textContent='Copy',1500)};
+ p.appendChild(b)});
+document.getElementById('q').oninput=e=>{
+ const v=e.target.value.toLowerCase();
+ secs.forEach(s=>{const h=!v||s.innerText.toLowerCase().includes(v);s.classList.toggle('hide',!h);
+  nav.querySelector('[data-id="'+s.id+'"]').classList.toggle('hide',!h)})};
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){nav.querySelectorAll('a').forEach(a=>a.classList.toggle('on',a.dataset.id===e.target.id))}}),{rootMargin:'-20% 0px -70% 0px'});
+secs.forEach(s=>io.observe(s));
+document.getElementById('th').onclick=()=>{const r=document.documentElement;
+ const dark=getComputedStyle(r).getPropertyValue('--bg').trim()==='#0d1220';
+ r.setAttribute('data-theme',dark?'light':'dark')};
+</script></body></html>
