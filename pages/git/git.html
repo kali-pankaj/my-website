@@ -6,7 +6,6 @@
 <title>Git &amp; GitHub – Complete Syllabus</title>
 <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:wght@500;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-
 </head>
 <body>
 <header class="top"><b><i>git</i> &amp; GitHub</b><div id="bar" role="progressbar" aria-label="Progress"><span></span></div><span id="pct" class="m">0%</span><button class="ic" id="th" aria-label="Toggle theme">◐</button></header>
@@ -28,6 +27,9 @@
 <main>
 <div class="rail" id="topics"></div>
 
+<h2 class="s" id="bible">🔥 The complete Git &amp; DevOps command bible</h2>
+<p style="color:var(--mu);margin:0 0 12px">Every command a master needs: submodules, hooks, reflog, worktree, LFS, bisect and real-world CI/CD patterns. Click a command to copy it. The search box above filters this section too.</p>
+<div class="ch2" id="bchips" style="margin-bottom:14px"></div><div id="bbody"></div>
 <h2 class="s" id="projects">Practical projects</h2>
 <div class="grid" id="pj"></div>
 
@@ -119,6 +121,165 @@ $("#q").oninput=e=>{const v=e.target.value.toLowerCase().trim();root.querySelect
 $("#ea").onclick=()=>root.querySelectorAll(".c").forEach(c=>c.classList.add("open"));
 $("#ca").onclick=()=>root.querySelectorAll(".c").forEach(c=>c.classList.remove("open"));
 $("#th").onclick=()=>{const r=document.documentElement,d=r.dataset.theme?r.dataset.theme==="dark":matchMedia("(prefers-color-scheme:dark)").matches;r.dataset.theme=d?"light":"dark"};
+const B=[
+["📘","Basics","Fundamental Git Commands (Daily Driver)",0,String.raw`git init :: Initialize repo; --bare for central repo, --initial-branch=main sets default branch
+git clone --depth 1 <url> :: Shallow clone, faster CI/CD; --single-branch for default branch only
+git status -sb :: Short status with upstream ahead/behind counts
+git add -A :: Stage all changes incl. deletions; -p for interactive staging
+git commit --amend -m "new msg" :: Edit last commit; --no-edit keeps message; --author fixes author
+git commit -am "msg" :: Stage tracked files and commit; skips untracked files
+git mv old new :: Move/rename a file while preserving history
+git rm --cached file :: Stop tracking, keep locally; add to .gitignore (removes accidental secrets)`],
+["🌿","Branching","Branching & Merging (GitHub Flow, GitFlow)",0,String.raw`git branch -vv :: Tracking branches with ahead/behind counts; check before pull/push
+git push origin --delete feature/login :: Delete remote branch after merge; -d for local
+git merge --squash feature :: Squash feature commits into one; keeps main clean
+git merge --no-ff feature :: Force a merge commit; preserves feature context
+git branch -m old-name new-name :: Rename locally, then git push origin -u new-name and delete old remote
+git branch --sort=-committerdate :: Branches by most recent commit
+git branch --merged | grep -v "\*" | xargs git branch -d :: Delete all merged branches after a release`],
+["🌐","Remote","Remote & Collaboration (Team Workflows)",0,String.raw`git remote prune origin :: Remove stale remote-tracking branches
+git push --force-with-lease :: Safe force push; never plain --force on shared branches
+git fetch --all --prune :: Fetch all remotes, clean stale refs, no merge
+git pull --rebase --autostash :: Rebase on pull, auto-stash dirty tree; linear history
+git remote set-url origin new-url :: Change remote URL (moved repo, HTTPS to SSH)
+git push -u origin HEAD :: Push current branch and set upstream
+git config --global pull.rebase true :: Rebase by default on git pull`],
+["📌","Staging","Staging Area (added)",1,String.raw`git add -p :: Stage hunks interactively
+git add -u :: Stage modified and deleted tracked files only
+git add -N file :: Intent-to-add: make a new file visible to git diff
+git restore --staged file :: Unstage a file, keep edits
+git reset -p :: Interactively unstage hunks
+git diff --staged :: Review exactly what will be committed`],
+["🔍","Diff & Log","Diff & Log Inspection (Debugging)",0,String.raw`git log --since="2 weeks ago" --oneline :: Filter by date; also --until, --author, --grep
+git diff HEAD~3..HEAD --stat :: Summary of last 3 commits; --name-only for file list
+git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' :: Colored custom log for daily review
+git diff branch1..branch2 -- file.txt :: Compare one file between branches
+git log -S "function_name" --source :: Pickaxe: commits that added/removed a string
+git blame -L 10,20 file.txt :: Who changed lines 10-20; -C detects moved code`],
+["⏪","Undo/Reset","Undo, Reset & Recovery Mastery",0,String.raw`git restore --source=HEAD~2 file.txt :: Restore file from 2 commits ago
+git revert -m 1 <merge-commit> :: Revert a merge (pick parent); safe for public branches
+git reset --soft HEAD~1 :: Undo commit, keep changes staged
+git reset --mixed HEAD~1 :: Undo commit and unstage; default reset
+git reset --hard ORIG_HEAD :: Undo a destructive reset or merge
+git checkout HEAD~3 -- file.txt :: Restore file from 3 commits ago (older syntax)`],
+["📦","Stash","Stash (Context Switching Like a Pro)",0,String.raw`git stash -u :: Include untracked files; -a adds ignored files
+git stash push -m "WIP auth" -- src/auth/ :: Stash one directory with a message
+git stash show -p stash@{0} :: View stash diff before applying
+git stash branch new-branch stash@{1} :: Create a branch from a stash
+git stash drop $(git stash list | grep "WIP" | head -1 | cut -d: -f1) :: Drop first stash matching a pattern`],
+["🏷️","Tags","Tagging & Release Engineering",0,String.raw`git tag -a v2.0 <commit> -m "release notes" :: Annotated tag (recommended for releases)
+git push origin --tags --force :: Overwrite remote tags (⚠️ only if necessary; prefer delete + recreate)
+git tag -l "v1.*" :: List tags by pattern
+git describe --tags --abbrev=0 :: Latest tag, for CI/CD versioning
+git push origin :refs/tags/v1.0 :: Delete remote tag, then git tag -d v1.0 locally`],
+["🔗","Submodules","Submodules (Microservices & Shared Libs)",0,String.raw`git submodule add -b main <url> libs/shared :: Track a branch; avoids detached HEAD
+git submodule update --init --recursive --remote :: Update all to latest on tracked branch
+git submodule status --recursive :: Show submodule hashes; debug mismatches
+git submodule foreach 'git checkout main && git pull' :: Run a command in each submodule
+git submodule deinit -f -- libs/shared :: Remove fully (also delete .git/modules, stage deletion)
+git config --global submodule.recurse true :: Recurse automatically on pull, diff, etc.`],
+["🌳","Worktree","Git Worktree (Parallel Development)",0,String.raw`git worktree add -b hotfix ../project-hotfix main :: New worktree and branch; hotfix without stashing
+git worktree list --porcelain :: Machine-readable list for scripting
+git worktree remove ../project-hotfix --force :: Force remove, then git worktree prune
+git worktree add --detach ../temp-branch HEAD~3 :: Inspect an old commit without a branch`],
+["🔄","Rebase","Rebase (added)",1,String.raw`git rebase -i HEAD~5 :: Squash, reword, reorder or drop the last 5 commits
+git rebase --onto main feature~3 feature :: Move a range of commits onto another base
+git rebase --continue :: Resume after fixing a conflict
+git rebase --abort :: Cancel and return to the pre-rebase state
+git rebase -i --autosquash main :: Auto-order fixup! and squash! commits
+git rebase --exec 'npm test' main :: Run tests after every replayed commit
+git rebase --rebase-merges main :: Keep merge commits while rebasing`],
+["🪝","Hooks","Git Hooks (Automation & Quality Gates)",0,String.raw`.git/hooks/pre-commit :: Lint, format, scan secrets; non-zero exit aborts
+.git/hooks/commit-msg :: Validate message format (Conventional Commits, Jira ID)
+.git/hooks/pre-push :: Run tests before push
+.git/hooks/pre-receive (server-side) :: Enforce branch policy, block force-push on main
+git config --global core.hooksPath ~/.git-hooks :: Share hooks across repos; version-control them
+git hooks --list (Git 2.36+) :: List available hooks in this Git version`],
+["💾","LFS","Git LFS (Large File Storage for ML, Games, Assets)",0,String.raw`git lfs track "*.psd" --lockable :: Track PSDs with locking; prevents concurrent edits
+git lfs migrate import --include="*.zip" --everything :: Move ALL branches and tags to LFS; rewrites history
+git lfs ls-files --all --long :: All LFS files with sizes
+git lfs prune --verify-remote :: Delete old LFS files after checking the remote
+git lfs fetch --all --recent :: Download all LFS files, not just current checkout
+git lfs status :: LFS files modified locally`],
+["📜","Reflog","Reflog – Ultimate Recovery Tool",0,String.raw`git reflog --date=local :: Reflog with local timestamps
+git reset --hard HEAD@{2.minutes.ago} :: Restore state from 2 minutes ago
+git reflog expire --expire=30.days --all :: Keep reflog 30 days; reduces .git size
+git show HEAD@{2025-12-01 09:00:00} :: View commit at a specific time; good for audits
+git reflog show --all :: Reflog for all refs (branches, stash, etc.)`],
+["⚡","Advanced","Advanced Power Tools (History Rewriting, Bisect, Grep)",0,String.raw`git cherry-pick A..B --no-commit :: Pick a range without auto-commit; review first
+git filter-repo --path secrets.txt --invert-paths :: Remove a sensitive file; faster, safer than filter-branch
+git bisect start --term-old=v1.0 --term-new=v2.0 :: Custom bisect terms between two versions
+git grep -n "TODO" $(git rev-list --all) -- '*.js' :: Search every commit for a pattern in JS files
+git shortlog -sn --no-merges --all :: Contributor stats across ALL branches
+git archive --format=zip --output=deploy.zip main -- . ':!.github' :: Snapshot excluding CI folders, for deployment
+git rev-list --count main..feature :: Commits in feature not yet in main
+git fsck --lost-found :: Recover dangling commits after a force push`],
+["🚀","DevOps","DevOps Patterns & Production CI/CD Integration",0,String.raw`git push --follow-tags :: Push commits and annotated tags; CI triggers on tags
+git describe --tags --abbrev=0 :: Latest tag; Makefile: VERSION=$(git describe --tags)
+git rev-parse --short HEAD :: Short hash; docker tag app:$(git rev-parse --short HEAD)
+git clean -xfd :: Remove ignored and untracked files before CI build
+git diff --name-only origin/main...HEAD :: Files changed in a PR; run relevant tests only
+git log -1 --pretty=%B :: Last commit message; extract release notes
+git fetch --depth=1 origin pull/$PR_ID/head:pr-$PR_ID :: Fetch a PR for testing before merge
+git ls-tree -r main --name-only | xargs wc -l :: Count lines of code; DevOps metrics`],
+["🩺","Troubleshoot","Troubleshooting & Repository Maintenance",0,String.raw`git fsck --full --strict :: Full repo verification; find corruption early
+git gc --aggressive --prune=now :: Shrink repo after history rewrite
+git maintenance start :: Background maintenance (Git 2.31+)
+git repack -ad --depth=250 --window=250 :: Optimize packs; faster fetch/clone
+git verify-commit HEAD :: Check GPG signature
+git bugreport --format=zip :: Collect system info for a bug report (Git 2.31+)
+GIT_TRACE=1 git pull :: Trace what Git does internally`],
+["⚙️","Global Config","Global Config & Time-Saving Aliases",0,String.raw`git config --global alias.lg "log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset' --abbrev-commit" :: Pretty log alias: git lg
+git config --global alias.unstage 'reset HEAD --' :: git unstage file.txt
+git config --global alias.last 'log -1 HEAD' :: git last shows latest commit
+git config --global alias.tree 'log --graph --pretty=oneline --abbrev-commit --all' :: Tree view of all branches
+git config --global alias.undo 'reset --soft HEAD^' :: Undo last commit, keep changes
+git config --global core.excludesfile ~/.gitignore_global :: Global ignore (.DS_Store, Thumbs.db)
+git config --global init.defaultBranch main :: Default branch name for new repos`],
+["🔐","Security","Security & Commit Signing",0,String.raw`git commit -S -m "signed commit" :: GPG-sign; verify with git log --show-signature
+git config --global user.signingkey <KEY_ID> :: Default signing key; pair with commit.gpgSign true
+git tag -s v1.0 -m "signed tag" :: Signed tag for supply-chain security
+git verify-commit <commit> :: Verify signature; CI check
+git config --global gpg.format ssh :: Sign with SSH keys instead of GPG (Git 2.34+)`],
+["🤝","Collaboration","Collaboration & Pull Requests (added)",1,String.raw`git remote add upstream <fork-source-url> :: Track the original repo from your fork
+git fetch upstream && git merge upstream/main :: Sync your fork with the original
+gh repo fork --clone :: Fork and clone in one step
+gh pr create --fill --draft :: Open a draft PR using commit messages
+gh pr checkout 42 :: Check out a teammate's PR locally for review
+gh pr review --approve :: Approve a pull request from the terminal
+gh pr merge --squash --delete-branch :: Squash-merge and clean up the branch
+gh pr checks --watch :: Watch required checks until they finish
+git config --global fetch.prune true :: Always prune stale remote branches on fetch`],
+["📁","Repo setup","Repository Structure & Ignore Rules (added)",1,String.raw`cat .git/HEAD :: See which branch HEAD points to
+git rev-parse --show-toplevel :: Print the repository root path
+git check-ignore -v file :: Which .gitignore rule ignores a file
+git ls-files --others --exclude-standard :: List untracked, non-ignored files
+git ls-files -ci --exclude-standard :: Tracked files that now match .gitignore
+git count-objects -vH :: Repository size and object counts`],
+["⚙️","Actions","GitHub Actions & Pipelines (added)",1,String.raw`gh workflow run ci.yml :: Trigger a workflow_dispatch run
+gh run list --limit 5 :: Recent workflow runs and status
+gh run watch :: Follow a run live
+gh run view --log-failed :: Logs of failed steps only
+gh run rerun --failed :: Re-run only the failed jobs
+gh secret set API_KEY :: Store an encrypted Actions secret
+act -j test :: Run a workflow job locally (nektos/act)`],
+["🚢","CI/CD tools","Jenkins, Docker, Terraform, Ansible & Kubernetes (added)",1,String.raw`git config --global --add safe.directory /workspace :: Fix dubious-ownership errors in CI containers
+git ls-remote origin HEAD :: Check remote head without cloning; polling triggers
+git fetch --tags --force :: Make sure tags exist before versioning builds
+docker push registry/app:$(git rev-parse --short HEAD) :: Push an image tagged with the commit SHA
+terraform fmt -check :: Fail the pipeline on unformatted infrastructure code
+ansible-playbook -i inventory site.yml --check --diff :: Dry-run configuration changes
+kubectl rollout status deploy/app :: Wait for a deployment to finish`]
+];
+(function(){const bb=$("#bbody"),bc=$("#bchips");let cat="";
+B.forEach((s,i)=>{const d=el("div","bs");d.id="b"+i;const h=el("h3",0,s[0]+" "+s[2]);if(s[3])h.append(el("span","tg","+ added"));d.append(h);
+ s[4].split("\n").forEach(l=>{const p=l.split(" :: "),r=el("div","br"),b=el("button","bc m",p[0]);b.title="Copy";b.onclick=()=>{try{navigator.clipboard.writeText(p[0])}catch(e){}toast("Copied")};r.append(b,el("span",0,p[1]));r._s=l.toLowerCase();d.append(r)});
+ d._c=s[1];bb.append(d);
+ const c=el("button","bf",s[0]+" "+s[1]);c.onclick=()=>{cat=cat===s[1]?"":s[1];[...bc.children].forEach(x=>x.classList.toggle("on",x===c&&cat));fb()};bc.append(c)});
+function fb(){const v=$("#q").value.toLowerCase().trim();bb.querySelectorAll(".bs").forEach(d=>{let n=0;d.querySelectorAll(".br").forEach(r=>{const m=!v||r._s.includes(v)||d.firstChild.textContent.toLowerCase().includes(v);r.style.display=m?"":"none";if(m)n++});d.style.display=n&&(!cat||d._c===cat)?"":"none"})}
+const M={0:[17],1:[0,3],2:[20,4],3:[1],4:[2],5:[7],6:[18],7:[5,6,8,9,12,13,14],8:[10],9:[19],10:[21],11:[11],12:[16],13:[15,22]};
+Object.entries(M).forEach(([ti,ids])=>{const c=document.getElementById("t"+(+ti+1)),dn=c.querySelector(".dn");ids.forEach(id=>{const s=bb.querySelector("#b"+id);dn.before(s);c._s+=" "+s.textContent.toLowerCase()})});
+$("#bible").nextElementSibling.remove();$("#bible").remove();bc.remove();bb.remove()})();
 root.firstChild.classList.add("open");
 </script>
 </body>
